@@ -124,7 +124,7 @@ fl_doh %>%
   ) %>% 
   arrange(desc(group)) %>% 
   pivot_wider(names_from = c(group, case), values_from = count) %>% 
-  mutate(timestamp = strftime(timestamp_page, "%FT%T %Z")) %>% 
+  mutate(timestamp = ts_current) %>% 
   select(timestamp, everything()) %>% 
   append_csv("covid-19-florida-cases.csv")
 
@@ -141,6 +141,7 @@ fl_dash %>%
 chrm <- chromote::ChromoteSession$new()
 chrm$Page$navigate(fl_dash_url)
 chrm$Page$loadEventFired()
+Sys.sleep(5)
 
 dom <- chrm$DOM$getDocument()
 writeLines(
@@ -161,12 +162,13 @@ boxes %>%
   tibble(raw = .) %>% 
   separate(raw, c("county", "count"), sep = ": ") %>% 
   mutate_at(vars(county), str_remove, pattern = "\\s*County") %>% 
-  mutate(timestamp = strftime(timestamp_page, "%FT%T %Z")) %>% 
+  mutate_at(vars(count), as.character) %>% 
+  mutate(timestamp = ts_current) %>% 
   select(timestamp, everything()) %>% 
   append_csv("covid-19-florida-cases-county.csv")
 
 chrm$close()
-  
+
 # Push changes to repo ----
 if (git2r::in_repository()) {
   is_dirty <- rlang::has_length(git2r::status(untracked = FALSE)$unstaged)
