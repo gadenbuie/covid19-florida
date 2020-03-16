@@ -134,7 +134,7 @@ if (git2r::in_repository()) {
   if (is_dirty) {
     git2r::add(".", ".")
     git2r::commit(message = glue("[auto update] {ts_current}"))
-    git2r::push()
+    git2r::push(credentials = git2r::cred_ssh_key())
   }
 }
 
