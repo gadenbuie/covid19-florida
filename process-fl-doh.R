@@ -29,6 +29,13 @@ append_csv <- function(data, path) {
   write_csv(bind_rows(existing_data, data), path)
 }
 
+# Add random wait time to offset regularity of cronlog
+if (!interactive()) {
+  wait_time <- runif(1, 0, 120)
+  message("Waiting ", round(wait_time, 2), "s")
+  Sys.sleep(wait_time)
+}
+
 # Get FL DOH Page ----
 fl_doh_url <- "http://www.floridahealth.gov/diseases-and-conditions/COVID-19/"
 
