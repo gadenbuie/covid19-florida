@@ -1,16 +1,18 @@
 #! /usr/bin/env Rscript
 options(error = NULL)
+message("Check start - ", strftime(Sys.time(), "%F %T", tz = "America/New_York"))
 
 # Library ----
-library(tidyr)
-library(purrr)
-library(dplyr)
-library(stringr)
-library(lubridate)
-library(glue)
-library(fs)
-library(rvest)
-library(readr)
+library(tidyr, warn.conflicts = FALSE)
+library(purrr, warn.conflicts = FALSE)
+library(dplyr, warn.conflicts = FALSE)
+library(stringr, warn.conflicts = FALSE)
+library(lubridate, warn.conflicts = FALSE)
+library(glue, warn.conflicts = FALSE)
+library(fs, warn.conflicts = FALSE)
+library(xml2, warn.conflicts = FALSE)
+library(rvest, warn.conflicts = FALSE)
+library(readr, warn.conflicts = FALSE)
 
 dir_create("snapshots")
 
@@ -49,6 +51,7 @@ if (file.exists(".last-update")) {
   last_update <- readLines(".last-update", warn = FALSE)
   if (last_update[1] == fl_doh_digest) {
     cat(glue("Checked: {ts_current}"), file = ".last-update", append = TRUE)
+    message("No updates - ", strftime(Sys.time(), "%F %T", tz = "America/New_York"))
     stop("No updates at this time")
     quit("n", 1)
   }
@@ -137,3 +140,5 @@ if (git2r::in_repository()) {
     git2r::push()
   }
 }
+
+message("Check end - ", strftime(Sys.time(), "%F %T", tz = "America/New_York"))
