@@ -50,7 +50,7 @@ ts_current <- strftime(ts_now, '%FT%H%M%S', tz = "America/New_York")
 if (file.exists(".last-update")) {
   last_update <- readLines(".last-update", warn = FALSE)
   if (last_update[1] == fl_doh_digest) {
-    cat("\n", glue("Checked: {ts_current}"), file = ".last-update", append = TRUE)
+    cat("\n", glue("Checked: {ts_current}"), file = ".last-update", append = TRUE, sep = "")
     message("No updates - ", strftime(Sys.time(), "%F %T", tz = "America/New_York"))
     stop("No updates at this time")
     quit("n", 1)
@@ -127,6 +127,45 @@ fl_doh %>%
   mutate(timestamp = strftime(timestamp_page, "%FT%T %Z")) %>% 
   select(timestamp, everything()) %>% 
   append_csv("covid-19-florida-cases.csv")
+
+
+# Florida County Cases from arcgis Dashboard ------------------------------
+
+fl_dash_url <- "https://fdoh.maps.arcgis.com/apps/opsdashboard/index.html#/8d0de33f260d444c852a615dc7837c86"
+
+fl_dash <- read_html(fl_dash_url)
+
+fl_dash %>% 
+  xml_nodes("div:nth-child(2) > margin-container p")
+
+chrm <- chromote::ChromoteSession$new()
+chrm$Page$navigate(fl_dash_url)
+chrm$Page$loadEventFired()
+
+dom <- chrm$DOM$getDocument()
+writeLines(
+  chrm$DOM$getOuterHTML(dom$root$nodeId)$outerHTML, 
+  path("snapshots", strftime(ts_now, 'fl_doh_dash_%FT%H%M%S', tz = "America/New_York"), ext = "html")
+)
+ids <- chrm$DOM$querySelectorAll(dom$root$nodeId, "div:nth-child(2) > margin-container p")
+boxes <- map(unlist(ids), ~ chrm$DOM$getOuterHTML(.x))
+
+boxes %>% 
+  map("outerHTML") %>% 
+  map(read_html) %>% 
+  map(xml_nodes, "p") %>% 
+  map_chr(xml_text) %>% 
+  str_trim() %>% 
+  str_subset("^$", negate = TRUE) %>% 
+  str_subset("Number of Cases", negate = TRUE) %>% 
+  tibble(raw = .) %>% 
+  separate(raw, c("county", "count"), sep = ": ") %>% 
+  mutate_at(vars(county), str_remove, pattern = "\\s*County") %>% 
+  mutate(timestamp = strftime(timestamp_page, "%FT%T %Z")) %>% 
+  select(timestamp, everything()) %>% 
+  append_csv("covid-19-florida-cases-county.csv")
+
+chrm$close()
   
 # Push changes to repo ----
 if (git2r::in_repository()) {
