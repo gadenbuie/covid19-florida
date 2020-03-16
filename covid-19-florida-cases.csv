@@ -1,2 +1,14 @@
-timestamp,resident_cases,resident_deaths,non_resident_cases,non_resident_deaths
-2020-03-16T151655,123,4,17,0
+timestamp,variable,count
+2020-03-16 12:38:00 EDT,Confirmed Cases in Florida Residents,137
+2020-03-16 12:38:00 EDT,Confirmed by DOH,82
+2020-03-16 12:38:00 EDT,Tested by private labs,41
+2020-03-16 12:38:00 EDT,FL resident diagnosed & isolated out of state*,6
+2020-03-16 12:38:00 EDT,Deaths,4
+2020-03-16 12:38:00 EDT,Cases in Non-Florida Residents,18
+2020-03-16 12:38:00 EDT,Confirmed by DOH,15
+2020-03-16 12:38:00 EDT,Tested by private labs,2
+2020-03-16 12:38:00 EDT,Total Cases Overview,155
+2020-03-16 12:38:00 EDT,Traveled,38
+2020-03-16 12:38:00 EDT,Contact with confirmed case,28
+2020-03-16 12:38:00 EDT,Travel & contact with confirmed case,47
+2020-03-16 12:38:00 EDT,Under Investigation,42

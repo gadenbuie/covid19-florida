@@ -83,48 +83,51 @@ fl_doh %>%
   bind_rows() %>% 
   as_tibble() %>% 
   set_names(c("variable", "count")) %>% 
-  mutate(
-    header = variable %in% table_rows,
-    .group = cumsum(header),
-    header = if_else(header, "group", "subgroup")
-  ) %>% 
-  nest(data = -c(header, .group)) %>% 
-  pivot_wider(
-    names_from = header, 
-    values_from = data
-  ) %>% 
-  mutate(group = map(group, ~ .x %>% rename(total = count, group = variable))) %>% 
-  unnest(cols = c(group, subgroup)) %>% 
-  mutate_if(is.character, tolower) %>% 
-  mutate(
-    group = case_when(
-      str_detect(group, "in florida residents") ~ "resident",
-      str_detect(group, "non-florida residents") ~ "non_resident",
-      str_detect(group, "total cases") ~ "total"
-    )
-  ) %>% 
-  filter(group != "total") %>% 
-  mutate(
-    variable = case_when(
-      str_detect(variable, "doh") ~ "doh",
-      str_detect(variable, "private") ~ "private",
-      str_detect(variable, "isolated") ~ "resident_outside",
-      str_detect(variable, "death") ~ "deaths"
-    ),
-    case = if_else(str_detect(variable, "deaths"), "deaths", "cases")
-  ) %>% 
-  filter(variable != "resident_outside") %>%
-  group_by(group, case) %>% 
-  summarize(count = sum(count)) %>% 
-  ungroup() %>% 
-  complete(
-    group = c("resident", "non_resident"), 
-    case = c("cases", "deaths"), 
-    fill = list(count = 0)
-  ) %>% 
-  arrange(desc(group)) %>% 
-  pivot_wider(names_from = c(group, case), values_from = count) %>% 
-  mutate(timestamp = ts_current) %>% 
+  # mutate(
+  #   header = variable %in% table_rows,
+  #   .group = cumsum(header),
+  #   header = if_else(header, "group", "subgroup")
+  # ) %>% 
+  # nest(data = -c(header, .group)) %>% 
+  # pivot_wider(
+  #   names_from = header, 
+  #   values_from = data
+  # ) %>% 
+  # mutate(group = map(group, ~ .x %>% rename(total = count, group = variable))) %>% 
+  # unnest(cols = c(group, subgroup)) %>% 
+  # mutate_if(is.character, tolower) %>% 
+  # mutate(
+  #   group = case_when(
+  #     str_detect(group, "in florida residents") ~ "resident",
+  #     str_detect(group, "non-florida residents") ~ "non_resident",
+  #     str_detect(group, "total cases") ~ "total"
+  #   )
+  # ) %>% 
+  # filter(group != "total") %>% 
+  # mutate(
+  #   variable = case_when(
+  #     str_detect(variable, "doh") ~ "doh",
+  #     str_detect(variable, "private") ~ "private",
+  #     str_detect(variable, "isolated") ~ "resident_outside",
+  #     str_detect(variable, "death") ~ "deaths"
+  #   ),
+  #   case = if_else(str_detect(variable, "deaths"), "deaths", "cases")
+  # ) %>% 
+  # filter(variable != "resident_outside") %>%
+  # group_by(group, case) %>% 
+  # summarize(count = sum(count)) %>% 
+  # ungroup() %>% 
+  # complete(
+  #   group = c("resident", "non_resident"), 
+  #   case = c("cases", "deaths"), 
+  #   fill = list(count = 0)
+  # ) %>% 
+  # pivot_wider(names_from = group, values_from = count) %>% 
+  # mutate(total = resident + non_resident) %>% 
+  # pivot_longer(-case, names_to = "group", values_to = "count") %>% 
+  # arrange(desc(group)) %>% 
+  # pivot_wider(names_from = c(case, group), values_from = count) %>% 
+  mutate(timestamp = strftime(timestamp_page, "%F %T %Z", tz = tz(timestamp_page))) %>% 
   select(timestamp, everything()) %>% 
   append_csv("covid-19-florida-cases.csv")
 
