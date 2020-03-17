@@ -88,7 +88,7 @@ fl_doh %>%
   set_names(c("variable", "count")) %>% 
   mutate(timestamp = strftime(timestamp_page, "%F %T %Z", tz = tz(timestamp_page))) %>% 
   select(timestamp, everything()) %>% 
-  append_csv("covid-19-florida-cases.csv")
+  append_csv("covid-19-florida-doh.csv")
 
 # Screenshot FL DOH page --------------------------------------------------
 chrm <- chromote::ChromoteSession$new()

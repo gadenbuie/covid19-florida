@@ -4,7 +4,7 @@ Parsed from the [Florida Department of Health COVID-19 status page][main-page].
 
 ## FL DOH Main Page
 
-The table from the FL DOH main page is parsed and saved verbatim into [covid-19-florida-cases.csv](covid-19-florida-cases.csv). The "as of" timestamp listed on the web page is added into the table in the `timestamp` column.
+The table from the FL DOH main page is parsed and saved verbatim into [covid-19-florida-doh.csv](covid-19-florida-doh.csv). The "as of" timestamp listed on the web page is added into the table in the `timestamp` column.
 
 [screenshot](screenshots/floridahealth_gov__diseases-and-conditions__COVID-19.png)
 
