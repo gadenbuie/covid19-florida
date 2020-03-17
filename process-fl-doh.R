@@ -133,13 +133,19 @@ fl_doh %>%
 
 
 # Florida County Cases from arcgis Dashboard ------------------------------
+dom2text <- function(chrome, root_id, selector) {
+  ids <- chrm$DOM$querySelectorAll(root_id, selector)
+  html <- map(unlist(ids), ~ chrm$DOM$getOuterHTML(.x))
+  
+  html %>% 
+    map("outerHTML") %>% 
+    map(read_html) %>% 
+    map(xml_nodes, "p") %>% 
+    map_chr(xml_text) %>% 
+    str_trim()
+}
 
 fl_dash_url <- "https://fdoh.maps.arcgis.com/apps/opsdashboard/index.html#/8d0de33f260d444c852a615dc7837c86"
-
-fl_dash <- read_html(fl_dash_url)
-
-fl_dash %>% 
-  xml_nodes("div:nth-child(2) > margin-container p")
 
 chrm <- chromote::ChromoteSession$new()
 chrm$Page$navigate(fl_dash_url)
@@ -151,24 +157,42 @@ writeLines(
   chrm$DOM$getOuterHTML(dom$root$nodeId)$outerHTML, 
   path("snapshots", strftime(ts_now, 'fl_doh_dash_%FT%H%M%S', tz = "America/New_York"), ext = "html")
 )
-ids <- chrm$DOM$querySelectorAll(dom$root$nodeId, "div:nth-child(2) > margin-container p")
-boxes <- map(unlist(ids), ~ chrm$DOM$getOuterHTML(.x))
 
-boxes %>% 
-  map("outerHTML") %>% 
-  map(read_html) %>% 
-  map(xml_nodes, "p") %>% 
-  map_chr(xml_text) %>% 
-  str_trim() %>% 
+timestamp_dash <- mdy_hm(
+  dom2text(chrm, dom$root$nodeId, "div:nth-child(2) > margin-container p")[2],
+  tz = "America/New_York"
+)
+
+dom2text(chrm, dom$root$nodeId, "div:nth-child(1) > margin-container p") %>% 
   str_subset("^$", negate = TRUE) %>% 
   str_subset("Number of Cases", negate = TRUE) %>% 
   tibble(raw = .) %>% 
-  separate(raw, c("county", "count"), sep = ": ") %>% 
+  separate(raw, c("county", "count"), ":\\s*") %>%
   mutate_at(vars(county), str_remove, pattern = "\\s*County") %>% 
-  mutate_at(vars(count), as.character) %>% 
-  mutate(timestamp = ts_current) %>% 
-  select(timestamp, everything()) %>% 
+  mutate_at(vars(count), as.numeric) %>% 
+  mutate(timestamp = timestamp_dash) %>% 
+  select(timestamp, everything()) %>%
   append_csv("covid-19-florida-cases-county.csv")
+
+dom2text(chrm, dom$root$nodeId, "div:nth-child(5) > margin-container p") %>% 
+  tibble(raw = .) %>% 
+  separate(raw, c("description", "count"), sep = ":\\s*") %>% 
+  mutate_at(vars(description), tolower) %>% 
+  mutate(
+    variable = case_when(
+      str_detect(description, "people tested") ~ "total",
+      str_detect(description, "negative") ~ "negative",
+      str_detect(description, "positive") ~ "positive",
+      str_detect(description, "pending") ~ "pending",
+      TRUE ~ gsub(" ", "_", description)
+    )
+  ) %>% 
+  select(-description) %>% 
+  pivot_wider(names_from = variable, values_from = count) %>% 
+  mutate_all(as.numeric) %>% 
+  mutate(timestamp = timestamp_dash) %>% 
+  select(timestamp, everything()) %>% 
+  append_csv("covid-19-florida-tests.csv")
 
 chrm$close()
 
