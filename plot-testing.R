@@ -36,9 +36,9 @@ g <-
         placement = cumsum(count) - count / 2,
         count_label = paste(count, status)
       ),
-    aes(label = count_label, y = placement, x = timestamp + 0.40), 
+    aes(label = count_label, y = placement, x = timestamp + 0.40, segment.color = status), 
     xlim = test_summary %>% pull(timestamp) %>% max() + 0.6,
-    segment.colour = "#999999"
+    segment.size = 0.75
   ) +
   labs(
     x = NULL, y = NULL,
@@ -51,6 +51,11 @@ g <-
   theme_minimal() +
   scale_x_date(expand = expand_scale(add = 0)) +
   scale_y_continuous(expand = expand_scale(add = 0)) +
+  scale_color_manual(
+    aesthetics = "segment.color",
+    values = c(negative = "#acc2d1", pending = "#aee2c9", positive = "#440154", deaths = "#fde725"),
+    guide = FALSE
+  ) +
   scale_fill_manual(
     values = c(negative = "#acc2d1", pending = "#aee2c9", positive = "#440154", deaths = "#fde725"),
     guide = FALSE
