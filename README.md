@@ -10,7 +10,6 @@ The table from the FL DOH main page is parsed and saved verbatim into [covid-19-
 
 ## FL DOH Dashboard
 
-![](screenshots/fodh_maps_arcgis_com__apps__opsdashboard.png)
 
 Two tables are extracted from the [Florida's COVID-19 Data and Surveillance Dashboard][dashboard].
 
@@ -19,6 +18,7 @@ Two tables are extracted from the [Florida's COVID-19 Data and Surveillance Dash
 
 The "last updated timestamp" is also extracted from the dashboard and saved in the `timestamp` column of both of the above tables.
 
+![](screenshots/fodh_maps_arcgis_com__apps__opsdashboard.png)
 
 [main-page]: http://www.floridahealth.gov/diseases-and-conditions/COVID-19/
 [dashboard]: https://fdoh.maps.arcgis.com/apps/opsdashboard/index.html#/8d0de33f260d444c852a615dc7837c86
