@@ -21,7 +21,9 @@ timestamp_from_node <- function(node) {
   text <- xml_text(node)
   time <- str_extract(text, "\\d{1,2}:\\d{2} [APMapm.]+")
   date <- str_extract(text, "(\\d+[/.-]?){3}")
-  mdy_hm(glue("{date} {time}"), tz = "America/New_York")
+  ts <- glue("{date} {time}")
+  ts <- str_replace_all(ts, "[.]", "")
+  mdy_hm(ts, tz = "America/New_York")
 }
 
 append_csv <- function(data, path) {
