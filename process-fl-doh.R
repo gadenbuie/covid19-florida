@@ -104,14 +104,17 @@ chrm$screenshot(
 )
 
 # Florida County Cases from arcgis Dashboard ------------------------------
-dom2text <- function(chrome, root_id, selector) {
+dom2text <- function(chrome, root_id, selector, node = NULL) {
+  if (is.null(node)) {
+    node <- str_extract(selector, "\\w+$")
+  }
   ids <- chrm$DOM$querySelectorAll(root_id, selector)
   html <- map(unlist(ids), ~ chrm$DOM$getOuterHTML(.x))
   
   html %>% 
     map("outerHTML") %>% 
     map(read_html) %>% 
-    map(xml_nodes, "p") %>% 
+    map(xml_nodes, node) %>% 
     map_chr(xml_text) %>% 
     str_trim()
 }
@@ -134,13 +137,23 @@ writeLines(
   path("snapshots", strftime(ts_now, 'fl_doh_dash_%FT%H%M%S', tz = "America/New_York"), ext = "html")
 )
 
-timestamp_dash <- mdy_hm(
-  dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(2) > margin-container p")[2],
-  tz = "America/New_York"
-) %>% 
+county_sidebar     <- dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(1) > margin-container p")
+timestamp_box      <- dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(2) > margin-container p")
+box_center <- list(
+  left  = dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(5) > margin-container p"),
+  right = dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(6) > margin-container p")
+)
+box_right <- list(
+  center_1 = dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(9) > margin-container text"),
+  center_2 = dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(10) > margin-container text"),
+  bottom_1 = dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(11) > margin-container text")[1:2],
+  bottom_2 = dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(12) > margin-container text")[1:2]
+)
+
+timestamp_dash <- mdy_hm(timestamp_box[2], tz = "America/New_York") %>% 
   strftime("%F %T %Z", tz = "America/New_York")
 
-dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(1) > margin-container p") %>% 
+county_sidebar %>% 
   str_subset("^$", negate = TRUE) %>% 
   str_subset("Number of Cases", negate = TRUE) %>% 
   tibble(raw = .) %>% 
@@ -152,9 +165,16 @@ dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(1) > margin-contai
   select(timestamp, everything()) %>%
   append_csv("covid-19-florida-cases-county.csv")
 
-dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(5) > margin-container p") %>% 
+boxes <- 
+  box_right %>% 
+  map_dfr(~ tibble(description = .x[1], count = .x[2])) %>% 
+  mutate(count = str_remove_all(count, ","))
+
+boxed_counts <-
+  c(box_center_left, box_center_right) %>% 
   tibble(raw = .) %>% 
   separate(raw, c("description", "count"), sep = ":\\s*") %>% 
+  bind_rows(boxes) %>% 
   mutate_at(vars(description), tolower) %>% 
   mutate(
     variable = case_when(
@@ -162,10 +182,11 @@ dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(5) > margin-contai
       str_detect(description, "negative") ~ "negative",
       str_detect(description, "positive") ~ "positive",
       str_detect(description, "pending") ~ "pending",
-      TRUE ~ gsub(" ", "_", description)
+      TRUE ~ gsub("[ -]", "_", description)
     )
   ) %>% 
   select(-description) %>% 
+  distinct() %>% 
   pivot_wider(names_from = variable, values_from = count) %>% 
   mutate_all(as.numeric) %>% 
   mutate(timestamp = timestamp_dash) %>% 

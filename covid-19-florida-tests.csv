@@ -1,2 +1,2 @@
-timestamp,total,negative,positive,pending
-2020-03-16 18:00:00 EDT,1824,816,160,848
+timestamp,total,negative,positive,pending,total_florida_cases,florida_residents_tested_elsewhere,non_florida_residents_tested_in_florida,florida_cases,florida_deaths,currently_monitored,previously_monitored
+2020-03-16 18:00:00 EDT,1824,816,160,848,136,6,18,142,5,535,1290
