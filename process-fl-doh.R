@@ -57,9 +57,11 @@ ts_now <- now()
 ts_current <- strftime(ts_now, '%FT%H%M%S', tz = "America/New_York")
 
 # Check hash of latest with hash of last update ----
+doh_has_changed <- FALSE
 if (file.exists(".last-update")) {
   last_update <- readLines(".last-update", warn = FALSE)
   if (last_update[1] == fl_doh_digest) {
+    doh_has_changed <- TRUE
     cat("\n", glue("Checked: {ts_current}"), file = ".last-update", append = TRUE, sep = "")
     message("No updates - ", strftime(Sys.time(), "%F %T", tz = "America/New_York"))
   }
@@ -68,7 +70,7 @@ if (file.exists(".last-update")) {
 write_html(fl_doh, path("snapshots", strftime(ts_now, 'fl_doh_main_%FT%H%M%S', tz = "America/New_York"), ext = "html"))
 
 # FL DOH Table Timestamp ----
-timestamp_page <- fl_doh %>% xml_node("block p sup") %>% timestamp_from_node()
+timestamp_page <- fl_doh %>% xml_node("h2 + .sml") %>% timestamp_from_node()
 
 # Reset last run log
 writeLines(
@@ -177,7 +179,7 @@ boxes <-
 
 boxed_counts <-
   tibble(raw = unlist(box_center)) %>% 
-  separate(raw, c("description", "count"), sep = ":\\s*") %>% 
+  separate(raw, c("description", "count"), sep = ":\\s*", fill = "right") %>% 
   bind_rows(boxes) %>% 
   mutate_at(vars(description), tolower) %>% 
   mutate_at(vars(description), str_remove_all, "\\(.+?\\)") %>% # no parentheticals
@@ -208,7 +210,7 @@ if (git2r::in_repository()) {
   modified <- unlist(git2r::status(untracked = FALSE)$unstaged) %>% 
     str_subset("last-update|screenshots", negate = TRUE)
   is_dirty <- rlang::has_length(modified)
-  if (is_dirty) {
+  if (is_dirty || doh_has_changed) {
     # Create plot -------------------------------------------------------------
     tryCatch({
       message("generating testing summary plot")
