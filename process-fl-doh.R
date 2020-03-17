@@ -26,8 +26,9 @@ timestamp_from_node <- function(node) {
 
 append_csv <- function(data, path) {
   existing_data <- if (file.exists(path)) {
-    read_csv(path)
+    read_csv(path, col_types = cols(.default = col_character()))
   }
+  data <- mutate_all(data, as.character)
   write_csv(bind_rows(existing_data, data), path)
 }
 
@@ -159,22 +160,24 @@ writeLines(
 )
 
 timestamp_dash <- mdy_hm(
-  dom2text(chrm, dom$root$nodeId, "div:nth-child(2) > margin-container p")[2],
+  dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(2) > margin-container p")[2],
   tz = "America/New_York"
-)
+) %>% 
+  strftime("%F %T %Z", tz = "America/New_York")
 
-dom2text(chrm, dom$root$nodeId, "div:nth-child(1) > margin-container p") %>% 
+dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(1) > margin-container p") %>% 
   str_subset("^$", negate = TRUE) %>% 
   str_subset("Number of Cases", negate = TRUE) %>% 
   tibble(raw = .) %>% 
   separate(raw, c("county", "count"), ":\\s*") %>%
   mutate_at(vars(county), str_remove, pattern = "\\s*County") %>% 
+  filter(!str_detect(county, "^\\s*$")) %>% 
   mutate_at(vars(count), as.numeric) %>% 
   mutate(timestamp = timestamp_dash) %>% 
   select(timestamp, everything()) %>%
   append_csv("covid-19-florida-cases-county.csv")
 
-dom2text(chrm, dom$root$nodeId, "div:nth-child(5) > margin-container p") %>% 
+dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(5) > margin-container p") %>% 
   tibble(raw = .) %>% 
   separate(raw, c("description", "count"), sep = ":\\s*") %>% 
   mutate_at(vars(description), tolower) %>% 
