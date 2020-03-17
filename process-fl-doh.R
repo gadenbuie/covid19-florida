@@ -204,6 +204,7 @@ chrm$close()
 
 # Create plot -------------------------------------------------------------
 tryCatch(
+  message("generating testing summary plot")
   callr::rscript("plot-testing.R", fail_on_status = FALSE),
   error = function(e) message(e$message)
 )
