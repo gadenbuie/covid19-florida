@@ -88,6 +88,18 @@ fl_doh %>%
   select(timestamp, everything()) %>% 
   append_csv("covid-19-florida-cases.csv")
 
+# Screenshot FL DOH page --------------------------------------------------
+chrm <- chromote::ChromoteSession$new()
+
+{
+  chrm$Page$navigate(fl_doh_url)
+  chrm$Page$loadEventFired()
+  Sys.sleep(5)
+}
+chrm$Emulation$setVisibleSize(width = 900, height = 1800, wait_ = TRUE)
+chrm$screenshot(
+  filename = path("screenshots", "floridahealth_gov__diseases-and-conditions__COVID-19.png")
+)
 
 # Florida County Cases from arcgis Dashboard ------------------------------
 dom2text <- function(chrome, root_id, selector) {
@@ -104,10 +116,15 @@ dom2text <- function(chrome, root_id, selector) {
 
 fl_dash_url <- "https://fdoh.maps.arcgis.com/apps/opsdashboard/index.html#/8d0de33f260d444c852a615dc7837c86"
 
-chrm <- chromote::ChromoteSession$new()
-chrm$Page$navigate(fl_dash_url)
-chrm$Page$loadEventFired()
-Sys.sleep(5)
+{
+  chrm$Page$navigate(fl_dash_url)
+  chrm$Page$loadEventFired()
+  Sys.sleep(5)
+}
+chrm$Emulation$setVisibleSize(width = 900, height = 900, wait_ = TRUE)
+chrm$screenshot(
+  filename = path("screenshots", "fodh_maps_arcgis_com__apps__opsdashboard.png")
+)
 
 dom <- chrm$DOM$getDocument()
 writeLines(
