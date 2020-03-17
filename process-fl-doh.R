@@ -32,9 +32,10 @@ append_csv <- function(data, path, unique = "timestamp") {
   }
   data <- mutate_all(data, as.character)
   full <- if (!is.null(existing_data)) {
+    only_in_existing <- anti_join(existing_data, data, by = unique)
     bind_rows(
-      anti_join(existing_data, data, by = unique),
-      anti_join(data, existing_data, by = unique)
+      only_in_existing,
+      anti_join(data, only_in_existing, by = unique)
     )
   } else data
   write_csv(full, path)
@@ -201,13 +202,6 @@ boxed_counts <-
 chrm$close()
 
 
-# Create plot -------------------------------------------------------------
-tryCatch({
-  message("generating testing summary plot")
-  callr::rscript("plot-testing.R", fail_on_status = FALSE)
-},
-error = function(e) message(e$message)
-)
 
 # Push changes to repo ----
 if (git2r::in_repository()) {
@@ -215,6 +209,14 @@ if (git2r::in_repository()) {
     str_subset("last-update", negate = TRUE)
   is_dirty <- rlang::has_length(modified)
   if (is_dirty) {
+    # Create plot -------------------------------------------------------------
+    tryCatch({
+      message("generating testing summary plot")
+      callr::rscript("plot-testing.R", fail_on_status = FALSE)
+    },
+    error = function(e) message(e$message)
+    )
+    
     git2r::add(".", ".")
     git2r::commit(message = glue("[auto update] {ts_current}"))
     git2r::push(credentials = git2r::cred_ssh_key())
