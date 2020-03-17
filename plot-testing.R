@@ -8,7 +8,7 @@ x <- read_csv("covid-19-florida-tests.csv")
 
 test_summary <- 
   x %>%
-  select(timestamp:florida_deaths, -total) %>%
+  select(timestamp, negative, positive, pending, contains("deaths"), -total) %>%
   rename(deaths = florida_deaths) %>%
   mutate(positive = positive - deaths) %>%
   mutate_at("timestamp", ymd_hms) %>%

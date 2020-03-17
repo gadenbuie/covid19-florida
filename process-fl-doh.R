@@ -163,9 +163,10 @@ timestamp_dash <- mdy_hm(timestamp_box[2], tz = "America/New_York") %>%
 county_sidebar %>% 
   str_subset("^$", negate = TRUE) %>% 
   str_subset("Number of Cases", negate = TRUE) %>% 
+  str_subset("Cases[:]") %>% 
   tibble(raw = .) %>% 
   separate(raw, c("county", "count"), ":\\s*") %>%
-  mutate_at(vars(county), str_remove, pattern = "\\s*County") %>% 
+  mutate_at(vars(county), str_remove, pattern = "\\s*(County|Cases)") %>% 
   filter(!str_detect(county, "^\\s*$")) %>% 
   mutate_at(vars(count), as.numeric) %>% 
   mutate(timestamp = timestamp_dash) %>% 
@@ -175,17 +176,20 @@ county_sidebar %>%
 boxes <- 
   box_right %>% 
   map_dfr(~ tibble(description = .x[1], count = .x[2])) %>% 
-  mutate(count = str_remove_all(count, ","))
+  mutate(count = str_remove_all(count, ",")) %>% 
+  filter(str_detect(tolower(description), "deaths|monitored"))
 
 boxed_counts <-
   tibble(raw = unlist(box_center)) %>% 
   separate(raw, c("description", "count"), sep = ":\\s*", fill = "right") %>% 
   bind_rows(boxes) %>% 
   mutate_at(vars(description), tolower) %>% 
-  mutate_at(vars(description), str_remove_all, "\\(.+?\\)") %>% # no parentheticals
   filter(!is.na(count)) %>% 
   mutate(
     variable = case_when(
+      str_detect(description, "positive non-florida") ~ "non_florida_residents",
+      str_detect(description, "florida deaths") ~ "florida_deaths",
+      str_detect(description, "positive florida residents") ~ "florida_residents",
       str_detect(description, "people tested") ~ "total",
       str_detect(description, "negative") ~ "negative",
       str_detect(description, "positive") ~ "positive",
@@ -196,6 +200,7 @@ boxed_counts <-
   select(-description) %>% 
   distinct() %>% 
   pivot_wider(names_from = variable, values_from = count) %>% 
+  mutate_all(str_remove_all, pattern = ",") %>% 
   mutate_all(as.numeric) %>% 
   mutate(timestamp = timestamp_dash) %>% 
   select(timestamp, everything()) %>% 
