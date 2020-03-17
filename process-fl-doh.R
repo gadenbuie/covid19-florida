@@ -61,8 +61,6 @@ if (file.exists(".last-update")) {
   if (last_update[1] == fl_doh_digest) {
     cat("\n", glue("Checked: {ts_current}"), file = ".last-update", append = TRUE, sep = "")
     message("No updates - ", strftime(Sys.time(), "%F %T", tz = "America/New_York"))
-    stop("No updates at this time")
-    quit("n", 1)
   }
 }
 
@@ -213,11 +211,15 @@ error = function(e) message(e$message)
 
 # Push changes to repo ----
 if (git2r::in_repository()) {
-  is_dirty <- rlang::has_length(git2r::status(untracked = FALSE)$unstaged)
+  modified <- unlist(git2r::status(untracked = FALSE)$unstaged) %>% 
+    str_subset("last-update", negate = TRUE)
+  is_dirty <- rlang::has_length(modified)
   if (is_dirty) {
     git2r::add(".", ".")
     git2r::commit(message = glue("[auto update] {ts_current}"))
     git2r::push(credentials = git2r::cred_ssh_key())
+  } else {
+    fs::file_delete(unlist(git2r::status()$untracked))
   }
 }
 
