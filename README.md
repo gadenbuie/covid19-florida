@@ -10,13 +10,14 @@ The table from the FL DOH main page is parsed and saved verbatim into [covid-19-
 
 ## FL DOH Dashboard
 
-
 Two tables are extracted from the [Florida's COVID-19 Data and Surveillance Dashboard][dashboard].
 
 - County-level case count: [covid-19-florida-cases-county.csv](covid-19-florida-cases-county.csv)
 - Current test counts: [covid-19-florida-tests.csv](covid-19-florida-tests.csv)
 
 The "last updated timestamp" is also extracted from the dashboard and saved in the `timestamp` column of both of the above tables.
+
+Testing statistics prior to 2020-03-16 18:00:00 EDT were imported from <https://covidtracking.com>.
 
 ![](screenshots/fodh_maps_arcgis_com__apps__opsdashboard.png)
 
