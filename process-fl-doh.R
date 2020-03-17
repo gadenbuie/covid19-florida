@@ -177,11 +177,12 @@ boxes <-
   mutate(count = str_remove_all(count, ","))
 
 boxed_counts <-
-  c(box_center_left, box_center_right) %>% 
-  tibble(raw = .) %>% 
+  tibble(raw = unlist(box_center)) %>% 
   separate(raw, c("description", "count"), sep = ":\\s*") %>% 
   bind_rows(boxes) %>% 
   mutate_at(vars(description), tolower) %>% 
+  mutate_at(vars(description), str_remove_all, "\\(.+?\\)") %>% # no parentheticals
+  filter(!is.na(count)) %>% 
   mutate(
     variable = case_when(
       str_detect(description, "people tested") ~ "total",
