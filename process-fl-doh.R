@@ -80,20 +80,20 @@ writeLines(
   con = ".last-update"
 )
 
-table_rows <- c(
-  "Confirmed Cases in Florida Residents",
-  "Cases in Non-Florida Residents",
-  "Total Cases Overview"
-)
-
-fl_doh %>% 
-  html_table() %>% 
-  bind_rows() %>% 
-  as_tibble() %>% 
-  set_names(c("variable", "count")) %>% 
-  mutate(timestamp = strftime(timestamp_page, "%F %T %Z", tz = tz(timestamp_page))) %>% 
-  select(timestamp, everything()) %>% 
-  append_csv("covid-19-florida-doh.csv")
+# table_rows <- c(
+#   "Confirmed Cases in Florida Residents",
+#   "Cases in Non-Florida Residents",
+#   "Total Cases Overview"
+# )
+# 
+# fl_doh %>% 
+#   html_table() %>% 
+#   bind_rows() %>% 
+#   as_tibble() %>% 
+#   set_names(c("variable", "count")) %>% 
+#   mutate(timestamp = strftime(timestamp_page, "%F %T %Z", tz = tz(timestamp_page))) %>% 
+#   select(timestamp, everything()) %>% 
+#   append_csv("covid-19-florida-doh.csv")
 
 # Screenshot FL DOH page --------------------------------------------------
 chrm <- chromote::ChromoteSession$new()
@@ -142,17 +142,17 @@ writeLines(
   path("snapshots", strftime(ts_now, 'fl_doh_dash_%FT%H%M%S', tz = "America/New_York"), ext = "html")
 )
 
-county_sidebar     <- dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(1) > margin-container p")
-timestamp_box      <- dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(2) > margin-container p")
+county_sidebar <- dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(1) > margin-container p")
+timestamp_box  <- dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(3) > margin-container p")
 box_center <- list(
-  left  = dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(5) > margin-container p"),
-  right = dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(6) > margin-container p")
+  left  = dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(6) > margin-container p"),
+  right = dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(7) > margin-container p")
 )
 box_right <- list(
-  center_1 = dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(9) > margin-container text"),
-  center_2 = dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(10) > margin-container text"),
-  bottom_1 = dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(11) > margin-container text")[1:2],
-  bottom_2 = dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(12) > margin-container text")[1:2]
+  center_1 = dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(10) > margin-container text"),
+  center_2 = dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(11) > margin-container text"),
+  bottom_1 = dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(12) > margin-container text")[1:2],
+  bottom_2 = dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(13) > margin-container text")[1:2]
 )
 
 timestamp_dash <- mdy_hm(timestamp_box[2], tz = "America/New_York") %>% 
