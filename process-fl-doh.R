@@ -208,7 +208,7 @@ chrm$close()
 # Push changes to repo ----
 if (git2r::in_repository()) {
   modified <- unlist(git2r::status(untracked = FALSE)$unstaged) %>% 
-    str_subset("last-update|screenshots", negate = TRUE)
+    str_subset("last-update|screenshots|plots", negate = TRUE)
   is_dirty <- rlang::has_length(modified)
   if (is_dirty || doh_has_changed) {
     # Create plot -------------------------------------------------------------
