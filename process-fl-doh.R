@@ -195,6 +195,13 @@ boxed_counts <-
 
 chrm$close()
 
+
+# Create plot -------------------------------------------------------------
+tryCatch(
+  callr::rscript("plot-testing.R", fail_on_status = FALSE),
+  error = function(e) message(e$message)
+)
+
 # Push changes to repo ----
 if (git2r::in_repository()) {
   is_dirty <- rlang::has_length(git2r::status(untracked = FALSE)$unstaged)

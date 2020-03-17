@@ -2,6 +2,8 @@
 
 Parsed from the [Florida Department of Health COVID-19 status page][main-page].
 
+![](plots/covid-19-florida-testing.png)
+
 ## FL DOH Main Page
 
 The table from the FL DOH main page is parsed and saved verbatim into [covid-19-florida-doh.csv](covid-19-florida-doh.csv). The "as of" timestamp listed on the web page is added into the table in the `timestamp` column.
