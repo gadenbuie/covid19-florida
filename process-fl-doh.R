@@ -26,12 +26,18 @@ timestamp_from_node <- function(node) {
   mdy_hm(ts, tz = "America/New_York")
 }
 
-append_csv <- function(data, path) {
+append_csv <- function(data, path, unique = "timestamp") {
   existing_data <- if (file.exists(path)) {
     read_csv(path, col_types = cols(.default = col_character()))
   }
   data <- mutate_all(data, as.character)
-  write_csv(bind_rows(existing_data, data), path)
+  full <- if (!is.null(existing_data)) {
+    bind_rows(
+      anti_join(existing_data, data, by = unique),
+      anti_join(data, existing_data, by = unique)
+    )
+  } else data
+  write_csv(full, path)
 }
 
 # Add random wait time to offset regularity of cronlog
