@@ -41,17 +41,10 @@ append_csv <- function(data, path, unique = "timestamp") {
   write_csv(full, path)
 }
 
-html_sha <- function(xml_doc, selector = NULL) {
+html_sha <- function(xml_doc) {
   tmpfile <- tempfile()
   write_html(xml_doc, tmpfile)
-  if (is.null(selector)) {
-    digest::sha1_digest(readLines(tmpfile))
-  } else {
-    read_html(tmpfile) %>% 
-      xml_nodes(selector) %>% 
-      xml_text() %>% 
-      digest::sha1_digest()
-  }
+  digest::sha1_digest(readLines(tmpfile))
 }
 
 # Add random wait time to offset regularity of cronlog
@@ -65,16 +58,16 @@ if (!interactive()) {
 fl_doh_url <- "http://www.floridahealth.gov/diseases-and-conditions/COVID-19/"
 
 fl_doh <- read_html(fl_doh_url)
-fl_doh_digest <- html_sha(fl_doh, "#latest-stats")
+fl_doh_digest <- html_sha(fl_doh)
 ts_now <- now()
 ts_current <- strftime(ts_now, '%FT%H%M%S', tz = "America/New_York")
 
 # Check hash of latest with hash of last update ----
-doh_has_changed <- FALSE
+doh_has_changed <- TRUE
 if (file.exists(".last-update")) {
   last_update <- readLines(".last-update", warn = FALSE)
   if (last_update[1] == fl_doh_digest) {
-    doh_has_changed <- TRUE
+    doh_has_changed <- FALSE
     cat("\n", glue("Checked: {ts_current}"), file = ".last-update", append = TRUE, sep = "")
     message("No updates - ", strftime(Sys.time(), "%F %T", tz = "America/New_York"))
   }
@@ -192,6 +185,8 @@ boxes_text %>%
   mutate_at(vars(description), tolower) %>% 
   filter(!is.na(count)) %>% 
   filter(!str_detect(description, "global|usa")) %>% 
+  mutate_all(str_remove_all, pattern = ",") %>% 
+  filter(!str_detect(count, "[^\\d]")) %>% 
   mutate(
     variable = case_when(
       str_detect(description, "positive non-florida") ~ "non_florida_residents",
@@ -202,15 +197,13 @@ boxes_text %>%
       str_detect(description, "positive") ~ "positive",
       str_detect(description, "pending") ~ "pending",
       str_detect(description, "under surveillance") ~ "total",
+      str_detect(description, "total tests") ~ "total",
       TRUE ~ gsub("[ -]", "_", description)
     )
   ) %>% 
   select(-description) %>% 
-  distinct() %>% 
-  pivot_wider(names_from = variable, values_from = count) %>% 
-  mutate_all(str_remove_all, pattern = ",") %>% 
+  pivot_wider(names_from = variable, values_from = count, values_fn = list(count = max)) %>% 
   mutate_all(as.numeric) %>% 
-  mutate(florida_residents = coalesce(florida_residents, florida_cases)) %>% 
   select(-matches("^florida_cases$")) %>% 
   mutate(timestamp = timestamp_dash) %>% 
   select(timestamp, everything()) %>% 
