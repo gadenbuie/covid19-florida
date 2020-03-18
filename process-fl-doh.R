@@ -41,6 +41,19 @@ append_csv <- function(data, path, unique = "timestamp") {
   write_csv(full, path)
 }
 
+html_sha <- function(xml_doc, selector = NULL) {
+  tmpfile <- tempfile()
+  write_html(xml_doc, tmpfile)
+  if (is.null(selector)) {
+    digest::sha1_digest(readLines(tmpfile))
+  } else {
+    read_html(tmpfile) %>% 
+      xml_nodes(selector) %>% 
+      xml_text() %>% 
+      digest::sha1_digest()
+  }
+}
+
 # Add random wait time to offset regularity of cronlog
 if (!interactive()) {
   wait_time <- runif(1, 0, 120)
@@ -52,7 +65,7 @@ if (!interactive()) {
 fl_doh_url <- "http://www.floridahealth.gov/diseases-and-conditions/COVID-19/"
 
 fl_doh <- read_html(fl_doh_url)
-fl_doh_digest <- digest::sha1_digest(xml_text(fl_doh))
+fl_doh_digest <- html_sha(fl_doh, "#latest-stats")
 ts_now <- now()
 ts_current <- strftime(ts_now, '%FT%H%M%S', tz = "America/New_York")
 
