@@ -157,23 +157,21 @@ writeLines(
   path("snapshots", strftime(ts_now, 'fl_doh_dash_%FT%H%M%S', tz = "America/New_York"), ext = "html")
 )
 
-county_sidebar <- dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(1) > margin-container p")
-timestamp_box  <- dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(3) > margin-container p")
-box_center <- list(
-  left  = dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(6) > margin-container p"),
-  right = dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(7) > margin-container p")
-)
-box_right <- list(
-  center_1 = dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(10) > margin-container text"),
-  center_2 = dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(11) > margin-container text"),
-  bottom_1 = dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(12) > margin-container text")[1:2],
-  bottom_2 = dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(14) > margin-container text")[1:2]
-)
+boxes_p <- map(1:25, ~ dom2text(chrm, dom$root$nodeId, glue("full-container div:nth-child({.x}) > margin-container p")))
+boxes_text <- map(1:25, ~ dom2text(chrm, dom$root$nodeId, glue("full-container div:nth-child({.x}) > margin-container text")))
 
-timestamp_dash <- mdy_hm(timestamp_box[2], tz = "America/New_York") %>% 
+timestamp_dash <-
+  boxes_p %>% 
+  keep(~ any(str_detect(.x, "last updated"))) %>% 
+  unlist() %>% 
+  .[2] %>% 
+  mdy_hm(tz = "America/New_York") %>% 
   strftime("%F %T %Z", tz = "America/New_York")
 
-county_sidebar %>% 
+boxes_p %>% 
+  keep(~ any(str_detect(.x, "Hillsborough\\s*Cases"))) %>% 
+  discard(~ any(str_detect(.x, "Men"))) %>% 
+  .[[1]] %>% 
   str_subset("^$", negate = TRUE) %>% 
   str_subset("Number of Cases", negate = TRUE) %>% 
   str_subset("Cases[:]") %>% 
@@ -186,18 +184,14 @@ county_sidebar %>%
   select(timestamp, everything()) %>%
   append_csv("covid-19-florida-cases-county.csv")
 
-boxes <- 
-  box_right %>% 
+boxes_text %>% 
+  keep(~ length(.x) > 0) %>% 
+  map(~ str_replace(.x, ":$", "")) %>% 
+  map_if(~ length(.x) == 1, ~ str_split(.x, ": ")[[1]]) %>% 
   map_dfr(~ tibble(description = .x[1], count = .x[2])) %>% 
-  mutate(count = str_remove_all(count, ",")) %>% 
-  filter(str_detect(tolower(description), "deaths|monitored"))
-
-boxed_counts <-
-  tibble(raw = unlist(box_center)) %>% 
-  separate(raw, c("description", "count"), sep = ":\\s*", fill = "right") %>% 
-  bind_rows(boxes) %>% 
   mutate_at(vars(description), tolower) %>% 
   filter(!is.na(count)) %>% 
+  filter(!str_detect(description, "global|usa")) %>% 
   mutate(
     variable = case_when(
       str_detect(description, "positive non-florida") ~ "non_florida_residents",
@@ -207,6 +201,7 @@ boxed_counts <-
       str_detect(description, "negative") ~ "negative",
       str_detect(description, "positive") ~ "positive",
       str_detect(description, "pending") ~ "pending",
+      str_detect(description, "under surveillance") ~ "total",
       TRUE ~ gsub("[ -]", "_", description)
     )
   ) %>% 
@@ -215,6 +210,8 @@ boxed_counts <-
   pivot_wider(names_from = variable, values_from = count) %>% 
   mutate_all(str_remove_all, pattern = ",") %>% 
   mutate_all(as.numeric) %>% 
+  mutate(florida_residents = coalesce(florida_residents, florida_cases)) %>% 
+  select(-matches("^florida_cases$")) %>% 
   mutate(timestamp = timestamp_dash) %>% 
   select(timestamp, everything()) %>% 
   append_csv("covid-19-florida-tests.csv")
