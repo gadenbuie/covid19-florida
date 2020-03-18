@@ -154,28 +154,9 @@ boxes_p <- map(1:25, ~ dom2text(chrm, dom$root$nodeId, glue("full-container div:
 boxes_text <- map(1:25, ~ dom2text(chrm, dom$root$nodeId, glue("full-container div:nth-child({.x}) > margin-container text")))
 
 timestamp_dash <-
-  boxes_p %>% 
-  keep(~ any(str_detect(.x, "last updated"))) %>% 
-  unlist() %>% 
-  .[2] %>% 
-  mdy_hm(tz = "America/New_York") %>% 
+  ts_current %>% 
+  ymd_hms(tz = "America/New_York") %>% 
   strftime("%F %T %Z", tz = "America/New_York")
-
-boxes_p %>% 
-  keep(~ any(str_detect(.x, "Hillsborough\\s*Cases"))) %>% 
-  discard(~ any(str_detect(.x, "Men"))) %>% 
-  .[[1]] %>% 
-  str_subset("^$", negate = TRUE) %>% 
-  str_subset("Number of Cases", negate = TRUE) %>% 
-  str_subset("Cases[:]") %>% 
-  tibble(raw = .) %>% 
-  separate(raw, c("county", "count"), ":\\s*") %>%
-  mutate_at(vars(county), str_remove, pattern = "\\s*(County|Cases)") %>% 
-  filter(!str_detect(county, "^\\s*$")) %>% 
-  mutate_at(vars(count), as.numeric) %>% 
-  mutate(timestamp = timestamp_dash) %>% 
-  select(timestamp, everything()) %>%
-  append_csv("covid-19-florida-cases-county.csv")
 
 boxes_text %>% 
   keep(~ length(.x) > 0) %>% 
@@ -194,6 +175,7 @@ boxes_text %>%
       str_detect(description, "positive florida residents") ~ "florida_residents",
       str_detect(description, "people tested") ~ "total",
       str_detect(description, "negative") ~ "negative",
+      str_detect(description, "total cases") ~ "positive",
       str_detect(description, "positive") ~ "positive",
       str_detect(description, "pending") ~ "pending",
       str_detect(description, "under surveillance") ~ "total",
