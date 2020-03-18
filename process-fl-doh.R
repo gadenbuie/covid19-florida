@@ -167,7 +167,7 @@ box_right <- list(
   center_1 = dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(10) > margin-container text"),
   center_2 = dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(11) > margin-container text"),
   bottom_1 = dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(12) > margin-container text")[1:2],
-  bottom_2 = dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(13) > margin-container text")[1:2]
+  bottom_2 = dom2text(chrm, dom$root$nodeId, "full-container div:nth-child(14) > margin-container text")[1:2]
 )
 
 timestamp_dash <- mdy_hm(timestamp_box[2], tz = "America/New_York") %>% 
