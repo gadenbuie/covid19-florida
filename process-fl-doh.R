@@ -2,6 +2,8 @@
 options(error = NULL)
 message("Check start - ", strftime(Sys.time(), "%F %T", tz = "America/New_York"))
 
+callr::rscript("get-pdf-daily-report.R")
+
 # Library ----
 library(tidyr, warn.conflicts = FALSE)
 library(purrr, warn.conflicts = FALSE)
