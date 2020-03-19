@@ -88,21 +88,6 @@ writeLines(
   con = ".last-update"
 )
 
-# table_rows <- c(
-#   "Confirmed Cases in Florida Residents",
-#   "Cases in Non-Florida Residents",
-#   "Total Cases Overview"
-# )
-# 
-# fl_doh %>% 
-#   html_table() %>% 
-#   bind_rows() %>% 
-#   as_tibble() %>% 
-#   set_names(c("variable", "count")) %>% 
-#   mutate(timestamp = strftime(timestamp_page, "%F %T %Z", tz = tz(timestamp_page))) %>% 
-#   select(timestamp, everything()) %>% 
-#   append_csv("covid-19-florida-doh.csv")
-
 # Screenshot FL DOH page --------------------------------------------------
 chrm <- chromote::ChromoteSession$new()
 
