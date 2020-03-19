@@ -10,6 +10,7 @@ test_summary <-
   x %>%
   select(timestamp, negative, positive, pending, contains("deaths"), -total) %>%
   rename(deaths = florida_deaths) %>%
+  replace_na(list(deaths = 0)) %>% 
   mutate(positive = positive - deaths) %>%
   mutate_at("timestamp", ymd_hms) %>%
   mutate(day = floor_date(timestamp, "day")) %>% 
