@@ -1,0 +1,323 @@
+case,county,age,gender,travel_related,jurisdiction,travel_detail,contact_with_a_confirmed_case,date_case_counted
+2,Sumter,68,Male,Yes,FL resident,EGYPT,Yes,2020-03-18
+3,Dade,53,Male,Unknown,FL resident,,,2020-03-18
+4,Orange,46,Unknown,Unknown,FL resident,,,2020-03-18
+5,Broward,69,Male,Unknown,FL resident,,,2020-03-18
+6,Brevard,32,Unknown,Yes,FL resident,PA; UT,No,2020-03-18
+7,Polk,21,Female,Yes,FL resident,GA,Unknown,2020-03-18
+8,Collier,31,Female,Yes,FL resident,EGYPT,No,2020-03-18
+9,Broward,42,Male,Unknown,FL resident,,,2020-03-18
+10,Dade,49,Male,Yes,FL resident,EUROPE,No,2020-03-18
+11,Dade,21,Female,Unknown,FL resident,,,2020-03-18
+12,Dade,50,Female,Unknown,FL resident,,,2020-03-18
+13,Broward,43,Female,Unknown,FL resident,,,2020-03-18
+14,Broward,67,Male,Yes,FL resident,CO,Unknown,2020-03-18
+15,Broward,49,Female,No,FL resident,,No,2020-03-18
+16,Dade,38,Male,Yes,FL resident,BRAZIL,,2020-03-18
+17,Pinellas,32,Male,No,FL resident,,Yes,2020-03-18
+18,Lee,80,Male,No,FL resident,,Yes,2020-03-18
+19,Pinellas,67,Female,Unknown,FL resident,,,2020-03-18
+20,Palm Beach,69,Female,No,FL resident,,Unknown,2020-03-18
+21,Broward,25,Female,Yes,FL resident,SPAIN,Unknown,2020-03-18
+22,Broward,56,Female,Yes,FL resident,VA,,2020-03-18
+23,Broward,21,Female,Yes,FL resident,SPAIN,Yes,2020-03-18
+24,Dade,33,Male,Unknown,FL resident,,,2020-03-18
+25,Dade,25,Male,No,FL resident,,Yes,2020-03-18
+26,Pasco,64,Female,Yes,FL resident,FL; NY,Yes,2020-03-18
+27,Dade,25,Female,No,FL resident,,Yes,2020-03-18
+28,Palm Beach,6,Male,Unknown,FL resident,,,2020-03-18
+29,Palm Beach,43,Male,Unknown,FL resident,,Unknown,2020-03-18
+30,Pinellas,54,Female,Yes,FL resident,NY,,2020-03-18
+31,Dade,36,Unknown,No,FL resident,,Yes,2020-03-18
+32,Dade,48,Male,Yes,FL resident,CO,,2020-03-18
+33,Duval,22,Male,Unknown,FL resident,,,2020-03-18
+34,Palm Beach,72,Male,Unknown,FL resident,,,2020-03-18
+35,Alachua,50,Female,Yes,FL resident,BAHAMAS; FL,No,2020-03-18
+36,Broward,57,Male,Unknown,FL resident,,,2020-03-18
+37,Collier,77,Male,No,FL resident,,No,2020-03-18
+38,Dade,35,Male,Yes,FL resident,Spain,No,2020-03-18
+39,Broward,48,Male,Unknown,FL resident,,,2020-03-18
+40,Dade,45,Male,Yes,FL resident,ECUADOR,No,2020-03-18
+41,Broward,33,Male,Unknown,FL resident,,,2020-03-18
+42,Broward,54,Male,Unknown,FL resident,,,2020-03-18
+43,Broward,75,Male,No,FL resident,,Yes,2020-03-18
+44,Broward,42,Male,Yes,FL resident,AUSTRALIA,Unknown,2020-03-18
+45,Okaloosa,24,Female,Yes,FL resident,CO; FL,No,2020-03-18
+46,Duval,91,Male,Unknown,FL resident,,Yes,2020-03-18
+47,Collier,82,Male,No,FL resident,,Unknown,2020-03-18
+48,Hillsborough,33,Male,Unknown,FL resident,,Yes,2020-03-18
+49,Dade,34,Male,Unknown,FL resident,,,2020-03-18
+50,Pinellas,61,Female,Yes,FL resident,NY,,2020-03-18
+51,Pinellas,52,Female,Unknown,FL resident,,,2020-03-18
+52,Dade,27,Male,Yes,FL resident,NJ,Yes,2020-03-18
+53,Citrus,80,Male,Yes,FL resident,DE,,2020-03-18
+54,Collier,59,Male,Yes,FL resident,JAPAN,Unknown,2020-03-18
+55,Orange,68,Male,Yes,FL resident,INDIA,Unknown,2020-03-18
+56,Dade,53,Female,Unknown,FL resident,,,2020-03-18
+57,Hillsborough,43,Male,No,FL resident,,,2020-03-18
+58,Broward,30,Male,Yes,FL resident,CT; FL; ITALY,No,2020-03-18
+59,Broward,93,Male,No,FL resident,,,2020-03-18
+60,Manatee,61,Male,Unknown,FL resident,,,2020-03-18
+61,Dade,36,Female,Unknown,FL resident,,Yes,2020-03-18
+62,Palm Beach,41,Male,Yes,FL resident,UT; WY,No,2020-03-18
+64,St. Johns,53,Female,Yes,FL resident,CO,Yes,2020-03-18
+65,Broward,21,Female,Yes,FL resident,Spain,Yes,2020-03-18
+66,Seminole,57,Female,Yes,FL resident,EGYPT,Yes,2020-03-18
+67,Broward,20,Male,Yes,FL resident,BRAZIL; SPAIN,No,2020-03-18
+68,Broward,21,Male,Yes,FL resident,Spain,Unknown,2020-03-18
+69,Duval,83,Male,No,FL resident,,No,2020-03-18
+70,Palm Beach,26,Male,No,FL resident,,No,2020-03-18
+71,Dade,73,Male,Unknown,FL resident,,,2020-03-18
+72,Pinellas,21,Female,Yes,FL resident,SPAIN,No,2020-03-18
+73,Lee,69,Male,No,FL resident,,Unknown,2020-03-18
+74,Broward,21,Female,Yes,FL resident,IRELAND,Yes,2020-03-18
+75,Pinellas,23,Male,Unknown,FL resident,,,2020-03-18
+76,Dade,38,Male,Unknown,FL resident,,Unknown,2020-03-18
+77,Broward,65,Male,No,FL resident,,No,2020-03-18
+78,Palm Beach,55,Male,No,FL resident,,No,2020-03-18
+79,Orange,56,Male,No,FL resident,,,2020-03-18
+80,Broward,29,Male,Unknown,FL resident,,,2020-03-18
+81,Dade,67,Male,Unknown,FL resident,,,2020-03-18
+82,Dade,80,Female,Yes,FL resident,Israel; Venezuela,No,2020-03-18
+83,Dade,48,Female,Unknown,FL resident,,,2020-03-18
+84,Dade,20,Female,Unknown,FL resident,,,2020-03-18
+85,Lee,79,Male,No,FL resident,,Yes,2020-03-17
+86,Dade,63,Male,Unknown,FL resident,,,2020-03-17
+87,Duval,84,Male,Unknown,FL resident,,,2020-03-17
+88,Alachua,21,Female,Yes,FL resident,NY,No,2020-03-17
+89,Dade,28,Female,Yes,FL resident,IRELAND,,2020-03-17
+90,Seminole,45,Female,Unknown,FL resident,,,2020-03-17
+91,Broward,53,Male,Yes,FL resident,NC,No,2020-03-17
+92,Dade,80,Female,No,FL resident,,No,2020-03-17
+93,Dade,45,Male,Unknown,FL resident,,,2020-03-17
+94,Dade,37,Female,Yes,FL resident,AZ; SPAIN,,2020-03-17
+95,Dade,32,Male,Yes,FL resident,COLOMBIA; NY; SAUDI ARABIA,,2020-03-17
+96,Seminole,70,Male,Unknown,FL resident,,,2020-03-17
+97,Lake,56,Male,Yes,FL resident,CO; FL,No,2020-03-17
+98,Broward,46,Female,No,FL resident,,Unknown,2020-03-17
+99,Dade,35,Male,Yes,FL resident,EGYPT,Yes,2020-03-17
+100,Hillsborough,60,Male,Unknown,FL resident,,,2020-03-17
+101,Broward,70,Male,No,FL resident,,Yes,2020-03-17
+102,Palm Beach,19,Female,Yes,FL resident,TN,Yes,2020-03-17
+103,Dade,69,Female,Unknown,FL resident,,No,2020-03-17
+104,Dade,44,Male,Yes,FL resident,France,No,2020-03-17
+105,Dade,57,Female,Unknown,FL resident,,,2020-03-17
+106,Broward,20,Male,Unknown,FL resident,,,2020-03-17
+107,Dade,37,Male,Unknown,FL resident,,,2020-03-17
+108,Dade,57,Male,Unknown,FL resident,,,2020-03-17
+109,Dade,60,Male,No,FL resident,,No,2020-03-17
+110,Dade,52,Male,No,FL resident,,Unknown,2020-03-17
+111,Pinellas,30,Male,No,FL resident,,Yes,2020-03-17
+112,Broward,19,Female,No,FL resident,,Yes,2020-03-17
+113,Palm Beach,69,Male,Yes,FL resident,CO,No,2020-03-17
+114,Dade,33,Male,Unknown,FL resident,,,2020-03-17
+115,Duval,44,Male,Unknown,FL resident,,,2020-03-17
+116,Duval,27,Male,Unknown,FL resident,,,2020-03-17
+117,Hillsborough,74,Female,Unknown,FL resident,,,2020-03-17
+118,Hillsborough,23,Male,Unknown,FL resident,,Yes,2020-03-17
+119,Volusia,60,Female,No,FL resident,,Yes,2020-03-17
+120,Hillsborough,30,Male,Yes,FL resident,FL; NY,No,2020-03-17
+121,Palm Beach,38,Male,Unknown,FL resident,,Unknown,2020-03-17
+122,Manatee,71,Male,No,FL resident,,No,2020-03-17
+123,Dade,52,Female,No,FL resident,,Yes,2020-03-17
+124,Polk,44,Female,No,FL resident,,Unknown,2020-03-17
+126,Dade,45,Female,Yes,FL resident,NY,No,2020-03-17
+127,Broward,57,Female,No,FL resident,,Yes,2020-03-17
+128,Orange,73,Male,Unknown,FL resident,,,2020-03-17
+129,Brevard,76,Female,Yes,FL resident,NY,Yes,2020-03-17
+130,Duval,25,Female,Unknown,FL resident,,,2020-03-17
+131,Dade,88,Male,Unknown,FL resident,,,2020-03-17
+132,Alachua,22,Male,Yes,FL resident,CANADA; NY; PA,No,2020-03-17
+133,Dade,61,Female,Unknown,FL resident,,,2020-03-17
+134,Dade,50,Male,Unknown,FL resident,,Yes,2020-03-17
+135,Dade,47,Female,Unknown,FL resident,,,2020-03-17
+136,Collier,76,Male,Yes,FL resident,ST. MARTIN,Unknown,2020-03-17
+137,Hillsborough,38,Female,Yes,FL resident,BOSNIA AND HERZEGOVINA; GERMANY,Yes,2020-03-17
+138,Citrus,64,Male,No,FL resident,,Yes,2020-03-17
+139,Dade,37,Male,Yes,FL resident,DC; FL,Yes,2020-03-17
+140,Dade,73,Male,Unknown,FL resident,,Yes,2020-03-17
+141,Clay,66,Female,No,FL resident,,Yes,2020-03-17
+142,Broward,79,Female,Yes,FL resident,CO; FL,No,2020-03-17
+143,Manatee,75,Male,Unknown,FL resident,,,2020-03-17
+144,Duval,74,Male,Unknown,FL resident,,,2020-03-17
+145,Lee,67,Male,No,FL resident,,No,2020-03-17
+146,Dade,19,Female,No,FL resident,,Unknown,2020-03-17
+147,Okaloosa,78,Female,Yes,FL resident,FL; ITALY,No,2020-03-17
+148,Osceola,18,Male,No,FL resident,,Yes,2020-03-17
+149,Osceola,29,Male,No,FL resident,,No,2020-03-17
+150,Dade,50,Female,Unknown,FL resident,,,2020-03-17
+151,Broward,54,Female,No,FL resident,,No,2020-03-16
+152,Dade,43,Female,Yes,FL resident,UT,Yes,2020-03-16
+153,Duval,91,Female,No,FL resident,,Yes,2020-03-16
+154,Orange,51,Male,No,FL resident,,No,2020-03-16
+155,Broward,76,Male,Yes,FL resident,TRINIDAD AND TOBAGO,Unknown,2020-03-16
+156,Palm Beach,25,Male,Unknown,FL resident,,,2020-03-16
+157,Palm Beach,62,Male,Yes,FL resident,UNITED KINGDOM,Yes,2020-03-16
+158,Lee,66,Male,Yes,FL resident,COLOMBIA; ECUADOR,Unknown,2020-03-16
+159,St. Johns,49,Male,Yes,FL resident,EUROPE; HUNGARY,No,2020-03-16
+160,Manatee,70,Male,No,FL resident,,No,2020-03-16
+161,Pinellas,58,Male,No,FL resident,,No,2020-03-16
+162,Palm Beach,66,Male,No,FL resident,,Unknown,2020-03-16
+163,Broward,77,Male,Unknown,FL resident,,Unknown,2020-03-16
+164,Broward,65,Male,No,FL resident,,Yes,2020-03-16
+165,Escambia,53,Male,Yes,FL resident,France,No,2020-03-16
+166,Pinellas,58,Male,Yes,FL resident,CO,,2020-03-16
+167,Broward,60,Male,Yes,FL resident,SPAIN,,2020-03-16
+168,Sarasota,87,Male,No,FL resident,,No,2020-03-16
+169,Orange,40,Female,No,FL resident,,Unknown,2020-03-16
+170,Dade,30,Female,Unknown,FL resident,,,2020-03-16
+171,Volusia,37,Female,No,FL resident,,Yes,2020-03-16
+172,Dade,56,Male,Unknown,FL resident,,,2020-03-16
+173,Dade,67,Female,Yes,FL resident,EGYPT,Yes,2020-03-16
+174,Broward,51,Female,Yes,FL resident,Colombia,Yes,2020-03-16
+175,Osceola,47,Female,No,FL resident,,No,2020-03-16
+176,Collier,49,Female,No,FL resident,,No,2020-03-16
+177,Dade,42,Male,Yes,FL resident,NC,No,2020-03-16
+178,Palm Beach,76,Female,Yes,FL resident,FRANCE,Unknown,2020-03-16
+179,Broward,66,Male,No,FL resident,,Yes,2020-03-15
+180,Broward,19,Female,Yes,FL resident,IRELAND,Yes,2020-03-15
+181,Dade,58,Female,Yes,FL resident,ITALY; SPAIN,No,2020-03-15
+182,Broward,19,Female,Yes,FL resident,IRELAND,Yes,2020-03-15
+183,Collier,76,Male,Yes,FL resident,NY,Yes,2020-03-15
+184,Citrus,60,Female,Yes,FL resident,FL; SWITZERLAND,No,2020-03-15
+185,Orange,79,Female,Unknown,FL resident,,No,2020-03-15
+186,Broward,39,Male,Yes,FL resident,UNITED ARAB EMIRATES,Yes,2020-03-15
+188,Dade,66,Female,Unknown,FL resident,,,2020-03-15
+189,Broward,65,Male,Yes,FL resident,DC,Unknown,2020-03-15
+190,Broward,74,Male,No,FL resident,,Yes,2020-03-15
+191,Dade,28,Male,No,FL resident,,Yes,2020-03-15
+192,Dade,39,Male,Unknown,FL resident,,,2020-03-15
+193,Broward,20,Female,Yes,FL resident,IRELAND,Yes,2020-03-15
+194,Duval,66,Male,No,FL resident,,Yes,2020-03-15
+195,Broward,20,Female,Yes,FL resident,IRELAND,Yes,2020-03-15
+196,Broward,30,Male,Yes,FL resident,FL; GA,Yes,2020-03-15
+197,Broward,60,Male,No,FL resident,,Yes,2020-03-15
+198,Dade,25,Female,Yes,FL resident,SPAIN,,2020-03-15
+199,Broward,83,Male,Unknown,FL resident,,Yes,2020-03-15
+200,Volusia,48,Female,Yes,FL resident,DC; FL,No,2020-03-15
+201,Duval,57,Male,Yes,FL resident,FL; UNKNOWN,Unknown,2020-03-15
+202,Dade,62,Male,Yes,FL resident,FL; NY,Unknown,2020-03-15
+203,Duval,88,Male,No,FL resident,,Yes,2020-03-15
+204,Broward,19,Female,Yes,FL resident,IRELAND,Yes,2020-03-15
+205,Broward,52,Female,Yes,FL resident,FRANCE,Yes,2020-03-15
+206,Broward,63,Female,Unknown,FL resident,,Unknown,2020-03-15
+207,Dade,43,Male,Yes,FL resident,UT,Yes,2020-03-15
+208,Lee,72,Female,Unknown,FL resident,,Yes,2020-03-14
+209,Volusia,89,Female,No,FL resident,,Yes,2020-03-14
+210,Broward,58,Male,No,FL resident,,Yes,2020-03-14
+211,Volusia,39,Male,Yes,FL resident,TRINIDAD AND TOBAGO,Yes,2020-03-14
+212,Dade,42,Male,Yes,FL resident,FL; FRANCE,Yes,2020-03-14
+213,Osceola,48,Male,Yes,FL resident,SWITZERLAND,Yes,2020-03-14
+214,Pasco,67,Male,Yes,FL resident,FL; NY,Yes,2020-03-14
+215,Dade,39,Female,Yes,FL resident,FL; NY,No,2020-03-14
+216,Broward,59,Male,No,FL resident,,Yes,2020-03-14
+217,Dade,29,Male,Yes,FL resident,MA,No,2020-03-14
+218,Palm Beach,59,Female,Yes,FL resident,NY,Yes,2020-03-14
+219,Palm Beach,65,Male,Yes,FL resident,NY,Yes,2020-03-14
+220,Dade,77,Female,Yes,FL resident,EGYPT; IRAN; UNITED ARAB EMIRATES,No,2020-03-14
+221,Broward,21,Male,Yes,FL resident,ITALY; SPAIN,No,2020-03-14
+222,Hillsborough,47,Male,Yes,FL resident,CO,Unknown,2020-03-14
+223,Palm Beach,37,Male,Yes,FL resident,NY,Yes,2020-03-14
+224,Broward,83,Female,No,FL resident,,Yes,2020-03-14
+225,Manatee,67,Female,No,FL resident,,Unknown,2020-03-14
+226,Broward,22,Female,Yes,FL resident,IRELAND,Yes,2020-03-14
+227,Dade,18,Male,Yes,FL resident,SPAIN,Yes,2020-03-14
+228,Manatee,62,Female,No,FL resident,,Yes,2020-03-14
+229,Dade,20,Male,Yes,FL resident,SPAIN,Yes,2020-03-14
+230,Seminole,43,Female,No,FL resident,,No,2020-03-14
+231,Seminole,68,Female,Yes,FL resident,EGYPT; JORDAN,Yes,2020-03-14
+232,Clay,70,Male,No,FL resident,,Yes,2020-03-14
+233,Dade,37,Male,Yes,FL resident,EL SALVADOR; FL; MEXICO; SPAIN,Unknown,2020-03-14
+234,Dade,42,Female,No,FL resident,,No,2020-03-14
+235,Broward,64,Male,Yes,FL resident,FRANCE; GA; NC; SPAIN,Yes,2020-03-14
+236,Hillsborough,17,Male,No,FL resident,,No,2020-03-14
+237,Seminole,47,Male,Unknown,FL resident,,,2020-03-14
+238,Dade,73,Male,No,FL resident,,Unknown,2020-03-14
+239,Dade,42,Male,Yes,FL resident,SPAIN,No,2020-03-14
+240,Hillsborough,32,Female,Yes,FL resident,CO,Yes,2020-03-14
+241,Broward,20,Female,Yes,FL resident,IRELAND,Yes,2020-03-14
+242,Broward,63,Male,No,FL resident,,Yes,2020-03-14
+243,Volusia,71,Male,Yes,FL resident,EGYPT; JORDAN,Yes,2020-03-14
+244,Broward,20,Female,Yes,FL resident,IRELAND,Yes,2020-03-14
+245,Clay,55,Female,No,FL resident,,Yes,2020-03-14
+246,St. Johns,64,Female,No,FL resident,,No,2020-03-14
+247,Dade,51,Male,No,FL resident,,Unknown,2020-03-13
+248,Osceola,54,Male,No,FL resident,,No,2020-03-13
+250,Broward,27,Female,No,FL resident,,Yes,2020-03-13
+251,Osceola,31,Male,Yes,FL resident,BRAZIL,No,2020-03-13
+252,Broward,36,Male,No,FL resident,,Yes,2020-03-13
+253,Volusia,70,Female,Yes,FL resident,EGYPT; JORDAN,Yes,2020-03-13
+254,Palm Beach,74,Male,Yes,FL resident,BELGIUM; FL,No,2020-03-13
+255,Alachua,24,Male,Yes,FL resident,PORTUGAL,No,2020-03-13
+256,Palm Beach,73,Male,Yes,FL resident,EGYPT; GERMANY,No,2020-03-13
+257,Broward,68,Female,No,FL resident,,Yes,2020-03-13
+258,Hillsborough,49,Female,Yes,FL resident,FL; IRELAND,Yes,2020-03-13
+259,Lake,75,Female,Yes,FL resident,FL; NY,Yes,2020-03-13
+260,Clay,57,Male,No,FL resident,,Yes,2020-03-13
+261,Broward,26,Female,Yes,FL resident,TRINIDAD AND TOBAGO,Yes,2020-03-13
+262,Broward,20,Female,Yes,FL resident,IRELAND,Yes,2020-03-13
+263,Orange,41,Male,No,FL resident,,Yes,2020-03-13
+264,Lee,77,Male,No,FL resident,,Unknown,2020-03-13
+265,Duval,83,Male,No,FL resident,,Yes,2020-03-13
+266,Dade,45,Female,No,FL resident,,Yes,2020-03-13
+267,Orange,48,Female,No,FL resident,,Yes,2020-03-13
+268,Broward,65,Male,No,FL resident,,Yes,2020-03-12
+269,Dade,56,Male,Yes,FL resident,IRAN,Yes,2020-03-12
+270,Seminole,68,Male,Yes,FL resident,EGYPT; JORDAN,Yes,2020-03-12
+271,Broward,70,Male,Unknown,FL resident,,Unknown,2020-03-12
+272,Broward,61,Male,Yes,FL resident,ITALY,Unknown,2020-03-12
+273,Collier,68,Female,Yes,FL resident,EGYPT,Yes,2020-03-11
+274,Pinellas,67,Male,Yes,FL resident,EGYPT,Yes,2020-03-11
+275,Collier,73,Male,Yes,FL resident,EGYPT,Unknown,2020-03-11
+276,Collier,64,Female,Yes,FL resident,EGYPT,Unknown,2020-03-11
+277,Pasco,46,Male,No,FL resident,,Yes,2020-03-11
+278,Pinellas,55,Male,Yes,FL resident,EGYPT,Yes,2020-03-11
+279,Broward,68,Female,No,FL resident,,Yes,2020-03-10
+280,Nassau,68,Male,Yes,FL resident,GERMANY; MA,Yes,2020-03-10
+281,Okaloosa,61,Female,Yes,FL resident,CA; FL; MEXICO,Yes,2020-03-09
+282,Broward,67,Male,No,FL resident,,Yes,2020-03-09
+283,Manatee,81,Female,Yes,FL resident,EGYPT,Yes,2020-03-09
+284,Volusia,60,Female,Yes,FL resident,EGYPT; GERMANY; ISRAEL,Yes,2020-03-09
+285,Charlotte,54,Female,Yes,FL resident,EGYPT; ISRAEL,Unknown,2020-03-09
+286,Volusia,66,Female,Yes,FL resident,EGYPT; GERMANY; ISRAEL,Yes,2020-03-08
+287,Lee,77,Female,Yes,FL resident,DOMINICAN REPUBLIC,Yes,2020-03-07
+288,Lee,77,Male,Yes,FL resident,DOMINICAN REPUBLIC,Yes,2020-03-07
+289,Broward,75,Male,No,FL resident,,Yes,2020-03-07
+290,Broward,65,Male,Yes,FL resident,CAYMAN ISLANDS,No,2020-03-07
+291,Santa Rosa,71,Male,Yes,FL resident,EGYPT; ISRAEL; JORDAN,No,2020-03-05
+292,Manatee,63,Male,No,FL resident,,Yes,2020-03-02
+293,Hillsborough,29,Female,Yes,FL resident,ITALY,Yes,2020-03-02
+294,Walton,77,Female,Yes,Non-FL resident,MI,No,2020-03-18
+295,Collier,64,Male,Yes,Non-FL resident,FL; HI,No,2020-03-18
+296,Palm Beach,73,Male,Yes,Non-FL resident,NY,Yes,2020-03-18
+297,Duval,46,Male,No,Non-FL resident,,No,2020-03-18
+298,Dade,51,Male,Yes,Non-FL resident,CA; IL,,2020-03-17
+299,Osceola,20,Female,Yes,Non-FL resident,SPAIN,No,2020-03-17
+300,Orange,28,Female,Unknown,Non-FL resident,,Unknown,2020-03-17
+301,Hillsborough,28,Male,Unknown,Non-FL resident,,Unknown,2020-03-17
+302,Sarasota,80,Male,No,Non-FL resident,,No,2020-03-16
+303,Dade,69,Female,Unknown,Non-FL resident,,Yes,2020-03-16
+304,Dade,66,Male,Yes,Non-FL resident,FL; NY,No,2020-03-16
+305,Alachua,64,Female,Yes,Non-FL resident,FL; NY,No,2020-03-16
+306,Broward,20,Female,Yes,Non-FL resident,IRELAND,Yes,2020-03-15
+307,Broward,48,Female,Yes,Non-FL resident,FRANCE; IL; NY; TX,Unknown,2020-03-15
+308,Broward,19,Female,Yes,Non-FL resident,IRELAND,Yes,2020-03-15
+309,Dade,42,Male,Yes,Non-FL resident,BRAZIL; FL; TX,No,2020-03-15
+310,Lee,65,Female,Unknown,Non-FL resident,,,2020-03-15
+312,Alachua,69,Male,Yes,Non-FL resident,SWEDEN,No,2020-03-14
+313,Collier,79,Female,Yes,Non-FL resident,CT,No,2020-03-14
+314,Broward,19,Female,Yes,Non-FL resident,IRELAND,Yes,2020-03-14
+315,Broward,41,Male,Yes,Non-FL resident,SPAIN,Unknown,2020-03-14
+316,Broward,19,Male,Yes,Non-FL resident,Ireland,Yes,2020-03-14
+317,Sarasota,70,Male,No,Non-FL resident,,No,2020-03-13
+318,Osceola,65,Male,Yes,Non-FL resident,CANADA,No,2020-03-13
+319,St. Johns,63,Male,Yes,Non-FL resident,NY,No,2020-03-12
+320,Lee,57,Male,Yes,Non-FL resident,FL; FRANCE; UNITED KINGDOM,Unknown,2020-03-12
+321,Alachua,68,Female,Yes,Non-FL resident,GA,No,2020-03-10
+322,Hillsborough,22,Female,Yes,Non-FL resident,ITALY,Yes,2020-03-03
+323,Orange,68,Female,Yes,Not diagnosed/isolated in FL,PHILIPPINES; SOUTH KOREA,,2020-03-13
+324,Dade,64,Male,Yes,Not diagnosed/isolated in FL,JAPAN,Yes,2020-03-04
+325,Leon,59,Female,Yes,Not diagnosed/isolated in FL,JAPAN,Unknown,2020-03-04
+326,Palm Beach,71,Female,Yes,Not diagnosed/isolated in FL,JAPAN,Yes,2020-03-04
+327,Okaloosa,66,Female,Yes,Not diagnosed/isolated in FL,JAPAN,Yes,2020-03-04
+328,Gadsden,54,Male,Yes,Not diagnosed/isolated in FL,JAPAN,Unknown,2020-03-03

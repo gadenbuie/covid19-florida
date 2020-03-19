@@ -7,6 +7,7 @@ library(glue)
 library(fs)
 library(xml2)
 library(rvest)
+source("R/process_pdf.R")
 
 fl_doh_url <- "http://www.floridahealth.gov/diseases-and-conditions/COVID-19/"
 fl_disaster_url <- "https://floridadisaster.org/covid19/"
@@ -27,6 +28,24 @@ dir_create("pdfs")
 
 pdf_files <- pdf_files[!file_exists(path("pdfs", path_file(pdf_files)))]
 
+safe_download <- safely(download.file)
+
 if (length(pdf_files)) {
-  walk(pdf_files, ~ download.file(.x, path("pdfs", path_file(.x))))
+  walk(pdf_files, ~ safe_download(url = .x, destfile = path("pdfs", path_file(.x))))
+}
+
+pdf_files_local <- path("pdfs", path_file(pdf_files))
+
+for (pdf_file in pdf_files_local) {
+  if (!file.exists(pdf_file)) next
+  tables <- process_pdf(pdf_file)
+  outdir <- path("pdfs", str_replace_all(tables$timestamp_pdf, " ", "_"))
+  dir_create(outdir)
+  for (name in names(tables)) {
+    if (is.character(tables[[name]])) {
+      write_lines(tables[[name]], path(outdir, "README.md"))
+    } else if (inherits(tables[[name]], "data.frame")) {
+      write_csv(tables[[name]], path(outdir, name, ext = "csv"))
+    }
+  }
 }
