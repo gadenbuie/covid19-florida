@@ -1,8 +1,12 @@
 # Florida COVID-19 Data
 
-Parsed from the [Florida's COVID-19 Data and Surveillance Dashboard][dashboard]. 
+Parsed from the [Florida's COVID-19 Data and Surveillance Dashboard][dashboard].
 
 ![](plots/covid-19-florida-testing.png)
+
+![](plots/covid-19-florida-total-positive.png)
+
+![](plots/covid-19-florida-daily-test-changes.png)
 
 ## Snapshots and Data Capture
 
@@ -18,7 +22,7 @@ Around 4pm on 2020-03-18, the dashboard layout was modified, making these counts
 Similarly, prior to this update I was relying on the reported "last update time" listed in the dashboard,
 but since then I have been using the time at which the dashboard was checked for any time stamps from this source.
 
-On the same day the county-level data was moved in the dashboard, 
+On the same day that county-level data became inaccessible in the dashboard, 
 FL DOH started releasing PDF reports,
 which I have begun to collect in [pdfs/](pdfs/).
 The name of the report contains a time stamp, 
@@ -30,12 +34,11 @@ The unified data files are available in [pdfs/data/](pdfs/data/).
 
 ## FL DOH Dashboard
 
-Two tables are extracted from the [Florida's COVID-19 Data and Surveillance Dashboard][dashboard].
+One table is extracted from the [Florida's COVID-19 Data and Surveillance Dashboard][dashboard].
 
-- County-level case count: [covid-19-florida-cases-county.csv](covid-19-florida-cases-county.csv)
 - Current test counts: [covid-19-florida-tests.csv](covid-19-florida-tests.csv)
 
-The "last updated timestamp" is also extracted from the dashboard and saved in the `timestamp` column of both of the above tables.
+The `timestamp` column of indicates when the dashboard was polled for changes.
 
 Testing statistics prior to 2020-03-16 18:00:00 EDT were imported from <https://covidtracking.com>.
 
