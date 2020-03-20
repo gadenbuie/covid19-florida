@@ -185,7 +185,8 @@ process_pdf <- function(pdf_file) {
     read_table_pages(col_names = c("county", "pending", "negative", "positive", "percent", "total")) %>% 
     drop_empty() %>% 
     select(-contains("percent")) %>% 
-    add_total(from = c("pending", "negative", "positive")) %>% 
+    add_total(from = c("pending", "negative", "positive")) %>%  
+    filter(county != "Total") %>% 
     add_timestamp()
   
   # Testing by Lab ----------------------------------------------------------
