@@ -53,6 +53,35 @@ extract_table <- function(
   } else x
 }
 
+read_table_pages <- function(
+  pages,
+  col_names, 
+  pattern_filter = "\\d\\s{4,}\\d", 
+  pattern_tab = "\\s{4,}", 
+  replace_tab = "\t"
+) {
+  pages %>%
+    str_split("\n") %>%
+    map(str_subset, pattern = pattern_filter) %>%
+    keep(~ length(.x) > 0) %>%
+    map(str_replace_all, pattern = pattern_tab, replace_tab) %>%
+    map_chr(paste, collapse = "\n") %>%
+    readr::read_tsv(col_names = col_names)
+}
+
+add_total <- function(df, from) {
+  if ("total" %in% names(df)) {
+    if (!all(is.na(df[["total"]]))) {
+      return(df)
+    }
+  }
+  df$total <- 0
+  for (col in from) {
+    df$total <- df$total + df[[col]]
+  }
+  df
+}
+
 process_pdf <- function(pdf_file) {
   out <- list()
   
@@ -76,7 +105,7 @@ process_pdf <- function(pdf_file) {
   }
   
   out$overall_counts <-
-    page_one_text %>% 
+    page_one_text %>%
     str_extract_all("(Total identified|Tested positive|Tested negative|Currently awaiting testing)\\s*[\\d,]+") %>%
     `[[`(1) %>% 
     tibble(raw = .) %>% 
@@ -98,39 +127,38 @@ process_pdf <- function(pdf_file) {
   
   
   # Page 2 ------------------------------------------------------------------
-  page_2_counties <- tabulizer::extract_tables(
-    file = pdf_file,
-    pages = 2,
-    area = list(c(
-      top = 193.1202018721, left = 73.276492623426, 
-      bottom = 893.14255524011, right = 552.37461410041
-    )),
-    guess = FALSE
-  )
+  page_2 <-
+    page_text[[2]] %>% 
+    str_replace_all("\\s{2,}|((\\d) ([\\dA-Z]))", "\\2\t\\3") %>% 
+    str_replace_all("\\s{2,}|((\\d) ([\\dA-Z]))", "\\2\t\\3") %>% 
+    read_table_pages(
+      col_names = c(
+        "county", "florida_resident", "percent", 
+        "florida_resident_outside", "non_florida_resident", "total",
+        "other_1", "other_2", "other_3"
+      ),
+      pattern_filter = "\\d\t\\d",
+      pattern_tab = "\\s{2,}"
+    )
   
-  page_2_col2 <- tabulizer::extract_tables(
-    file = pdf_file,
-    pages = 2,
-    area = list(c(top = 182.0541642969, left = 568.23365661678, bottom = 889.73570960937, right = 809.94355227247)),
-    guess = FALSE
-  )[[1]] %>% 
-    as_tibble(.name_repair = "unique")
-
   out$cases_county <-
-    page_2_counties[[1]] %>% 
-    as_tibble(.name_repair = "unique") %>% 
-    collapse_header_rows(1:5) %>% 
-    janitor::clean_names() %>% 
-    drop_empty() %>% 
-    select(-contains("percent")) %>% 
+    page_2 %>% 
+    select(-contains("percent"), contains("other")) %>% 
     select(county:total) %>%
     filter(county != "Total") %>% 
     add_timestamp()
   
+  page_2_right <-
+    page_2 %>%
+    select(starts_with("other")) %>% 
+    filter(!duplicated(other_1)) %>% 
+    mutate(group = cumsum(is.na(other_1) | is.na(lag(other_1))))
+  
   out$cases_sex <-
-    page_2_col2 %>% 
-    slice(1:4) %>% 
-    names_from_row(1) %>% 
+    page_2_right %>% 
+    filter(group == 1) %>% 
+    select(-group) %>% 
+    set_names(c("Gender", "Count", "Percent")) %>% 
     drop_empty() %>% 
     select(-Percent) %>% 
     pivot_wider(names_from = Gender, values_from = Count) %>% 
@@ -139,11 +167,9 @@ process_pdf <- function(pdf_file) {
     add_timestamp()
   
   out$cases_age <-
-    page_2_col2 %>%
-    slice(-1:-4) %>% 
-    names_from_row(1) %>% 
-    drop_empty() %>% 
-    janitor::clean_names() %>% 
+    page_2_right %>% 
+    filter(group == 3, !str_detect(other_1, "Age group")) %>% 
+    select(age_group = other_1, count = other_2, percent = other_3) %>% 
     select(age_group, count) %>% 
     pivot_wider(names_from = age_group, values_from = count) %>% 
     mutate_all(as.numeric) %>% 
@@ -154,60 +180,73 @@ process_pdf <- function(pdf_file) {
     map_lgl(str_detect, pattern = "PUI testing by county") %>% 
     which()
   
-  page_county_testing <- 
-    tabulizer::extract_tables(pdf_file, pages = pages_testing) %>% 
-    map(as_tibble, .name_repair = "unique")
-  
   out$county_testing <-
-    page_county_testing %>% 
-    map_dfr(collapse_header_rows, row = 1:2) %>% 
-    janitor::clean_names() %>% 
-    select(-contains("percent")) %>%
-    rename(pending = no_result) %>% 
-    filter(county != "Total") %>% 
-    mutate_at(-1, as.numeric) %>% 
+    page_text[pages_testing] %>%
+    read_table_pages(col_names = c("county", "pending", "negative", "positive", "percent", "total")) %>% 
+    drop_empty() %>% 
+    select(-contains("percent")) %>% 
+    add_total(from = c("pending", "negative", "positive")) %>% 
     add_timestamp()
-
+  
   # Testing by Lab ----------------------------------------------------------
   pages_lab_testing <- page_text %>% 
     map_lgl(str_detect, pattern = "testing by lab") %>% 
     which()
   
-  page_lab_testing <- 
-    tabulizer::extract_tables(pdf_file, pages = pages_lab_testing) %>% 
-    map(as_tibble, .name_repair = "unique")
-  
   out$lab_testing <-
-    page_lab_testing %>%
-    map_dfr(collapse_header_rows, row = 1:3) %>% 
-    janitor::clean_names() %>% 
+    page_text[pages_lab_testing] %>% 
+    read_table_pages(col_names = c("reporting_lab", "negative", "positive", "percent_positive", "total")) %>% 
     select(-contains("percent")) %>%
     filter(reporting_lab != "Total") %>% 
-    mutate_at(-1, as.numeric) %>% 
+    add_total(from = c("negative", "positive")) %>% 
     add_timestamp()
-  
   
   # Line List ----------------------------------------------------------------
   pages_line_list <- page_text %>% 
     map_lgl(str_detect, pattern = "line list of cases") %>% 
     which()
   
-  page_line_list <- 
-    tabulizer::extract_tables(pdf_file, pages = pages_line_list) %>% 
-    map(as_tibble, .name_repair = "unique")
+  line_list_text <- 
+    page_text[pages_line_list] %>% 
+    str_split("\n") %>% 
+    map(str_subset, pattern = "^\\d+\\s{2,}[A-Z]")
+  
+  line_list <-
+    line_list_text %>% 
+    map(str_extract, pattern = ".+(FL resident|isolated in FL)") %>% 
+    keep(~ length(.) > 0) %>% 
+    map_dfr(readr::read_table, col_names = c("case", "county", "age", "sex", "travel_related", paste0("jurisdiction", 1:3))) %>% 
+    mutate_at(vars(contains("jurisdiction")), ~ if_else(is.na(.x), "", .x)) %>% 
+    mutate(jurisdiction = paste(jurisdiction1, jurisdiction2, jurisdiction3)) %>% 
+    mutate_at(vars(jurisdiction), str_trim) %>% 
+    select(-matches("\\d$"))
+  
+  line_list$travel_detail <- 
+    line_list_text %>% 
+    map(str_extract, pattern = "(FL resident|isolated in FL).+") %>% 
+    map(str_remove, pattern = "^(FL resident|isolated in FL)") %>% 
+    map(str_extract, pattern = "^.+?(Yes|No|Unknown|\\d)") %>% 
+    map(str_remove, pattern = "(Yes|No|Unknown|\\d)$") %>% 
+    unlist() %>% 
+    str_trim()
+  
+  line_list$date_counted <-
+    line_list_text %>% 
+    map(str_extract, pattern = "[\\d/]{5,8}$") %>% 
+    unlist() %>% 
+    mdy() %>% 
+    strftime("%F")
   
   out$line_list <-
-    page_line_list %>% 
-    map_dfr(collapse_header_rows, row = 1:3) %>% 
-    janitor::clean_names() %>% 
-    mutate_at(vars(date_case_counted), mdy) %>% 
-    mutate_at(vars(date_case_counted), strftime, "%F")
+    line_list %>% 
+    add_timestamp()
   
   out
 }
 
 process_and_output_pdf <- function(pdf_files) {
   for (pdf_file in pdf_files) {
+    message("Processing ", pdf_file, "...")
     if (!file_exists(pdf_file)) next
     tables <- process_pdf(pdf_file)
     outdir <- path("pdfs", str_replace_all(tables$timestamp_pdf, " ", "_"))
