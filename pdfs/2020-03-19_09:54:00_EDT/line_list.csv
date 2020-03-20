@@ -1,4 +1,5 @@
 case,county,age,gender,travel_related,jurisdiction,travel_detail,died,contact_with_a_confirmed_case,date_case_counted,travel_detail_died,x
+1,Palm Beach,73,Male,Unknown,FL resident,,,,2020-03-19,NA,NA
 2,Hillsborough,28,Male,Unknown,FL resident,,,,2020-03-19,NA,NA
 3,Broward,47,Female,Unknown,FL resident,,,,2020-03-19,NA,NA
 4,Collier,30,Female,Yes,FL resident,SPAIN,No,No,2020-03-19,NA,NA
@@ -60,6 +61,7 @@ case,county,age,gender,travel_related,jurisdiction,travel_detail,died,contact_wi
 60,Broward,58,Male,No,FL resident,,No,Yes,2020-03-18,NA,NA
 61,Broward,43,Male,Yes,FL resident,NY,,Yes,2020-03-18,NA,NA
 62,Pinellas,61,Female,Yes,FL resident,NY,,,2020-03-18,NA,NA
+63,Pinellas,54,Female,Yes,FL resident,NY,,,2020-03-18,NA,NA
 64,Broward,43,Female,No,FL resident,,No,No,2020-03-18,NA,NA
 65,Orange,46,Male,Unknown,FL resident,,No,,2020-03-18,NA,NA
 66,Broward,30,Male,Yes,FL resident,CT; FL; ITALY,No,No,2020-03-18,NA,NA
@@ -121,6 +123,7 @@ case,county,age,gender,travel_related,jurisdiction,travel_detail,died,contact_wi
 122,Santa Rosa,48,Male,Yes,FL resident,UNITED KINGDOM,,No,2020-03-18,NA,NA
 123,Manatee,61,Male,Unknown,FL resident,,,,2020-03-18,NA,NA
 124,Dade,48,Female,Unknown,FL resident,,,,2020-03-18,NA,NA
+125,Dade,25,Male,No,FL resident,NA,NA,Yes,2020-03-18,,
 126,Orange,56,Male,No,FL resident,NA,NA,,2020-03-18,,
 127,Dade,38,Male,Unknown,FL resident,NA,NA,Unknown,2020-03-18,No,
 128,Pinellas,67,Female,Unknown,FL resident,NA,NA,,2020-03-18,,
@@ -182,6 +185,7 @@ case,county,age,gender,travel_related,jurisdiction,travel_detail,died,contact_wi
 184,Palm Beach,19,Female,Yes,FL resident,NA,NA,Yes,2020-03-17,TN No,
 185,Dade,73,Male,Unknown,FL resident,NA,NA,Yes,2020-03-17,,
 186,Orange,73,Male,Unknown,FL resident,NA,NA,,2020-03-17,,
+187,Alachua,22,Male,Yes,FL resident,CANADA; NY; PA,No,No,2020-03-17,NA,NA
 188,Dade,33,Male,Unknown,FL resident,,,,2020-03-17,NA,NA
 189,Broward,79,Female,Yes,FL resident,CO; FL,No,No,2020-03-17,NA,NA
 190,Manatee,75,Male,Unknown,FL resident,,,,2020-03-17,NA,NA
@@ -243,6 +247,7 @@ case,county,age,gender,travel_related,jurisdiction,travel_detail,died,contact_wi
 246,Broward,19,Female,Yes,FL resident,IRELAND,No,Yes,2020-03-15,NA,NA
 247,Dade,43,Male,Yes,FL resident,UT,,Yes,2020-03-15,NA,NA
 248,Broward,19,Female,Yes,FL resident,IRELAND,No,Yes,2020-03-15,NA,NA
+249,Broward,65,Male,Yes,FL resident,NA,NA,Unknown,2020-03-15,DC No,
 250,Dade,58,Female,Yes,FL resident,NA,NA,No,2020-03-15,ITALY; SPAIN,
 251,Dade,28,Male,No,FL resident,NA,NA,Yes,2020-03-15,No,
 252,Broward,20,Female,Yes,FL resident,NA,NA,Yes,2020-03-15,IRELAND No,
@@ -304,6 +309,7 @@ case,county,age,gender,travel_related,jurisdiction,travel_detail,died,contact_wi
 308,Sarasota,50,Female,Yes,FL resident,NA,NA,No,2020-03-13,NY No,
 309,Broward,20,Female,Yes,FL resident,NA,NA,Yes,2020-03-13,IRELAND No,
 310,Volusia,70,Female,Yes,FL resident,NA,NA,Yes,2020-03-13,EGYPT; JORDAN No,
+311,Orange,41,Male,No,FL resident,,No,Yes,2020-03-13,NA,NA
 312,Hillsborough,49,Female,Yes,FL resident,FL; IRELAND,No,Yes,2020-03-13,NA,NA
 313,Osceola,31,Male,Yes,FL resident,BRAZIL,No,No,2020-03-13,NA,NA
 314,Dade,45,Female,No,FL resident,,No,Yes,2020-03-13,NA,NA
@@ -365,6 +371,7 @@ case,county,age,gender,travel_related,jurisdiction,travel_detail,died,contact_wi
 370,Lee,65,Female,Unknown,Non-FL resident,,,,2020-03-15,NA,NA
 371,Broward,19,Female,Yes,Non-FL resident,IRELAND,No,Yes,2020-03-15,NA,NA
 372,Dade,42,Male,Yes,Non-FL resident,BRAZIL; FL; TX,No,No,2020-03-15,NA,NA
+373,Broward,19,Female,Yes,Non-FL resident,IRELAND,No,Yes,2020-03-14,NA,NA
 374,Collier,79,Female,Yes,Non-FL resident,CT,No,No,2020-03-14,NA,NA
 375,Broward,41,Male,Yes,Non-FL resident,SPAIN,No,Unknown,2020-03-14,NA,NA
 376,Broward,48,Male,Yes,Non-FL resident,GA,,,2020-03-14,NA,NA

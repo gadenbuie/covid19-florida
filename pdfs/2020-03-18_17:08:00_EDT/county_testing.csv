@@ -1,4 +1,4 @@
-timestamp,county,no_result,negative,positive,total
+timestamp,county,pending,negative,positive,total
 2020-03-18 17:08:00 EDT,Broward,263,261,80,604
 2020-03-18 17:08:00 EDT,Dade,145,171,77,393
 2020-03-18 17:08:00 EDT,Palm Beach,18,29,21,68

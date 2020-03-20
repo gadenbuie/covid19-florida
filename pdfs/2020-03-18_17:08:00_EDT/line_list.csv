@@ -1,4 +1,5 @@
 case,county,age,gender,travel_related,jurisdiction,travel_detail,contact_with_a_confirmed_case,date_case_counted
+1,Broward,57,Male,Unknown,FL resident,,,2020-03-18
 2,Sumter,68,Male,Yes,FL resident,EGYPT,Yes,2020-03-18
 3,Dade,53,Male,Unknown,FL resident,,,2020-03-18
 4,Orange,46,Unknown,Unknown,FL resident,,,2020-03-18
@@ -60,6 +61,7 @@ case,county,age,gender,travel_related,jurisdiction,travel_detail,contact_with_a_
 60,Manatee,61,Male,Unknown,FL resident,,,2020-03-18
 61,Dade,36,Female,Unknown,FL resident,,Yes,2020-03-18
 62,Palm Beach,41,Male,Yes,FL resident,UT; WY,No,2020-03-18
+63,Broward,43,Male,Unknown,FL resident,,,2020-03-18
 64,St. Johns,53,Female,Yes,FL resident,CO,Yes,2020-03-18
 65,Broward,21,Female,Yes,FL resident,Spain,Yes,2020-03-18
 66,Seminole,57,Female,Yes,FL resident,EGYPT,Yes,2020-03-18
@@ -121,6 +123,7 @@ case,county,age,gender,travel_related,jurisdiction,travel_detail,contact_with_a_
 122,Manatee,71,Male,No,FL resident,,No,2020-03-17
 123,Dade,52,Female,No,FL resident,,Yes,2020-03-17
 124,Polk,44,Female,No,FL resident,,Unknown,2020-03-17
+125,Broward,19,Female,Yes,FL resident,SPAIN,Yes,2020-03-17
 126,Dade,45,Female,Yes,FL resident,NY,No,2020-03-17
 127,Broward,57,Female,No,FL resident,,Yes,2020-03-17
 128,Orange,73,Male,Unknown,FL resident,,,2020-03-17
@@ -182,6 +185,7 @@ case,county,age,gender,travel_related,jurisdiction,travel_detail,contact_with_a_
 184,Citrus,60,Female,Yes,FL resident,FL; SWITZERLAND,No,2020-03-15
 185,Orange,79,Female,Unknown,FL resident,,No,2020-03-15
 186,Broward,39,Male,Yes,FL resident,UNITED ARAB EMIRATES,Yes,2020-03-15
+187,Collier,28,Male,Yes,FL resident,ITALY,Unknown,2020-03-15
 188,Dade,66,Female,Unknown,FL resident,,,2020-03-15
 189,Broward,65,Male,Yes,FL resident,DC,Unknown,2020-03-15
 190,Broward,74,Male,No,FL resident,,Yes,2020-03-15
@@ -243,6 +247,7 @@ case,county,age,gender,travel_related,jurisdiction,travel_detail,contact_with_a_
 246,St. Johns,64,Female,No,FL resident,,No,2020-03-14
 247,Dade,51,Male,No,FL resident,,Unknown,2020-03-13
 248,Osceola,54,Male,No,FL resident,,No,2020-03-13
+249,Sarasota,50,Female,Yes,FL resident,NY,No,2020-03-13
 250,Broward,27,Female,No,FL resident,,Yes,2020-03-13
 251,Osceola,31,Male,Yes,FL resident,BRAZIL,No,2020-03-13
 252,Broward,36,Male,No,FL resident,,Yes,2020-03-13
@@ -304,6 +309,7 @@ case,county,age,gender,travel_related,jurisdiction,travel_detail,contact_with_a_
 308,Broward,19,Female,Yes,Non-FL resident,IRELAND,Yes,2020-03-15
 309,Dade,42,Male,Yes,Non-FL resident,BRAZIL; FL; TX,No,2020-03-15
 310,Lee,65,Female,Unknown,Non-FL resident,,,2020-03-15
+311,Broward,48,Male,Yes,Non-FL resident,GA,,2020-03-14
 312,Alachua,69,Male,Yes,Non-FL resident,SWEDEN,No,2020-03-14
 313,Collier,79,Female,Yes,Non-FL resident,CT,No,2020-03-14
 314,Broward,19,Female,Yes,Non-FL resident,IRELAND,Yes,2020-03-14

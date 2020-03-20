@@ -1,8 +1,12 @@
 #! /usr/bin/env Rscript
 options(error = NULL)
 
+library(readr)
+library(dplyr)
+library(tidyr)
 library(purrr)
 library(stringr)
+library(lubridate)
 library(glue)
 library(fs)
 library(xml2)
@@ -15,14 +19,15 @@ fl_disaster_url <- "https://floridadisaster.org/covid19/"
 fl_doh <- read_html(fl_doh_url)
 fl_disaster <- read_html(fl_disaster_url)
 
-pdf_files <- 
+pdf_files <-
   c(
     fl_doh %>% xml_nodes("a") %>% xml_attr("href") %>% str_replace("^/", "http://www.floridahealth.gov/"),
     fl_disaster %>% xml_nodes("a") %>% xml_attr("href") %>% str_replace("^/", "https://floridadisaster.org/")
   ) %>% 
   str_subset("pdf$") %>% 
   str_subset("daily-report") %>% 
-  unique()
+  unique() %>% 
+  .[!duplicated(path_file(.))]
 
 dir_create("pdfs")
 
@@ -37,7 +42,7 @@ if (length(pdf_files)) {
 pdf_files_local <- path("pdfs", path_file(pdf_files))
 
 for (pdf_file in pdf_files_local) {
-  if (!file.exists(pdf_file)) next
+  if (!file_exists(pdf_file)) next
   tables <- process_pdf(pdf_file)
   outdir <- path("pdfs", str_replace_all(tables$timestamp_pdf, " ", "_"))
   dir_create(outdir)

@@ -1,4 +1,4 @@
-timestamp,county,florida_resident,outside_florida,non_florida_resident,total
+timestamp,county,fl_resident,not_diagnosed_isolated_in_fl,non_fl_resident,total
 2020-03-18 17:08:00 EDT,Broward,73,0,7,80
 2020-03-18 17:08:00 EDT,Dade,72,1,4,77
 2020-03-18 17:08:00 EDT,Palm Beach,19,1,1,21
@@ -14,3 +14,19 @@ timestamp,county,florida_resident,outside_florida,non_florida_resident,total
 2020-03-18 17:08:00 EDT,Alachua,4,0,3,7
 2020-03-18 17:08:00 EDT,Seminole,7,0,0,7
 2020-03-18 17:08:00 EDT,Clay,4,0,0,4
+2020-03-18 17:08:00 EDT,Okaloosa,3,1,0,4
+2020-03-18 17:08:00 EDT,Sarasota,2,0,2,4
+2020-03-18 17:08:00 EDT,St. Johns,3,0,1,4
+2020-03-18 17:08:00 EDT,Citrus,3,0,0,3
+2020-03-18 17:08:00 EDT,Pasco,3,0,0,3
+2020-03-18 17:08:00 EDT,Brevard,2,0,0,2
+2020-03-18 17:08:00 EDT,Lake,2,0,0,2
+2020-03-18 17:08:00 EDT,Polk,2,0,0,2
+2020-03-18 17:08:00 EDT,Charlotte,1,0,0,1
+2020-03-18 17:08:00 EDT,Escambia,1,0,0,1
+2020-03-18 17:08:00 EDT,Gadsden,0,1,0,1
+2020-03-18 17:08:00 EDT,Leon,0,1,0,1
+2020-03-18 17:08:00 EDT,Nassau,1,0,0,1
+2020-03-18 17:08:00 EDT,Santa Rosa,1,0,0,1
+2020-03-18 17:08:00 EDT,Sumter,1,0,0,1
+2020-03-18 17:08:00 EDT,Walton,0,0,1,1
