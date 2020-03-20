@@ -44,7 +44,7 @@ g <-
   labs(
     x = NULL, y = NULL,
     caption = glue::glue(
-      "Last update: {max(tests$timestamp)}",
+      "Last update: {max(x$timestamp)}",
       "Source: Florida DOH and covidtracking.com", 
       "github.com/gadenbuie/covid19-florida",
       .sep = "\n"
@@ -380,15 +380,15 @@ g_age <-
   ) +
   guides(fill = FALSE) +
   coord_cartesian(clip = "off") +
-  theme_minimal() +
+  theme_minimal(base_size = 14) +
   theme(
     panel.grid.major.x = element_blank(),
     panel.grid.minor.x = element_blank(),
     panel.grid.major.y = element_blank(),
     panel.grid.minor.y = element_blank(),
-    plot.caption = element_text(color = "#444444"),
+    plot.caption = element_text(color = "#444444", margin = margin(t = 1.5, unit = "lines")),
     axis.text.y = element_blank()
   )
 
 
-ggsave(fs::path("plots", "covid-19-florida-age.png"), g_age, width = 6.66, height = 1.666, dpi = 150, scale = 1.5)
+ggsave(fs::path("plots", "covid-19-florida-age.png"), g_age, width = 6.66, height = 2, dpi = 150, scale = 1.5)
