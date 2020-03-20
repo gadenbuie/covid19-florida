@@ -205,3 +205,19 @@ process_pdf <- function(pdf_file) {
   
   out
 }
+
+process_and_output_pdf <- function(pdf_files) {
+  for (pdf_file in pdf_files) {
+    if (!file_exists(pdf_file)) next
+    tables <- process_pdf(pdf_file)
+    outdir <- path("pdfs", str_replace_all(tables$timestamp_pdf, " ", "_"))
+    dir_create(outdir)
+    for (name in names(tables)) {
+      if (is.character(tables[[name]])) {
+        write_lines(tables[[name]], path(outdir, "README.md"))
+      } else if (inherits(tables[[name]], "data.frame")) {
+        write_csv(tables[[name]], path(outdir, name, ext = "csv"))
+      }
+    }
+  }
+}
