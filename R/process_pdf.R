@@ -134,6 +134,10 @@ process_pdf <- function(pdf_file) {
     pivot_wider(names_from = group, values_from = count) %>% 
     add_timestamp()
   
+  if (!nrow(out$overall_counts)) {
+    out$overall_counts <- tibble(timestamp = timestamp_pdf)
+  }
+  
   
   # Page 2 ------------------------------------------------------------------
   page_2 <-
@@ -270,4 +274,24 @@ process_and_output_pdf <- function(pdf_files) {
       }
     }
   }
+}
+
+harmonize_pdf_data <- function() {
+  dirs <- dir_ls(here::here("pdfs"), type = "directory", regexp = "2020")
+  csvs <- dir_ls(dirs, regexp = "csv$")
+  outdir <- here::here("pdfs", "data")
+  dir_create(outdir)
+  data <- map(csvs, read_csv)
+  out <- list()
+  for (df_name in names(data)) {
+    name <- path_ext_remove(path_file(df_name))
+    out[[name]] <- bind_rows(out[[name]], data[[df_name]])
+  }
+  iwalk(out, ~ write_csv(.x, path(outdir, .y, ext = "csv")))
+}
+
+process_all_pdfs <- function() {
+  pdf_files <- fs::dir_ls(here::here("pdfs"), regexp = "pdf$")
+  process_and_output_pdf(pdf_files)
+  harmonize_pdf_data()
 }
