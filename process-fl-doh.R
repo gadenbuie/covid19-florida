@@ -167,6 +167,7 @@ boxes_text %>%
       str_detect(description, "pending") ~ "pending",
       str_detect(description, "under surveillance") ~ "total",
       str_detect(description, "total tests") ~ "total",
+      str_detect(description, "(currently )?monitor") ~ "monitoring",
       TRUE ~ gsub("[ -]", "_", description)
     )
   ) %>% 

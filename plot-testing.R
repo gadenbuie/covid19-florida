@@ -12,7 +12,7 @@ test_summary <-
   rename(deaths = florida_deaths) %>%
   replace_na(list(deaths = 0)) %>% 
   mutate(positive = positive - deaths) %>%
-  mutate_at("timestamp", ymd_hms) %>%
+  mutate_at("timestamp", ymd_hms, tz = "America/New_York") %>%
   mutate(day = floor_date(timestamp, "day")) %>% 
   group_by(day) %>% 
   arrange(desc(timestamp)) %>% 
