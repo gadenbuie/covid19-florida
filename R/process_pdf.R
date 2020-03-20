@@ -82,6 +82,15 @@ add_total <- function(df, from) {
   df
 }
 
+fix_missing_percent <- function(df, col = "percent") {
+  idx_pct <- which(colnames(df) == col)
+  idx_after <- seq_along(colnames(df))[-1:-idx_pct]
+  df[!str_detect(df[[col]], "%"), idx_after] <- 
+    df[!str_detect(df[[col]], "%"), idx_after - 1]
+  df[!str_detect(df[[col]], "%"), idx_pct] <- NA_character_
+  df
+}
+
 process_pdf <- function(pdf_file) {
   out <- list()
   
@@ -133,13 +142,14 @@ process_pdf <- function(pdf_file) {
     str_replace_all("\\s{2,}|((\\d) ([\\dA-Z]))", "\\2\t\\3") %>% 
     read_table_pages(
       col_names = c(
-        "county", "florida_resident", "percent", 
+        "county", "florida_resident", "percent",
         "florida_resident_outside", "non_florida_resident", "total",
         "other_1", "other_2", "other_3"
       ),
       pattern_filter = "\\d\t\\d",
       pattern_tab = "\\s{2,}"
-    )
+    ) %>% 
+    fix_missing_percent()
   
   out$cases_county <-
     page_2 %>% 
@@ -168,7 +178,7 @@ process_pdf <- function(pdf_file) {
   
   out$cases_age <-
     page_2_right %>% 
-    filter(group == 3, !str_detect(other_1, "Age group")) %>% 
+    filter(group == 3, str_detect(other_1, "years")) %>% 
     select(age_group = other_1, count = other_2, percent = other_3) %>% 
     select(age_group, count) %>% 
     pivot_wider(names_from = age_group, values_from = count) %>% 

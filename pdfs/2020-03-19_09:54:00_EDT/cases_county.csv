@@ -26,7 +26,7 @@ timestamp,county,florida_resident,florida_resident_outside,non_florida_resident,
 2020-03-19 09:54:00 EDT,Santa Rosa,2,0,0,2
 2020-03-19 09:54:00 EDT,Charlotte,1,0,0,1
 2020-03-19 09:54:00 EDT,Escambia,1,0,0,1
-2020-03-19 09:54:00 EDT,Gadsden,0,0,1,NA
+2020-03-19 09:54:00 EDT,Gadsden,0,1,0,1
 2020-03-19 09:54:00 EDT,Nassau,1,0,0,1
 2020-03-19 09:54:00 EDT,Sumter,1,0,0,1
-2020-03-19 09:54:00 EDT,Walton,0,1,1,NA
+2020-03-19 09:54:00 EDT,Walton,0,0,1,1
