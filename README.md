@@ -8,6 +8,8 @@ Parsed from the [Florida's COVID-19 Data and Surveillance Dashboard][dashboard].
 
 ![](plots/covid-19-florida-daily-test-changes.png)
 
+![](plots/covid-19-florida-age.png)
+
 ## Snapshots and Data Capture
 
 Initially this repo gathered data from the [Florida Department of Health COVID-19 status page][main-page].
