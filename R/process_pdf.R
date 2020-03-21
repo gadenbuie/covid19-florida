@@ -1,3 +1,14 @@
+library(readr)
+library(dplyr)
+library(tidyr)
+library(purrr)
+library(stringr)
+library(lubridate)
+library(glue)
+library(fs)
+source(here::here("R/process_pdf_county_testing.R"))
+source(here::here("R/process_pdf_line_list.R"))
+
 find_cell <- function(table, pattern) {
   table %>% 
     set_names(seq_along(colnames(.))) %>% 
@@ -91,6 +102,12 @@ fix_missing_percent <- function(df, col = "percent") {
   df
 }
 
+add_timestamp <- function(data, timestamp) {
+  data %>% 
+    mutate(timestamp = !!timestamp) %>% 
+    select(timestamp, everything())
+}
+
 process_pdf <- function(pdf_file) {
   out <- list()
   
@@ -107,11 +124,7 @@ process_pdf <- function(pdf_file) {
   
   out$timestamp_pdf <- timestamp_pdf
   
-  add_timestamp <- function(data) {
-    data %>% 
-      mutate(timestamp = timestamp_pdf) %>% 
-      select(timestamp, everything())
-  }
+  add_this_timestamp <- partial(add_timestamp, timestamp = timestamp_pdf)
   
   out$overall_counts <-
     page_one_text %>%
@@ -132,7 +145,7 @@ process_pdf <- function(pdf_file) {
       )
     ) %>% 
     pivot_wider(names_from = group, values_from = count) %>% 
-    add_timestamp()
+    add_this_timestamp()
   
   if (!nrow(out$overall_counts)) {
     out$overall_counts <- tibble(timestamp = timestamp_pdf)
@@ -160,7 +173,7 @@ process_pdf <- function(pdf_file) {
     select(-contains("percent"), contains("other")) %>% 
     select(county:total) %>%
     filter(county != "Total") %>% 
-    add_timestamp()
+    add_this_timestamp()
   
   page_2_right <-
     page_2 %>%
@@ -178,7 +191,7 @@ process_pdf <- function(pdf_file) {
     pivot_wider(names_from = Gender, values_from = Count) %>% 
     janitor::clean_names() %>%
     mutate_all(as.numeric) %>% 
-    add_timestamp()
+    add_this_timestamp()
   
   out$cases_age <-
     page_2_right %>% 
@@ -187,21 +200,11 @@ process_pdf <- function(pdf_file) {
     select(age_group, count) %>% 
     pivot_wider(names_from = age_group, values_from = count) %>% 
     mutate_all(as.numeric) %>% 
-    add_timestamp()
+    add_this_timestamp()
   
   # Testing by County --------------------------------------------------------
-  pages_testing <- page_text %>% 
-    map_lgl(str_detect, pattern = "PUI testing by county") %>% 
-    which()
-  
-  out$county_testing <-
-    page_text[pages_testing] %>%
-    read_table_pages(col_names = c("county", "pending", "negative", "positive", "percent", "total")) %>% 
-    drop_empty() %>% 
-    select(-contains("percent")) %>% 
-    add_total(from = c("pending", "negative", "positive")) %>%  
-    filter(county != "Total") %>% 
-    add_timestamp()
+  out$county_testing <- process_county_testing(page_text, timestamp_pdf)
+
   
   # Testing by Lab ----------------------------------------------------------
   pages_lab_testing <- page_text %>% 
@@ -214,47 +217,10 @@ process_pdf <- function(pdf_file) {
     select(-contains("percent")) %>%
     filter(reporting_lab != "Total") %>% 
     add_total(from = c("negative", "positive")) %>% 
-    add_timestamp()
+    add_this_timestamp()
   
   # Line List ----------------------------------------------------------------
-  pages_line_list <- page_text %>% 
-    map_lgl(str_detect, pattern = "line list of cases") %>% 
-    which()
-  
-  line_list_text <- 
-    page_text[pages_line_list] %>% 
-    str_split("\n") %>% 
-    map(str_subset, pattern = "^\\d+\\s{2,}[A-Z]")
-  
-  line_list <-
-    line_list_text %>% 
-    map(str_extract, pattern = ".+(FL resident|isolated in FL)") %>% 
-    keep(~ length(.) > 0) %>% 
-    map_dfr(readr::read_table, col_names = c("case", "county", "age", "sex", "travel_related", paste0("jurisdiction", 1:3))) %>% 
-    mutate_at(vars(contains("jurisdiction")), ~ if_else(is.na(.x), "", .x)) %>% 
-    mutate(jurisdiction = paste(jurisdiction1, jurisdiction2, jurisdiction3)) %>% 
-    mutate_at(vars(jurisdiction), str_trim) %>% 
-    select(-matches("\\d$"))
-  
-  line_list$travel_detail <- 
-    line_list_text %>% 
-    map(str_extract, pattern = "(FL resident|isolated in FL).+") %>% 
-    map(str_remove, pattern = "^(FL resident|isolated in FL)") %>% 
-    map(str_extract, pattern = "^.+?(Yes|No|Unknown|\\d)") %>% 
-    map(str_remove, pattern = "(Yes|No|Unknown|\\d)$") %>% 
-    unlist() %>% 
-    str_trim()
-  
-  line_list$date_counted <-
-    line_list_text %>% 
-    map(str_extract, pattern = "[\\d/]{5,8}$") %>% 
-    unlist() %>% 
-    mdy() %>% 
-    strftime("%F")
-  
-  out$line_list <-
-    line_list %>% 
-    add_timestamp()
+  out$line_list <- process_line_list(page_text, timestamp_pdf)
   
   out
 }
