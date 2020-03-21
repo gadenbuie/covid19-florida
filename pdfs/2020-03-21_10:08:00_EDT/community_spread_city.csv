@@ -1,0 +1,32 @@
+timestamp,city,count
+2020-03-21 10:08:00 EDT,"Miami, Dade",37
+2020-03-21 10:08:00 EDT,"Tampa, Hillsborough",17
+2020-03-21 10:08:00 EDT,"Hollywood, Broward",16
+2020-03-21 10:08:00 EDT,Missing,13
+2020-03-21 10:08:00 EDT,"Orlando, Orange",12
+2020-03-21 10:08:00 EDT,"Fort Lauderdale, Broward",11
+2020-03-21 10:08:00 EDT,"Miami Beach, Dade",10
+2020-03-21 10:08:00 EDT,"Jacksonville, Duval",9
+2020-03-21 10:08:00 EDT,"Naples, Collier",7
+2020-03-21 10:08:00 EDT,"Gainesville, Alachua",7
+2020-03-21 10:08:00 EDT,"Hialeah, Dade",6
+2020-03-21 10:08:00 EDT,"Delray Beach, Palm Beach",5
+2020-03-21 10:08:00 EDT,"Miramar, Broward",5
+2020-03-21 10:08:00 EDT,"Boynton Beach, Palm Beach",5
+2020-03-21 10:08:00 EDT,"Bradenton, Manatee",4
+2020-03-21 10:08:00 EDT,"North Miami Beach, Dade",4
+2020-03-21 10:08:00 EDT,"Kissimmee, Osceola",3
+2020-03-21 10:08:00 EDT,"Davenport, Polk",3
+2020-03-21 10:08:00 EDT,"Saint Petersburg, Pinellas",3
+2020-03-21 10:08:00 EDT,"Boca Raton, Palm Beach",3
+2020-03-21 10:08:00 EDT,"Ponte Vedra Beach, St. Johns",3
+2020-03-21 10:08:00 EDT,"Lauderhill, Broward",2
+2020-03-21 10:08:00 EDT,"Weston, Broward",2
+2020-03-21 10:08:00 EDT,"Miami Gardens, Dade",2
+2020-03-21 10:08:00 EDT,"Oakland Park, Broward",2
+2020-03-21 10:08:00 EDT,"Casselberry, Seminole",2
+2020-03-21 10:08:00 EDT,"Brooklyn, Dade",2
+2020-03-21 10:08:00 EDT,"Key Biscayne, Dade",2
+2020-03-21 10:08:00 EDT,"West Palm Beach, Palm Beach",1
+2020-03-21 10:08:00 EDT,"Tarpon Springs, Pinellas",1
+2020-03-21 10:08:00 EDT,"Plantation, Broward",1

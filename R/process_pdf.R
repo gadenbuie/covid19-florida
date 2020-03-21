@@ -8,6 +8,7 @@ library(glue)
 library(fs)
 source(here::here("R/process_pdf_county_testing.R"))
 source(here::here("R/process_pdf_line_list.R"))
+source(here::here("R/process_pdf_community_spread.R"))
 
 find_cell <- function(table, pattern) {
   table %>% 
@@ -206,7 +207,13 @@ process_pdf <- function(pdf_file) {
   
   # Testing by County --------------------------------------------------------
   out$county_testing <- process_county_testing(page_text, timestamp_pdf)
-
+  
+  # Community Spread ---------------------------------------------------------
+  community_spread <- process_community_spread(page_text, timestamp_pdf)
+  if (!is.null(community_spread)) {
+    out$community_spread_city <- community_spread$city
+    out$community_spread_county <- community_spread$county
+  }
   
   # Testing by Lab ----------------------------------------------------------
   pages_lab_testing <- page_text %>% 
