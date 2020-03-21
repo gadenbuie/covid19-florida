@@ -6,10 +6,11 @@ library(ggplot2, warn.conflicts = FALSE)
 
 x <- read_csv("covid-19-florida-tests.csv")
 
-test_summary <- 
+test_summary <-
   x %>%
-  select(timestamp, negative, positive, pending, contains("deaths"), -total) %>%
-  rename(deaths = florida_deaths) %>%
+  select(timestamp, negative, positive, pending, deaths = one_of("county_deaths", "florida_deaths"), -total) %>% 
+  mutate(deaths = coalesce(!!!rlang::syms(str_subset(colnames(.), "deaths")))) %>% 
+  select(-matches("deaths\\d+")) %>% 
   replace_na(list(deaths = 0)) %>% 
   mutate(positive = positive - deaths) %>%
   mutate_at("timestamp", ymd_hms, tz = "America/New_York") %>%
@@ -23,7 +24,7 @@ test_summary <-
   pivot_longer(names_to = "status", values_to = "count", -timestamp) %>%
   mutate(status = factor(status, c("negative", "pending", "deaths", "positive")))
   
-g <- 
+g <-
   test_summary %>% 
   # filter(status != "negative") %>% 
   ggplot() +
