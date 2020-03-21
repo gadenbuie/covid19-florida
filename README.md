@@ -6,6 +6,8 @@ Parsed from the [Florida's COVID-19 Data and Surveillance Dashboard][dashboard].
 
 ![](plots/covid-19-florida-total-positive.png)
 
+![](plots/covid-19-florida-county-top-6.png)
+
 ![](plots/covid-19-florida-change-new-cases.png)
 
 ![](plots/covid-19-florida-daily-test-changes.png)

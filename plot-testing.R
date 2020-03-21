@@ -9,7 +9,7 @@ x <- read_csv("covid-19-florida-tests.csv")
 test_summary <-
   x %>%
   select(timestamp, negative, positive, pending, deaths = one_of("county_deaths", "florida_deaths"), -total) %>% 
-  mutate(deaths = coalesce(!!!rlang::syms(str_subset(colnames(.), "deaths")))) %>% 
+  mutate(deaths = coalesce(!!!rlang::syms(stringr::str_subset(colnames(.), "deaths")))) %>% 
   select(-matches("deaths\\d+")) %>% 
   replace_na(list(deaths = 0)) %>% 
   mutate(positive = positive - deaths) %>%
@@ -395,3 +395,82 @@ g_age <-
 
 
 ggsave(fs::path("plots", "covid-19-florida-age.png"), g_age, width = 6.66, height = 2, dpi = 150, scale = 1.5)
+
+
+
+# County Cases Log Scale --------------------------------------------------
+
+county_cases_dash <- readr::read_csv("covid-19-florida-cases-county.csv")
+county_cases_pdf <- readr::read_csv("pdfs/data/cases_county.csv")
+
+county_daily <- 
+  bind_rows(
+    county_cases_dash,
+    county_cases_pdf %>% rename(count = total)
+  ) %>% 
+  mutate(county = recode(county, "Dade" = "Miami-Dade")) %>% 
+  select(timestamp, county, count) %>% 
+  mutate_at("timestamp", ymd_hms, tz = "America/New_York") %>%
+  mutate(day = floor_date(timestamp, "day") %>% as_date()) %>% 
+  group_by(day, county) %>% 
+  arrange(desc(timestamp)) %>% 
+  slice(1) %>% 
+  ungroup() %>% 
+  select(-timestamp) %>% 
+  complete(county, day, fill = list(count = 0)) %>% 
+  mutate(county = forcats::fct_reorder(county, count, max, .desc = TRUE))
+
+county_top_6 <- county_daily %>% 
+  group_by(county) %>% 
+  filter(count == max(count)) %>% 
+  ungroup() %>% 
+  top_n(6, count)
+
+g_county_top_6 <- 
+  ggplot() +
+  aes(day, count) +
+  geom_line(
+    data = county_daily %>% semi_join(county_top_6, by = "county"),
+    aes(color = county)
+  ) +
+  geom_point(
+    data = county_daily %>% semi_join(county_top_6, by = "county"),
+    aes(color = county)
+  ) +
+  scale_y_continuous(
+    trans = scales::log1p_trans(),
+    breaks = c(0, round(10^seq(1, 4, 0.5), 0)),
+    limits = c(0, NA)
+  ) +
+  scale_color_manual(
+    values = c("#ec4e20", "#ffc61e", "#440154", "#3e78b2", "#6baa75", "#69747c")
+  ) +
+  labs(
+    x = NULL, y = "Count\n(Log Scale)", color = NULL,
+    caption = glue::glue(
+      "Source: Florida DOH", 
+      "Last update: {max(county_cases_pdf$timestamp)}",
+      "github.com/gadenbuie/covid19-florida",
+      .sep = "\n"
+    )
+  ) +
+  ggtitle(
+    label = "Florida COVID-19 Positive Cases by County",
+    subtitle = "For the 6 counties with the highest case count"
+  ) +
+  guides(
+    color = guide_legend(nrow = 1)
+  ) +
+  theme_minimal(14) +
+  theme(
+    legend.position = "bottom",
+    axis.title.y = element_text(angle = 0, vjust = 0.85, hjust = 0, color = "#666666"),
+    plot.margin = margin(0.5, 0.5, 0.5, 0.5, unit = "lines"),
+    plot.subtitle = element_text(margin = margin(b = 1.25, unit = "lines")),
+    plot.caption = element_text(color = "#444444"),
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.minor.y = element_blank()
+  )
+
+ggsave(fs::path("plots", "covid-19-florida-county_top_6.png"), g_county_top_6, width = 6.66, height = 3.33, dpi = 150, scale = 1.5)
