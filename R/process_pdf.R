@@ -128,8 +128,9 @@ process_pdf <- function(pdf_file) {
   
   out$overall_counts <-
     page_one_text %>%
-    str_extract_all("(Total identified|Tested positive|Tested negative|Currently awaiting testing)\\s*[\\d,]+") %>%
+    str_extract_all("(Total (identified|tested)|Tested positive|Tested negative|Currently awaiting testing|Positive|Negative|Inconclusive|Awaiting BPHL testing)\\s*[\\d,]+") %>%
     `[[`(1) %>% 
+    str_trim() %>% 
     tibble(raw = .) %>% 
     separate(raw, c("group", "count"), sep = "\\s{3,}") %>% 
     mutate_at(vars(group), tolower) %>% 
@@ -137,10 +138,11 @@ process_pdf <- function(pdf_file) {
     mutate_at(vars(count), as.numeric) %>% 
     mutate(
       group = case_when(
-        str_detect(group, "total identified") ~ "total",
+        str_detect(group, "total (identified|tested)") ~ "total",
         str_detect(group, "positive") ~ "positive",
         str_detect(group, "negative") ~ "negative",
         str_detect(group, "awaiting|pending") ~ "pending",
+        str_detect(group, "inconclusive") ~ "inconclusive",
         TRUE ~ str_replace_all(group, " ", "_")
       )
     ) %>% 

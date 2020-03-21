@@ -1,2 +1,2 @@
-timestamp
-2020-03-20 17:40:00 EDT
+timestamp,total,positive,negative,inconclusive,pending
+2020-03-20 17:40:00 EDT,6277,563,5714,0,1095
