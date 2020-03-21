@@ -259,7 +259,8 @@ county_counts <-
     county_pdf %>% select(timestamp, county, count = total)
   )
 
-county_counts %>% 
+g_county_counts <- 
+  county_counts %>% 
   filter(timestamp == max(timestamp)) %>% 
   top_n(10, count) %>% 
   ungroup() %>% 
@@ -289,7 +290,8 @@ county_counts %>%
   )
 
 
-county_counts %>% 
+g_county_heatmap <- 
+  county_counts %>% 
   mutate(
     county = recode(county, "Miami-Dade" = "Dade"),
     timestamp = ymd_hms(timestamp, tz = "America/New_York"),
@@ -316,8 +318,8 @@ county_counts %>%
     plot.margin = margin(t = 1, l = 1, r = 2, unit = "lines")
   )
 
-
-read_csv("pdfs/data/cases_age.csv") %>% 
+g_case_heatmap <- 
+  read_csv("pdfs/data/cases_age.csv") %>% 
   pivot_longer(-timestamp, names_to = "age", values_to = "count") %>% 
   mutate(age = forcats::fct_inorder(age)) %>% 
   mutate(
