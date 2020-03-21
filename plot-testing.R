@@ -464,7 +464,7 @@ g_county_top_6 <-
   theme_minimal(14) +
   theme(
     legend.position = "bottom",
-    axis.title.y = element_text(angle = 0, vjust = 0.85, hjust = 0, color = "#666666"),
+    axis.title.y = element_text(angle = 0, vjust = 1, hjust = 0, color = "#666666"),
     plot.margin = margin(0.5, 0.5, 0.5, 0.5, unit = "lines"),
     plot.subtitle = element_text(margin = margin(b = 1.25, unit = "lines")),
     plot.caption = element_text(color = "#444444"),
@@ -473,4 +473,4 @@ g_county_top_6 <-
     panel.grid.minor.y = element_blank()
   )
 
-ggsave(fs::path("plots", "covid-19-florida-county_top_6.png"), g_county_top_6, width = 6.66, height = 3.33, dpi = 150, scale = 1.5)
+ggsave(fs::path("plots", "covid-19-florida-county-top-6.png"), g_county_top_6, width = 6.66, height = 3.33, dpi = 150, scale = 1.5)
