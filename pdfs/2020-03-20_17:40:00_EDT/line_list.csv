@@ -571,5 +571,4 @@ timestamp,case,county,age,sex,travel_related,travel_detail,contact,jurisdiction,
 2020-03-20 17:40:00 EDT,7,Manatee,70,Male,No,,No,FL resident,2020-03-16,TRUE
 2020-03-20 17:40:00 EDT,8,Orange,79,Female,Unknown,,No,FL resident,2020-03-15,TRUE
 2020-03-20 17:40:00 EDT,9,Orange,68,Female,Yes,PHILIPPINES; SOUTH KOREA,,Not diagnosed/isolated in FL,2020-03-13,TRUE
-2020-03-20 17:40:00 EDT,10,Pasco,46,Male,No,,Yes,FL resident,2020-03-20,TRUE
-2020-03-20 17:40:00 EDT,11,Santa Rosa,71,Male,Yes,EGYPT; ISRAEL; JORDAN,No,FL resident,2020-03-05,TRUE
+2020-03-20 17:40:00 EDT,10,Santa Rosa,71,Male,Yes,EGYPT; ISRAEL; JORDAN,No,FL resident,2020-03-05,TRUE
