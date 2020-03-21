@@ -150,7 +150,7 @@ g_new_cases <-
   filter(!is.na(increase)) %>% 
   ggplot() +
   aes(day, increase) +
-  geom_col(aes(alpha = complete), fill = "#440154") +
+  geom_col(aes(alpha = complete), fill = "#ec4e20") +
   labs(
     x = NULL, y = NULL,
     caption = glue::glue(
@@ -182,7 +182,7 @@ g_new_cases <-
   )
 
 
-ggsave(fs::path("plots", "covid-19-florida-change-new-cases.png"), g_tests, width = 6.66, height = 3.33, dpi = 150, scale = 1.5)
+ggsave(fs::path("plots", "covid-19-florida-change-new-cases.png"), g_new_cases, width = 6.66, height = 2.5, dpi = 150, scale = 1.5)
 
 g_test_changes <- 
   tests %>% 
