@@ -6,9 +6,11 @@ library(stringr)
 library(lubridate)
 library(glue)
 library(fs)
-source(here::here("R/process_pdf_county_testing.R"))
-source(here::here("R/process_pdf_line_list.R"))
-source(here::here("R/process_pdf_community_spread.R"))
+walk(
+  dir_ls(here::here("R"), regexp = "process_pdf_.+R$"),
+  sys.source, 
+  env = globalenv()
+)
 
 find_cell <- function(table, pattern) {
   table %>% 
@@ -78,7 +80,7 @@ read_table_pages <- function(
     keep(~ length(.x) > 0) %>%
     map(str_replace_all, pattern = pattern_tab, replace_tab) %>%
     map_chr(paste, collapse = "\n") %>%
-    readr::read_tsv(col_names = col_names)
+    quietly(readr::read_tsv, col_names = col_names)
 }
 
 add_total <- function(df, from) {
@@ -109,6 +111,25 @@ add_timestamp <- function(data, timestamp) {
     select(timestamp, everything())
 }
 
+try_safely <- function(.f, ...) {
+  .g <- purrr::safely(.f)
+  res <- .g(...)
+  if (is.null(res$error)) {
+    return(res$result)
+  } else {
+    rlang::warn(res$error$message)
+    return(NULL)
+  }
+}
+
+quietly <- function(.x, .f, ...) {
+  if (isTRUE(getOption("process_pdf_quietly", TRUE))) {
+    suppressWarnings(.f(.x, ...))
+  } else {
+    .f(.x, ...)
+  }
+}
+
 process_pdf <- function(pdf_file) {
   out <- list()
   
@@ -129,7 +150,7 @@ process_pdf <- function(pdf_file) {
   
   out$overall_counts <-
     page_one_text %>%
-    str_extract_all("(Total (identified|tested)|Tested positive|Tested negative|Currently awaiting testing|Positive|Negative|Inconclusive|Awaiting BPHL testing)\\s*[\\d,]+") %>%
+    str_extract_all("(Total (identified|tested)|Tested positive|Tested negative|Currently awaiting testing|Positive|Negative|Inconclusive|Awaiting BPHL.+?testing)\\s*[\\d,]+") %>%
     `[[`(1) %>% 
     str_trim() %>% 
     tibble(raw = .) %>% 
@@ -156,60 +177,17 @@ process_pdf <- function(pdf_file) {
   
   
   # Page 2 ------------------------------------------------------------------
-  page_2 <-
-    page_text[[2]] %>% 
-    str_replace_all("\\s{2,}|((\\d) ([\\dA-Z]))", "\\2\t\\3") %>% 
-    str_replace_all("\\s{2,}|((\\d) ([\\dA-Z]))", "\\2\t\\3") %>% 
-    read_table_pages(
-      col_names = c(
-        "county", "florida_resident", "percent",
-        "florida_resident_outside", "non_florida_resident", "total",
-        "other_1", "other_2", "other_3"
-      ),
-      pattern_filter = "\\d\t\\d",
-      pattern_tab = "\\s{2,}"
-    ) %>% 
-    fix_missing_percent()
+  out_page_2 <- try_safely(process_cases_page_2, page_text, timestamp_pdf)
   
-  out$cases_county <-
-    page_2 %>% 
-    select(-contains("percent"), contains("other")) %>% 
-    select(county:total) %>%
-    filter(county != "Total") %>% 
-    add_this_timestamp()
-  
-  page_2_right <-
-    page_2 %>%
-    select(starts_with("other")) %>% 
-    filter(!duplicated(other_1)) %>% 
-    mutate(group = cumsum(is.na(other_1) | is.na(lag(other_1))))
-  
-  out$cases_sex <-
-    page_2_right %>% 
-    filter(group == 1) %>% 
-    select(-group) %>% 
-    set_names(c("Gender", "Count", "Percent")) %>% 
-    drop_empty() %>% 
-    select(-Percent) %>% 
-    pivot_wider(names_from = Gender, values_from = Count) %>% 
-    janitor::clean_names() %>%
-    mutate_all(as.numeric) %>% 
-    add_this_timestamp()
-  
-  out$cases_age <-
-    page_2_right %>% 
-    filter(group == 3, str_detect(other_1, "years")) %>% 
-    select(age_group = other_1, count = other_2, percent = other_3) %>% 
-    select(age_group, count) %>% 
-    pivot_wider(names_from = age_group, values_from = count) %>% 
-    mutate_all(as.numeric) %>% 
-    add_this_timestamp()
+  out$cases_county <- out_page_2$cases_county
+  out$cases_sex    <- out_page_2$cases_sex
+  out$cases_age    <- out_page_2$cases_age
   
   # Testing by County --------------------------------------------------------
-  out$county_testing <- process_county_testing(page_text, timestamp_pdf)
+  out$county_testing <- try_safely(process_county_testing, page_text, timestamp_pdf)
   
   # Community Spread ---------------------------------------------------------
-  community_spread <- process_community_spread(page_text, timestamp_pdf)
+  community_spread <- try_safely(process_community_spread, page_text, timestamp_pdf)
   if (!is.null(community_spread)) {
     out$community_spread_city <- community_spread$city
     out$community_spread_county <- community_spread$county
@@ -220,16 +198,17 @@ process_pdf <- function(pdf_file) {
     map_lgl(str_detect, pattern = "testing by lab") %>% 
     which()
   
-  out$lab_testing <-
+  out$lab_testing <- try_safely(function() {
     page_text[pages_lab_testing] %>% 
-    read_table_pages(col_names = c("reporting_lab", "negative", "positive", "percent_positive", "total")) %>% 
-    select(-contains("percent")) %>%
-    filter(reporting_lab != "Total") %>% 
-    add_total(from = c("negative", "positive")) %>% 
-    add_this_timestamp()
+      read_table_pages(col_names = c("reporting_lab", "negative", "positive", "percent_positive", "total")) %>% 
+      select(-contains("percent")) %>%
+      filter(reporting_lab != "Total") %>% 
+      add_total(from = c("negative", "positive")) %>% 
+      add_this_timestamp()
+  })
   
   # Line List ----------------------------------------------------------------
-  out$line_list <- process_line_list(page_text, timestamp_pdf)
+  out$line_list <- try_safely(process_line_list, page_text, timestamp_pdf)
   
   out
 }

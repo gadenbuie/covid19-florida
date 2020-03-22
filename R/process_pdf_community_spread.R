@@ -5,9 +5,11 @@ description_community_spread <- paste(
 )
 
 process_community_spread <- function(page_text, timestamp) {
-  if (timestamp < "2020-03-21 10:08:00 EDT") {
+  if (timestamp != "2020-03-21 10:08:00 EDT") {
     return(NULL)
-  } else if (timestamp >= "2020-03-21 10:08:00 EDT") {
+  } else if (timestamp == "2020-03-21 10:08:00 EDT") {
+    # this table was added in the above pdf report, 
+    # but removed in the next iteration
     process_community_spread_v1(page_text, timestamp)
   }
 }
