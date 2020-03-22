@@ -3,49 +3,73 @@ library(tidyr, warn.conflicts = FALSE)
 library(readr, warn.conflicts = FALSE)
 library(lubridate, warn.conflicts = FALSE)
 library(ggplot2, warn.conflicts = FALSE)
+library(purrr, warn.conflicts = FALSE)
 
-x <- read_csv("covid-19-florida-tests.csv")
+# Test summary import -----------------------------------------------------
 
-test_summary <-
-  x %>%
-  select(timestamp, negative, positive, pending, deaths = one_of("county_deaths", "florida_deaths"), -total) %>% 
+testing_summary_dash <- read_csv("covid-19-florida-tests.csv")
+testing_summary_pdf <- read_csv("pdfs/data/overall_counts.csv")
+
+test_summary_dash <-
+  testing_summary_dash %>%
+  select(timestamp, negative, positive, pending, deaths = one_of("deaths", "county_deaths", "florida_deaths"), -total) %>% 
   mutate(deaths = coalesce(!!!rlang::syms(stringr::str_subset(colnames(.), "deaths")))) %>% 
   select(-matches("deaths\\d+")) %>% 
-  replace_na(list(deaths = 0)) %>% 
-  mutate(positive = positive - deaths) %>%
-  mutate_at("timestamp", ymd_hms, tz = "America/New_York") %>%
-  mutate(day = floor_date(timestamp, "day")) %>% 
-  group_by(day) %>% 
-  arrange(desc(timestamp)) %>% 
-  slice(1) %>% 
-  ungroup() %>% 
-  select(-day) %>% 
-  mutate_at("timestamp", as_date) %>%
-  pivot_longer(names_to = "status", values_to = "count", -timestamp) %>%
+  fill(deaths)
+
+test_summary <- 
+  list(
+    dash = test_summary_dash,
+    pdf = testing_summary_pdf
+  ) %>% 
+  imap(function(data, name) {
+    data %>% 
+      mutate_at("timestamp", ymd_hms, tz = "America/New_York") %>%
+      mutate(day = floor_date(timestamp, "day")) %>% 
+      group_by(day) %>% 
+      arrange(desc(timestamp)) %>% 
+      slice(1) %>% 
+      ungroup() %>% 
+      select(day, everything())
+  }) %>% 
+  reduce(full_join, by = "day", suffix = paste0(".", names(.))) %>% 
+  mutate(
+    negative = coalesce(negative.pdf, negative.dash),
+    positive = coalesce(positive.dash, positive.pdf),
+    pending = coalesce(pending.dash, pending.pdf),
+    timestamp = coalesce(timestamp.dash, timestamp.pdf)
+  ) %>% 
+  select(day, timestamp, negative, positive, pending, deaths) %>% 
+  mutate_at("day", as_date)
+
+test_summary_long <- test_summary %>%
+  pivot_longer(names_to = "status", values_to = "count", -c(day, timestamp)) %>%
   mutate(status = factor(status, c("negative", "pending", "deaths", "positive")))
-  
+
+# Test Summary (Plot) -----------------------------------------------------
+
 g <-
-  test_summary %>% 
-  # filter(status != "negative") %>% 
+  test_summary_long %>% 
+  filter(status != "negative") %>%
   ggplot() +
-  aes(x = timestamp, y = count, fill = status) +
+  aes(x = day, y = count, fill = status) +
   geom_col() +
   ggrepel::geom_text_repel(
-    data = test_summary %>% 
-      filter(timestamp == max(timestamp)) %>% 
+    data = test_summary_long %>% 
+      filter(day == max(day), status != "negative") %>% 
       arrange(desc(status)) %>% 
       mutate(
         placement = cumsum(count) - count / 2,
         count_label = paste(count, status)
       ),
-    aes(label = count_label, y = placement, x = timestamp + 0.40, segment.color = status), 
-    xlim = test_summary %>% pull(timestamp) %>% max() + 0.6,
+    aes(label = count_label, y = placement, x = day + 0.40, segment.color = status), 
+    xlim = test_summary %>% pull(day) %>% max() + 0.6,
     segment.size = 0.75
   ) +
   labs(
     x = NULL, y = NULL,
     caption = glue::glue(
-      "Last update: {max(x$timestamp)}",
+      "Last update: {max(test_summary_long$timestamp)}",
       "Source: Florida DOH and covidtracking.com", 
       "github.com/gadenbuie/covid19-florida",
       .sep = "\n"
@@ -83,21 +107,18 @@ ggsave(fs::path("plots", "covid-19-florida-testing.png"), g, width = 6.66, heigh
 
 # positive count ----------------------------------------------------------
 
-tests <- bind_rows(x, read_csv("pdfs/data/overall_counts.csv"))
-
 g_tests <-
-  tests %>% 
-  select(timestamp, positive) %>% 
+  test_summary %>% 
+  select(day, positive) %>% 
   filter(!is.na(positive)) %>% 
-  mutate_at(vars(timestamp), ymd_hms, tz = "America/New_York") %>% 
-  arrange(timestamp) %>% 
+  arrange(day) %>% 
   filter(positive != lag(positive)) %>% 
   ggplot() +
-  aes(timestamp, positive) +
+  aes(day, positive) +
   geom_line(color = "#ec4e20") +
   geom_point(color = "#ec4e20") +
   geom_text(
-    data = function(d) d %>% filter(timestamp == max(timestamp)),
+    data = function(d) d %>% filter(day == max(day)),
     aes(label = positive),
     hjust = 1.5,
     vjust = 0.5,
@@ -106,7 +127,7 @@ g_tests <-
   labs(
     x = NULL, y = NULL,
     caption = glue::glue(
-      "Last update: {max(tests$timestamp)}",
+      "Last update: {max(test_summary$day)}",
       "Source: Florida DOH and covidtracking.com", 
       "github.com/gadenbuie/covid19-florida",
       .sep = "\n"
@@ -116,7 +137,7 @@ g_tests <-
     label = "Florida COVID-19 Total Positive Cases"
   ) +
   theme_minimal(base_size = 14) +
-  scale_x_datetime(date_breaks = "2 days", expand = expand_scale(add = 0), date_labels = "%b\n%d") +
+  scale_x_date(date_breaks = "2 days", expand = expand_scale(add = 0), date_labels = "%b\n%d") +
   scale_y_continuous(limits = c(0, NA), expand = expand_scale(add = 0)) +
   coord_cartesian(clip = "off") +
   theme(
@@ -132,17 +153,13 @@ g_tests <-
 ggsave(fs::path("plots", "covid-19-florida-total-positive.png"), g_tests, width = 6.66, height = 3.33, dpi = 150, scale = 1.5)
 
 
-g_new_cases <- 
-  tests %>% 
-  select(timestamp, positive) %>% 
+# New Cases Added ---------------------------------------------------------
+
+g_new_cases <-
+  test_summary %>% 
+  select(day, positive) %>% 
   filter(!is.na(positive)) %>% 
-  mutate_at(vars(timestamp), ymd_hms, tz = "America/New_York") %>% 
-  arrange(timestamp) %>% 
   filter(positive != lag(positive)) %>% 
-  mutate(day = floor_date(timestamp, "day")) %>% 
-  group_by(day) %>% 
-  filter(timestamp == max(timestamp)) %>% 
-  ungroup() %>% 
   select(day, positive) %>% 
   mutate(
     increase = positive - lag(positive),
@@ -155,7 +172,7 @@ g_new_cases <-
   labs(
     x = NULL, y = NULL,
     caption = glue::glue(
-      "Last update: {max(tests$timestamp)}",
+      "Last update: {max(test_summary$timestamp)}",
       "Source: Florida DOH and covidtracking.com", 
       "github.com/gadenbuie/covid19-florida",
       .sep = "\n"
@@ -169,7 +186,7 @@ g_new_cases <-
     guide = FALSE
   ) +
   theme_minimal(base_size = 14) +
-  scale_x_datetime(date_breaks = "2 days", expand = expand_scale(add = 0), date_labels = "%b\n%d") +
+  scale_x_date(date_breaks = "2 days", expand = expand_scale(add = 0), date_labels = "%b\n%d") +
   scale_y_continuous(limits = c(0, NA), expand = expand_scale(add = 0)) +
   coord_cartesian(clip = "off") +
   theme(
@@ -185,28 +202,25 @@ g_new_cases <-
 
 ggsave(fs::path("plots", "covid-19-florida-change-new-cases.png"), g_new_cases, width = 6.66, height = 2.5, dpi = 150, scale = 1.5)
 
-g_test_changes <- 
-  tests %>% 
-  select(timestamp, positive, negative, pending) %>% 
-  mutate(resolved = positive + negative) %>% 
+
+# Daily Changes -----------------------------------------------------------
+
+g_test_changes <-
+  test_summary %>% 
+  select(day, positive, deaths, pending) %>% 
   filter(!is.na(positive)) %>% 
-  mutate_at(vars(timestamp), ymd_hms, tz = "America/New_York") %>% 
-  arrange(timestamp) %>% 
-  filter(positive != lag(positive)) %>% 
-  mutate(day = floor_date(timestamp, "day")) %>% 
-  group_by(day) %>% 
-  filter(timestamp == max(timestamp)) %>% 
-  ungroup() %>% 
+  arrange(day) %>% 
   mutate(
     positive = positive - lag(positive),
     pending = pending - lag(pending),
-    resolved = resolved - lag(resolved),
+    deaths = deaths - lag(deaths),
     complete = if_else(day == today(), "today", "past")
   ) %>% 
   filter(!is.na(positive)) %>% 
-  select(day, complete, positive, pending, resolved) %>% 
-  pivot_longer(cols = c(positive, pending, resolved), names_to = "status") %>% 
+  select(day, complete, positive, pending, deaths) %>% 
+  pivot_longer(cols = c(positive, pending, deaths), names_to = "status") %>% 
   mutate_at(vars(status), tools::toTitleCase) %>% 
+  mutate_at(vars(status), factor, levels = c("Pending", "Positive", "Deaths")) %>% 
   ggplot() +
   aes(day, value) +
   geom_col(aes(alpha = complete, fill = status)) +
@@ -214,7 +228,7 @@ g_test_changes <-
   labs(
     x = NULL, y = NULL,
     caption = glue::glue(
-      "Last update: {max(tests$timestamp)}",
+      "Last update: {max(test_summary$timestamp)}",
       "Source: Florida DOH and covidtracking.com", 
       "github.com/gadenbuie/covid19-florida",
       .sep = "\n"
@@ -228,11 +242,11 @@ g_test_changes <-
     guide = FALSE
   ) +
   scale_fill_manual(
-    values = c(Pending = "#63768d", Positive = "#ec4e20", Resolved = "#440154"), 
+    values = c(Pending = "#63768d", Positive = "#ec4e20", Deaths = "#440154"), 
     guide = FALSE
   ) +
   theme_minimal(base_size = 14) +
-  scale_x_datetime(date_breaks = "4 days", expand = expand_scale(add = 3600 * 6), date_labels = "%b\n%d") +
+  scale_x_date(date_breaks = "4 days", expand = expand_scale(add = 0.5), date_labels = "%b\n%d") +
   scale_y_continuous() +
   coord_cartesian(clip = "off") +
   theme(
@@ -250,6 +264,7 @@ g_test_changes <-
 ggsave(fs::path("plots", "covid-19-florida-daily-test-changes.png"), g_test_changes, width = 6.66, height = 3.33, dpi = 150, scale = 1.5)
 
 
+# County Positive Cases ---------------------------------------------------
 
 county_pre <- read_csv("covid-19-florida-cases-county.csv")
 county_pdf <- read_csv("pdfs/data/cases_county.csv")
