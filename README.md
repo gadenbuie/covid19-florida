@@ -42,7 +42,7 @@ The unified data files are available in [pdfs/data/](pdfs/data/).
 
 One table is extracted from the [Florida's COVID-19 Data and Surveillance Dashboard][dashboard].
 
-- Current test counts: [covid-19-florida-tests.csv](covid-19-florida-tests.csv)
+- Current test counts: [data/covid-florida_dash_summary.csv](data/covid-florida_dash_summary.csv)
 
 The `timestamp` column of indicates when the dashboard was polled for changes.
 

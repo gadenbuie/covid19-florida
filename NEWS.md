@@ -1,5 +1,19 @@
 # 2020-03-22
 
+## Major Changes
+
+For better organization, I've moved all of the data files into the same folder:
+`data/`. Files that are *not* actively updated are stored in `old/`.
+
+- `covid-19-florida-tests.csv` -> `data/covid-florida_dash_summary.csv`
+- `covid-19-florida-cases-county.csv` -> `data/old/covid-19-florida_dash_county.csv`
+- `covid-19-florida-doh.csv` -> `data/old/covid-19-florida-doh.csv`
+- The combined data extracted from the PDFS moved from `pdfs/data` to `data/`
+  and the `covid-19-florida-pdf-` prefix was added.
+
+
+## Other updates
+
 - The _community spread_ table added in the 2020-03-21 10:08:00 EDT report was
   removed in the next report (2020-03-21 17:31:00 EDT).
   

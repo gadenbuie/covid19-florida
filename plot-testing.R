@@ -7,7 +7,7 @@ library(purrr, warn.conflicts = FALSE)
 
 # Test summary import -----------------------------------------------------
 
-testing_summary_dash <- read_csv("covid-19-florida-tests.csv")
+testing_summary_dash <- read_csv("data/covid-florida_dash_summary.csv")
 testing_summary_pdf <- read_csv("pdfs/data/overall_counts.csv")
 
 test_summary_dash <-
@@ -266,7 +266,7 @@ ggsave(fs::path("plots", "covid-19-florida-daily-test-changes.png"), g_test_chan
 
 # County Positive Cases ---------------------------------------------------
 
-county_pre <- read_csv("covid-19-florida-cases-county.csv")
+county_pre <- read_csv("data/old/covid-19-florida-dash-county.csv")
 county_pdf <- read_csv("pdfs/data/cases_county.csv")
 
 county_counts <- 
@@ -415,7 +415,7 @@ ggsave(fs::path("plots", "covid-19-florida-age.png"), g_age, width = 6.66, heigh
 
 # County Cases Log Scale --------------------------------------------------
 
-county_cases_dash <- readr::read_csv("covid-19-florida-cases-county.csv")
+county_cases_dash <- readr::read_csv("data/old/covid-19-florida-dash-county.csv")
 county_cases_pdf <- readr::read_csv("pdfs/data/cases_county.csv")
 
 county_daily <- 

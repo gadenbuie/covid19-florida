@@ -233,7 +233,7 @@ process_and_output_pdf <- function(pdf_files) {
 harmonize_pdf_data <- function() {
   dirs <- dir_ls(here::here("pdfs"), type = "directory", regexp = "2020")
   csvs <- dir_ls(dirs, regexp = "csv$")
-  outdir <- here::here("pdfs", "data")
+  outdir <- here::here("data")
   dir_create(outdir)
   data <- map(csvs, read_csv)
   out <- list()
@@ -241,7 +241,9 @@ harmonize_pdf_data <- function() {
     name <- path_ext_remove(path_file(df_name))
     out[[name]] <- bind_rows(out[[name]], data[[df_name]])
   }
-  iwalk(out, ~ write_csv(.x, path(outdir, .y, ext = "csv")))
+  iwalk(out, ~ write_csv(
+    .x, 
+    path(outdir, paste0("covid-19-florida_pdf_", gsub("-", "_", .y)), ext = "csv")))
 }
 
 process_all_pdfs <- function() {
