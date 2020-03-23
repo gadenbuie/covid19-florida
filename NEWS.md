@@ -14,6 +14,9 @@ For better organization, I've moved all of the data files into the same folder:
 
 ## Other updates
 
+- The county-level confirmed cases table now spans multiple pages (2-3), as of 
+  the 2020-03-22 09:51 report.
+
 - The _community spread_ table added in the 2020-03-21 10:08:00 EDT report was
   removed in the next report (2020-03-21 17:31:00 EDT).
   

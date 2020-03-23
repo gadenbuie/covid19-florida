@@ -5,16 +5,18 @@ description_cases <- paste(
 )
 
 process_cases_page_2 <- function(page_text, timestamp) {
-  if (timestamp < "2020-03-21 17:31:00 EDT") {
+  if (timestamp < "2020-03-22 09:51:00 EDT") {
     process_cases_page_2_v1(page_text, timestamp)
-  } else if (timestamp >= "2020-03-21 17:31:00 EDT") {
-    process_cases_page_2_v2(page_text, timestamp)
+  } else if (timestamp >= "2020-03-22 09:51:00 EDT") {
+    # the format changed with this report, but it didn't require a new version
+    process_cases_page_2_v1(page_text, timestamp)
   }
 }
 
 process_cases_page_2_v1 <- function(page_text, timestamp) {
   page_2 <-
-    page_text[[2]] %>% 
+    page_text[2:3] %>% 
+    str_subset("additional surveillance information", negate = TRUE) %>% 
     str_replace_all("\\s{2,}|((\\d) ([\\dA-Z]))", "\\2\t\\3") %>% 
     str_replace_all("\\s{2,}|((\\d) ([\\dA-Z]))", "\\2\t\\3") %>% 
     read_table_pages(
@@ -50,11 +52,15 @@ process_cases_page_2_v1 <- function(page_text, timestamp) {
       page_2_right %>% 
         filter(group == 1) %>% 
         select(-group) %>% 
-        set_names(c("Gender", "Count", "Percent")) %>% 
+        set_names(c("gender", "count", "percent")) %>% 
+        mutate_at(vars(count), str_remove_all, pattern = ",") %>% 
+        mutate_at(vars(count), as.numeric) %>% 
         drop_empty() %>% 
-        select(-Percent) %>% 
-        pivot_wider(names_from = Gender, values_from = Count) %>% 
+        select(-percent) %>% 
+        filter(gender != "total") %>% 
+        pivot_wider(names_from = gender, values_from = count) %>% 
         janitor::clean_names() %>%
+        add_total(c("male", "female", "unknown")) %>% 
         mutate_all(as.numeric) %>% 
         add_timestamp(timestamp)
     })
@@ -72,6 +78,3 @@ process_cases_page_2_v1 <- function(page_text, timestamp) {
   
   out
 }
-
-
-process_cases_page_2_v2 <- process_cases_page_2_v1

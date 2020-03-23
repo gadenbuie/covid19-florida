@@ -39,3 +39,7 @@ timestamp,county,florida_resident,florida_resident_outside,non_florida_resident,
 2020-03-22 09:51:00 EDT,Highlands,1,0,0,1
 2020-03-22 09:51:00 EDT,Jackson,0,0,1,1
 2020-03-22 09:51:00 EDT,Martin,1,0,0,1
+2020-03-22 09:51:00 EDT,Monroe,1,0,0,1
+2020-03-22 09:51:00 EDT,Nassau,1,0,0,1
+2020-03-22 09:51:00 EDT,Putnam,1,0,0,1
+2020-03-22 09:51:00 EDT,Unknown,0,0,1,1
