@@ -362,12 +362,17 @@ g_case_heatmap <-
     plot.margin = margin(t = 1, l = 1, r = 2, unit = "lines")
   )
 
+# Age Distribution --------------------------------------------------------
+
 cases_age <- read_csv("data/covid-19-florida_pdf_cases_age.csv") 
 
 g_age <- 
   cases_age %>% 
   pivot_longer(-timestamp, names_to = "age", values_to = "count") %>% 
-  mutate(age = forcats::fct_inorder(age)) %>% 
+  mutate(
+    age = forcats::fct_inorder(age),
+    age = forcats::fct_relevel(age, "0-9 years")
+  ) %>% 
   mutate(
     timestamp = ymd_hms(timestamp, tz = "America/New_York"),
     day = floor_date(timestamp, "day"),
@@ -411,6 +416,48 @@ g_age <-
 
 ggsave(fs::path("plots", "covid-19-florida-age.png"), g_age, width = 6.66, height = 2, dpi = 150, scale = 1.5)
 
+# Age & Sex Distribution ---------------------------------------------------
+
+cases_all <- read_csv("data/covid-19-florida_pdf_line_list.csv", guess_max = 1e5)
+
+g_age_sex <- 
+  cases_all %>% 
+  filter(
+    timestamp == max(timestamp),
+    sex %in% c("Male", "Female")
+  ) %>% 
+  ggplot(.) +
+  aes(age, fill = sex) +
+  geom_histogram(binwidth = 5, color = "white", size = 1) +
+  facet_wrap(~ sex, ncol = 2) +
+  labs(
+    x = NULL, y = NULL,
+    caption = glue::glue(
+      "Source: Florida DOH", 
+      "Last update: {max(cases_all$timestamp)}",
+      "github.com/gadenbuie/covid19-florida",
+      .sep = "\n"
+    )
+  ) +
+  ggtitle(
+    label = "Age Distribution by Sex", 
+    subtitle = "Florida COVID-19 Positive Cases"
+  ) +
+  guides(fill = FALSE) +
+  scale_fill_manual(values = c(
+    Female = "#440154", Male = "#6baa75"
+  )) +
+  coord_cartesian(clip = "off") +
+  theme_minimal(base_size = 14) +
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    # panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    plot.caption = element_text(color = "#444444", margin = margin(t = 1.5, unit = "lines"))
+  )
+
+ggsave(fs::path("plots", "covid-19-florida-age-sex.png"), g_age_sex, width = 6.66, height = 3, dpi = 150, scale = 1.5)
 
 
 # County Cases Log Scale --------------------------------------------------

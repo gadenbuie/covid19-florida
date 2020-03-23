@@ -9,6 +9,8 @@
   The cases who died are now removed from the line list of cases (matched based
   on county, age, sex, date of counting) and death is indicated via the `died`
   column.
+  
+- Added plot showing age distribution by sex among positive cases
 
 # 2020-03-22
 

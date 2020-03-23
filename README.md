@@ -14,6 +14,8 @@ Parsed from the [Florida's COVID-19 Data and Surveillance Dashboard][dashboard].
 
 ![](plots/covid-19-florida-age.png)
 
+![](plots/covid-19-florida-age-sex.png)
+
 ## Sources
 
 - [Florida's COVID-19 Data and Surveillance Dashboard][dashboard]
