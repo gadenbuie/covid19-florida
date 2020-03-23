@@ -179,7 +179,7 @@ g_new_cases <-
     )
   ) +
   ggtitle(
-    label = "Daily Change in New Cases - Florida COVID-19"
+    label = "New Positive Cases Added - Florida COVID-19"
   ) +
   scale_alpha_manual(
     values = c(past = 1, today = 0.33),
