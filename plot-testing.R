@@ -461,7 +461,7 @@ g_county_top_6 <-
     values = c("#ec4e20", "#ffc61e", "#440154", "#3e78b2", "#6baa75", "#69747c")
   ) +
   labs(
-    x = NULL, y = "Count\n(Log Scale)", color = NULL,
+    x = NULL, y = "Count (Log Scale)", color = NULL,
     caption = glue::glue(
       "Source: Florida DOH", 
       "Last update: {max(county_cases_pdf$timestamp)}",
@@ -479,7 +479,7 @@ g_county_top_6 <-
   theme_minimal(14) +
   theme(
     legend.position = "bottom",
-    axis.title.y = element_text(angle = 0, vjust = 1, hjust = 0, color = "#666666"),
+    axis.title.y = element_text(angle = 90, vjust = 0.5, hjust = 0.5, color = "#666666"),
     plot.margin = margin(0.5, 0.5, 0.5, 0.5, unit = "lines"),
     plot.subtitle = element_text(margin = margin(b = 1.25, unit = "lines")),
     plot.caption = element_text(color = "#444444"),
@@ -488,4 +488,4 @@ g_county_top_6 <-
     panel.grid.minor.y = element_blank()
   )
 
-ggsave(fs::path("plots", "covid-19-florida-county-top-6.png"), g_county_top_6, width = 6.66, height = 3.33, dpi = 150, scale = 1.5)
+ggsave(fs::path("plots", "covid-19-florida-county-top-6.png"), g_county_top_6, width = 6.66, height = 6.66, dpi = 150, scale = 1.5)
