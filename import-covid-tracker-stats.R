@@ -3,7 +3,7 @@ library(jsonlite)
 library(lubridate)
 library(glue)
 
-dash <- read_csv("data/covid-florida_dash_summary.csv")
+dash <- read_csv("data/covid-19-florida_dash_summary.csv")
 
 covid_tracker_api <- "https://covidtracking.com/api/states/daily?state=FL&date={date}"
 
@@ -26,4 +26,4 @@ data %>%
   bind_rows(dash) %>% 
   select(names(dash)) %>% 
   select(timestamp:pending, florida_deaths, everything()) %>% 
-  write_csv("data/covid-florida_dash_summary.csv")
+  write_csv("data/covid-19-florida_dash_summary.csv")

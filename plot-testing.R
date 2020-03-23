@@ -7,8 +7,8 @@ library(purrr, warn.conflicts = FALSE)
 
 # Test summary import -----------------------------------------------------
 
-testing_summary_dash <- read_csv("data/covid-florida_dash_summary.csv")
-testing_summary_pdf <- read_csv("pdfs/data/overall_counts.csv")
+testing_summary_dash <- read_csv("data/covid-19-florida_dash_summary.csv")
+testing_summary_pdf <- read_csv("data/covid-19-florida_pdf_overall_counts.csv")
 
 test_summary_dash <-
   testing_summary_dash %>%
@@ -266,8 +266,8 @@ ggsave(fs::path("plots", "covid-19-florida-daily-test-changes.png"), g_test_chan
 
 # County Positive Cases ---------------------------------------------------
 
-county_pre <- read_csv("data/old/covid-19-florida-dash-county.csv")
-county_pdf <- read_csv("pdfs/data/cases_county.csv")
+county_pre <- read_csv("data/old/covid-19-florida_dash_county.csv")
+county_pdf <- read_csv("data/covid-19-florida_pdf_cases_county.csv")
 
 county_counts <- 
   bind_rows(
@@ -335,7 +335,7 @@ g_county_heatmap <-
   )
 
 g_case_heatmap <- 
-  read_csv("pdfs/data/cases_age.csv") %>% 
+  read_csv("data/covid-19-florida_pdf_cases_age.csv") %>% 
   pivot_longer(-timestamp, names_to = "age", values_to = "count") %>% 
   mutate(age = forcats::fct_inorder(age)) %>% 
   mutate(
@@ -362,7 +362,7 @@ g_case_heatmap <-
     plot.margin = margin(t = 1, l = 1, r = 2, unit = "lines")
   )
 
-cases_age <- read_csv("pdfs/data/cases_age.csv") 
+cases_age <- read_csv("data/covid-19-florida_pdf_cases_age.csv") 
 
 g_age <- 
   cases_age %>% 
@@ -415,8 +415,8 @@ ggsave(fs::path("plots", "covid-19-florida-age.png"), g_age, width = 6.66, heigh
 
 # County Cases Log Scale --------------------------------------------------
 
-county_cases_dash <- readr::read_csv("data/old/covid-19-florida-dash-county.csv")
-county_cases_pdf <- readr::read_csv("pdfs/data/cases_county.csv")
+county_cases_dash <- readr::read_csv("data/old/covid-19-florida_dash_county.csv")
+county_cases_pdf <- readr::read_csv("data/covid-19-florida_pdf_cases_county.csv")
 
 county_daily <- 
   bind_rows(

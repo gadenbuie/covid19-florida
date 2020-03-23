@@ -36,13 +36,14 @@ therefore I am periodically checking the FL DOH web page for the updated link.
 I've been able to extract most of the data from the PDF tables.
 Individual tables are stored in time stamped folders, 
 using the time stamp in the PDF file name.
-The unified data files are available in [pdfs/data/](pdfs/data/).
+The unified data files are available in [data/](data/)
+and prefixed with `covid-19-florida_pdf_`.
 
 ## FL DOH Dashboard
 
 One table is extracted from the [Florida's COVID-19 Data and Surveillance Dashboard][dashboard].
 
-- Current test counts: [data/covid-florida_dash_summary.csv](data/covid-florida_dash_summary.csv)
+- Current test counts: [data/covid-19-florida_dash_summary.csv](data/covid-19-florida_dash_summary.csv)
 
 The `timestamp` column of indicates when the dashboard was polled for changes.
 

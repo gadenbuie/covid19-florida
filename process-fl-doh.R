@@ -177,7 +177,7 @@ boxes_text %>%
   select(-matches("^florida_cases$")) %>% 
   mutate(timestamp = timestamp_dash) %>% 
   select(timestamp, everything()) %>% 
-  append_csv("data/covid-florida_dash_summary.csv")
+  append_csv("data/covid-19-florida_dash_summary.csv")
 
 chrm$close()
 
