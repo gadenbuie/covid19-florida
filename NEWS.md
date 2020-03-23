@@ -5,10 +5,10 @@
 For better organization, I've moved all of the data files into the same folder:
 `data/`. Files that are *not* actively updated are stored in `old/`.
 
-- `covid-19-florida-tests.csv` -> `data/covid-19-florida_dash_summary.csv`
-- `covid-19-florida-cases-county.csv` -> `data/old/covid-19-florida_dash_county.csv`
-- `covid-19-florida-doh.csv` -> `data/old/covid-19-florida-doh.csv`
-- The combined data extracted from the PDFS moved from `pdfs/data` to `data/`
+- `covid-19-florida-tests.csv` -> [data/covid-19-florida_dash_summary.csv](data/covid-19-florida_dash_summary.csv)
+- `covid-19-florida-cases-county.csv` -> [data/old/covid-19-florida_dash_county.csv](data/old/covid-19-florida_dash_county.csv)
+- `covid-19-florida-doh.csv` -> [data/old/covid-19-florida-doh.csv](data/old/covid-19-florida-doh.csv)
+- The combined data extracted from the PDFS moved from `pdfs/data` to [data/](data/)
   and the `covid-19-florida-pdf-` prefix was added.
 
 
