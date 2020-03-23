@@ -72,7 +72,6 @@ timestamp,case,county,age,sex,travel_related,travel_detail,contact,jurisdiction,
 2020-03-22 09:51:00 EDT,71,Broward,19,Female,Yes,Ireland,Yes,FL resident,2020-03-15,FALSE
 2020-03-22 09:51:00 EDT,72,Broward,65,Male,No,,Yes,FL resident,2020-03-16,FALSE
 2020-03-22 09:51:00 EDT,73,Broward,76,Male,No,,Unknown,FL resident,2020-03-16,FALSE
-2020-03-22 09:51:00 EDT,74,Broward,77,Male,Unknown,,Yes,FL resident,2020-03-16,FALSE
 2020-03-22 09:51:00 EDT,75,Broward,51,Female,Yes,Colombia,Yes,FL resident,2020-03-16,FALSE
 2020-03-22 09:51:00 EDT,76,Broward,54,Female,No,,No,FL resident,2020-03-16,FALSE
 2020-03-22 09:51:00 EDT,77,Broward,60,Male,Yes,Spain,,FL resident,2020-03-16,FALSE
@@ -121,7 +120,6 @@ timestamp,case,county,age,sex,travel_related,travel_detail,contact,jurisdiction,
 2020-03-22 09:51:00 EDT,120,Broward,87,Female,Unknown,,Unknown,FL resident,2020-03-19,FALSE
 2020-03-22 09:51:00 EDT,121,Broward,44,Male,Yes,NY,No,FL resident,2020-03-19,FALSE
 2020-03-22 09:51:00 EDT,122,Broward,49,Male,Yes,Colombia; FL,Unknown,FL resident,2020-03-19,FALSE
-2020-03-22 09:51:00 EDT,123,Broward,96,Female,Unknown,,Unknown,FL resident,2020-03-19,FALSE
 2020-03-22 09:51:00 EDT,124,Broward,93,Female,No,,Yes,FL resident,2020-03-19,FALSE
 2020-03-22 09:51:00 EDT,125,Broward,65,Male,Yes,Peru,Unknown,FL resident,2020-03-20,FALSE
 2020-03-22 09:51:00 EDT,126,Broward,71,Female,No,,Yes,FL resident,2020-03-20,FALSE
@@ -134,7 +132,6 @@ timestamp,case,county,age,sex,travel_related,travel_detail,contact,jurisdiction,
 2020-03-22 09:51:00 EDT,133,Broward,32,Male,No,,No,FL resident,2020-03-20,FALSE
 2020-03-22 09:51:00 EDT,134,Broward,55,Male,Yes,NV,Unknown,FL resident,2020-03-20,FALSE
 2020-03-22 09:51:00 EDT,135,Broward,53,Female,No,,Yes,FL resident,2020-03-20,FALSE
-2020-03-22 09:51:00 EDT,136,Broward,92,Male,No,,Unknown,FL resident,2020-03-20,FALSE
 2020-03-22 09:51:00 EDT,137,Broward,54,Male,No,,No,FL resident,2020-03-20,FALSE
 2020-03-22 09:51:00 EDT,138,Broward,38,Male,No,,Yes,FL resident,2020-03-20,FALSE
 2020-03-22 09:51:00 EDT,139,Broward,69,Male,Yes,IL,Yes,FL resident,2020-03-20,FALSE
@@ -227,7 +224,6 @@ timestamp,case,county,age,sex,travel_related,travel_detail,contact,jurisdiction,
 2020-03-22 09:51:00 EDT,226,Citrus,77,Female,No,,Yes,FL resident,2020-03-21,FALSE
 2020-03-22 09:51:00 EDT,227,Clay,57,Male,No,,Yes,FL resident,2020-03-13,FALSE
 2020-03-22 09:51:00 EDT,228,Clay,55,Female,No,,Yes,FL resident,2020-03-14,FALSE
-2020-03-22 09:51:00 EDT,229,Clay,70,Male,No,,Yes,FL resident,2020-03-14,FALSE
 2020-03-22 09:51:00 EDT,230,Clay,66,Female,No,,Yes,FL resident,2020-03-17,FALSE
 2020-03-22 09:51:00 EDT,231,Clay,82,Male,Yes,FL; UNKNOWN,No,FL resident,2020-03-20,FALSE
 2020-03-22 09:51:00 EDT,232,Clay,61,Female,Yes,DC; FL,Unknown,FL resident,2020-03-21,FALSE
@@ -437,10 +433,8 @@ timestamp,case,county,age,sex,travel_related,travel_detail,contact,jurisdiction,
 2020-03-22 09:51:00 EDT,436,Dade,36,Male,Yes,Spain,No,Non-FL resident,2020-03-19,FALSE
 2020-03-22 09:51:00 EDT,437,Dade,46,Male,No,,Yes,Non-FL resident,2020-03-20,FALSE
 2020-03-22 09:51:00 EDT,438,Dade,64,Male,Yes,Japan,Yes,Not diagnosed/isolated in FL,2020-03-04,FALSE
-2020-03-22 09:51:00 EDT,439,Duval,83,Male,No,,Yes,FL resident,2020-03-13,FALSE
 2020-03-22 09:51:00 EDT,440,Duval,66,Male,No,,Yes,FL resident,2020-03-15,FALSE
 2020-03-22 09:51:00 EDT,441,Duval,57,Male,Yes,FL; Unknown,Unknown,FL resident,2020-03-15,FALSE
-2020-03-22 09:51:00 EDT,442,Duval,88,Male,No,,Yes,FL resident,2020-03-15,FALSE
 2020-03-22 09:51:00 EDT,443,Duval,91,Female,No,,Yes,FL resident,2020-03-16,FALSE
 2020-03-22 09:51:00 EDT,444,Duval,84,Male,No,,Yes,FL resident,2020-03-17,FALSE
 2020-03-22 09:51:00 EDT,445,Duval,27,Male,Unknown,,,FL resident,2020-03-17,FALSE
@@ -548,8 +542,6 @@ timestamp,case,county,age,sex,travel_related,travel_detail,contact,jurisdiction,
 2020-03-22 09:51:00 EDT,547,Lake,80,Male,Yes,BELIZE; CARIBBEAN; FL,No,FL resident,2020-03-21,FALSE
 2020-03-22 09:51:00 EDT,548,Lake,34,Male,No,,Unknown,FL resident,2020-03-22,FALSE
 2020-03-22 09:51:00 EDT,549,Lee,77,Male,Yes,Dominican Republic,Yes,FL resident,2020-03-07,FALSE
-2020-03-22 09:51:00 EDT,550,Lee,77,Female,Yes,Dominican Republic,Yes,FL resident,2020-03-07,FALSE
-2020-03-22 09:51:00 EDT,551,Lee,77,Male,No,,Yes,FL resident,2020-03-13,FALSE
 2020-03-22 09:51:00 EDT,552,Lee,72,Female,Yes,MA; NH,Yes,FL resident,2020-03-14,FALSE
 2020-03-22 09:51:00 EDT,553,Lee,66,Male,Yes,Colombia; Ecuador,Unknown,FL resident,2020-03-16,FALSE
 2020-03-22 09:51:00 EDT,554,Lee,67,Male,No,,No,FL resident,2020-03-17,FALSE
@@ -573,7 +565,6 @@ timestamp,case,county,age,sex,travel_related,travel_detail,contact,jurisdiction,
 2020-03-22 09:51:00 EDT,572,Manatee,81,Female,Yes,Egypt,Yes,FL resident,2020-03-09,FALSE
 2020-03-22 09:51:00 EDT,573,Manatee,62,Female,No,,Yes,FL resident,2020-03-14,FALSE
 2020-03-22 09:51:00 EDT,574,Manatee,67,Female,No,,Yes,FL resident,2020-03-14,FALSE
-2020-03-22 09:51:00 EDT,575,Manatee,70,Male,No,,No,FL resident,2020-03-16,FALSE
 2020-03-22 09:51:00 EDT,576,Manatee,75,Male,No,,No,FL resident,2020-03-17,FALSE
 2020-03-22 09:51:00 EDT,577,Manatee,71,Male,No,,Yes,FL resident,2020-03-17,FALSE
 2020-03-22 09:51:00 EDT,578,Manatee,61,Male,No,,Yes,FL resident,2020-03-18,FALSE
@@ -602,7 +593,6 @@ timestamp,case,county,age,sex,travel_related,travel_detail,contact,jurisdiction,
 2020-03-22 09:51:00 EDT,601,Okaloosa,66,Female,Yes,Japan,Yes,Not diagnosed/isolated in FL,2020-03-04,FALSE
 2020-03-22 09:51:00 EDT,602,Orange,41,Male,No,,Yes,FL resident,2020-03-13,FALSE
 2020-03-22 09:51:00 EDT,603,Orange,48,Female,No,,Yes,FL resident,2020-03-13,FALSE
-2020-03-22 09:51:00 EDT,604,Orange,79,Female,Unknown,,No,FL resident,2020-03-15,FALSE
 2020-03-22 09:51:00 EDT,605,Orange,51,Male,No,,No,FL resident,2020-03-16,FALSE
 2020-03-22 09:51:00 EDT,606,Orange,40,Female,No,,Yes,FL resident,2020-03-16,FALSE
 2020-03-22 09:51:00 EDT,607,Orange,73,Male,Unknown,,,FL resident,2020-03-17,FALSE
@@ -628,7 +618,6 @@ timestamp,case,county,age,sex,travel_related,travel_detail,contact,jurisdiction,
 2020-03-22 09:51:00 EDT,627,Orange,22,Female,Yes,FL; NC,Unknown,Non-FL resident,2020-03-19,FALSE
 2020-03-22 09:51:00 EDT,628,Orange,33,Female,Yes,PERU,,Non-FL resident,2020-03-21,FALSE
 2020-03-22 09:51:00 EDT,629,Orange,34,Male,Yes,PERU,,Non-FL resident,2020-03-21,FALSE
-2020-03-22 09:51:00 EDT,630,Orange,68,Female,Yes,Philippines; South Korea,,Not diagnosed/isolated in FL,2020-03-13,FALSE
 2020-03-22 09:51:00 EDT,631,Osceola,54,Male,No,,No,FL resident,2020-03-13,FALSE
 2020-03-22 09:51:00 EDT,632,Osceola,31,Male,Yes,Brazil,No,FL resident,2020-03-13,FALSE
 2020-03-22 09:51:00 EDT,633,Osceola,48,Male,Yes,Switzerland,Yes,FL resident,2020-03-14,FALSE
@@ -694,7 +683,6 @@ timestamp,case,county,age,sex,travel_related,travel_detail,contact,jurisdiction,
 2020-03-22 09:51:00 EDT,693,Palm Beach,60,Male,Yes,NY,Unknown,FL resident,2020-03-21,FALSE
 2020-03-22 09:51:00 EDT,694,Palm Beach,41,Male,Unknown,,Unknown,FL resident,2020-03-21,FALSE
 2020-03-22 09:51:00 EDT,695,Palm Beach,53,Male,Unknown,,,FL resident,2020-03-21,FALSE
-2020-03-22 09:51:00 EDT,696,Palm Beach,88,Male,Unknown,,Unknown,FL resident,2020-03-21,FALSE
 2020-03-22 09:51:00 EDT,697,Palm Beach,70,Male,Unknown,,Unknown,FL resident,2020-03-21,FALSE
 2020-03-22 09:51:00 EDT,698,Palm Beach,83,Female,No,,Yes,FL resident,2020-03-21,FALSE
 2020-03-22 09:51:00 EDT,699,Palm Beach,43,Male,No,,No,FL resident,2020-03-21,FALSE
@@ -760,7 +748,6 @@ timestamp,case,county,age,sex,travel_related,travel_detail,contact,jurisdiction,
 2020-03-22 09:51:00 EDT,759,Polk,77,Female,Yes,FL; NY,Yes,FL resident,2020-03-20,FALSE
 2020-03-22 09:51:00 EDT,760,Polk,60,Male,Unknown,,,FL resident,2020-03-21,FALSE
 2020-03-22 09:51:00 EDT,761,Putnam,67,Male,Yes,CA,Unknown,FL resident,2020-03-20,FALSE
-2020-03-22 09:51:00 EDT,762,Santa Rosa,71,Male,Yes,Egypt; Israel; Jordan,No,FL resident,2020-03-05,FALSE
 2020-03-22 09:51:00 EDT,763,Santa Rosa,48,Male,Yes,United Kingdom,No,FL resident,2020-03-18,FALSE
 2020-03-22 09:51:00 EDT,764,Santa Rosa,17,Male,No,,No,FL resident,2020-03-20,FALSE
 2020-03-22 09:51:00 EDT,765,Sarasota,50,Female,Yes,NY,No,FL resident,2020-03-13,FALSE

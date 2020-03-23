@@ -1,3 +1,15 @@
+# 2020-03-23
+
+- Added historical PDF reports from 2020-03-16,17,18 that were found via Google
+
+- **Internal** Fixed two issues with the Line List tables extracted from the 
+  PDFs. One of the issues caused the extraction to fail for the 2020-03-22 18:28
+  report, which is now added. The other issue caused cases who are listed in
+  both the line list of cases and the line list of deaths to be double counted.
+  The cases who died are now removed from the line list of cases (matched based
+  on county, age, sex, date of counting) and death is indicated via the `died`
+  column.
+
 # 2020-03-22
 
 ## Major Changes

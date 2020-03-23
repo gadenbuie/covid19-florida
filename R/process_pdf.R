@@ -178,6 +178,9 @@ process_pdf <- function(pdf_file) {
   
   # Page 2 ------------------------------------------------------------------
   out_page_2 <- try_safely(process_cases_page_2, page_text, timestamp_pdf)
+  if (is.null(out_page_2)) {
+    message("Cases (page 2) extraction failed for ", pdf_file)
+  }
   
   out$cases_county <- out_page_2$cases_county
   out$cases_sex    <- out_page_2$cases_sex
@@ -185,10 +188,14 @@ process_pdf <- function(pdf_file) {
   
   # Testing by County --------------------------------------------------------
   out$county_testing <- try_safely(process_county_testing, page_text, timestamp_pdf)
+  if (is.null(out$county_testing)) {
+    message("County testing extraction failed for ", pdf_file)
+  }
   
   # Community Spread ---------------------------------------------------------
   community_spread <- try_safely(process_community_spread, page_text, timestamp_pdf)
   if (!is.null(community_spread)) {
+    message("Community spread tables found in ", pdf_file)
     out$community_spread_city <- community_spread$city
     out$community_spread_county <- community_spread$county
   }
@@ -209,6 +216,10 @@ process_pdf <- function(pdf_file) {
   
   # Line List ----------------------------------------------------------------
   out$line_list <- try_safely(process_line_list, page_text, timestamp_pdf)
+  
+  if (is.null(out$line_list)) {
+    message("Line list extraction failed for ", pdf_file)
+  }
   
   out
 }

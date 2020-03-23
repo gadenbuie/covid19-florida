@@ -55,14 +55,15 @@ process_line_list_v2 <- function(page_text, timestamp) {
     map_lgl(str_detect, pattern = "line list of deaths") %>%
     which()
   
-  cases_text <- page_text[pages_cases]
-  deaths_text <- page_text[pages_deaths]
+  cases <- page_text[pages_cases] %>% process_line_list_v2_table()
+  deaths <- page_text[pages_deaths] %>% process_line_list_v2_table()
   
   case_list <- 
     bind_rows(
-      process_line_list_v2_table(cases_text) %>% 
+      cases %>% 
+        anti_join(deaths, by = c("county", "age", "sex", "date_counted")) %>% 
         mutate(died = FALSE),
-      process_line_list_v2_table(deaths_text) %>% 
+      deaths %>% 
         mutate(died = TRUE)
     )
   
@@ -75,7 +76,7 @@ process_line_list_v2_table <- function(pages_text) {
   line_list_text <- 
     pages_text %>% 
     str_split("\n") %>% 
-    map(str_subset, pattern = "^\\d+\\s{2,}[A-Z]")
+    map(str_subset, pattern = "^\\d[\\d\\s]{3,}[A-Z]")
   
   tables <- 
     line_list_text %>% 
