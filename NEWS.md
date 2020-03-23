@@ -25,7 +25,7 @@ For better organization, I've moved all of the data files into the same folder:
   in the 2020-03-21 17:31:00 EDT report, and then back again to the original
   wording in the next iteration (2020-03-22 09:51:00 EDT).
   
-- *Internal* I added `try_safely()` to minimize parsing errors from breaking
+- *Internal* I added `try_safely()` to minimize parsing errors that might break
   the complete pdf processing pipeline. I also muffled parsing of pdf text 
   tables with `quietly()`.
   
@@ -35,6 +35,9 @@ For better organization, I've moved all of the data files into the same folder:
 - *Internal* Use the negatives reported in the PDF and the positive, pending,
   and deaths reported in the dashboard for the plots on the front page. Also
   replace change in "resolved" cases with plot of new deaths.
+  
+- Fixed issue with dashboard html processing so that the values on the main
+  display are used preferentially over values in inner tabs.
 
 # 2020-03-21
 

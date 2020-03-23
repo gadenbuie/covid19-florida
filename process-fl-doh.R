@@ -157,9 +157,9 @@ boxes_text %>%
   filter(!str_detect(count, "[^\\d]")) %>% 
   mutate(
     variable = case_when(
-      str_detect(description, "positive non-florida") ~ "non_florida_residents",
+      str_detect(description, "positive non-(florida| residents)") ~ "non_florida_residents",
       str_detect(description, "florida deaths") ~ "florida_deaths",
-      str_detect(description, "positive florida residents") ~ "florida_residents",
+      str_detect(description, "positive (florida )?residents") ~ "florida_residents",
       str_detect(description, "people tested") ~ "total",
       str_detect(description, "negative") ~ "negative",
       str_detect(description, "total cases") ~ "positive",
@@ -172,7 +172,7 @@ boxes_text %>%
     )
   ) %>% 
   select(-description) %>% 
-  pivot_wider(names_from = variable, values_from = count, values_fn = list(count = max)) %>% 
+  pivot_wider(names_from = variable, values_from = count, values_fn = list(count = first)) %>%
   mutate_all(as.numeric) %>% 
   select(-matches("^florida_cases$")) %>% 
   mutate(timestamp = timestamp_dash) %>% 
