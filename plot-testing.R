@@ -324,7 +324,7 @@ g_county_heatmap <-
   aes(day, county, fill = count) +
   geom_tile(color = "black", size = 1) +
   labs(x = NULL, y = NULL, fill = NULL) +
-  scale_fill_viridis_c(trans = scales::log1p_trans(), breaks = c(0, 10, 100, 250, 1000)) +
+  scale_fill_viridis_c(breaks = c(0, 10, 100, 250, 1000)) +
   scale_x_date(date_breaks = "2 days", date_labels = "%b\n%d", expand = c(0, 0)) +
   coord_equal(0.5) +
   ggdark::dark_theme_minimal() +
@@ -460,7 +460,7 @@ g_age_sex <-
 ggsave(fs::path("plots", "covid-19-florida-age-sex.png"), g_age_sex, width = 6.66, height = 3, dpi = 150, scale = 1.5)
 
 
-# County Cases Log Scale --------------------------------------------------
+# County Cases Scale --------------------------------------------------
 
 county_cases_dash <- readr::read_csv("data/old/covid-19-florida_dash_county.csv")
 county_cases_pdf <- readr::read_csv("data/covid-19-florida_pdf_cases_county.csv")
@@ -500,15 +500,13 @@ g_county_top_6 <-
     aes(color = county)
   ) +
   scale_y_continuous(
-    trans = scales::log1p_trans(),
-    breaks = c(0, round(10^seq(1, 4, 0.5), 0)),
     limits = c(0, NA)
   ) +
   scale_color_manual(
     values = c("#ec4e20", "#ffc61e", "#440154", "#3e78b2", "#6baa75", "#69747c")
   ) +
   labs(
-    x = NULL, y = "Count (Log Scale)", color = NULL,
+    x = NULL, y = "Count", color = NULL,
     caption = glue::glue(
       "Source: Florida DOH", 
       "Last update: {max(county_cases_pdf$timestamp)}",
