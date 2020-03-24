@@ -149,7 +149,7 @@ quietly <- function(.x, .f, ...) {
 process_pdf <- function(pdf_file) {
   out <- list(message = c())
   add_message <- function(...) {
-    out$message <- c(out$message, paste0(..., collapse = ""))
+    out$message <<- c(out$message, paste0(..., collapse = ""))
   }
   
   # Page 1 ------------------------------------------------------------------
@@ -263,7 +263,7 @@ process_and_output_pdf <- function(pdf_files) {
     }
     if ("message" %in% names(tables) && length(tables[["message"]])) {
       cat(
-        "\n", paste("-", tables[["messages"]]), 
+        "\n", paste("-", tables[["message"]]), 
         file = path(outdir, "README.md"), 
         append = TRUE,
         sep = "\n"
