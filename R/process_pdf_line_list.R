@@ -20,6 +20,7 @@ process_line_list_v1 <- function(page_text, timestamp) {
     line_list_text %>% 
     map(str_extract, pattern = ".+(FL resident|isolated in FL)") %>% 
     keep(~ length(.) > 0) %>% 
+    map(str_replace_all, pattern = "((Male|Female|Unknown)\\s+)(Yes|No|Unknown)", "\\1 \\3") %>% 
     map_dfr(readr::read_table, col_names = c("case", "county", "age", "sex", "travel_related", paste0("jurisdiction", 1:3))) %>% 
     mutate_at(vars(contains("jurisdiction")), ~ if_else(is.na(.x), "", .x)) %>% 
     mutate(jurisdiction = paste(jurisdiction1, jurisdiction2, jurisdiction3)) %>% 

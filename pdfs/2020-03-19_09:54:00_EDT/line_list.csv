@@ -61,68 +61,68 @@ timestamp,case,county,age,sex,travel_related,jurisdiction,travel_detail,date_cou
 2020-03-19 09:54:00 EDT,60,Broward,58,Male,No,FL resident,,2020-03-18
 2020-03-19 09:54:00 EDT,61,Broward,43,Male,Yes,FL resident,NY,2020-03-18
 2020-03-19 09:54:00 EDT,62,Pinellas,61,Female,Yes,FL resident,NY,2020-03-18
-2020-03-19 09:54:00 EDT,63,Pinellas,54,Female Yes,FL,resident,NY,2020-03-18
-2020-03-19 09:54:00 EDT,64,Broward,43,Female No,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,65,Orange,46,Male    Unknown,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,66,Broward,30,Male    Yes,FL,resident,CT; FL; ITALY,2020-03-18
-2020-03-19 09:54:00 EDT,67,Broward,67,Male    Yes,FL,resident,CO,2020-03-18
-2020-03-19 09:54:00 EDT,68,Broward,57,Male    Unknown,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,69,Hillsborough,43,Male    No,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,70,Hillsborough,33,Male    Unknown,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,71,Palm Beach,26,Female Unknown,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,72,Pinellas,23,Male    Unknown,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,73,Collier,82,Male    No,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,74,Dade,34,Female Unknown,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,75,Dade,27,Male    Yes,FL,resident,NJ,2020-03-18
-2020-03-19 09:54:00 EDT,76,Orange,42,Male    No,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,77,Dade,34,Male    Unknown,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,78,Broward,42,Male    Yes,FL,resident,AUSTRALIA,2020-03-18
-2020-03-19 09:54:00 EDT,79,Collier,31,Female Yes,FL,resident,EGYPT,2020-03-18
-2020-03-19 09:54:00 EDT,80,Broward,42,Male    Unknown,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,81,Dade,21,Female Unknown,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,82,Dade,53,Male    Unknown,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,83,Dade,50,Female Unknown,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,84,Osceola,22,Male    Unknown,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,85,Palm Beach,69,Female No,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,86,Broward,25,Female Yes,FL,resident,MOROCCO; SPAIN,2020-03-18
-2020-03-19 09:54:00 EDT,87,Lee,80,Male    No,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,88,Broward,56,Female Yes,FL,resident,VA,2020-03-18
-2020-03-19 09:54:00 EDT,89,Broward,69,Male    Yes,FL,resident,NY,2020-03-18
-2020-03-19 09:54:00 EDT,90,Brevard,32,Male    Yes,FL,resident,PA; UT,2020-03-18
-2020-03-19 09:54:00 EDT,91,Dade,59,Male    Unknown,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,92,Palm Beach,43,Male    Unknown,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,93,Broward,21,Female Yes,FL,resident,SPAIN,2020-03-18
-2020-03-19 09:54:00 EDT,94,Dade,25,Female No,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,95,Sumter,68,Male    Yes,FL,resident,EGYPT,2020-03-18
-2020-03-19 09:54:00 EDT,96,Pinellas,59,Male    Unknown,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,97,Palm Beach,6,Male    Unknown,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,98,Polk,22,Female Yes,FL,resident,GA,2020-03-18
-2020-03-19 09:54:00 EDT,99,Palm Beach,69,Female No,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,100,Duval,22,Male    Unknown,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,101,Dade,36,Unknown No,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,102,Palm Beach,72,Male    No,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,103,Lee,69,Male    No,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,104,Broward,33,Male    Unknown,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,105,Seminole,55,Male    Unknown,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,106,Dade,45,Male    Yes,FL,resident,ECUADOR,2020-03-18
-2020-03-19 09:54:00 EDT,107,Dade,35,Male    Yes,FL,resident,SPAIN,2020-03-18
-2020-03-19 09:54:00 EDT,108,Broward,48,Male    Yes,FL,resident,PA,2020-03-18
-2020-03-19 09:54:00 EDT,109,Palm Beach,55,Male    No,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,110,Dade,53,Female Unknown,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,111,Duval,91,Male    No,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,112,Dade,49,Male    Yes,FL,resident,Europe,2020-03-18
-2020-03-19 09:54:00 EDT,113,Pinellas,52,Male    Unknown,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,114,Collier,59,Male    Yes,FL,resident,JAPAN,2020-03-18
-2020-03-19 09:54:00 EDT,115,Collier,77,Male    No,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,116,Broward,53,Male    Yes,FL,resident,FL; UNKNOWN,2020-03-18
-2020-03-19 09:54:00 EDT,117,St. Johns,53,Female Yes,FL,resident,CO,2020-03-18
-2020-03-19 09:54:00 EDT,118,Orange,33,Female No,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,119,Dade,67,Male    Unknown,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,120,Palm Beach,26,Male    No,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,121,Leon,55,Male    Yes,FL,resident,GA,2020-03-18
-2020-03-19 09:54:00 EDT,122,Santa Rosa,48,Male    Yes,FL,resident,UNITED KINGDOM,2020-03-18
-2020-03-19 09:54:00 EDT,123,Manatee,61,Male    Unknown,FL,resident,,2020-03-18
-2020-03-19 09:54:00 EDT,124,Dade,48,Female Unknown,FL,resident,,2020-03-18
+2020-03-19 09:54:00 EDT,63,Pinellas,54,Female,Yes,FL resident,NY,2020-03-18
+2020-03-19 09:54:00 EDT,64,Broward,43,Female,No,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,65,Orange,46,Male,Unknown,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,66,Broward,30,Male,Yes,FL resident,CT; FL; ITALY,2020-03-18
+2020-03-19 09:54:00 EDT,67,Broward,67,Male,Yes,FL resident,CO,2020-03-18
+2020-03-19 09:54:00 EDT,68,Broward,57,Male,Unknown,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,69,Hillsborough,43,Male,No,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,70,Hillsborough,33,Male,Unknown,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,71,Palm Beach,26,Female,Unknown,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,72,Pinellas,23,Male,Unknown,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,73,Collier,82,Male,No,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,74,Dade,34,Female,Unknown,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,75,Dade,27,Male,Yes,FL resident,NJ,2020-03-18
+2020-03-19 09:54:00 EDT,76,Orange,42,Male,No,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,77,Dade,34,Male,Unknown,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,78,Broward,42,Male,Yes,FL resident,AUSTRALIA,2020-03-18
+2020-03-19 09:54:00 EDT,79,Collier,31,Female,Yes,FL resident,EGYPT,2020-03-18
+2020-03-19 09:54:00 EDT,80,Broward,42,Male,Unknown,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,81,Dade,21,Female,Unknown,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,82,Dade,53,Male,Unknown,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,83,Dade,50,Female,Unknown,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,84,Osceola,22,Male,Unknown,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,85,Palm Beach,69,Female,No,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,86,Broward,25,Female,Yes,FL resident,MOROCCO; SPAIN,2020-03-18
+2020-03-19 09:54:00 EDT,87,Lee,80,Male,No,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,88,Broward,56,Female,Yes,FL resident,VA,2020-03-18
+2020-03-19 09:54:00 EDT,89,Broward,69,Male,Yes,FL resident,NY,2020-03-18
+2020-03-19 09:54:00 EDT,90,Brevard,32,Male,Yes,FL resident,PA; UT,2020-03-18
+2020-03-19 09:54:00 EDT,91,Dade,59,Male,Unknown,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,92,Palm Beach,43,Male,Unknown,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,93,Broward,21,Female,Yes,FL resident,SPAIN,2020-03-18
+2020-03-19 09:54:00 EDT,94,Dade,25,Female,No,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,95,Sumter,68,Male,Yes,FL resident,EGYPT,2020-03-18
+2020-03-19 09:54:00 EDT,96,Pinellas,59,Male,Unknown,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,97,Palm Beach,6,Male,Unknown,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,98,Polk,22,Female,Yes,FL resident,GA,2020-03-18
+2020-03-19 09:54:00 EDT,99,Palm Beach,69,Female,No,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,100,Duval,22,Male,Unknown,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,101,Dade,36,Unknown,No,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,102,Palm Beach,72,Male,No,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,103,Lee,69,Male,No,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,104,Broward,33,Male,Unknown,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,105,Seminole,55,Male,Unknown,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,106,Dade,45,Male,Yes,FL resident,ECUADOR,2020-03-18
+2020-03-19 09:54:00 EDT,107,Dade,35,Male,Yes,FL resident,SPAIN,2020-03-18
+2020-03-19 09:54:00 EDT,108,Broward,48,Male,Yes,FL resident,PA,2020-03-18
+2020-03-19 09:54:00 EDT,109,Palm Beach,55,Male,No,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,110,Dade,53,Female,Unknown,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,111,Duval,91,Male,No,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,112,Dade,49,Male,Yes,FL resident,Europe,2020-03-18
+2020-03-19 09:54:00 EDT,113,Pinellas,52,Male,Unknown,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,114,Collier,59,Male,Yes,FL resident,JAPAN,2020-03-18
+2020-03-19 09:54:00 EDT,115,Collier,77,Male,No,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,116,Broward,53,Male,Yes,FL resident,FL; UNKNOWN,2020-03-18
+2020-03-19 09:54:00 EDT,117,St. Johns,53,Female,Yes,FL resident,CO,2020-03-18
+2020-03-19 09:54:00 EDT,118,Orange,33,Female,No,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,119,Dade,67,Male,Unknown,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,120,Palm Beach,26,Male,No,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,121,Leon,55,Male,Yes,FL resident,GA,2020-03-18
+2020-03-19 09:54:00 EDT,122,Santa Rosa,48,Male,Yes,FL resident,UNITED KINGDOM,2020-03-18
+2020-03-19 09:54:00 EDT,123,Manatee,61,Male,Unknown,FL resident,,2020-03-18
+2020-03-19 09:54:00 EDT,124,Dade,48,Female,Unknown,FL resident,,2020-03-18
 2020-03-19 09:54:00 EDT,125,Dade,25,Male,No,FL resident,,2020-03-18
 2020-03-19 09:54:00 EDT,126,Orange,56,Male,No,FL resident,,2020-03-18
 2020-03-19 09:54:00 EDT,127,Dade,38,Male,Unknown,FL resident,,2020-03-18
