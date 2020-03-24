@@ -6,6 +6,9 @@ library(stringr)
 library(lubridate)
 library(glue)
 library(fs)
+
+fl_counties_w_spaces <- c("St. Johns", "Palm Beach", "Santa Rosa", "Indian River", "St. Lucie")
+
 walk(
   dir_ls(here::here("R"), regexp = "process_pdf_.+R$"),
   sys.source, 
@@ -40,6 +43,19 @@ collapse_header_rows <- function(table, rows) {
     bind_rows(header, .) %>% 
     names_from_row(1)
 }
+
+replace_with_nbsp <- function(x, strings) {
+  for (string in strings) {
+    replacement <- str_replace_all(string, " ", "\u00a0")
+    x <- gsub(string, replacement, x, fixed = TRUE)
+  }
+  x
+}
+
+remove_nbsp <- function(x) {
+  gsub("\u200b", " ", x, fixed = TRUE)
+}
+
 extract_table <- function(
   table,
   top_left,

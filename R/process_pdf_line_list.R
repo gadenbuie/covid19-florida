@@ -74,10 +74,11 @@ process_line_list_v2 <- function(page_text, timestamp) {
 }
 
 process_line_list_v2_table <- function(pages_text) {
-  line_list_text <- 
-    pages_text %>% 
+  line_list_text <-
+    pages_text %>%
+    replace_with_nbsp(fl_counties_w_spaces) %>%
     str_split("\n") %>% 
-    map(str_subset, pattern = "^\\d[\\d\\s]{3,}[A-Z]")
+    map(str_subset, pattern = "^\\d[\\d\\s,]{3,}[A-Z]")
   
   tables <- 
     line_list_text %>% 
@@ -102,6 +103,27 @@ process_line_list_v2_table <- function(pages_text) {
         reindex_cols()
     }
     
+    requires_county_age_split <- !is.numeric(tables[[i]][[3]]) && any(str_detect(tables[[i]][[2]], "\\d"))
+    if (requires_county_age_split) {
+      tables[[i]] <- tables[[i]] %>% 
+        extract(2, paste0("x", 1:2), regex = "([a-zA-Z .\\s]+) (\\d+)") %>% 
+        mutate_at(3, as.numeric) %>% 
+        reindex_cols()
+    }
+    
+    # if 25%+ of the non-empty travel_detail column values end with Yes|No|Unknown,
+    # then assume that the column needs to be split into travel_detail and contact
+    requires_travel_contact_split <- 
+      sum(str_detect(tables[[i]][[6]], "(Yes|No|Unknown)$")) / 
+      sum(str_detect(tables[[i]][[6]], "^\\s*$", negate = TRUE)) > 0.25
+    
+    if (requires_travel_contact_split) {
+      tables[[i]] <- tables[[i]] %>% 
+        extract(6, c("a", "b"), regex = "(.+?) (Yes|No|Unknown)$") %>% 
+        replace_na(list(a = "", b = "")) %>% 
+        reindex_cols()
+    }
+    
     idx_binary <- index_has_pattern(tables[[i]], "^(Yes|No|Unknown|)$", all)
     if (idx_binary[2] != idx_binary[1] + 2) {
       tables[[i]] <- tables[[i]] %>% 
@@ -110,10 +132,18 @@ process_line_list_v2_table <- function(pages_text) {
       idx_binary <- index_has_pattern(tables[[i]], "^(Yes|No|Unknown|)$", all)
     }
     
+    # make sure date is in it's own column
     idx_date <- index_has_pattern(tables[[i]], "\\d+/\\d+/\\d+")
     if (idx_date != idx_binary[2] + 2) {
-      tables[[i]] <- tables[[i]] %>% 
-        unite("a", (idx_binary[2] + 1):(idx_date - 1), sep = " ")
+      if (idx_date > idx_binary[2] + 2) {
+        # there are extra columns between binary `contact` and `date_counted`
+        # that need to be collapsed into `jurisdiction`
+        tables[[i]] <- tables[[i]] %>% 
+          unite("a", (idx_binary[2] + 1):(idx_date - 1), sep = " ")
+      } else if (idx_date == idx_binary[2] + 1) {
+        tables[[i]] <- tables[[i]] %>% 
+          extract(idx_date, c("a", "b"), "(.+?) (\\d+/\\d+/\\d+)")
+      }
     }
     
     colnames(tables[[i]]) <- c(
@@ -123,7 +153,10 @@ process_line_list_v2_table <- function(pages_text) {
     )
   }
   
-  map_dfr(tables, ~ .) %>% 
-    mutate_if(is.character, str_trim) %>% 
+  map_dfr(tables, ~ .) %>%
+    mutate_at(vars(case), str_remove_all, ",") %>% 
+    mutate_at(vars(case), as.numeric) %>%
+    mutate_if(is.character, str_trim) %>%
+    mutate_at(vars(county), remove_nbsp) %>% 
     mutate(date_counted = mdy(date_counted) %>% strftime("%F"))
 }
