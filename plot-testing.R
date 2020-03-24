@@ -488,27 +488,71 @@ county_top_6 <- county_daily %>%
   ungroup() %>% 
   top_n(6, count)
 
-g_county_top_6 <- 
-  ggplot() +
-  aes(day, count) +
+county_start_date <- 
+  county_daily %>%
+  filter(count > 7) %>%
+  mutate(diff = abs(count - 10)) %>%
+  group_by(county) %>%
+  arrange(diff, day) %>% 
+  slice(1) %>% 
+  select(county, start_date = day)
+
+county_days <-
+  county_start_date %>% 
+  left_join(county_daily, by = "county") %>% 
+  filter(day >= start_date) %>% 
+  mutate(
+    days = as.numeric(difftime(day, start_date, units = "days")),
+    days = case_when(
+      county == "Broward" ~ days + 4,
+      county == "Miami-Dade" ~ days + 3,
+      TRUE ~ days
+    ),
+    highlight = county %in% county_top_6$county
+  ) %>% 
+  group_by(county) %>% 
+  mutate(n = n()) %>% 
+  filter(n > 2) %>% 
+  ungroup() %>% 
+  mutate(county = forcats::fct_reorder(county, count, max, desc = TRUE)) %>% 
+  mutate_at(vars(county), forcats::fct_drop) %>% 
+  select(-n)
+
+
+g_county_trajectory <-
+  ggplot(county_days) +
+  aes(days, count) +
   geom_line(
-    data = county_daily %>% semi_join(county_top_6, by = "county"),
-    aes(color = county)
+    data = . %>% filter(!highlight),
+    aes(group = county),
+    color = "#aaaaaa"
+  ) +
+  geom_line(
+    data = . %>% filter(highlight),
+    aes(color = county),
+    size = 1
   ) +
   geom_point(
-    data = county_daily %>% semi_join(county_top_6, by = "county"),
-    aes(color = county)
+    data = . %>% filter(highlight),
+    color = "#FFFFFF",
+    size = 3
+  ) +
+  geom_point(
+    data = . %>% filter(highlight),
+    aes(color = county),
+    show.legend = FALSE
   ) +
   scale_y_continuous(
     trans = scales::log1p_trans(),
-    breaks = c(0, round(10^seq(1, 4, 0.5), 0)),
-    limits = c(0, NA)
+    breaks = c(0, 10, 20, 50, 100, 200, 500, 1000, 5000, 10000),
   ) +
   scale_color_manual(
     values = c("#ec4e20", "#ffc61e", "#440154", "#3e78b2", "#6baa75", "#69747c")
   ) +
   labs(
-    x = NULL, y = "Count (Log Scale)", color = NULL,
+    x = "Days since ~10 Confirmed Cases", 
+    y = "Count (Log Scale)", 
+    color = NULL,
     caption = glue::glue(
       "Source: Florida DOH", 
       "Last update: {max(county_cases_pdf$timestamp)}",
@@ -521,7 +565,7 @@ g_county_top_6 <-
     subtitle = "For the 6 counties with the highest case count"
   ) +
   guides(
-    color = guide_legend(nrow = 1)
+    color = guide_legend(nrow = 1, label.theme = element_text(margin = margin(r = 4, l = 0)), override.aes = list(size = 3))
   ) +
   theme_minimal(14) +
   theme(
@@ -535,4 +579,4 @@ g_county_top_6 <-
     panel.grid.minor.y = element_blank()
   )
 
-ggsave(fs::path("plots", "covid-19-florida-county-top-6.png"), g_county_top_6, width = 6.66, height = 5, dpi = 150, scale = 1.5)
+ggsave(fs::path("plots", "covid-19-florida-county-top-6.png"), g_county_trajectory, width = 6.66, height = 5, dpi = 150, scale = 1.5)
