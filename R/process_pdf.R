@@ -147,7 +147,10 @@ quietly <- function(.x, .f, ...) {
 }
 
 process_pdf <- function(pdf_file) {
-  out <- list()
+  out <- list(message = c())
+  add_message <- function(...) {
+    out$message <- c(out$message, paste0(..., collapse = ""))
+  }
   
   # Page 1 ------------------------------------------------------------------
   page_text <- pdftools::pdf_text(pdf_file)
@@ -195,7 +198,7 @@ process_pdf <- function(pdf_file) {
   # Page 2 ------------------------------------------------------------------
   out_page_2 <- try_safely(process_cases_page_2, page_text, timestamp_pdf)
   if (is.null(out_page_2)) {
-    message("Cases (page 2) extraction failed for ", pdf_file)
+    add_message("Extraction failed for case summary tables from page 2")
   }
   
   out$cases_county <- out_page_2$cases_county
@@ -205,13 +208,13 @@ process_pdf <- function(pdf_file) {
   # Testing by County --------------------------------------------------------
   out$county_testing <- try_safely(process_county_testing, page_text, timestamp_pdf)
   if (is.null(out$county_testing)) {
-    message("County testing extraction failed for ", pdf_file)
+    add_message("County testing extraction failed for ", pdf_file)
   }
   
   # Community Spread ---------------------------------------------------------
   community_spread <- try_safely(process_community_spread, page_text, timestamp_pdf)
   if (!is.null(community_spread)) {
-    message("Community spread tables found in ", pdf_file)
+    add_message("This report includes community spread tables")
     out$community_spread_city <- community_spread$city
     out$community_spread_county <- community_spread$county
   }
@@ -230,11 +233,19 @@ process_pdf <- function(pdf_file) {
       add_this_timestamp()
   })
   
+  if (is.null(out$lab_testing)) {
+    add_message("Lab test counts were not extracted")
+  }
+  
   # Line List ----------------------------------------------------------------
   out$line_list <- try_safely(process_line_list, page_text, timestamp_pdf)
   
   if (is.null(out$line_list)) {
-    message("Line list extraction failed for ", pdf_file)
+    add_message("Line list tables were not parsed correctly and are not included")
+  }
+  
+  if (length(out$message)) {
+    for (msg in out$message) message(msg)
   }
   
   out
@@ -247,9 +258,25 @@ process_and_output_pdf <- function(pdf_files) {
     tables <- process_pdf(pdf_file)
     outdir <- path("pdfs", str_replace_all(tables$timestamp_pdf, " ", "_"))
     dir_create(outdir)
-    for (name in names(tables)) {
+    if ("timestamp_pdf" %in% names(tables)) {
+      write_lines(tables[["timestamp_pdf"]], path(outdir, "README.md"), append = FALSE)
+    }
+    if ("message" %in% names(tables) && length(tables[["message"]])) {
+      cat(
+        "\n", paste("-", tables[["messages"]]), 
+        file = path(outdir, "README.md"), 
+        append = TRUE,
+        sep = "\n"
+      )
+    }
+    for (name in setdiff(names(tables), c("timestamp_pdf", "message"))) {
       if (is.character(tables[[name]])) {
-        write_lines(tables[[name]], path(outdir, "README.md"))
+        cat(
+          "\n", tables[[name]], 
+          file = path(outdir, "README.md"), 
+          append = TRUE,
+          sep = "\n"
+        )
       } else if (inherits(tables[[name]], "data.frame")) {
         write_csv(tables[[name]], path(outdir, name, ext = "csv"))
       }
