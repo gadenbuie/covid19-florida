@@ -42,13 +42,16 @@ process_county_testing_v3 <- function(page_text, timestamp) {
     which()
   
   page_text[pages_testing] %>%
+    # remove last two columns (total and percent)
+    str_replace_all("[\\d,]+\\s+\\d+%\n", "\n") %>% 
     read_table_pages(
-      col_names = c("county", "pending", "negative", "positive", "inconclusive", "total", "percent"),
+      col_names = c("county", "pending", "negative", "positive", "inconclusive"),
       pattern_tab = "\\s{3,}"
     ) %>% 
-    drop_empty() %>% 
+    drop_empty() %>%
     select(-contains("percent")) %>% 
-    add_total(from = c("pending", "negative", "positive")) %>%  
+    replace_na(list(inconclusive = 0)) %>% 
+    add_total(from = c("negative", "positive", "inconclusive")) %>%  
     filter(county != "Total") %>% 
     add_timestamp(timestamp)
 }
