@@ -480,7 +480,13 @@ county_daily <-
   ungroup() %>% 
   select(-timestamp) %>% 
   complete(county, day, fill = list(count = 0)) %>% 
-  mutate(county = forcats::fct_reorder(county, count, max, .desc = TRUE))
+  group_by(county) %>% 
+  mutate(count_last = max(count)) %>% 
+  ungroup() %>% 
+  mutate(
+    county = glue::glue("{county} ({format(count_last, big.mark = ',', trim = TRUE)})"),
+    county = forcats::fct_reorder(county, count, max, .desc = FALSE)
+  )
 
 county_top_6 <- county_daily %>% 
   group_by(county) %>% 
@@ -504,8 +510,8 @@ county_days <-
   mutate(
     days = as.numeric(difftime(day, start_date, units = "days")),
     days = case_when(
-      county == "Broward" ~ days + 4,
-      county == "Miami-Dade" ~ days + 3,
+      stringr::str_detect(county, "^Broward") ~ days + 4,
+      stringr::str_detect(county, "^Miami-Dade") ~ days + 3,
       TRUE ~ days
     ),
     highlight = county %in% county_top_6$county
@@ -514,7 +520,7 @@ county_days <-
   mutate(n = n()) %>% 
   filter(n > 2) %>% 
   ungroup() %>% 
-  mutate(county = forcats::fct_reorder(county, count, max, desc = TRUE)) %>% 
+  mutate(county = forcats::fct_reorder(county, count, max, desc = FALSE)) %>% 
   mutate_at(vars(county), forcats::fct_drop) %>% 
   select(-n)
 
@@ -552,7 +558,7 @@ g_county_trajectory <-
   ) +
   labs(
     x = "Days since ~10 Confirmed Cases", 
-    y = "Count (Log Scale)", 
+    y = NULL, 
     color = NULL,
     caption = glue::glue(
       "Source: Florida DOH", 
@@ -566,11 +572,19 @@ g_county_trajectory <-
     subtitle = "For the 6 counties with the highest case count"
   ) +
   guides(
-    color = guide_legend(nrow = 1, label.theme = element_text(margin = margin(r = 4, l = 0)), override.aes = list(size = 3))
+    color = guide_legend(
+      nrow = 2, 
+      byrow = TRUE,
+      label.theme = element_text(margin = margin(r = 4, l = 0)), 
+      override.aes = list(size = 3), 
+      reverse = TRUE
+      )
   ) +
   theme_minimal(14) +
   theme(
-    legend.position = "top",
+    legend.position = c(-0.01, 1.025),
+    legend.justification = c(0, 1),
+    legend.background = element_rect(fill = "white", color = "white"),
     axis.title.y = element_text(angle = 90, vjust = 0.5, hjust = 0.5, color = "#666666"),
     plot.margin = margin(0.5, 0.5, 0.5, 0.5, unit = "lines"),
     plot.subtitle = element_text(margin = margin(b = 1.25, unit = "lines")),
