@@ -335,8 +335,8 @@ timestamp,case,county,age,sex,travel_related,travel_detail,contact,jurisdiction,
 2020-03-20 09:55:00 EDT,338,Hillsborough,32,Female,Unknown,,Yes,FL resident,2020-03-20,FALSE
 2020-03-20 09:55:00 EDT,339,Hillsborough,22,Female,Yes,ITALY,Yes,Non-FL resident,2020-03-03,FALSE
 2020-03-20 09:55:00 EDT,340,Hillsborough,28,Male,Unknown,,Unknown,Non-FL resident,2020-03-17,FALSE
-2020-03-20 09:55:00 EDT,341,Indian River,77,Female,No,,Unknown,FL resident,2020-03-19,FALSE
-2020-03-20 09:55:00 EDT,342,Indian River,69,Male,Yes,EGYPT; GERMANY,No,FL resident,2020-03-20,FALSE
+2020-03-20 09:55:00 EDT,341,Indian River,77,Female,No,,Unknown,FL resident,2020-03-19,FALSE
+2020-03-20 09:55:00 EDT,342,Indian River,69,Male,Yes,EGYPT; GERMANY,No,FL resident,2020-03-20,FALSE
 2020-03-20 09:55:00 EDT,343,Jackson,33,Male,Yes,AL; FL; GA; LA; MEXICO; TX,Unknown,Non-FL resident,2020-03-19,FALSE
 2020-03-20 09:55:00 EDT,344,Lake,75,Female,Yes,FL; NY,Yes,FL resident,2020-03-13,FALSE
 2020-03-20 09:55:00 EDT,345,Lake,56,Male,Yes,CO; FL,No,FL resident,2020-03-17,FALSE
@@ -405,40 +405,40 @@ timestamp,case,county,age,sex,travel_related,travel_detail,contact,jurisdiction,
 2020-03-20 09:55:00 EDT,414,Osceola,50,Male,Yes,EUROPE,Yes,FL resident,2020-03-19,FALSE
 2020-03-20 09:55:00 EDT,415,Osceola,65,Male,Yes,CANADA,No,Non-FL resident,2020-03-13,FALSE
 2020-03-20 09:55:00 EDT,416,Osceola,20,Female,Yes,SPAIN,No,Non-FL resident,2020-03-17,FALSE
-2020-03-20 09:55:00 EDT,417,Palm Beach,73,Male,Yes,EGYPT; GERMANY,Yes,FL resident,2020-03-13,FALSE
-2020-03-20 09:55:00 EDT,418,Palm Beach,74,Male,Yes,BELGIUM; FL,No,FL resident,2020-03-13,FALSE
-2020-03-20 09:55:00 EDT,419,Palm Beach,59,Female,Yes,NY,Yes,FL resident,2020-03-14,FALSE
-2020-03-20 09:55:00 EDT,420,Palm Beach,65,Male,Yes,NY,Yes,FL resident,2020-03-14,FALSE
-2020-03-20 09:55:00 EDT,421,Palm Beach,37,Male,Yes,NY,Yes,FL resident,2020-03-14,FALSE
-2020-03-20 09:55:00 EDT,422,Palm Beach,25,Male,Unknown,,,FL resident,2020-03-16,FALSE
-2020-03-20 09:55:00 EDT,423,Palm Beach,66,Male,No,,Unknown,FL resident,2020-03-16,FALSE
-2020-03-20 09:55:00 EDT,424,Palm Beach,76,Female,Yes,FRANCE,Unknown,FL resident,2020-03-16,FALSE
-2020-03-20 09:55:00 EDT,425,Palm Beach,62,Male,Yes,United Kingdom,Yes,FL resident,2020-03-16,FALSE
-2020-03-20 09:55:00 EDT,426,Palm Beach,69,Male,Yes,CO,No,FL resident,2020-03-17,FALSE
-2020-03-20 09:55:00 EDT,427,Palm Beach,38,Male,Unknown,,Unknown,FL resident,2020-03-17,FALSE
-2020-03-20 09:55:00 EDT,428,Palm Beach,19,Female,Yes,TN,Yes,FL resident,2020-03-17,FALSE
-2020-03-20 09:55:00 EDT,429,Palm Beach,6,Female,Unknown,,Yes,FL resident,2020-03-18,FALSE
-2020-03-20 09:55:00 EDT,430,Palm Beach,69,Female,No,,Unknown,FL resident,2020-03-18,FALSE
-2020-03-20 09:55:00 EDT,431,Palm Beach,72,Male,No,,No,FL resident,2020-03-18,FALSE
-2020-03-20 09:55:00 EDT,432,Palm Beach,69,Female,No,,Yes,FL resident,2020-03-18,FALSE
-2020-03-20 09:55:00 EDT,433,Palm Beach,41,Male,Yes,UT; WY,No,FL resident,2020-03-18,FALSE
-2020-03-20 09:55:00 EDT,434,Palm Beach,26,Male,No,,No,FL resident,2020-03-18,FALSE
-2020-03-20 09:55:00 EDT,435,Palm Beach,43,Male,Unknown,,Unknown,FL resident,2020-03-18,FALSE
-2020-03-20 09:55:00 EDT,436,Palm Beach,55,Male,No,,No,FL resident,2020-03-18,FALSE
-2020-03-20 09:55:00 EDT,437,Palm Beach,78,Male,Unknown,,,FL resident,2020-03-19,FALSE
-2020-03-20 09:55:00 EDT,438,Palm Beach,56,Female,Yes,EGYPT; GERMANY,Yes,FL resident,2020-03-19,FALSE
-2020-03-20 09:55:00 EDT,439,Palm Beach,19,Male,Unknown,,,FL resident,2020-03-19,FALSE
-2020-03-20 09:55:00 EDT,440,Palm Beach,60,Female,Yes,RUSSIA; SPAIN,No,FL resident,2020-03-19,FALSE
-2020-03-20 09:55:00 EDT,441,Palm Beach,48,Male,Unknown,,,FL resident,2020-03-20,FALSE
-2020-03-20 09:55:00 EDT,442,Palm Beach,28,Female,Unknown,,,FL resident,2020-03-20,FALSE
-2020-03-20 09:55:00 EDT,443,Palm Beach,66,Male,Unknown,,,FL resident,2020-03-20,FALSE
-2020-03-20 09:55:00 EDT,444,Palm Beach,82,Male,Unknown,,,FL resident,2020-03-20,FALSE
-2020-03-20 09:55:00 EDT,445,Palm Beach,29,Male,Unknown,,,FL resident,2020-03-20,FALSE
-2020-03-20 09:55:00 EDT,446,Palm Beach,26,Female,Unknown,,Unknown,Non-FL resident,2020-03-18,FALSE
-2020-03-20 09:55:00 EDT,447,Palm Beach,73,Male,Yes,NY,Yes,Non-FL resident,2020-03-18,FALSE
-2020-03-20 09:55:00 EDT,448,Palm Beach,73,Male,Yes,NJ,Unknown,Non-FL resident,2020-03-19,FALSE
-2020-03-20 09:55:00 EDT,449,Palm Beach,78,Female,Unknown,,Unknown,Non-FL resident,2020-03-19,FALSE
-2020-03-20 09:55:00 EDT,450,Palm Beach,71,Female,Yes,JAPAN,Yes,Not diagnosed/isolated in FL,2020-03-04,FALSE
+2020-03-20 09:55:00 EDT,417,Palm Beach,73,Male,Yes,EGYPT; GERMANY,Yes,FL resident,2020-03-13,FALSE
+2020-03-20 09:55:00 EDT,418,Palm Beach,74,Male,Yes,BELGIUM; FL,No,FL resident,2020-03-13,FALSE
+2020-03-20 09:55:00 EDT,419,Palm Beach,59,Female,Yes,NY,Yes,FL resident,2020-03-14,FALSE
+2020-03-20 09:55:00 EDT,420,Palm Beach,65,Male,Yes,NY,Yes,FL resident,2020-03-14,FALSE
+2020-03-20 09:55:00 EDT,421,Palm Beach,37,Male,Yes,NY,Yes,FL resident,2020-03-14,FALSE
+2020-03-20 09:55:00 EDT,422,Palm Beach,25,Male,Unknown,,,FL resident,2020-03-16,FALSE
+2020-03-20 09:55:00 EDT,423,Palm Beach,66,Male,No,,Unknown,FL resident,2020-03-16,FALSE
+2020-03-20 09:55:00 EDT,424,Palm Beach,76,Female,Yes,FRANCE,Unknown,FL resident,2020-03-16,FALSE
+2020-03-20 09:55:00 EDT,425,Palm Beach,62,Male,Yes,United Kingdom,Yes,FL resident,2020-03-16,FALSE
+2020-03-20 09:55:00 EDT,426,Palm Beach,69,Male,Yes,CO,No,FL resident,2020-03-17,FALSE
+2020-03-20 09:55:00 EDT,427,Palm Beach,38,Male,Unknown,,Unknown,FL resident,2020-03-17,FALSE
+2020-03-20 09:55:00 EDT,428,Palm Beach,19,Female,Yes,TN,Yes,FL resident,2020-03-17,FALSE
+2020-03-20 09:55:00 EDT,429,Palm Beach,6,Female,Unknown,,Yes,FL resident,2020-03-18,FALSE
+2020-03-20 09:55:00 EDT,430,Palm Beach,69,Female,No,,Unknown,FL resident,2020-03-18,FALSE
+2020-03-20 09:55:00 EDT,431,Palm Beach,72,Male,No,,No,FL resident,2020-03-18,FALSE
+2020-03-20 09:55:00 EDT,432,Palm Beach,69,Female,No,,Yes,FL resident,2020-03-18,FALSE
+2020-03-20 09:55:00 EDT,433,Palm Beach,41,Male,Yes,UT; WY,No,FL resident,2020-03-18,FALSE
+2020-03-20 09:55:00 EDT,434,Palm Beach,26,Male,No,,No,FL resident,2020-03-18,FALSE
+2020-03-20 09:55:00 EDT,435,Palm Beach,43,Male,Unknown,,Unknown,FL resident,2020-03-18,FALSE
+2020-03-20 09:55:00 EDT,436,Palm Beach,55,Male,No,,No,FL resident,2020-03-18,FALSE
+2020-03-20 09:55:00 EDT,437,Palm Beach,78,Male,Unknown,,,FL resident,2020-03-19,FALSE
+2020-03-20 09:55:00 EDT,438,Palm Beach,56,Female,Yes,EGYPT; GERMANY,Yes,FL resident,2020-03-19,FALSE
+2020-03-20 09:55:00 EDT,439,Palm Beach,19,Male,Unknown,,,FL resident,2020-03-19,FALSE
+2020-03-20 09:55:00 EDT,440,Palm Beach,60,Female,Yes,RUSSIA; SPAIN,No,FL resident,2020-03-19,FALSE
+2020-03-20 09:55:00 EDT,441,Palm Beach,48,Male,Unknown,,,FL resident,2020-03-20,FALSE
+2020-03-20 09:55:00 EDT,442,Palm Beach,28,Female,Unknown,,,FL resident,2020-03-20,FALSE
+2020-03-20 09:55:00 EDT,443,Palm Beach,66,Male,Unknown,,,FL resident,2020-03-20,FALSE
+2020-03-20 09:55:00 EDT,444,Palm Beach,82,Male,Unknown,,,FL resident,2020-03-20,FALSE
+2020-03-20 09:55:00 EDT,445,Palm Beach,29,Male,Unknown,,,FL resident,2020-03-20,FALSE
+2020-03-20 09:55:00 EDT,446,Palm Beach,26,Female,Unknown,,Unknown,Non-FL resident,2020-03-18,FALSE
+2020-03-20 09:55:00 EDT,447,Palm Beach,73,Male,Yes,NY,Yes,Non-FL resident,2020-03-18,FALSE
+2020-03-20 09:55:00 EDT,448,Palm Beach,73,Male,Yes,NJ,Unknown,Non-FL resident,2020-03-19,FALSE
+2020-03-20 09:55:00 EDT,449,Palm Beach,78,Female,Unknown,,Unknown,Non-FL resident,2020-03-19,FALSE
+2020-03-20 09:55:00 EDT,450,Palm Beach,71,Female,Yes,JAPAN,Yes,Not diagnosed/isolated in,2020-03-04,FALSE
 2020-03-20 09:55:00 EDT,451,Pasco,46,Male,No,,Yes,FL resident,2020-03-11,FALSE
 2020-03-20 09:55:00 EDT,452,Pasco,67,Male,Yes,FL; NY,Yes,FL resident,2020-03-14,FALSE
 2020-03-20 09:55:00 EDT,453,Pasco,64,Female,Yes,FL; NY,Yes,FL resident,2020-03-18,FALSE
@@ -474,7 +474,7 @@ timestamp,case,county,age,sex,travel_related,travel_detail,contact,jurisdiction,
 2020-03-20 09:55:00 EDT,483,Polk,49,Female,Unknown,,,FL resident,2020-03-20,FALSE
 2020-03-20 09:55:00 EDT,484,Polk,74,Male,Unknown,,,FL resident,2020-03-20,FALSE
 2020-03-20 09:55:00 EDT,485,Polk,77,Female,Unknown,,,FL resident,2020-03-20,FALSE
-2020-03-20 09:55:00 EDT,487,Santa Rosa,48,Male,Yes,UNITED KINGDOM,No,FL resident,2020-03-18,FALSE
+2020-03-20 09:55:00 EDT,487,Santa Rosa,48,Male,Yes,UNITED KINGDOM,No,FL resident,2020-03-18,FALSE
 2020-03-20 09:55:00 EDT,488,Sarasota,50,Female,Yes,NY,No,FL resident,2020-03-13,FALSE
 2020-03-20 09:55:00 EDT,489,Sarasota,87,Male,No,,No,FL resident,2020-03-16,FALSE
 2020-03-20 09:55:00 EDT,490,Sarasota,53,Male,No,,Yes,FL resident,2020-03-19,FALSE
@@ -491,11 +491,11 @@ timestamp,case,county,age,sex,travel_related,travel_detail,contact,jurisdiction,
 2020-03-20 09:55:00 EDT,501,Seminole,70,Male,Yes,NY,No,FL resident,2020-03-17,FALSE
 2020-03-20 09:55:00 EDT,502,Seminole,55,Male,Unknown,,,FL resident,2020-03-18,FALSE
 2020-03-20 09:55:00 EDT,503,Seminole,57,Female,Yes,EGYPT,Yes,FL resident,2020-03-18,FALSE
-2020-03-20 09:55:00 EDT,504,St. Johns,64,Female,No,,No,FL resident,2020-03-14,FALSE
-2020-03-20 09:55:00 EDT,505,St. Johns,49,Male,Yes,EUROPE; HUNGARY,No,FL resident,2020-03-16,FALSE
-2020-03-20 09:55:00 EDT,506,St. Johns,53,Female,Yes,CO,Yes,FL resident,2020-03-18,FALSE
-2020-03-20 09:55:00 EDT,507,St. Johns,68,Male,Unknown,,,FL resident,2020-03-20,FALSE
-2020-03-20 09:55:00 EDT,508,St. Johns,63,Male,Yes,NY,No,Non-FL resident,2020-03-12,FALSE
+2020-03-20 09:55:00 EDT,504,St. Johns,64,Female,No,,No,FL resident,2020-03-14,FALSE
+2020-03-20 09:55:00 EDT,505,St. Johns,49,Male,Yes,EUROPE; HUNGARY,No,FL resident,2020-03-16,FALSE
+2020-03-20 09:55:00 EDT,506,St. Johns,53,Female,Yes,CO,Yes,FL resident,2020-03-18,FALSE
+2020-03-20 09:55:00 EDT,507,St. Johns,68,Male,Unknown,,,FL resident,2020-03-20,FALSE
+2020-03-20 09:55:00 EDT,508,St. Johns,63,Male,Yes,NY,No,Non-FL resident,2020-03-12,FALSE
 2020-03-20 09:55:00 EDT,509,Sumter,68,Male,Yes,EGYPT,Yes,FL resident,2020-03-18,FALSE
 2020-03-20 09:55:00 EDT,510,Sumter,66,Male,No,,No,FL resident,2020-03-19,FALSE
 2020-03-20 09:55:00 EDT,511,Volusia,66,Female,Yes,EGYPT; GERMANY; ISRAEL,Yes,FL resident,2020-03-08,FALSE
@@ -518,4 +518,4 @@ timestamp,case,county,age,sex,travel_related,travel_detail,contact,jurisdiction,
 2020-03-20 09:55:00 EDT,8,Manatee,70,Male,No,,No,FL resident,2020-03-16,TRUE
 2020-03-20 09:55:00 EDT,9,Orange,79,Female,Unknown,,No,FL resident,2020-03-15,TRUE
 2020-03-20 09:55:00 EDT,10,Orange,68,Female,Yes,PHILIPPINES; SOUTH KOREA,,Not diagnosed/isolated in FL,2020-03-13,TRUE
-2020-03-20 09:55:00 EDT,11,Santa Rosa,71,Male,Yes,EGYPT; ISRAEL; JORDAN,No,FL resident,2020-03-05,TRUE
+2020-03-20 09:55:00 EDT,11,Santa Rosa,71,Male,Yes,EGYPT; ISRAEL; JORDAN,No,FL resident,2020-03-05,TRUE
