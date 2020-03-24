@@ -189,6 +189,12 @@ if (git2r::in_repository()) {
     str_subset("last-update|screenshots|plots", negate = TRUE)
   is_dirty <- rlang::has_length(modified)
   if (is_dirty || doh_has_changed) {
+    tryCatch({
+      source("R/process_pdf.R")
+      process_all_pdfs()
+    },
+    error = function(e) messaage(e$message))
+    
     # Create plot -------------------------------------------------------------
     tryCatch({
       message("generating testing summary plot")
