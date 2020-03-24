@@ -546,6 +546,7 @@ g_county_trajectory <-
     trans = scales::log1p_trans(),
     breaks = c(0, 10, 20, 50, 100, 200, 500, 1000, 5000, 10000),
   ) +
+  scale_x_continuous(breaks = 0:90) +
   scale_color_manual(
     values = c("#ec4e20", "#ffc61e", "#440154", "#3e78b2", "#6baa75", "#69747c")
   ) +
