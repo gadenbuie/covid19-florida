@@ -193,7 +193,7 @@ if (git2r::in_repository()) {
       source("R/process_pdf.R")
       process_all_pdfs()
     },
-    error = function(e) messaage(e$message))
+    error = function(e) message(e$message))
     
     # Create plot -------------------------------------------------------------
     tryCatch({
