@@ -3,11 +3,11 @@ get_arcgis_line_list <- function() {
   x <- jsonlite::read_json("https://services1.arcgis.com/CY1LXxl9zlJeBuRZ/ArcGIS/rest/services/Florida_COVID19_Case_Line_Data/FeatureServer/0/query?where=County+is+not+NULL&objectIds=&time=&resultType=none&outFields=*&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&sqlFormat=none&f=pjson&token=")
   
   x %>% 
-    pluck("features") %>% 
-    map("attributes") %>% 
-    map(flatten) %>% 
-    map_dfr(~ .) %>% 
-    rename(ed_visit = EDvisit) %>% 
+    purrr::pluck("features") %>% 
+    purrr::map("attributes") %>% 
+    purrr::map(flatten) %>% 
+    purrr::map_dfr(~ .) %>% 
+    dplyr::rename(ed_visit = EDvisit) %>% 
     janitor::clean_names() %>% 
     readr::type_convert(
       col_types = readr::cols(
@@ -23,8 +23,8 @@ get_arcgis_line_list <- function() {
         contact = readr::col_character()
       )
     ) %>% 
-    mutate_at(vars(matches("case|event_date")), ~ lubridate::as_datetime(.x/1000)) %>% 
-    mutate_at(vars(matches("case|event_date")), lubridate::as_date)
+    dplyr::mutate_at(dplyr::vars(dplyr::matches("case|event_date")), ~ lubridate::as_datetime(.x/1000)) %>% 
+    dplyr::mutate_at(dplyr::vars(dplyr::matches("case|event_date")), lubridate::as_date)
 }
 
 get_arcgis_summary <- function() {
@@ -33,9 +33,9 @@ get_arcgis_summary <- function() {
   )
   
   x %>% 
-    pluck("features") %>% 
-    map("attributes") %>% 
-    map(flatten) %>% 
-    map_dfr(~ .) %>% 
+    purrr::pluck("features") %>% 
+    purrr::map("attributes") %>% 
+    purrr::map(flatten) %>% 
+    purrr::map_dfr(~ .) %>% 
     janitor::clean_names()
 }
