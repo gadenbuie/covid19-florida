@@ -482,7 +482,7 @@ county_start_date <-
   mutate(diff = abs(count - 10)) %>%
   group_by(county) %>%
   filter(diff == min(diff)) %>% 
-  filter(day = max(day)) %>% 
+  filter(day == max(day)) %>% 
   select(county, start_date = day)
 
 county_days <-
