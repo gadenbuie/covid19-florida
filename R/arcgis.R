@@ -5,6 +5,7 @@ get_arcgis_line_list <- function() {
   x %>% 
     pluck("features") %>% 
     map("attributes") %>% 
+    map(flatten) %>% 
     map_dfr(~ .) %>% 
     rename(ed_visit = EDvisit) %>% 
     janitor::clean_names() %>% 
@@ -22,8 +23,8 @@ get_arcgis_line_list <- function() {
         contact = readr::col_character()
       )
     ) %>% 
-    mutate_at(vars(case, event_date), ~ lubridate::as_datetime(.x/1000)) %>% 
-    mutate_at(vars(case, event_date), lubridate::as_date)
+    mutate_at(vars(matches("case|event_date")), ~ lubridate::as_datetime(.x/1000)) %>% 
+    mutate_at(vars(matches("case|event_date")), lubridate::as_date)
 }
 
 get_arcgis_summary <- function() {

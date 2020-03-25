@@ -62,7 +62,10 @@ ts_current <- strftime(ts_now, '%FT%H%M%S', tz = "America/New_York")
 source("R/arcgis.R")
 arcgis_line_list <- purrr::safely(get_arcgis_line_list)()
 if (is.null(arcgis_line_list$error)) {
-  write_csv(arcgis_line_list$result, "data/covid-19-florida_arcgis_line-list.csv")
+  arcgis_line_list$result %>% 
+    mutate(timestamp = ts_current) %>% 
+    select(timestamp, everything()) %>% 
+    write_csv("data/covid-19-florida_arcgis_line-list.csv")
 } else {
   message("Unable to get line list from arcgis api: ", arcgis_line_list$error$message)
 }
