@@ -472,7 +472,7 @@ county_daily <-
 
 county_top_6 <- county_daily %>% 
   group_by(county) %>% 
-  filter(count == max(count)) %>% 
+  filter(count == max(count), day == max(day)) %>% 
   ungroup() %>% 
   top_n(6, count)
 
