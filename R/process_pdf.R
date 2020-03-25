@@ -257,7 +257,7 @@ process_pdf <- function(pdf_file) {
     for (msg in out$message) message(msg)
   }
   
-  out
+  qc_pdf_read(out)
 }
 
 process_and_output_pdf <- function(pdf_files) {
