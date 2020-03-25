@@ -1,3 +1,17 @@
+# 2020-03-25
+
+- The division of ages in the case count by age range summary on Page 2 of the
+  PDF report has changed from 0-9, 10-19, etc. to 0-4, 5-14, 15-24, etc. in the
+  2020-03-25-1007 report.
+  
+- The order of the columns in the `county_testing` table changed with the
+  2020-03-25-1007 report to
+  
+   - `county`, `pending`, `inconclusive`, `negative`, `positive`, `percent`, `total`
+  
+  and the heading of the page was changed from _All persons tested_ to
+  _All persons with tests reported_.
+
 # 2020-03-24
 
 - PDF processing is now part of the automatic update. Failures in the extraction
