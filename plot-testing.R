@@ -5,6 +5,8 @@ library(lubridate, warn.conflicts = FALSE)
 library(ggplot2, warn.conflicts = FALSE)
 library(purrr, warn.conflicts = FALSE)
 
+line_list <- readr::read_csv("data/covid-19-florida_arcgis_line-list.csv")
+
 # Test summary import -----------------------------------------------------
 
 testing_summary_dash <- read_csv("data/covid-19-florida_dash_summary.csv")
@@ -108,11 +110,12 @@ ggsave(fs::path("plots", "covid-19-florida-testing.png"), g, width = 6.66, heigh
 # positive count ----------------------------------------------------------
 
 g_tests <-
-  test_summary %>% 
-  select(day, positive) %>% 
-  filter(!is.na(positive)) %>% 
+  line_list %>% 
+  count(day = event_date, name = "positive", .drop = FALSE) %>% 
+  complete(day = seq(min(day), max(day), by = "day"), fill = list(positive = 0)) %>% 
+  mutate(positive = cumsum(positive)) %>% 
+  filter(day > today() - 30) %>%
   arrange(day) %>% 
-  filter(positive != lag(positive)) %>% 
   ggplot() +
   aes(day, positive) +
   geom_line(color = "#ec4e20") +
@@ -127,7 +130,7 @@ g_tests <-
   labs(
     x = NULL, y = NULL,
     caption = glue::glue(
-      "Last update: {max(test_summary$day)}",
+      "Last update: {max(line_list$timestamp)}",
       "Source: Florida DOH and covidtracking.com", 
       "github.com/gadenbuie/covid19-florida",
       .sep = "\n"
@@ -364,27 +367,17 @@ g_case_heatmap <-
 
 # Age Distribution --------------------------------------------------------
 
-cases_age <- read_csv("data/covid-19-florida_pdf_cases_age.csv") 
+cases_age <- read_csv("data/covid-19-florida_arcgis_line-list.csv")
 
-g_age <- 
-  cases_age %>% 
-  pivot_longer(-timestamp, names_to = "age", values_to = "count") %>% 
+g_age <-
+  cases_age %>%
+  filter(!is.na(age)) %>% 
   mutate(
-    age = forcats::fct_inorder(age),
-    age = forcats::fct_relevel(age, "0-9 years")
+    age = santoku::chop_width(age, 10, 0, labels = santoku::lbl_dash())
   ) %>% 
-  mutate(
-    timestamp = ymd_hms(timestamp, tz = "America/New_York"),
-    day = floor_date(timestamp, "day"),
-    day = as_date(day)
-  ) %>% 
-  arrange(desc(timestamp)) %>%
-  group_by(day, age) %>% 
-  slice(1) %>%
-  ungroup() %>% 
-  complete(day, age, fill = list(count = 0)) %>% 
-  filter(day == max(day)) %>% 
-  ggplot(.) +
+  group_by(age) %>% 
+  count(name = "count") %>% 
+  ggplot() +
   aes(age, count) %>% 
   geom_col(fill = "#ec4e20") +
   geom_text(aes(label = count, x = age, y = count), color = "#ec4e20", size = 4, vjust = -0.5) +
@@ -463,25 +456,13 @@ ggsave(fs::path("plots", "covid-19-florida-age-sex.png"), g_age_sex, width = 6.6
 
 # County Cases Log Scale --------------------------------------------------
 
-county_cases_dash <- readr::read_csv("data/old/covid-19-florida_dash_county.csv")
-county_cases_pdf <- readr::read_csv("data/covid-19-florida_pdf_cases_county.csv")
-
-county_daily <- 
-  bind_rows(
-    county_cases_dash,
-    county_cases_pdf %>% rename(count = total)
-  ) %>% 
+county_daily <-
+  line_list %>% 
+  count(county, day = event_date, name = "count") %>% 
   mutate(county = recode(county, "Dade" = "Miami-Dade")) %>% 
-  select(timestamp, county, count) %>% 
-  mutate_at("timestamp", ymd_hms, tz = "America/New_York") %>%
-  mutate(day = floor_date(timestamp, "day") %>% as_date()) %>% 
-  group_by(day, county) %>% 
-  arrange(desc(timestamp)) %>% 
-  slice(1) %>% 
-  ungroup() %>% 
-  select(-timestamp) %>% 
   complete(county, day, fill = list(count = 0)) %>% 
   group_by(county) %>% 
+  mutate(count = cumsum(count)) %>% 
   mutate(count_last = max(count)) %>% 
   ungroup() %>% 
   mutate(
@@ -500,8 +481,8 @@ county_start_date <-
   filter(count > 7) %>%
   mutate(diff = abs(count - 10)) %>%
   group_by(county) %>%
-  arrange(diff, day) %>% 
-  slice(1) %>% 
+  filter(diff == min(diff)) %>% 
+  filter(day = max(day)) %>% 
   select(county, start_date = day)
 
 county_days <-
@@ -511,8 +492,8 @@ county_days <-
   mutate(
     days = as.numeric(difftime(day, start_date, units = "days")),
     days = case_when(
-      stringr::str_detect(county, "^Broward") ~ days + 4,
-      stringr::str_detect(county, "^Miami-Dade") ~ days + 3,
+      stringr::str_detect(county, "^Broward") ~ days ,
+      stringr::str_detect(county, "^Miami-Dade") ~ days,
       TRUE ~ days
     ),
     highlight = county %in% county_top_6$county
@@ -563,7 +544,7 @@ g_county_trajectory <-
     color = NULL,
     caption = glue::glue(
       "Source: Florida DOH", 
-      "Last update: {max(county_cases_pdf$timestamp)}",
+      "Last update: {max(line_list$timestamp)}",
       "github.com/gadenbuie/covid19-florida",
       .sep = "\n"
     )
@@ -585,7 +566,7 @@ g_county_trajectory <-
   theme(
     legend.position = c(-0.01, 1.025),
     legend.justification = c(0, 1),
-    legend.background = element_rect(fill = "white", color = "white"),
+    legend.background = element_rect(fill = "transparent", color = "transparent"),
     axis.title.y = element_text(angle = 90, vjust = 0.5, hjust = 0.5, color = "#666666"),
     plot.margin = margin(0.5, 0.5, 0.5, 0.5, unit = "lines"),
     plot.subtitle = element_text(margin = margin(b = 1.25, unit = "lines")),
