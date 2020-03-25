@@ -447,6 +447,7 @@ g_age_sex <-
   scale_fill_manual(values = c(
     Female = "#440154", Male = "#6baa75"
   )) +
+  scale_y_continuous(expand = expand_scale(add = c(0, 5))) +
   coord_cartesian(clip = "off") +
   theme_minimal(base_size = 14) +
   theme(
