@@ -2,3 +2,4 @@
 
 
 - This report includes community spread tables
+- Total cases in `cases_county` not equal to total positive: 657 != 658
