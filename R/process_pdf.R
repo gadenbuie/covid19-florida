@@ -53,7 +53,7 @@ replace_with_nbsp <- function(x, strings) {
 }
 
 remove_nbsp <- function(x) {
-  gsub("\u200b", " ", x, fixed = TRUE)
+  gsub("\u00a0", " ", x, fixed = TRUE)
 }
 
 extract_table <- function(
@@ -144,6 +144,15 @@ quietly <- function(.x, .f, ...) {
   } else {
     .f(.x, ...)
   }
+}
+
+str_detect_pct <- function(x, pattern, exclude_empty = TRUE) {
+  n_out_of <- if (exclude_empty) {
+    sum(str_detect(x, "^\\s*$", negate = TRUE))
+  } else {
+    length(x)
+  }
+  sum(str_detect(x, pattern)) / n_out_of
 }
 
 process_pdf <- function(pdf_file) {

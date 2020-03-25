@@ -746,65 +746,65 @@ timestamp,case,county,age,sex,travel_related,travel_detail,contact,jurisdiction,
 2020-03-23 22:20:00 EDT,754,Hillsborough,62,Male,Yes,FL; NY,Yes,FL resident,2020-03-21,FALSE
 2020-03-23 22:20:00 EDT,755,Hillsborough,27,Female,No,,,FL resident,2020-03-21,FALSE
 2020-03-23 22:20:00 EDT,756,Hillsborough,33,Female,Yes,Egypt,No,FL resident,2020-03-21,FALSE
-2020-03-23 22:20:00 EDT,757,Hillsborough,18,Male,No,,,FL resident,2020-03-21,FALSE
-2020-03-23 22:20:00 EDT,758,Hillsborough,21,Female,No,,,FL resident,2020-03-21,FALSE
+2020-03-23 22:20:00 EDT,757,Hillsborough,18,Male,No,,Yes,FL resident,2020-03-21,FALSE
+2020-03-23 22:20:00 EDT,758,Hillsborough,21,Female,No,,Yes,FL resident,2020-03-21,FALSE
 2020-03-23 22:20:00 EDT,759,Hillsborough,62,Male,Yes,FL; NY,No,FL resident,2020-03-21,FALSE
-2020-03-23 22:20:00 EDT,760,Hillsborough,38,Female,No,,,FL resident,2020-03-21,FALSE
+2020-03-23 22:20:00 EDT,760,Hillsborough,38,Female,No,,No,FL resident,2020-03-21,FALSE
 2020-03-23 22:20:00 EDT,761,Hillsborough,54,Female,Yes,FL; NY,Yes,FL resident,2020-03-21,FALSE
 2020-03-23 22:20:00 EDT,762,Hillsborough,20,Female,Yes,Venezuela,No,FL resident,2020-03-21,FALSE
 2020-03-23 22:20:00 EDT,763,Hillsborough,42,Male,Yes,CO; FL,Yes,FL resident,2020-03-21,FALSE
 2020-03-23 22:20:00 EDT,764,Hillsborough,57,Male,Unknown,,,FL resident,2020-03-21,FALSE
 2020-03-23 22:20:00 EDT,765,Hillsborough,26,Female,Yes,FL; NY,No,FL resident,2020-03-21,FALSE
-2020-03-23 22:20:00 EDT,766,Hillsborough,19,Female,No,,,FL resident,2020-03-21,FALSE
-2020-03-23 22:20:00 EDT,767,Hillsborough,20,Female,No,,,FL resident,2020-03-21,FALSE
+2020-03-23 22:20:00 EDT,766,Hillsborough,19,Female,No,,Yes,FL resident,2020-03-21,FALSE
+2020-03-23 22:20:00 EDT,767,Hillsborough,20,Female,No,,Yes,FL resident,2020-03-21,FALSE
 2020-03-23 22:20:00 EDT,768,Hillsborough,39,Male,Unknown,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,769,Hillsborough,29,Male,Unknown,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,770,Hillsborough,46,Male,No,,,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,769,Hillsborough,29,Male,Unknown,,No,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,770,Hillsborough,46,Male,No,,Yes,FL resident,2020-03-22,FALSE
 2020-03-23 22:20:00 EDT,771,Hillsborough,28,Male,No,,,FL resident,2020-03-22,FALSE
 2020-03-23 22:20:00 EDT,772,Hillsborough,21,Male,Unknown,,,FL resident,2020-03-22,FALSE
 2020-03-23 22:20:00 EDT,773,Hillsborough,51,Female,Unknown,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,774,Hillsborough,38,Male,Unknown,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,775,Hillsborough,60,Male,Unknown,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,776,Hillsborough,36,Female,No,,,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,774,Hillsborough,38,Male,Unknown,,No,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,775,Hillsborough,60,Male,Unknown,,No,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,776,Hillsborough,36,Female,No,,Yes,FL resident,2020-03-22,FALSE
 2020-03-23 22:20:00 EDT,777,Hillsborough,19,Female,Unknown,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,778,Hillsborough,43,Female,No,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,779,Hillsborough,69,Female,Unknown,,,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,778,Hillsborough,43,Female,No,,Yes,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,779,Hillsborough,69,Female,Unknown,,Yes,FL resident,2020-03-22,FALSE
 2020-03-23 22:20:00 EDT,780,Hillsborough,21,Female,Unknown,,,FL resident,2020-03-22,FALSE
 2020-03-23 22:20:00 EDT,781,Hillsborough,35,Male,Unknown,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,782,Hillsborough,10,Male,Unknown,,,FL resident,2020-03-23,FALSE
-2020-03-23 22:20:00 EDT,783,Hillsborough,39,Female,Unknown,,,FL resident,2020-03-23,FALSE
-2020-03-23 22:20:00 EDT,784,Hillsborough,56,Female,Unknown,,,FL resident,2020-03-23,FALSE
-2020-03-23 22:20:00 EDT,785,Hillsborough,79,Female,No,,,FL resident,2020-03-23,FALSE
-2020-03-23 22:20:00 EDT,786,Hillsborough,79,Female,No,,,FL resident,2020-03-23,FALSE
-2020-03-23 22:20:00 EDT,787,Hillsborough,47,Female,Unknown,,,FL resident,2020-03-23,FALSE
+2020-03-23 22:20:00 EDT,782,Hillsborough,10,Male,Unknown,,Yes,FL resident,2020-03-23,FALSE
+2020-03-23 22:20:00 EDT,783,Hillsborough,39,Female,Unknown,,No,FL resident,2020-03-23,FALSE
+2020-03-23 22:20:00 EDT,784,Hillsborough,56,Female,Unknown,,No,FL resident,2020-03-23,FALSE
+2020-03-23 22:20:00 EDT,785,Hillsborough,79,Female,No,,No,FL resident,2020-03-23,FALSE
+2020-03-23 22:20:00 EDT,786,Hillsborough,79,Female,No,,Yes,FL resident,2020-03-23,FALSE
+2020-03-23 22:20:00 EDT,787,Hillsborough,47,Female,Unknown,,Yes,FL resident,2020-03-23,FALSE
 2020-03-23 22:20:00 EDT,788,Hillsborough,30,Female,No,,,FL resident,2020-03-23,FALSE
-2020-03-23 22:20:00 EDT,789,Hillsborough,49,Female,No,,,FL resident,2020-03-23,FALSE
+2020-03-23 22:20:00 EDT,789,Hillsborough,49,Female,No,,No,FL resident,2020-03-23,FALSE
 2020-03-23 22:20:00 EDT,790,Hillsborough,30,Female,No,,,FL resident,2020-03-23,FALSE
-2020-03-23 22:20:00 EDT,791,Hillsborough,6,Male,Unknown,,,FL resident,2020-03-23,FALSE
+2020-03-23 22:20:00 EDT,791,Hillsborough,6,Male,Unknown,,Yes,FL resident,2020-03-23,FALSE
 2020-03-23 22:20:00 EDT,792,Hillsborough,22,Female,Yes,Italy,Yes,Non-FL resident,2020-03-03,FALSE
-2020-03-23 22:20:00 EDT,793,Hillsborough,28,Male,Unknown,,,Non-FL resident,2020-03-17,FALSE
-2020-03-23 22:20:00 EDT,794,Hillsborough,20,Female,No,,,Non-FL resident,2020-03-21,FALSE
+2020-03-23 22:20:00 EDT,793,Hillsborough,28,Male,Unknown,,Unknown,Non-FL resident,2020-03-17,FALSE
+2020-03-23 22:20:00 EDT,794,Hillsborough,20,Female,No,,Yes,Non-FL resident,2020-03-21,FALSE
 2020-03-23 22:20:00 EDT,795,Hillsborough,61,Male,Yes,GA,Unknown,Non-FL resident,2020-03-21,FALSE
 2020-03-23 22:20:00 EDT,796,Hillsborough,50,Female,Unknown,,,Non-FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,797,Indian River,77,Female,Yes,FL; MO,No,FL resident,2020-03-19,FALSE
-2020-03-23 22:20:00 EDT,798,Indian River,69,Male,Yes,Egypt; Germany,No,FL resident,2020-03-20,FALSE
-2020-03-23 22:20:00 EDT,799,Indian River,84,Female,No,,,FL resident,2020-03-20,FALSE
-2020-03-23 22:20:00 EDT,800,Indian River,54,Male,No,,,FL resident,2020-03-21,FALSE
-2020-03-23 22:20:00 EDT,801,Indian River,30,Female,Yes,Portugal; Spain; United Kingdom,No,FL resident,2020-03-21,FALSE
-2020-03-23 22:20:00 EDT,802,Indian River,58,Female,Yes,Ireland,No,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,803,Indian River,81,Female,No,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,804,Indian River,56,Male,Yes,CO,Yes,FL resident,2020-03-23,FALSE
-2020-03-23 22:20:00 EDT,805,Indian River,49,Male,No,,,FL resident,2020-03-23,FALSE
-2020-03-23 22:20:00 EDT,806,Indian River,25,Female,Yes,NY,No,Non-FL resident,2020-03-21,FALSE
+2020-03-23 22:20:00 EDT,797,Indian River,77,Female,Yes,FL; MO,No,FL resident,2020-03-19,FALSE
+2020-03-23 22:20:00 EDT,798,Indian River,69,Male,Yes,Egypt; Germany,No,FL resident,2020-03-20,FALSE
+2020-03-23 22:20:00 EDT,799,Indian River,84,Female,No,,No,FL resident,2020-03-20,FALSE
+2020-03-23 22:20:00 EDT,800,Indian River,54,Male,No,,No,FL resident,2020-03-21,FALSE
+2020-03-23 22:20:00 EDT,801,Indian River,30,Female,Yes,Portugal; Spain; United Kingdom,No,FL resident,2020-03-21,FALSE
+2020-03-23 22:20:00 EDT,802,Indian River,58,Female,Yes,Ireland,No,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,803,Indian River,81,Female,No,,No,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,804,Indian River,56,Male,Yes,CO,Yes,FL resident,2020-03-23,FALSE
+2020-03-23 22:20:00 EDT,805,Indian River,49,Male,No,,No,FL resident,2020-03-23,FALSE
+2020-03-23 22:20:00 EDT,806,Indian River,25,Female,Yes,NY,No,Non-FL resident,2020-03-21,FALSE
 2020-03-23 22:20:00 EDT,807,Jackson,33,Male,Yes,AL; FL; GA; LA; Mexico; TX,Unknown,Non-FL resident,2020-03-19,FALSE
 2020-03-23 22:20:00 EDT,808,Lake,75,Female,Yes,FL; NY,Yes,FL resident,2020-03-13,FALSE
 2020-03-23 22:20:00 EDT,809,Lake,56,Male,Yes,CO; FL,No,FL resident,2020-03-17,FALSE
-2020-03-23 22:20:00 EDT,810,Lake,26,Male,No,,,FL resident,2020-03-19,FALSE
-2020-03-23 22:20:00 EDT,811,Lake,48,Male,No,,,FL resident,2020-03-21,FALSE
+2020-03-23 22:20:00 EDT,810,Lake,26,Male,No,,Yes,FL resident,2020-03-19,FALSE
+2020-03-23 22:20:00 EDT,811,Lake,48,Male,No,,No,FL resident,2020-03-21,FALSE
 2020-03-23 22:20:00 EDT,812,Lake,80,Male,Yes,BELIZE; CARIBBEAN; FL,No,FL resident,2020-03-21,FALSE
-2020-03-23 22:20:00 EDT,813,Lake,43,Female,No,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,814,Lake,34,Male,No,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,815,Lake,75,Male,Unknown,,,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,813,Lake,43,Female,No,,No,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,814,Lake,34,Male,No,,Unknown,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,815,Lake,75,Male,Unknown,,Unknown,FL resident,2020-03-22,FALSE
 2020-03-23 22:20:00 EDT,816,Lake,63,Female,Unknown,,,FL resident,2020-03-23,FALSE
 2020-03-23 22:20:00 EDT,818,Lee,77,Male,Yes,Dominican Republic,Yes,FL resident,2020-03-07,FALSE
 2020-03-23 22:20:00 EDT,820,Lee,72,Female,Yes,MA; NH,Yes,FL resident,2020-03-14,FALSE
@@ -950,91 +950,91 @@ timestamp,case,county,age,sex,travel_related,travel_detail,contact,jurisdiction,
 2020-03-23 22:20:00 EDT,963,Osceola,65,Male,Yes,Canada,No,Non-FL resident,2020-03-13,FALSE
 2020-03-23 22:20:00 EDT,964,Osceola,20,Female,Yes,Spain,No,Non-FL resident,2020-03-17,FALSE
 2020-03-23 22:20:00 EDT,965,Osceola,39,Male,Unknown,,No,Non-FL resident,2020-03-19,FALSE
-2020-03-23 22:20:00 EDT,966,Palm Beach,74,Male,Yes,Belgium; FL,No,FL resident,2020-03-13,FALSE
-2020-03-23 22:20:00 EDT,967,Palm Beach,73,Male,Yes,Egypt; Germany,Yes,FL resident,2020-03-13,FALSE
-2020-03-23 22:20:00 EDT,968,Palm Beach,59,Female,Yes,NY,Yes,FL resident,2020-03-14,FALSE
-2020-03-23 22:20:00 EDT,969,Palm Beach,65,Male,Yes,NY,Yes,FL resident,2020-03-14,FALSE
-2020-03-23 22:20:00 EDT,970,Palm Beach,37,Male,Yes,NY,Yes,FL resident,2020-03-14,FALSE
-2020-03-23 22:20:00 EDT,971,Palm Beach,25,Male,Unknown,,,FL resident,2020-03-16,FALSE
-2020-03-23 22:20:00 EDT,972,Palm Beach,66,Male,No,,Unknown,FL resident,2020-03-16,FALSE
-2020-03-23 22:20:00 EDT,973,Palm Beach,62,Male,Yes,United Kingdom,Yes,FL resident,2020-03-16,FALSE
-2020-03-23 22:20:00 EDT,974,Palm Beach,76,Female,Yes,France,Unknown,FL resident,2020-03-16,FALSE
-2020-03-23 22:20:00 EDT,975,Palm Beach,69,Male,Yes,CO,No,FL resident,2020-03-17,FALSE
-2020-03-23 22:20:00 EDT,976,Palm Beach,19,Female,Yes,TN,Yes,FL resident,2020-03-17,FALSE
-2020-03-23 22:20:00 EDT,977,Palm Beach,38,Male,Unknown,,Unknown,FL resident,2020-03-17,FALSE
-2020-03-23 22:20:00 EDT,978,Palm Beach,43,Male,Unknown,,Unknown,FL resident,2020-03-18,FALSE
-2020-03-23 22:20:00 EDT,979,Palm Beach,55,Male,No,,No,FL resident,2020-03-18,FALSE
-2020-03-23 22:20:00 EDT,980,Palm Beach,41,Male,Yes,NV; UT; WY,No,FL resident,2020-03-18,FALSE
-2020-03-23 22:20:00 EDT,981,Palm Beach,72,Male,No,,No,FL resident,2020-03-18,FALSE
-2020-03-23 22:20:00 EDT,982,Palm Beach,69,Female,No,,Yes,FL resident,2020-03-18,FALSE
-2020-03-23 22:20:00 EDT,983,Palm Beach,26,Male,Yes,Bahamas; FL,No,FL resident,2020-03-18,FALSE
-2020-03-23 22:20:00 EDT,984,Palm Beach,6,Female,Unknown,,Yes,FL resident,2020-03-18,FALSE
-2020-03-23 22:20:00 EDT,985,Palm Beach,69,Female,No,,Yes,FL resident,2020-03-18,FALSE
-2020-03-23 22:20:00 EDT,986,Palm Beach,78,Male,Unknown,,,FL resident,2020-03-19,FALSE
-2020-03-23 22:20:00 EDT,987,Palm Beach,60,Female,Yes,Russia; Spain,No,FL resident,2020-03-19,FALSE
-2020-03-23 22:20:00 EDT,988,Palm Beach,19,Male,Yes,NY,Unknown,FL resident,2020-03-19,FALSE
-2020-03-23 22:20:00 EDT,989,Palm Beach,56,Female,Yes,Egypt; Germany,Yes,FL resident,2020-03-19,FALSE
-2020-03-23 22:20:00 EDT,990,Palm Beach,84,Male,No,,Yes,FL resident,2020-03-20,FALSE
-2020-03-23 22:20:00 EDT,991,Palm Beach,42,Female,No,,Unknown,FL resident,2020-03-20,FALSE
-2020-03-23 22:20:00 EDT,992,Palm Beach,48,Male,Unknown,,Unknown,FL resident,2020-03-20,FALSE
-2020-03-23 22:20:00 EDT,993,Palm Beach,69,Male,No,,Yes,FL resident,2020-03-20,FALSE
-2020-03-23 22:20:00 EDT,994,Palm Beach,53,Male,No,,No,FL resident,2020-03-20,FALSE
-2020-03-23 22:20:00 EDT,995,Palm Beach,68,Female,No,,Yes,FL resident,2020-03-20,FALSE
-2020-03-23 22:20:00 EDT,996,Palm Beach,69,Male,No,,No,FL resident,2020-03-20,FALSE
-2020-03-23 22:20:00 EDT,997,Palm Beach,81,Male,Yes,NY,Yes,FL resident,2020-03-20,FALSE
-2020-03-23 22:20:00 EDT,998,Palm Beach,29,Male,No,,Unknown,FL resident,2020-03-20,FALSE
-2020-03-23 22:20:00 EDT,999,Palm Beach,72,Male,Yes,Canada; FL,No,FL resident,2020-03-20,FALSE
-2020-03-23 22:20:00 EDT,1000,Palm Beach,69,Male,No,,Yes,FL resident,2020-03-20,FALSE
-2020-03-23 22:20:00 EDT,1001,Palm Beach,66,Male,Unknown,,Unknown,FL resident,2020-03-20,FALSE
-2020-03-23 22:20:00 EDT,1002,Palm Beach,82,Male,Unknown,,Unknown,FL resident,2020-03-20,FALSE
-2020-03-23 22:20:00 EDT,1003,Palm Beach,53,Male,Unknown,,,FL resident,2020-03-21,FALSE
-2020-03-23 22:20:00 EDT,1004,Palm Beach,78,Male,Unknown,,Unknown,FL resident,2020-03-21,FALSE
-2020-03-23 22:20:00 EDT,1005,Palm Beach,72,Male,Unknown,,,FL resident,2020-03-21,FALSE
-2020-03-23 22:20:00 EDT,1006,Palm Beach,70,Male,Unknown,,Yes,FL resident,2020-03-21,FALSE
-2020-03-23 22:20:00 EDT,1007,Palm Beach,30,Female,Yes,CO,No,FL resident,2020-03-21,FALSE
-2020-03-23 22:20:00 EDT,1009,Palm Beach,19,Female,Unknown,,Unknown,FL resident,2020-03-21,FALSE
-2020-03-23 22:20:00 EDT,1010,Palm Beach,60,Male,Yes,NY,Unknown,FL resident,2020-03-21,FALSE
-2020-03-23 22:20:00 EDT,1011,Palm Beach,43,Male,No,,No,FL resident,2020-03-21,FALSE
-2020-03-23 22:20:00 EDT,1012,Palm Beach,41,Male,Unknown,,Unknown,FL resident,2020-03-21,FALSE
-2020-03-23 22:20:00 EDT,1013,Palm Beach,67,Male,Unknown,,,FL resident,2020-03-21,FALSE
-2020-03-23 22:20:00 EDT,1014,Palm Beach,83,Female,No,,Yes,FL resident,2020-03-21,FALSE
-2020-03-23 22:20:00 EDT,1017,Palm Beach,35,Female,No,,No,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1018,Palm Beach,48,Male,Yes,CO; FL,No,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1019,Palm Beach,64,Male,Unknown,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1020,Palm Beach,56,Male,Unknown,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1021,Palm Beach,69,Male,Yes,BAHAMAS; FL; NY; TX,No,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1022,Palm Beach,22,Male,Unknown,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1023,Palm Beach,76,Male,Unknown,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1024,Palm Beach,83,Male,No,,No,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1025,Palm Beach,56,Female,Unknown,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1026,Palm Beach,28,Male,No,,Unknown,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1027,Palm Beach,59,Male,Unknown,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1028,Palm Beach,50,Female,Unknown,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1029,Palm Beach,77,Female,Unknown,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1030,Palm Beach,61,Female,Unknown,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1031,Palm Beach,45,Female,Unknown,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1033,Palm Beach,67,Male,Unknown,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1034,Palm Beach,21,Female,Yes,PORTUGAL; UNITED KINGDOM,No,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1035,Palm Beach,47,Male,Unknown,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1036,Palm Beach,64,Female,Unknown,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1037,Palm Beach,64,Male,Unknown,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1038,Palm Beach,64,Female,Unknown,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1039,Palm Beach,69,Female,Unknown,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1040,Palm Beach,65,Female,Unknown,,Unknown,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1041,Palm Beach,68,Male,Unknown,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1042,Palm Beach,52,Female,Unknown,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1043,Palm Beach,21,Female,Unknown,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1044,Palm Beach,71,Male,No,,No,FL resident,2020-03-23,FALSE
-2020-03-23 22:20:00 EDT,1045,Palm Beach,43,Male,Unknown,,,FL resident,2020-03-23,FALSE
-2020-03-23 22:20:00 EDT,1046,Palm Beach,29,Male,Unknown,,,FL resident,2020-03-23,FALSE
-2020-03-23 22:20:00 EDT,1047,Palm Beach,73,Male,Yes,NY,Yes,Non-FL resident,2020-03-18,FALSE
-2020-03-23 22:20:00 EDT,1048,Palm Beach,26,Female,Unknown,,Yes,Non-FL resident,2020-03-18,FALSE
-2020-03-23 22:20:00 EDT,1049,Palm Beach,78,Female,Unknown,,Unknown,Non-FL resident,2020-03-19,FALSE
-2020-03-23 22:20:00 EDT,1050,Palm Beach,73,Male,Yes,NJ,Unknown,Non-FL resident,2020-03-19,FALSE
-2020-03-23 22:20:00 EDT,1051,Palm Beach,20,Female,Unknown,,Unknown,Non-FL resident,2020-03-20,FALSE
-2020-03-23 22:20:00 EDT,1052,Palm Beach,23,Female,Yes,FL; Jamaica,No,Non-FL resident,2020-03-20,FALSE
-2020-03-23 22:20:00 EDT,1053,Palm Beach,29,Male,Unknown,,Yes,Non-FL resident,2020-03-20,FALSE
-2020-03-23 22:20:00 EDT,1054,Palm Beach,71,Female,Yes,Japan,Yes,Not diagnosed/isolated in,2020-03-04,FALSE
+2020-03-23 22:20:00 EDT,966,Palm Beach,74,Male,Yes,Belgium; FL,No,FL resident,2020-03-13,FALSE
+2020-03-23 22:20:00 EDT,967,Palm Beach,73,Male,Yes,Egypt; Germany,Yes,FL resident,2020-03-13,FALSE
+2020-03-23 22:20:00 EDT,968,Palm Beach,59,Female,Yes,NY,Yes,FL resident,2020-03-14,FALSE
+2020-03-23 22:20:00 EDT,969,Palm Beach,65,Male,Yes,NY,Yes,FL resident,2020-03-14,FALSE
+2020-03-23 22:20:00 EDT,970,Palm Beach,37,Male,Yes,NY,Yes,FL resident,2020-03-14,FALSE
+2020-03-23 22:20:00 EDT,971,Palm Beach,25,Male,Unknown,,,FL resident,2020-03-16,FALSE
+2020-03-23 22:20:00 EDT,972,Palm Beach,66,Male,No,,Unknown,FL resident,2020-03-16,FALSE
+2020-03-23 22:20:00 EDT,973,Palm Beach,62,Male,Yes,United Kingdom,Yes,FL resident,2020-03-16,FALSE
+2020-03-23 22:20:00 EDT,974,Palm Beach,76,Female,Yes,France,Unknown,FL resident,2020-03-16,FALSE
+2020-03-23 22:20:00 EDT,975,Palm Beach,69,Male,Yes,CO,No,FL resident,2020-03-17,FALSE
+2020-03-23 22:20:00 EDT,976,Palm Beach,19,Female,Yes,TN,Yes,FL resident,2020-03-17,FALSE
+2020-03-23 22:20:00 EDT,977,Palm Beach,38,Male,Unknown,,Unknown,FL resident,2020-03-17,FALSE
+2020-03-23 22:20:00 EDT,978,Palm Beach,43,Male,Unknown,,Unknown,FL resident,2020-03-18,FALSE
+2020-03-23 22:20:00 EDT,979,Palm Beach,55,Male,No,,No,FL resident,2020-03-18,FALSE
+2020-03-23 22:20:00 EDT,980,Palm Beach,41,Male,Yes,NV; UT; WY,No,FL resident,2020-03-18,FALSE
+2020-03-23 22:20:00 EDT,981,Palm Beach,72,Male,No,,No,FL resident,2020-03-18,FALSE
+2020-03-23 22:20:00 EDT,982,Palm Beach,69,Female,No,,Yes,FL resident,2020-03-18,FALSE
+2020-03-23 22:20:00 EDT,983,Palm Beach,26,Male,Yes,Bahamas; FL,No,FL resident,2020-03-18,FALSE
+2020-03-23 22:20:00 EDT,984,Palm Beach,6,Female,Unknown,,Yes,FL resident,2020-03-18,FALSE
+2020-03-23 22:20:00 EDT,985,Palm Beach,69,Female,No,,Yes,FL resident,2020-03-18,FALSE
+2020-03-23 22:20:00 EDT,986,Palm Beach,78,Male,Unknown,,,FL resident,2020-03-19,FALSE
+2020-03-23 22:20:00 EDT,987,Palm Beach,60,Female,Yes,Russia; Spain,No,FL resident,2020-03-19,FALSE
+2020-03-23 22:20:00 EDT,988,Palm Beach,19,Male,Yes,NY,Unknown,FL resident,2020-03-19,FALSE
+2020-03-23 22:20:00 EDT,989,Palm Beach,56,Female,Yes,Egypt; Germany,Yes,FL resident,2020-03-19,FALSE
+2020-03-23 22:20:00 EDT,990,Palm Beach,84,Male,No,,Yes,FL resident,2020-03-20,FALSE
+2020-03-23 22:20:00 EDT,991,Palm Beach,42,Female,No,,Unknown,FL resident,2020-03-20,FALSE
+2020-03-23 22:20:00 EDT,992,Palm Beach,48,Male,Unknown,,Unknown,FL resident,2020-03-20,FALSE
+2020-03-23 22:20:00 EDT,993,Palm Beach,69,Male,No,,Yes,FL resident,2020-03-20,FALSE
+2020-03-23 22:20:00 EDT,994,Palm Beach,53,Male,No,,No,FL resident,2020-03-20,FALSE
+2020-03-23 22:20:00 EDT,995,Palm Beach,68,Female,No,,Yes,FL resident,2020-03-20,FALSE
+2020-03-23 22:20:00 EDT,996,Palm Beach,69,Male,No,,No,FL resident,2020-03-20,FALSE
+2020-03-23 22:20:00 EDT,997,Palm Beach,81,Male,Yes,NY,Yes,FL resident,2020-03-20,FALSE
+2020-03-23 22:20:00 EDT,998,Palm Beach,29,Male,No,,Unknown,FL resident,2020-03-20,FALSE
+2020-03-23 22:20:00 EDT,999,Palm Beach,72,Male,Yes,Canada; FL,No,FL resident,2020-03-20,FALSE
+2020-03-23 22:20:00 EDT,1000,Palm Beach,69,Male,No,,Yes,FL resident,2020-03-20,FALSE
+2020-03-23 22:20:00 EDT,1001,Palm Beach,66,Male,Unknown,,Unknown,FL resident,2020-03-20,FALSE
+2020-03-23 22:20:00 EDT,1002,Palm Beach,82,Male,Unknown,,Unknown,FL resident,2020-03-20,FALSE
+2020-03-23 22:20:00 EDT,1003,Palm Beach,53,Male,Unknown,,,FL resident,2020-03-21,FALSE
+2020-03-23 22:20:00 EDT,1004,Palm Beach,78,Male,Unknown,,Unknown,FL resident,2020-03-21,FALSE
+2020-03-23 22:20:00 EDT,1005,Palm Beach,72,Male,Unknown,,,FL resident,2020-03-21,FALSE
+2020-03-23 22:20:00 EDT,1006,Palm Beach,70,Male,Unknown,,Yes,FL resident,2020-03-21,FALSE
+2020-03-23 22:20:00 EDT,1007,Palm Beach,30,Female,Yes,CO,No,FL resident,2020-03-21,FALSE
+2020-03-23 22:20:00 EDT,1009,Palm Beach,19,Female,Unknown,,Unknown,FL resident,2020-03-21,FALSE
+2020-03-23 22:20:00 EDT,1010,Palm Beach,60,Male,Yes,NY,Unknown,FL resident,2020-03-21,FALSE
+2020-03-23 22:20:00 EDT,1011,Palm Beach,43,Male,No,,No,FL resident,2020-03-21,FALSE
+2020-03-23 22:20:00 EDT,1012,Palm Beach,41,Male,Unknown,,Unknown,FL resident,2020-03-21,FALSE
+2020-03-23 22:20:00 EDT,1013,Palm Beach,67,Male,Unknown,,,FL resident,2020-03-21,FALSE
+2020-03-23 22:20:00 EDT,1014,Palm Beach,83,Female,No,,Yes,FL resident,2020-03-21,FALSE
+2020-03-23 22:20:00 EDT,1017,Palm Beach,35,Female,No,,No,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1018,Palm Beach,48,Male,Yes,CO; FL,No,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1019,Palm Beach,64,Male,Unknown,,,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1020,Palm Beach,56,Male,Unknown,,,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1021,Palm Beach,69,Male,Yes,BAHAMAS; FL; NY; TX,No,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1022,Palm Beach,22,Male,Unknown,,,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1023,Palm Beach,76,Male,Unknown,,,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1024,Palm Beach,83,Male,No,,No,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1025,Palm Beach,56,Female,Unknown,,,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1026,Palm Beach,28,Male,No,,Unknown,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1027,Palm Beach,59,Male,Unknown,,,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1028,Palm Beach,50,Female,Unknown,,,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1029,Palm Beach,77,Female,Unknown,,,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1030,Palm Beach,61,Female,Unknown,,,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1031,Palm Beach,45,Female,Unknown,,,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1033,Palm Beach,67,Male,Unknown,,,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1034,Palm Beach,21,Female,Yes,PORTUGAL; UNITED KINGDOM,No,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1035,Palm Beach,47,Male,Unknown,,,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1036,Palm Beach,64,Female,Unknown,,,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1037,Palm Beach,64,Male,Unknown,,,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1038,Palm Beach,64,Female,Unknown,,,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1039,Palm Beach,69,Female,Unknown,,,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1040,Palm Beach,65,Female,Unknown,,Unknown,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1041,Palm Beach,68,Male,Unknown,,,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1042,Palm Beach,52,Female,Unknown,,,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1043,Palm Beach,21,Female,Unknown,,,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1044,Palm Beach,71,Male,No,,No,FL resident,2020-03-23,FALSE
+2020-03-23 22:20:00 EDT,1045,Palm Beach,43,Male,Unknown,,,FL resident,2020-03-23,FALSE
+2020-03-23 22:20:00 EDT,1046,Palm Beach,29,Male,Unknown,,,FL resident,2020-03-23,FALSE
+2020-03-23 22:20:00 EDT,1047,Palm Beach,73,Male,Yes,NY,Yes,Non-FL resident,2020-03-18,FALSE
+2020-03-23 22:20:00 EDT,1048,Palm Beach,26,Female,Unknown,,Yes,Non-FL resident,2020-03-18,FALSE
+2020-03-23 22:20:00 EDT,1049,Palm Beach,78,Female,Unknown,,Unknown,Non-FL resident,2020-03-19,FALSE
+2020-03-23 22:20:00 EDT,1050,Palm Beach,73,Male,Yes,NJ,Unknown,Non-FL resident,2020-03-19,FALSE
+2020-03-23 22:20:00 EDT,1051,Palm Beach,20,Female,Unknown,,Unknown,Non-FL resident,2020-03-20,FALSE
+2020-03-23 22:20:00 EDT,1052,Palm Beach,23,Female,Yes,FL; Jamaica,No,Non-FL resident,2020-03-20,FALSE
+2020-03-23 22:20:00 EDT,1053,Palm Beach,29,Male,Unknown,,Yes,Non-FL resident,2020-03-20,FALSE
+2020-03-23 22:20:00 EDT,1054,Palm Beach,71,Female,Yes,Japan,Yes,Not diagnosed/isolated in FL,2020-03-04,FALSE
 2020-03-23 22:20:00 EDT,1055,Pasco,46,Male,No,,Yes,FL resident,2020-03-11,FALSE
 2020-03-23 22:20:00 EDT,1056,Pasco,67,Male,Yes,FL; NY,Yes,FL resident,2020-03-14,FALSE
 2020-03-23 22:20:00 EDT,1057,Pasco,64,Female,Yes,FL; NY,Yes,FL resident,2020-03-18,FALSE
@@ -1105,9 +1105,9 @@ timestamp,case,county,age,sex,travel_related,travel_detail,contact,jurisdiction,
 2020-03-23 22:20:00 EDT,1122,Polk,41,Male,Yes,UNITED KINGDOM,No,FL resident,2020-03-23,FALSE
 2020-03-23 22:20:00 EDT,1123,Putnam,67,Male,Yes,CA,Unknown,FL resident,2020-03-20,FALSE
 2020-03-23 22:20:00 EDT,1124,Putnam,82,Female,No,,Unknown,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1126,Santa Rosa,48,Male,Yes,United Kingdom,No,FL resident,2020-03-18,FALSE
-2020-03-23 22:20:00 EDT,1127,Santa Rosa,17,Male,No,,No,FL resident,2020-03-20,FALSE
-2020-03-23 22:20:00 EDT,1128,Santa Rosa,2,Male,No,,No,FL resident,2020-03-23,FALSE
+2020-03-23 22:20:00 EDT,1126,Santa Rosa,48,Male,Yes,United Kingdom,No,FL resident,2020-03-18,FALSE
+2020-03-23 22:20:00 EDT,1127,Santa Rosa,17,Male,No,,No,FL resident,2020-03-20,FALSE
+2020-03-23 22:20:00 EDT,1128,Santa Rosa,2,Male,No,,No,FL resident,2020-03-23,FALSE
 2020-03-23 22:20:00 EDT,1129,Sarasota,50,Female,Yes,NY,No,FL resident,2020-03-13,FALSE
 2020-03-23 22:20:00 EDT,1130,Sarasota,87,Male,No,,Yes,FL resident,2020-03-16,FALSE
 2020-03-23 22:20:00 EDT,1131,Sarasota,53,Male,No,,Yes,FL resident,2020-03-19,FALSE
@@ -1151,29 +1151,29 @@ timestamp,case,county,age,sex,travel_related,travel_detail,contact,jurisdiction,
 2020-03-23 22:20:00 EDT,1169,Seminole,76,Female,Yes,EGYPT; ISRAEL; JORDAN,Unknown,FL resident,2020-03-23,FALSE
 2020-03-23 22:20:00 EDT,1170,Seminole,30,Male,Unknown,,,FL resident,2020-03-23,FALSE
 2020-03-23 22:20:00 EDT,1171,Seminole,70,Male,Yes,NY,Unknown,Non-FL resident,2020-03-17,FALSE
-2020-03-23 22:20:00 EDT,1172,St. Johns,64,Female,No,,No,FL resident,2020-03-14,FALSE
-2020-03-23 22:20:00 EDT,1173,St. Johns,49,Male,Yes,Europe; Hungary,No,FL resident,2020-03-16,FALSE
-2020-03-23 22:20:00 EDT,1174,St. Johns,53,Female,Yes,CO,Yes,FL resident,2020-03-18,FALSE
-2020-03-23 22:20:00 EDT,1175,St. Johns,47,Male,No,,Yes,FL resident,2020-03-20,FALSE
-2020-03-23 22:20:00 EDT,1176,St. Johns,47,Female,No,,Yes,FL resident,2020-03-20,FALSE
-2020-03-23 22:20:00 EDT,1177,St. Johns,38,Female,Yes,MN,No,FL resident,2020-03-20,FALSE
-2020-03-23 22:20:00 EDT,1178,St. Johns,68,Male,No,,No,FL resident,2020-03-20,FALSE
-2020-03-23 22:20:00 EDT,1179,St. Johns,49,Male,Unknown,,,FL resident,2020-03-21,FALSE
-2020-03-23 22:20:00 EDT,1180,St. Johns,67,Male,No,,No,FL resident,2020-03-21,FALSE
-2020-03-23 22:20:00 EDT,1181,St. Johns,53,Male,Unknown,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1182,St. Johns,22,Male,No,,Yes,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1183,St. Johns,42,Male,Unknown,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1184,St. Johns,50,Male,No,,Yes,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1185,St. Johns,40,Male,No,,No,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1186,St. Johns,76,Male,Unknown,,,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1187,St. Johns,69,Male,No,,No,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1188,St. Johns,63,Male,Yes,NY,No,Non-FL resident,2020-03-12,FALSE
-2020-03-23 22:20:00 EDT,1189,St. Johns,46,Male,Yes,FL; MN,Yes,Non-FL resident,2020-03-18,FALSE
-2020-03-23 22:20:00 EDT,1190,St. Lucie,56,Male,No,,No,FL resident,2020-03-21,FALSE
-2020-03-23 22:20:00 EDT,1191,St. Lucie,45,Female,No,,No,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1192,St. Lucie,77,Male,Yes,Caribbean,No,FL resident,2020-03-22,FALSE
-2020-03-23 22:20:00 EDT,1193,St. Lucie,77,Female,No,,No,FL resident,2020-03-23,FALSE
-2020-03-23 22:20:00 EDT,1194,St. Lucie,26,Female,No,,No,FL resident,2020-03-23,FALSE
+2020-03-23 22:20:00 EDT,1172,St. Johns,64,Female,No,,No,FL resident,2020-03-14,FALSE
+2020-03-23 22:20:00 EDT,1173,St. Johns,49,Male,Yes,Europe; Hungary,No,FL resident,2020-03-16,FALSE
+2020-03-23 22:20:00 EDT,1174,St. Johns,53,Female,Yes,CO,Yes,FL resident,2020-03-18,FALSE
+2020-03-23 22:20:00 EDT,1175,St. Johns,47,Male,No,,Yes,FL resident,2020-03-20,FALSE
+2020-03-23 22:20:00 EDT,1176,St. Johns,47,Female,No,,Yes,FL resident,2020-03-20,FALSE
+2020-03-23 22:20:00 EDT,1177,St. Johns,38,Female,Yes,MN,No,FL resident,2020-03-20,FALSE
+2020-03-23 22:20:00 EDT,1178,St. Johns,68,Male,No,,No,FL resident,2020-03-20,FALSE
+2020-03-23 22:20:00 EDT,1179,St. Johns,49,Male,Unknown,,,FL resident,2020-03-21,FALSE
+2020-03-23 22:20:00 EDT,1180,St. Johns,67,Male,No,,No,FL resident,2020-03-21,FALSE
+2020-03-23 22:20:00 EDT,1181,St. Johns,53,Male,Unknown,,,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1182,St. Johns,22,Male,No,,Yes,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1183,St. Johns,42,Male,Unknown,,,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1184,St. Johns,50,Male,No,,Yes,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1185,St. Johns,40,Male,No,,No,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1186,St. Johns,76,Male,Unknown,,,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1187,St. Johns,69,Male,No,,No,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1188,St. Johns,63,Male,Yes,NY,No,Non-FL resident,2020-03-12,FALSE
+2020-03-23 22:20:00 EDT,1189,St. Johns,46,Male,Yes,FL; MN,Yes,Non-FL resident,2020-03-18,FALSE
+2020-03-23 22:20:00 EDT,1190,St. Lucie,56,Male,No,,No,FL resident,2020-03-21,FALSE
+2020-03-23 22:20:00 EDT,1191,St. Lucie,45,Female,No,,No,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1192,St. Lucie,77,Male,Yes,Caribbean,No,FL resident,2020-03-22,FALSE
+2020-03-23 22:20:00 EDT,1193,St. Lucie,77,Female,No,,No,FL resident,2020-03-23,FALSE
+2020-03-23 22:20:00 EDT,1194,St. Lucie,26,Female,No,,No,FL resident,2020-03-23,FALSE
 2020-03-23 22:20:00 EDT,1195,Sumter,68,Male,Yes,Egypt,Yes,FL resident,2020-03-18,FALSE
 2020-03-23 22:20:00 EDT,1196,Sumter,66,Male,No,,Yes,FL resident,2020-03-19,FALSE
 2020-03-23 22:20:00 EDT,1197,Sumter,71,Male,Yes,Belize; FL; Honduras; Mexico,Yes,FL resident,2020-03-21,FALSE
@@ -1220,7 +1220,7 @@ timestamp,case,county,age,sex,travel_related,travel_detail,contact,jurisdiction,
 2020-03-23 22:20:00 EDT,11,Manatee,70,Male,No,,No,FL resident,2020-03-16,TRUE
 2020-03-23 22:20:00 EDT,12,Orange,79,Female,Unknown,,No,FL resident,2020-03-15,TRUE
 2020-03-23 22:20:00 EDT,13,Orange,68,Female,Yes,Philippines; South Korea,,Not diagnosed/isolated in FL,2020-03-13,TRUE
-2020-03-23 22:20:00 EDT,14,Palm Beach,83,Male,Unknown,,,FL resident,2020-03-21,TRUE
-2020-03-23 22:20:00 EDT,15,Palm Beach,88,Male,Unknown,,No,FL resident,2020-03-21,TRUE
-2020-03-23 22:20:00 EDT,16,Palm Beach,85,Female,Unknown,,Unknown,FL resident,2020-03-22,TRUE
-2020-03-23 22:20:00 EDT,17,Santa Rosa,71,Male,Yes,EGYPT; ISRAEL; JORDAN,No,FL resident,2020-03-05,TRUE
+2020-03-23 22:20:00 EDT,14,Palm Beach,83,Male,Unknown,,,FL resident,2020-03-21,TRUE
+2020-03-23 22:20:00 EDT,15,Palm Beach,88,Male,Unknown,,No,FL resident,2020-03-21,TRUE
+2020-03-23 22:20:00 EDT,16,Palm Beach,85,Female,Unknown,,Unknown,FL resident,2020-03-22,TRUE
+2020-03-23 22:20:00 EDT,17,Santa Rosa,71,Male,Yes,EGYPT; ISRAEL; JORDAN,No,FL resident,2020-03-05,TRUE

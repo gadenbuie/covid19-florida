@@ -73,10 +73,34 @@ process_line_list_v2 <- function(page_text, timestamp) {
     add_timestamp(timestamp)
 }
 
+words_with_spaces <- c(
+  "United Kingdom",
+  "UNITED KINGDOM",
+  "FL resident",
+  "Non-FL resident",
+  "Not diagnosed/isolated in FL",
+  "Dominican Republic",
+  "DOMINICAN REPUBLIC",
+  "Trinidad and Tobago",
+  "TRINIDAD AND TOBAGO",
+  "United Arab Emirates",
+  "UNITED ARAB EMIRATES",
+  "Cayman Islands",
+  "CAYMAN ISLANDS",
+  "El Salvador",
+  "EL SALVADOR",
+  "South Korea",
+  "SOUTH KOREA",
+  "Saudi Arabia",
+  "SAUDI ARABIA",
+  "; "
+)
+
 process_line_list_v2_table <- function(pages_text) {
   line_list_text <-
     pages_text %>%
     replace_with_nbsp(fl_counties_w_spaces) %>%
+    replace_with_nbsp(words_with_spaces) %>% 
     str_split("\n") %>% 
     map(str_subset, pattern = "^\\d[\\d\\s,]{3,}[A-Z]")
   
@@ -113,24 +137,34 @@ process_line_list_v2_table <- function(pages_text) {
     
     # if 25%+ of the non-empty travel_detail column values end with Yes|No|Unknown,
     # then assume that the column needs to be split into travel_detail and contact
-    requires_travel_contact_split <- 
-      sum(str_detect(tables[[i]][[6]], "(Yes|No|Unknown)$")) / 
-      sum(str_detect(tables[[i]][[6]], "^\\s*$", negate = TRUE)) > 0.25
+    requires_travel_contact_split <- str_detect_pct(tables[[i]][[6]], "(Yes|No|Unknown)$") > 0.25
     
     if (requires_travel_contact_split) {
       tables[[i]] <- tables[[i]] %>% 
-        extract(6, c("a", "b"), regex = "(.+?) (Yes|No|Unknown)$") %>% 
+        extract(6, c("a", "b"), regex = "(.+?) (Yes|No|Unknown)$", remove = FALSE) %>%
+        mutate_at(6:8, str_trim) %>% 
+        mutate(
+          a = if_else(is.na(a) & !str_detect(X6, "^Yes|No|Unknown$"), X6, a),
+          b = if_else(is.na(b) & str_detect(X6, "^Yes|No|Unknown$"), X6, b),
+        ) %>% 
         replace_na(list(a = "", b = "")) %>% 
+        select(-6) %>% 
         reindex_cols()
     }
     
     idx_binary <- index_has_pattern(tables[[i]], "^(Yes|No|Unknown|)$", all)
-    if (idx_binary[2] != idx_binary[1] + 2) {
+    if (length(idx_binary) == 1 && str_detect_pct(tables[[i]][[idx_binary[1] + 2]], "(?<!; )FL") > 0.25) {
+      # contact column is likely completely empty
+      tables[[i]]$a <- ""
       tables[[i]] <- tables[[i]] %>% 
-        unite(col = "a", (idx_binary[1] + 1):(idx_binary[2] - 1), sep = " ") %>% 
-        reindex_cols()
+        select(1:(idx_binary[1] + 1), a, everything())
+      idx_binary <- c(idx_binary, idx_binary[1] + 2)
+    } else if (length(idx_binary) == 2 && idx_binary[2] != idx_binary[1] + 2) {
+      tables[[i]] <- tables[[i]] %>% 
+        unite(col = "a", (idx_binary[1] + 1):(idx_binary[2] - 1), sep = " ")
       idx_binary <- index_has_pattern(tables[[i]], "^(Yes|No|Unknown|)$", all)
     }
+    tables[[i]] <- reindex_cols(tables[[i]])
     
     # make sure date is in it's own column
     idx_date <- index_has_pattern(tables[[i]], "\\d+/\\d+/\\d+")
@@ -157,6 +191,6 @@ process_line_list_v2_table <- function(pages_text) {
     mutate_at(vars(case), str_remove_all, ",") %>% 
     mutate_at(vars(case), as.numeric) %>%
     mutate_if(is.character, str_trim) %>%
-    mutate_at(vars(county), remove_nbsp) %>% 
+    mutate_if(is.character, remove_nbsp) %>% 
     mutate(date_counted = mdy(date_counted) %>% strftime("%F"))
 }

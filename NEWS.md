@@ -1,3 +1,13 @@
+# 2020-03-24
+
+- PDF processing is now part of the automatic update. Failures in the extraction
+  process are recorded in the README.md file in the pdf-specific data folder
+  in `pdfs/`.
+  
+- Added a few more strategies for parsing the Line List tables in the PDF repots
+  that fixed a few issues in previous extractions and should make the process
+  more robust.
+
 # 2020-03-23
 
 - Added historical PDF reports from 2020-03-16,17,18 that were found via Google
