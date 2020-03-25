@@ -55,14 +55,35 @@ if (!interactive()) {
   message("Waiting ", round(wait_time, 2), "s")
   Sys.sleep(wait_time)
 }
+ts_now <- now()
+ts_current <- strftime(ts_now, '%FT%H%M%S', tz = "America/New_York")
 
-# Get FL DOH Main Page ----
+# Get data from arcgis API--------------------------------------------------
+source("R/arcgis.R")
+arcgis_line_list <- purrr::safely(get_arcgis_line_list)()
+if (is.null(arcgis_line_list$error)) {
+  write_csv(arcgis_line_list$result, "data/covid-19-florida_arcgis_line-list.csv")
+} else {
+  message("Unable to get line list from arcgis api: ", arcgis_line_list$error$message)
+}
+
+arcgis_summary <- purrr::safely(get_arcgis_summary)()
+if (is.null(arcgis_summary$error)) {
+  arcgis_summary$result %>% 
+    mutate(timestamp = ts_current) %>% 
+    select(timestamp, everything()) %>% 
+    append_csv("data/covid-19-florida_arcgis_summary.csv")
+} else {
+  message("Unable to get dashboard summary from arcgis api: ", arcgis_summary$error$message)
+}
+
+  
+# Get FL DOH Main Page -----------------------------------------------------
+
 fl_doh_url <- "http://www.floridahealth.gov/diseases-and-conditions/COVID-19/"
 
 fl_doh <- read_html(fl_doh_url)
 fl_doh_digest <- html_sha(fl_doh)
-ts_now <- now()
-ts_current <- strftime(ts_now, '%FT%H%M%S', tz = "America/New_York")
 
 # Check hash of latest with hash of last update ----
 doh_has_changed <- TRUE
