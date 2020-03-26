@@ -367,13 +367,13 @@ g_case_heatmap <-
 
 # Age Distribution --------------------------------------------------------
 
-cases_age <- read_csv("data/covid-19-florida_arcgis_line-list.csv")
-
 g_age <-
-  cases_age %>%
+  line_list %>%
+  rename(sex = gender) %>% 
   filter(!is.na(age)) %>% 
   mutate(
-    age = santoku::chop_width(age, 10, 0, labels = santoku::lbl_dash())
+    age = santoku::chop_width(age, 10, 0, labels = santoku::lbl_dash()),
+    age = forcats::fct_collapse(age, "80+" = c("80 - 90", "90 - 100", "100 - 110", "120 - 130"))
   ) %>% 
   group_by(age) %>% 
   count(name = "count") %>% 
@@ -386,7 +386,7 @@ g_age <-
     x = NULL, y = NULL,
     caption = glue::glue(
       "Source: Florida DOH", 
-      "Last update: {max(cases_age$timestamp)}",
+      "Last update: {max(line_list$timestamp)}",
       "github.com/gadenbuie/covid19-florida",
       .sep = "\n"
     )
@@ -406,28 +406,29 @@ g_age <-
     axis.text.y = element_blank()
   )
 
-
 ggsave(fs::path("plots", "covid-19-florida-age.png"), g_age, width = 6.66, height = 2, dpi = 150, scale = 1.5)
 
 # Age & Sex Distribution ---------------------------------------------------
 
-cases_all <- read_csv("data/covid-19-florida_pdf_line_list.csv", guess_max = 1e5)
-
-g_age_sex <- 
-  cases_all %>% 
-  filter(
-    timestamp == max(timestamp),
-    sex %in% c("Male", "Female")
+g_age_sex <-
+  line_list %>%
+  rename(sex = gender) %>% 
+  filter(!is.na(age), sex %in% c("Male", "Female")) %>% 
+  mutate(
+    age = santoku::chop(age, seq(5, 80, 5), labels = santoku::lbl_format("%s")),
+    age = forcats::fct_recode(age, `80+` = "80")
   ) %>% 
+  group_by(age, sex) %>% 
+  count(name = "count") %>% 
   ggplot(.) +
-  aes(age, fill = sex) +
-  geom_histogram(binwidth = 5, color = "white", size = 1) +
+  aes(age, count, fill = sex) +
+  geom_col(color = "white", size = 1) +
   facet_wrap(~ sex, ncol = 2) +
   labs(
     x = NULL, y = NULL,
     caption = glue::glue(
       "Source: Florida DOH", 
-      "Last update: {max(cases_all$timestamp)}",
+      "Last update: {max(line_list$timestamp)}",
       "github.com/gadenbuie/covid19-florida",
       .sep = "\n"
     )
@@ -441,6 +442,7 @@ g_age_sex <-
     Female = "#440154", Male = "#6baa75"
   )) +
   scale_y_continuous(expand = expand_scale(add = c(0, 5))) +
+  scale_x_discrete(breaks = c(seq(0, 70, 10), "80+")) +
   coord_cartesian(clip = "off") +
   theme_minimal(base_size = 14) +
   theme(
