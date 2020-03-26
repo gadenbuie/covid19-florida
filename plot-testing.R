@@ -480,8 +480,8 @@ county_top_6 <- county_daily %>%
 
 county_start_date <- 
   county_daily %>%
-  filter(count > 7) %>%
-  mutate(diff = abs(count - 10)) %>%
+  filter(count > 15) %>%
+  mutate(diff = abs(count - 20)) %>%
   group_by(county) %>%
   filter(diff == min(diff)) %>% 
   filter(day == max(day)) %>% 
@@ -501,6 +501,7 @@ county_days <-
     highlight = county %in% county_top_6$county
   ) %>% 
   group_by(county) %>% 
+  mutate(count = count - min(count) + 20) %>% 
   mutate(n = n()) %>% 
   filter(n > 2) %>% 
   ungroup() %>% 
@@ -541,7 +542,7 @@ g_county_trajectory <-
     values = c("#ec4e20", "#ffc61e", "#440154", "#3e78b2", "#6baa75", "#69747c")
   ) +
   labs(
-    x = "Days since ~10 Confirmed Cases", 
+    x = "Days since 20 Known Cases", 
     y = NULL, 
     color = NULL,
     caption = glue::glue(
@@ -552,7 +553,7 @@ g_county_trajectory <-
     )
   ) +
   ggtitle(
-    label = "Florida COVID-19 Positive Cases by County",
+    label = "Florida COVID-19 Known Positive Cases by County",
     subtitle = "For the 6 counties with the highest case count"
   ) +
   guides(
@@ -568,7 +569,7 @@ g_county_trajectory <-
   theme(
     legend.position = c(-0.01, 1.025),
     legend.justification = c(0, 1),
-    legend.background = element_rect(fill = "transparent", color = "transparent"),
+    legend.background = element_rect(fill = "white", color = "transparent"),
     axis.title.y = element_text(angle = 90, vjust = 0.5, hjust = 0.5, color = "#666666"),
     plot.margin = margin(0.5, 0.5, 0.5, 0.5, unit = "lines"),
     plot.subtitle = element_text(margin = margin(b = 1.25, unit = "lines")),
