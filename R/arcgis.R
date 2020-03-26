@@ -24,7 +24,8 @@ get_arcgis_line_list <- function() {
       )
     ) %>% 
     dplyr::mutate_at(dplyr::vars(dplyr::matches("case|event_date")), ~ lubridate::as_datetime(.x/1000)) %>% 
-    dplyr::mutate_at(dplyr::vars(dplyr::matches("case|event_date")), lubridate::as_date)
+    dplyr::mutate_at(dplyr::vars(dplyr::matches("case|event_date")), lubridate::as_date) %>% 
+    dplyr::arrange(county, event_date, age, gender, jurisdiction)
 }
 
 get_arcgis_summary <- function() {
