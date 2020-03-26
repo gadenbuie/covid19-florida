@@ -1,7 +1,39 @@
 get_arcgis_line_list <- function() {
+  out <- list()
+  keep_going <- TRUE
+  low <- 0
+  i <- 1
+  while(keep_going) {
+    out[[i]] <- query_line_list(low) %>% line_list_to_df()
+    if (is.null(out[[i]]) || max(out[[i]]$object_id) < low + 2000) {
+      keep_going <- FALSE
+    } else {
+      i <- i + 1
+      low <- low + 2000
+    }
+  }
   
-  x <- jsonlite::read_json("https://services1.arcgis.com/CY1LXxl9zlJeBuRZ/ArcGIS/rest/services/Florida_COVID19_Case_Line_Data/FeatureServer/0/query?where=County+is+not+NULL&objectIds=&time=&resultType=none&outFields=*&returnIdsOnly=false&returnUniqueIdsOnly=false&returnCountOnly=false&returnDistinctValues=false&cacheHint=false&orderByFields=&groupByFieldsForStatistics=&outStatistics=&having=&resultOffset=&resultRecordCount=&sqlFormat=none&f=pjson&token=")
-  
+  out %>% 
+    bind_rows() %>% 
+    dplyr::arrange(county, event_date, age, gender, jurisdiction)
+}
+
+query_line_list <- function(low, high = low + 2000, format = "json") {
+  glue::glue(
+    "https://services1.arcgis.com/CY1LXxl9zlJeBuRZ/ArcGIS/rest/services/",
+    "Florida_COVID19_Case_Line_Data/FeatureServer/0/",
+    "query?where=ObjectId+%3E+{low}+and+ObjectId+%3C%3D+{high}&objectIds=",
+    "&time=&resultType=none&outFields=*&returnIdsOnly=false",
+    "&returnUniqueIdsOnly=false&returnCountOnly=false&returnDistinctValues=false",
+    "&cacheHint=false&orderByFields=ObjectId&groupByFieldsForStatistics=",
+    "&outStatistics=&having=&resultOffset=&resultRecordCount=&sqlFormat=none",
+    "&f=p{format}&token="
+  ) %>% 
+    jsonlite::read_json()
+}
+
+line_list_to_df <- function(x) {
+  if (!length(x$features)) return(NULL)
   x %>% 
     purrr::pluck("features") %>% 
     purrr::map("attributes") %>% 
@@ -24,8 +56,7 @@ get_arcgis_line_list <- function() {
       )
     ) %>% 
     dplyr::mutate_at(dplyr::vars(dplyr::matches("case|event_date")), ~ lubridate::as_datetime(.x/1000)) %>% 
-    dplyr::mutate_at(dplyr::vars(dplyr::matches("case|event_date")), lubridate::as_date) %>% 
-    dplyr::arrange(county, event_date, age, gender, jurisdiction)
+    dplyr::mutate_at(dplyr::vars(dplyr::matches("case|event_date")), lubridate::as_date)
 }
 
 get_arcgis_summary <- function() {
