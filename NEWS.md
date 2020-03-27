@@ -1,3 +1,9 @@
+# 2020-03-26
+
+- The total number of positive cases (regardless of Florida residency status)
+  was remove from the dashboard in the evening. The dashboard now only shows the
+  number of positive cases among Florida residents.
+
 # 2020-03-25
 
 - The division of ages in the case count by age range summary on Page 2 of the
