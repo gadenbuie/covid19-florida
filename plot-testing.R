@@ -6,53 +6,52 @@ library(ggplot2, warn.conflicts = FALSE)
 library(purrr, warn.conflicts = FALSE)
 
 line_list <- readr::read_csv("data/covid-19-florida_arcgis_line-list.csv")
+dash <- readr::read_csv("data/covid-19-florida_arcgis_summary.csv")
 
 # Test summary import -----------------------------------------------------
 
 testing_summary_dash <- read_csv("data/covid-19-florida_dash_summary.csv")
-testing_summary_pdf <- read_csv("data/covid-19-florida_pdf_overall_counts.csv")
 
-test_summary_dash <-
-  testing_summary_dash %>%
-  select(timestamp, negative, positive, pending, deaths = one_of("deaths", "county_deaths", "florida_deaths"), -total) %>% 
-  mutate(deaths = coalesce(!!!rlang::syms(stringr::str_subset(colnames(.), "deaths")))) %>% 
-  select(-matches("deaths\\d+")) %>% 
-  fill(deaths)
-
-test_summary <- 
-  list(
-    dash = test_summary_dash,
-    pdf = testing_summary_pdf
-  ) %>% 
-  imap(function(data, name) {
-    data %>% 
-      mutate_at("timestamp", ymd_hms, tz = "America/New_York") %>%
-      mutate(day = floor_date(timestamp, "day")) %>% 
-      group_by(day) %>% 
-      arrange(desc(timestamp)) %>% 
-      slice(1) %>% 
+test_summary <-
+  bind_rows(
+    testing_summary_dash %>% 
+      select(timestamp, negative, positive, pending, deaths = one_of("deaths", "county_deaths", "florida_deaths"), -total) %>% 
+      mutate(deaths = coalesce(!!!rlang::syms(stringr::str_subset(colnames(.), "deaths")))) %>% 
+      select(-matches("deaths\\d+")) %>% 
+      fill(deaths) %>% 
+      mutate(source = 1, timestamp = ymd_hms(timestamp)), 
+    dash %>% 
+      group_by(timestamp) %>% 
+      summarize_at(vars(t_positive, t_negative, t_pending, t_inconc, c_non_res_deaths, fl_res_deaths), sum) %>% 
       ungroup() %>% 
-      select(day, everything())
-  }) %>% 
-  reduce(full_join, by = "day", suffix = paste0(".", names(.))) %>% 
+      mutate(source = 0)
+  ) %>%
+  mutate(day = floor_date(timestamp, "day")) %>%
+  mutate_at(vars(day), as_date) %>% 
+  group_by(day) %>%
+  arrange(desc(timestamp), source) %>%
+  slice(1) %>%
+  ungroup() %>%
   mutate(
-    negative = coalesce(negative.pdf, negative.dash),
-    positive = coalesce(positive.dash, positive.pdf),
-    pending = coalesce(pending.dash, pending.pdf),
-    timestamp = coalesce(timestamp.dash, timestamp.pdf)
+    negative = coalesce(t_negative, negative),
+    positive = coalesce(t_positive, positive),
+    pending = coalesce(t_pending, pending),
+    deaths = coalesce(fl_res_deaths + c_non_res_deaths, deaths),
+    inconclusive = t_inconc
   ) %>% 
-  select(day, timestamp, negative, positive, pending, deaths) %>% 
-  mutate_at("day", as_date)
-
-test_summary_long <- test_summary %>%
-  pivot_longer(names_to = "status", values_to = "count", -c(day, timestamp)) %>%
-  mutate(status = factor(status, c("negative", "pending", "deaths", "positive")))
+  replace_na(list(inconclusive = 0)) %>% 
+  mutate(total = negative + positive + inconclusive) %>% 
+  arrange(day) %>% 
+  select(day, timestamp, total, negative, positive, pending, deaths, inconclusive)
 
 # Test Summary (Plot) -----------------------------------------------------
 
-g <-
-  test_summary_long %>% 
-  filter(status != "negative") %>%
+# g <-
+  test_summary %>%
+    mutate(positive = positive - deaths) %>% 
+    pivot_longer(names_to = "status", values_to = "count", -c(day, timestamp)) %>%
+    filter(!status %in% c("negative", "total")) %>%
+    mutate(status = factor(status, c("negative", "pending", "deaths", "positive", "inconclusive"))) %>% 
   ggplot() +
   aes(x = day, y = count, fill = status) +
   geom_col() +
@@ -78,24 +77,29 @@ g <-
     )
   ) +
   ggtitle(
-    label = "Florida COVID-19 Testing"
+    label = "Florida COVID-19 Known Cases",
+    subtitle = glue::glue(
+      "{format(test_summary %>% pull(total) %>% tail(1), big.mark = ',')} total tests",
+      "{format(test_summary %>% pull(negative) %>% tail(1), big.mark = ',')} negative tests",
+      .sep = "\n"
+    )
   ) +
   theme_minimal(base_size = 14) +
   scale_x_date(expand = expand_scale(add = 0)) +
   scale_y_continuous(expand = expand_scale(add = 0)) +
   scale_color_manual(
     aesthetics = "segment.color",
-    values = c(negative = "#acc2d1", pending = "#aee2c9", positive = "#440154", deaths = "#fde725"),
+    values = c(negative = "#acc2d1", pending = "#aee2c9", positive = "#440154", deaths = "#fde725", inconclusive = "grey80"),
     guide = FALSE
   ) +
   scale_fill_manual(
-    values = c(negative = "#acc2d1", pending = "#aee2c9", positive = "#440154", deaths = "#fde725"),
+    values = c(negative = "#acc2d1", pending = "#aee2c9", positive = "#440154", deaths = "#fde725", inconclusive = "grey80"),
     guide = FALSE
   ) +
   coord_cartesian(clip = "off") +
   theme(
     plot.margin = margin(0.5, 8, 0.5, 0.5, unit = "lines"),
-    plot.subtitle = element_text(margin = margin(b = 1.25, unit = "lines")),
+    plot.subtitle = element_text(margin = margin(b = 1, unit = "lines"), color = "#444444"),
     plot.caption = element_text(color = "#444444"),
     panel.grid.major.x = element_blank(),
     panel.grid.minor.x = element_blank(),
