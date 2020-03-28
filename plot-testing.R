@@ -5,8 +5,8 @@ library(lubridate, warn.conflicts = FALSE)
 library(ggplot2, warn.conflicts = FALSE)
 library(purrr, warn.conflicts = FALSE)
 
-line_list <- readr::read_csv("data/covid-19-florida_arcgis_line-list.csv")
-dash <- readr::read_csv("data/covid-19-florida_arcgis_summary.csv")
+line_list <- readr::read_csv("data/covid-19-florida_arcgis_line-list.csv", guess_max = 1e5)
+dash <- readr::read_csv("data/covid-19-florida_arcgis_summary.csv", guess_max = 1e5)
 
 # Test summary import -----------------------------------------------------
 
@@ -22,7 +22,7 @@ test_summary <-
       mutate(source = 1, timestamp = ymd_hms(timestamp)), 
     dash %>% 
       group_by(timestamp) %>% 
-      summarize_at(vars(t_positive, t_negative, t_pending, t_inconc, c_non_res_deaths, fl_res_deaths), sum) %>% 
+      summarize_at(vars(t_positive, t_negative, t_pending, t_inconc, c_non_res_deaths, fl_res_deaths), sum, na.rm = TRUE) %>% 
       ungroup() %>% 
       mutate(source = 0)
   ) %>%
@@ -46,12 +46,15 @@ test_summary <-
 
 # Test Summary (Plot) -----------------------------------------------------
 
-# g <-
+test_summary_long <- 
   test_summary %>%
-    mutate(positive = positive - deaths) %>% 
-    pivot_longer(names_to = "status", values_to = "count", -c(day, timestamp)) %>%
-    filter(!status %in% c("negative", "total")) %>%
-    mutate(status = factor(status, c("negative", "pending", "deaths", "positive", "inconclusive"))) %>% 
+  mutate(positive = positive - deaths) %>% 
+  pivot_longer(names_to = "status", values_to = "count", -c(day, timestamp)) %>%
+  filter(!status %in% c("negative", "total")) %>%
+  mutate(status = factor(status, c("negative", "pending", "deaths", "positive", "inconclusive")))
+
+g <-
+  test_summary_long %>% 
   ggplot() +
   aes(x = day, y = count, fill = status) +
   geom_col() +
@@ -70,7 +73,7 @@ test_summary <-
   labs(
     x = NULL, y = NULL,
     caption = glue::glue(
-      "Last update: {max(test_summary_long$timestamp)}",
+      "Last update: {max(test_summary$timestamp)}",
       "Source: Florida DOH and covidtracking.com", 
       "github.com/gadenbuie/covid19-florida",
       .sep = "\n"
@@ -100,7 +103,7 @@ test_summary <-
   theme(
     plot.margin = margin(0.5, 8, 0.5, 0.5, unit = "lines"),
     plot.subtitle = element_text(margin = margin(b = 1, unit = "lines"), color = "#444444"),
-    plot.caption = element_text(color = "#444444"),
+    plot.caption = element_text(color = "#444444", size = 10),
     panel.grid.major.x = element_blank(),
     panel.grid.minor.x = element_blank(),
     panel.grid.minor.y = element_blank()
@@ -150,7 +153,7 @@ g_tests <-
   theme(
     plot.margin = margin(0.5, 0.5, 0.5, 0.5, unit = "lines"),
     plot.subtitle = element_text(margin = margin(b = 1.25, unit = "lines")),
-    plot.caption = element_text(color = "#444444"),
+    plot.caption = element_text(color = "#444444", size = 10),
     axis.title.y = element_text(angle = 0, hjust = 1),
     panel.grid.major.x = element_blank(),
     panel.grid.minor.x = element_blank(),
@@ -163,16 +166,17 @@ ggsave(fs::path("plots", "covid-19-florida-total-positive.png"), g_tests, width 
 # New Cases Added ---------------------------------------------------------
 
 g_new_cases <-
-  test_summary %>% 
-  select(day, positive) %>% 
-  filter(!is.na(positive)) %>% 
-  filter(positive != lag(positive)) %>% 
-  select(day, positive) %>% 
+  test_summary %>%
+  select(day, positive) %>%
+  filter(!is.na(positive)) %>%
+  filter(positive != lag(positive)) %>%
+  select(day, positive) %>%
   mutate(
     increase = positive - lag(positive),
-    complete = if_else(day == today(), "today", "past")
-  ) %>% 
-  filter(!is.na(increase)) %>% 
+    complete = if_else(day == today("America/New_York"), "today", "past")
+  ) %>%
+  mutate() %>% 
+  filter(!is.na(increase), day >= today() - 35) %>% 
   ggplot() +
   aes(day, increase) +
   geom_col(aes(alpha = complete), fill = "#ec4e20") +
@@ -199,7 +203,7 @@ g_new_cases <-
   theme(
     plot.margin = margin(0.5, 0.5, 0.5, 0.5, unit = "lines"),
     plot.subtitle = element_text(margin = margin(b = 1.25, unit = "lines")),
-    plot.caption = element_text(color = "#444444"),
+    plot.caption = element_text(color = "#444444", size = 12),
     axis.title.y = element_text(angle = 0, hjust = 1),
     panel.grid.major.x = element_blank(),
     panel.grid.minor.x = element_blank(),
@@ -424,6 +428,13 @@ g_age_sex <-
   ) %>% 
   group_by(age, sex) %>% 
   count(name = "count") %>% 
+  group_by(sex) %>% 
+  mutate(total_sex = sum(count)) %>% 
+  ungroup() %>% 
+  mutate(
+    total = sum(count),
+    sex = glue::glue("{sex} ({scales::percent(total_sex / total, accuracy = 1)})")
+  ) %>%
   ggplot(.) +
   aes(age, count, fill = sex) +
   geom_col(color = "white", size = 1) +
@@ -442,9 +453,7 @@ g_age_sex <-
     subtitle = "Florida COVID-19 Positive Cases"
   ) +
   guides(fill = FALSE) +
-  scale_fill_manual(values = c(
-    Female = "#440154", Male = "#6baa75"
-  )) +
+  scale_fill_manual(values = c("#440154", "#6baa75")) +
   scale_y_continuous(expand = expand_scale(add = c(0, 5))) +
   scale_x_discrete(breaks = c(seq(0, 70, 10), "80+")) +
   coord_cartesian(clip = "off") +
@@ -452,7 +461,7 @@ g_age_sex <-
   theme(
     panel.grid.major.x = element_blank(),
     panel.grid.minor.x = element_blank(),
-    # panel.grid.major.y = element_blank(),
+    strip.text = element_text(size = 12),
     panel.grid.minor.y = element_blank(),
     plot.caption = element_text(color = "#444444", margin = margin(t = 1.5, unit = "lines"))
   )
@@ -517,26 +526,6 @@ county_days <-
 g_county_trajectory <-
   ggplot(county_days) +
   aes(days, count) +
-  geom_line(
-    data = . %>% filter(!highlight),
-    aes(group = county),
-    color = "#aaaaaa"
-  ) +
-  geom_line(
-    data = . %>% filter(highlight),
-    aes(color = county),
-    size = 1
-  ) +
-  geom_point(
-    data = . %>% filter(highlight),
-    color = "#FFFFFF",
-    size = 3
-  ) +
-  geom_point(
-    data = . %>% filter(highlight),
-    aes(color = county),
-    show.legend = FALSE
-  ) +
   scale_y_continuous(
     trans = scales::log1p_trans(),
     breaks = c(0, 10, 20, 50, 100, 200, 500, 1000, 5000, 10000),
@@ -571,7 +560,7 @@ g_county_trajectory <-
   ) +
   theme_minimal(14) +
   theme(
-    legend.position = c(-0.01, 1.025),
+    legend.position = c(-0.01, 1.06),
     legend.justification = c(0, 1),
     legend.background = element_rect(fill = "white", color = "transparent"),
     axis.title.y = element_text(angle = 90, vjust = 0.5, hjust = 0.5, color = "#666666"),
@@ -583,4 +572,50 @@ g_county_trajectory <-
     panel.grid.minor.y = element_blank()
   )
 
-ggsave(fs::path("plots", "covid-19-florida-county-top-6.png"), g_county_trajectory, width = 6.66, height = 5, dpi = 150, scale = 1.5)
+gct <- 
+  g_county_trajectory +
+  geom_line(
+    data = . %>% filter(!highlight),
+    aes(group = county),
+    color = "#aaaaaa"
+  ) +
+  geom_line(
+    data = . %>% filter(highlight),
+    aes(color = county),
+    size = 1
+  ) +
+  geom_point(
+    data = . %>% filter(highlight),
+    aes(color = county),
+    show.legend = FALSE
+  ) +
+  labs(y = "Logarithmic Scale")
+  
+
+gct_exp <-
+  g_county_trajectory +
+  geom_line(
+    data = . %>% filter(highlight),
+    aes(color = county),
+    size = 0.5
+  ) +
+  scale_y_continuous() +
+  scale_x_continuous() +
+  labs(x = NULL, caption = NULL, title = "Linear Scale", subtitle = NULL) +
+  guides(color = FALSE) +
+  theme(
+    plot.title = element_text(size = 12, hjust = 0.5, margin = margin(), color = "#666666"),
+    panel.border = element_rect(color = "grey60", size = 1, fill = NA),
+    panel.background = element_rect(fill = "white"),
+    axis.text.x = element_blank(),
+    axis.text.y = element_blank()
+  )
+
+library(cowplot)
+
+gg_county_trajectory <-
+  ggdraw() +
+  draw_plot(gct) +
+  draw_plot(gct_exp, x = 0.73, y = 0.18, width = .25, height = .22)
+
+ggsave(fs::path("plots", "covid-19-florida-county-top-6.png"), gg_county_trajectory, width = 6.66, height = 5, dpi = 150, scale = 1.5)
