@@ -380,7 +380,7 @@ g_age <-
   rename(sex = gender) %>% 
   filter(!is.na(age)) %>% 
   mutate(
-    age = santoku::chop_width(age, 10, 0, labels = santoku::lbl_dash()),
+    age = santoku::chop_width(age, 10, 0, labels = santoku::lbl_dash(), drop = FALSE),
     age = forcats::fct_collapse(age, "80+" = c("80 - 90", "90 - 100", "100 - 110", "120 - 130"))
   ) %>% 
   group_by(age) %>% 
@@ -415,6 +415,56 @@ g_age <-
   )
 
 ggsave(fs::path("plots", "covid-19-florida-age.png"), g_age, width = 6.66, height = 2, dpi = 150, scale = 1.5)
+
+
+# Deaths by Age -----------------------------------------------------------
+
+g_age_deaths <-
+  line_list %>%
+  filter(!is.na(age), died == "Yes") %>% 
+  mutate(
+    age = santoku::chop_width(age, 5, floor(min(age) / 5) * 5, labels = santoku::lbl_format("%s"), drop = FALSE)
+  ) %>% 
+  group_by(age) %>% 
+  count(name = "count") %>% 
+  ungroup() %>% 
+  complete(age, fill = list(count = 0)) %>%
+  ggplot() +
+  aes(age, count) +
+  geom_col(fill = "#893168") +
+  geom_text(
+    data = . %>% filter(count > 0),
+    aes(label = count), 
+    color = "#893168",
+    size = 4, 
+    vjust = -0.5
+  )+
+  scale_y_continuous(expand = c(0, 0.1, 0, 0)) +
+  labs(
+    x = NULL, y = NULL,
+    caption = glue::glue(
+      "Source: Florida DOH", 
+      "Last update: {max(line_list$timestamp)}",
+      "github.com/gadenbuie/covid19-florida",
+      .sep = "\n"
+    )
+  ) +
+  ggtitle(
+    label = "Florida COVID-19 Deaths by Age"
+  ) +
+  guides(fill = FALSE) +
+  coord_cartesian(clip = "off") +
+  theme_minimal(base_size = 14) +
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor.y = element_blank(),
+    plot.caption = element_text(color = "#444444", margin = margin(t = 1.5, unit = "lines")),
+    axis.text.y = element_blank()
+  )
+
+ggsave(fs::path("plots", "covid-19-florida-age-deaths.png"), g_age_deaths, width = 6.66, height = 2, dpi = 150, scale = 1.5)
 
 # Age & Sex Distribution ---------------------------------------------------
 
