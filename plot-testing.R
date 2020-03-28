@@ -523,10 +523,22 @@ ggsave(fs::path("plots", "covid-19-florida-age-sex.png"), g_age_sex, width = 6.6
 
 county_daily <-
   line_list %>% 
+  mutate(
+    county = case_when(
+      county %in% c("Miami-Dade", "Broward", "Palm Beach") ~ "Miami Area",
+      county %in% c("Hillsborough", "Pinellas", "Pasco", "Hernando") ~ "Tampa Bay",
+      county %in% c("Orange", "Seminole", "Osceola", "Lake") ~ "Orlando",
+      county %in% c("Duval", "St. Johns", "Clay", "Nassau", "Baker") ~ "Jacksonville",
+      county %in% c("Alachua", "Gilchrist") ~ "Gainesville",
+      county %in% c("Gadsden", "Jefferson", "Leon", "Wakulla") ~ "Tallahassee"
+    )
+  ) %>% 
+  filter(!is.na(county)) %>% 
   count(county, day = event_date, name = "count") %>% 
   mutate(county = recode(county, "Dade" = "Miami-Dade")) %>% 
   complete(county, day, fill = list(count = 0)) %>% 
-  group_by(county) %>% 
+  group_by(county) %>%
+  arrange(day) %>% 
   mutate(count = cumsum(count)) %>% 
   mutate(count_last = max(count)) %>% 
   ungroup() %>% 
@@ -596,8 +608,7 @@ g_county_trajectory <-
     )
   ) +
   ggtitle(
-    label = "Florida COVID-19 Known Positive Cases by County",
-    subtitle = "For the 6 counties with the highest case count"
+    label = "Florida COVID-19 Known Positive Cases by Metropolitan Area"
   ) +
   guides(
     color = guide_legend(
@@ -610,7 +621,7 @@ g_county_trajectory <-
   ) +
   theme_minimal(14) +
   theme(
-    legend.position = c(-0.01, 1.06),
+    legend.position = c(-0.01, 1.02),
     legend.justification = c(0, 1),
     legend.background = element_rect(fill = "white", color = "transparent"),
     axis.title.y = element_text(angle = 90, vjust = 0.5, hjust = 0.5, color = "#666666"),
