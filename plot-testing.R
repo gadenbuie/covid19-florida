@@ -80,12 +80,22 @@ g <-
     )
   ) +
   ggtitle(
-    label = "Florida COVID-19 Known Cases",
-    subtitle = glue::glue(
+    label = "Florida COVID-19 Known Cases"
+  ) +
+  annotate(
+    "label",
+    label = glue::glue(
+      "{format(test_summary %>% pull(positive) %>% tail(1), big.mark = ',')} confirmed cases",
       "{format(test_summary %>% pull(total) %>% tail(1), big.mark = ',')} total tests",
       "{format(test_summary %>% pull(negative) %>% tail(1), big.mark = ',')} negative tests",
       .sep = "\n"
-    )
+    ),
+    x = min(test_summary$day) - 0.25, 
+    y = test_summary %>% tail(1) %>% pull(positive) + test_summary %>% tail(1) %>% pull(pending),
+    hjust = 0, vjust = 1,
+    label.size = NA,
+    color = "#444444",
+    fill = "#FFFFFF"
   ) +
   theme_minimal(base_size = 14) +
   scale_x_date(expand = expand_scale(add = 0)) +
@@ -380,8 +390,9 @@ g_age <-
   rename(sex = gender) %>% 
   filter(!is.na(age)) %>% 
   mutate(
+    age = if_else(age > 80, 81, age),
     age = santoku::chop_width(age, 10, 0, labels = santoku::lbl_dash(), drop = FALSE),
-    age = forcats::fct_collapse(age, "80+" = c("80 - 90", "90 - 100", "100 - 110", "120 - 130"))
+    age = forcats::fct_recode(age, "85+" = "80 - 90")
   ) %>% 
   group_by(age) %>% 
   count(name = "count") %>% 
@@ -400,7 +411,10 @@ g_age <-
     )
   ) +
   ggtitle(
-    label = "Florida COVID-19 Positive Cases by Age"
+    label = "Florida COVID-19 Positive Cases by Age",
+    subtitle = glue::glue(
+      "{line_list %>% nrow() %>% format(big.mark = ',')} known positive cases"
+    )
   ) +
   guides(fill = FALSE) +
   coord_cartesian(clip = "off") +
@@ -411,6 +425,7 @@ g_age <-
     panel.grid.major.y = element_blank(),
     panel.grid.minor.y = element_blank(),
     plot.caption = element_text(color = "#444444", margin = margin(t = 1.5, unit = "lines")),
+    plot.subtitle = element_text(color = "#444444"),
     axis.text.y = element_blank()
   )
 
@@ -423,7 +438,9 @@ g_age_deaths <-
   line_list %>%
   filter(!is.na(age), died == "Yes") %>% 
   mutate(
-    age = santoku::chop_width(age, 5, floor(min(age) / 5) * 5, labels = santoku::lbl_format("%s"), drop = FALSE)
+    age = if_else(age > 85, 86, age),
+    age = santoku::chop_width(age, 5, floor(min(age) / 5) * 5, labels = santoku::lbl_format("%s"), drop = FALSE),
+    age = forcats::fct_recode(age, "85+" = "85")
   ) %>% 
   group_by(age) %>% 
   count(name = "count") %>% 
@@ -450,7 +467,10 @@ g_age_deaths <-
     )
   ) +
   ggtitle(
-    label = "Florida COVID-19 Deaths by Age"
+    label = "Florida COVID-19 Deaths by Age",
+    subtitle = glue::glue(
+      "{line_list %>% pull(died) %>% `==`('Yes') %>% sum(na.rm = TRUE) %>% format(big.mark = ',')} deaths"
+    )
   ) +
   guides(fill = FALSE) +
   coord_cartesian(clip = "off") +
@@ -461,6 +481,7 @@ g_age_deaths <-
     panel.grid.major.y = element_blank(),
     panel.grid.minor.y = element_blank(),
     plot.caption = element_text(color = "#444444", margin = margin(t = 1.5, unit = "lines")),
+    plot.subtitle = element_text(color = "#444444"),
     axis.text.y = element_blank()
   )
 
