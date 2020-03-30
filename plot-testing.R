@@ -525,7 +525,7 @@ county_daily <-
   line_list %>% 
   mutate(
     county = case_when(
-      county %in% c("Miami-Dade", "Broward", "Palm Beach") ~ "Miami Area",
+      county %in% c("Miami-Dade", "Broward", "Palm Beach") ~ "Miami",
       county %in% c("Hillsborough", "Pinellas", "Pasco", "Hernando") ~ "Tampa Bay",
       county %in% c("Orange", "Seminole", "Osceola", "Lake") ~ "Orlando",
       county %in% c("Duval", "St. Johns", "Clay", "Nassau", "Baker") ~ "Jacksonville",
