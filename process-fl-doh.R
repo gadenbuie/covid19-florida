@@ -223,6 +223,7 @@ if (git2r::in_repository()) {
     tryCatch({
       message("generating testing summary plot")
       callr::rscript("plot-testing.R", fail_on_status = FALSE)
+      fs::file_delete("Rplots.pdf")
     },
     error = function(e) message(e$message)
     )
