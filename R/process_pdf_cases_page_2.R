@@ -7,9 +7,11 @@ description_cases <- paste(
 process_cases_page_2 <- function(page_text, timestamp) {
   if (timestamp < "2020-03-22 09:51:00 EDT") {
     process_cases_page_2_v1(page_text, timestamp)
-  } else if (timestamp >= "2020-03-22 09:51:00 EDT") {
+  } else if (timestamp >= "2020-03-22 09:51:00 EDT" && timestamp < "2020-03-27 18:19:00 EDT") {
     # the format changed with this report, but it didn't require a new version
     process_cases_page_2_v1(page_text, timestamp)
+  } else if (timestamp >= "2020-03-27 18:19:00 EDT") {
+    stop("Extraction of county cases has been temporarily disabled due to formatting changes.")
   }
 }
 
