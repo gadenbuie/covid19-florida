@@ -4,6 +4,7 @@ library(readr, warn.conflicts = FALSE)
 library(lubridate, warn.conflicts = FALSE)
 library(ggplot2, warn.conflicts = FALSE)
 library(purrr, warn.conflicts = FALSE)
+source(here::here("R/combine-sources.R"))
 
 line_list <- readr::read_csv("data/covid-19-florida_arcgis_line-list.csv", guess_max = 1e5)
 dash <- readr::read_csv("data/covid-19-florida_arcgis_summary.csv", guess_max = 1e5)
@@ -13,36 +14,7 @@ dash <- readr::read_csv("data/covid-19-florida_arcgis_summary.csv", guess_max = 
 testing_summary_dash <- read_csv("data/covid-19-florida_dash_summary.csv")
 
 test_summary <-
-  bind_rows(
-    testing_summary_dash %>% 
-      select(timestamp, negative, positive, pending, deaths = one_of("deaths", "county_deaths", "florida_deaths"), -total) %>% 
-      mutate(deaths = coalesce(!!!rlang::syms(stringr::str_subset(colnames(.), "deaths")))) %>% 
-      select(-matches("deaths\\d+")) %>% 
-      fill(deaths) %>% 
-      mutate(source = 1, timestamp = ymd_hms(timestamp)), 
-    dash %>% 
-      group_by(timestamp) %>% 
-      summarize_at(vars(t_positive, t_negative, t_pending, t_inconc, c_non_res_deaths, fl_res_deaths), sum, na.rm = TRUE) %>% 
-      ungroup() %>% 
-      mutate(source = 0)
-  ) %>%
-  mutate(day = floor_date(timestamp, "day")) %>%
-  mutate_at(vars(day), as_date) %>% 
-  group_by(day) %>%
-  arrange(desc(timestamp), source) %>%
-  slice(1) %>%
-  ungroup() %>%
-  mutate(
-    negative = coalesce(t_negative, negative),
-    positive = coalesce(t_positive, positive),
-    pending = coalesce(t_pending, pending),
-    deaths = coalesce(fl_res_deaths + c_non_res_deaths, deaths),
-    inconclusive = t_inconc
-  ) %>% 
-  replace_na(list(inconclusive = 0)) %>% 
-  mutate(total = negative + positive + inconclusive) %>% 
-  arrange(day) %>% 
-  select(day, timestamp, total, negative, positive, pending, deaths, inconclusive)
+  combine_scraped_and_api_data(testing_summary_dash, dash)
 
 # Test Summary (Plot) -----------------------------------------------------
 

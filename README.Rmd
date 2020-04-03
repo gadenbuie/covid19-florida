@@ -1,0 +1,102 @@
+---
+output: github_document
+---
+
+# Florida COVID-19 Data
+
+```{r include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE)
+library(dplyr)
+library(readr)
+library(lubridate)
+```
+
+```{r}
+source(here::here("R/combine-sources.R"))
+today <- today(tz = "America/New_York")
+combine_scraped_and_api_data() %>% 
+  filter(day %in% (today - c(0, 1, 7, 14))) %>% 
+  arrange(desc(day)) %>% 
+  mutate(
+    when = case_when(
+      day == today ~ "Today",
+      day == today - 1 ~ "Yesterday",
+      day == today - 7 ~ "Last Week",
+      day == today - 14 ~ "2 Weeks Ago"
+    )
+  ) %>% 
+  select(when, day, positive, deaths, negative, inconclusive, total, pending) %>% 
+  purrr::set_names(stringr::str_to_title(names(.))) %>% 
+  knitr::kable()
+```
+
+Parsed from the [Florida's COVID-19 Data and Surveillance Dashboard][dashboard].
+
+
+![](plots/covid-19-florida-testing.png)
+
+![](plots/covid-19-florida-total-positive.png)
+
+![](plots/covid-19-florida-county-top-6.png)
+
+![](plots/covid-19-florida-change-new-cases.png)
+
+![](plots/covid-19-florida-daily-test-changes.png)
+
+![](plots/covid-19-florida-age.png)
+
+![](plots/covid-19-florida-age-deaths.png)
+
+![](plots/covid-19-florida-age-sex.png)
+
+## Sources
+
+- [Florida's COVID-19 Data and Surveillance Dashboard][dashboard]
+
+- [Florida Department of Health COVID-19 status page][main-page]
+
+- PDF Reports released daily on [Florida Disaster Covid-19][fl-disaster]
+
+The data structure and format of the released data changes frequently.
+I'm keeping track of the impact of these changes in this repo in [NEWS.md](NEWS.md).
+
+## FL DOH Dashboard
+
+One table is extracted from the [Florida's COVID-19 Data and Surveillance Dashboard][dashboard].
+
+- Current test counts: [data/covid-19-florida_dash_summary.csv](data/covid-19-florida_dash_summary.csv)
+
+The `timestamp` column of indicates when the dashboard was polled for changes.
+
+Testing statistics prior to 2020-03-16 18:00:00 EDT were imported from <https://covidtracking.com>.
+
+![](screenshots/fodh_maps_arcgis_com__apps__opsdashboard.png)
+
+## Snapshots and Data Capture
+
+Initially this repo gathered data from the [Florida Department of Health COVID-19 status page][main-page].
+This page has been [reformatted several times](screenshots/floridahealth_gov__diseases-and-conditions__COVID-19.png) and the data structure changes frequently,
+so currently I am collecting snapshots of the webpage and not trying to parse these tables.
+
+I am also capturing a snapshot (HTML) and screenshot of the [Florida's COVID-19 Data and Surveillance Dashboard][dashboard].
+Data extracted from the dashboard are currently used for the current test count summaries, available in [covid-19-florida-tests.csv](covid-19-florida-tests.csv).
+
+Prior to the afternoon of 2020-03-18, the dashboard reported county-level case counts.
+Around 4pm on 2020-03-18, the dashboard layout was modified, making these counts inaccessible.
+Similarly, prior to this update I was relying on the reported "last update time" listed in the dashboard,
+but since then I have been using the time at which the dashboard was checked for any time stamps from this source.
+
+On the same day that county-level data became inaccessible in the dashboard, 
+FL DOH started releasing PDF reports,
+which I have begun to collect in [pdfs/](pdfs/).
+The name of the report contains a time stamp, 
+therefore I am periodically checking the FL DOH web page for the updated link.
+I've been able to extract most of the data from the PDF tables.
+Individual tables are stored in time stamped folders, 
+using the time stamp in the PDF file name.
+The unified data files are available in [data/](data/)
+and prefixed with `covid-19-florida_pdf_`.
+
+[main-page]: http://www.floridahealth.gov/diseases-and-conditions/COVID-19/
+[dashboard]: https://fdoh.maps.arcgis.com/apps/opsdashboard/index.html#/8d0de33f260d444c852a615dc7837c86
+[fl-disaster]: http://www.floridahealth.gov/diseases-and-conditions/COVID-19/
