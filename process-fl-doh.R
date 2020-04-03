@@ -228,6 +228,9 @@ if (git2r::in_repository()) {
     error = function(e) message(e$message)
     )
     
+    res <- purrr:::safely(rmarkdown::render)("README.Rmd")
+    if (!is.null(res$error)) message(res$error$message)
+    
     git2r::add(".", ".")
     git2r::commit(message = glue("[auto update] {ts_current}"))
     git2r::push(credentials = git2r::cred_ssh_key())
