@@ -13,16 +13,25 @@ library(lubridate)
 
 ```{r}
 source(here::here("R/combine-sources.R"))
+fl_summary <- combine_scraped_and_api_data()
+
 today <- today(tz = "America/New_York")
-combine_scraped_and_api_data() %>% 
-  filter(day %in% (today - c(0, 1, 7, 14))) %>% 
+total_today <- fl_summary %>% filter(day == today) %>% pull(total)
+total_yesterday <- fl_summary %>% filter(day == (today - 1)) %>% pull(total)
+not_updated_yet <- total_today == total_yesterday
+
+date_adjust <- c(0, 1, 7, 14) * -1
+if (not_updated_yet) date_adjust[1:2] <- date_adjust[1:2] - 1
+
+fl_summary %>% 
+  filter(day %in% (today + date_adjust)) %>% 
   arrange(desc(day)) %>% 
   mutate(
     when = case_when(
-      day == today ~ "Today",
-      day == today - 1 ~ "Yesterday",
-      day == today - 7 ~ "Last Week",
-      day == today - 14 ~ "2 Weeks Ago"
+      day == today + date_adjust[1] ~ ifelse(not_updated_yet, "Yesterday", "Today"),
+      day == today + date_adjust[2] ~ ifelse(not_updated_yet, "The Day Before", "Yesterday"),
+      day == today + date_adjust[3] ~ "Last Week",
+      day == today + date_adjust[4] ~ "2 Weeks Ago"
     )
   ) %>% 
   select(when, day, positive, deaths, negative, inconclusive, total, pending) %>% 
