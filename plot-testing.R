@@ -103,7 +103,7 @@ g_tests <-
   count(day = event_date, name = "positive", .drop = FALSE) %>% 
   complete(day = seq(min(day), max(day), by = "day"), fill = list(positive = 0)) %>% 
   mutate(positive = cumsum(positive)) %>% 
-  filter(day > today() - 30) %>%
+  filter(day > today() - 45) %>%
   arrange(day) %>% 
   ggplot() +
   aes(day, positive) +
@@ -126,10 +126,11 @@ g_tests <-
     )
   ) +
   ggtitle(
-    label = "Florida COVID-19 Total Positive Cases"
+    label = "Cumulative Confirmed Positive Cases",
+    subtitle = "Florida COVID=19"
   ) +
   theme_minimal(base_size = 14) +
-  scale_x_date(date_breaks = "2 days", expand = expand_scale(add = 0), date_labels = "%b\n%d") +
+  scale_x_date(date_breaks = "7 days", expand = expand_scale(add = 0), date_labels = "%b\n%d") +
   scale_y_continuous(limits = c(0, NA), expand = expand_scale(add = 0)) +
   coord_cartesian(clip = "off") +
   theme(
@@ -137,7 +138,7 @@ g_tests <-
     plot.subtitle = element_text(margin = margin(b = 1.25, unit = "lines")),
     plot.caption = element_text(color = "#444444", size = 10),
     axis.title.y = element_text(angle = 0, hjust = 1),
-    panel.grid.major.x = element_blank(),
+    # panel.grid.major.x = element_blank(),
     panel.grid.minor.x = element_blank(),
     panel.grid.minor.y = element_blank()
   )
@@ -217,7 +218,7 @@ g_test_changes <-
   ggplot() +
   aes(day, value) +
   geom_col(aes(alpha = complete, fill = status)) +
-  facet_wrap(~ status) +
+  facet_wrap(~ status, scales = "free_y") +
   labs(
     x = NULL, y = NULL,
     caption = glue::glue(
