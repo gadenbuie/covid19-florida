@@ -34,7 +34,11 @@ fl_summary %>%
       day == today + date_adjust[4] ~ "2 Weeks Ago"
     )
   ) %>% 
-  select(when, day, positive, deaths, negative, inconclusive, total, pending) %>% 
+  mutate(
+    `New Positive Since` = coalesce(first(positive) - positive, positive),
+    `New Deaths Since` = coalesce(first(deaths) - deaths, deaths)
+  ) %>% 
+  select(when, day, positive, `New Positive Since`, deaths, `New Deaths Since`, total) %>% 
   purrr::set_names(stringr::str_to_title(names(.))) %>% 
   knitr::kable()
 ```
