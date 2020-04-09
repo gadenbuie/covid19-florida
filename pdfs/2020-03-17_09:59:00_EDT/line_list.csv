@@ -91,7 +91,7 @@ timestamp,case,county,age,sex,travel_related,jurisdiction,travel_detail,date_cou
 2020-03-17 09:59:00 EDT,90,Osceola,48,Male,Yes,FL resident,SWITZERLAND,2020-03-14
 2020-03-17 09:59:00 EDT,91,Hillsborough,47,Male,Yes,FL resident,CO,2020-03-14
 2020-03-17 09:59:00 EDT,92,Broward,83,Female,No,FL resident,,2020-03-14
-2020-03-17 09:59:00 EDT,93,Dade,77,Female,Yes,FL resident,NA,NA
+2020-03-17 09:59:00 EDT,93,Dade,77,Female,Yes,FL resident,,NA
 2020-03-17 09:59:00 EDT,94,Broward,22,Female,Yes,FL resident,IRELAND,2020-03-14
 2020-03-17 09:59:00 EDT,95,Volusia,39,Male,Yes,FL resident,TRINIDAD AND TOBAGO,2020-03-14
 2020-03-17 09:59:00 EDT,96,Seminole,47,Male,Unknown,FL resident,,2020-03-14
