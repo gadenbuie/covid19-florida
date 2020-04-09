@@ -30,7 +30,7 @@ query_paged <- function(target, page_size = 2000, process_fn = clean_feature_att
       keep_going <- FALSE
       next
     }
-    if (ifelse(is.data.frame(out[[page]]), nrow(out[[page]]), length(out[[page]])) < low + page_size) {
+    if (ifelse(is.data.frame(out[[page]]), nrow(out[[page]]), length(out[[page]])) < page_size) {
       keep_going <- FALSE
       next
     } else {
