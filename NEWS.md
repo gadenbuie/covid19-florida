@@ -1,3 +1,13 @@
+# 2020-04-09
+
+- Additional tables that have been added to the dashboard are now also available
+  via the arcgis API. I've added the Cases By Zip and Cases by Day tables to the
+  data sets. The raw `geojson` for cases by zip are also included in
+  `data/geojson`.
+  
+- I fixed an issue with the line list query to better utilize the arcgis API.
+  I mised one or possibly two updates to this table in since 2020-04-08.
+
 # 2020-03-26
 
 - The total number of positive cases (regardless of Florida residency status)

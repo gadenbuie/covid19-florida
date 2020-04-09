@@ -80,7 +80,33 @@ if (is.null(arcgis_summary$error)) {
   message("Unable to get dashboard summary from arcgis api: ", arcgis_summary$error$message)
 }
 
-  
+arcgis_cases_by_day <- purrr::safely(get_arcgis_cases_by_day)()
+if (is.null(arcgis_cases_by_day$error)) {
+  arcgis_cases_by_day$result %>% 
+    mutate(timestamp = ts_current) %>% 
+    select(timestamp, everything()) %>% 
+    append_csv("data/covid-19-florida_arcgis_cases-by-day.csv")
+} else {
+  message("Unable to get cases by day from arcgis api: ", arcgis_cases_by_day$error$message)
+}
+
+
+arcgis_cases_by_zip <- purrr::safely(get_arcgis_cases_by_zip)()
+if (is.null(arcgis_cases_by_zip$error)) {
+  arcgis_cases_by_zip$result %>% 
+    mutate(timestamp = ts_current) %>% 
+    select(timestamp, everything()) %>% 
+    write_csv("data/covid-19-florida_arcgis_cases-by-zip.csv")
+} else {
+  message("Unable to get cases by zip summary from arcgis api: ", arcgis_cases_by_zip$error$message)
+}
+
+arcgis_cases_by_zip_geojson <- purrr::safely(get_arcgis_cases_by_zip)(format = "geojson")
+if (!is.null(arcgis_cases_by_zip_geojson$error)) {
+  message("Unable to get cases by zip geojson from arcgis api: ", arcgis_cases_by_zip_geojson$error$message)
+}
+
+
 # Get FL DOH Main Page -----------------------------------------------------
 
 fl_doh_url <- "http://www.floridahealth.gov/diseases-and-conditions/COVID-19/"
