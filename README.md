@@ -3,10 +3,10 @@
 
 | When        | Day        | Positive | New Positive Since | Deaths | New Deaths Since |  Total |
 | :---------- | :--------- | -------: | -----------------: | -----: | ---------------: | -----: |
-| Today       | 2020-04-10 |    17531 |                  0 |    390 |                0 | 162993 |
-| Yesterday   | 2020-04-09 |    16826 |                705 |    371 |               19 | 156852 |
-| Last Week   | 2020-04-03 |    10268 |               7263 |    170 |              220 |  94447 |
-| 2 Weeks Ago | 2020-03-27 |     3198 |              14333 |     46 |              344 |  34322 |
+| Today       | 2020-04-10 |    17968 |                  0 |    419 |                0 | 165686 |
+| Yesterday   | 2020-04-09 |    16826 |               1142 |    371 |               48 | 156852 |
+| Last Week   | 2020-04-03 |    10268 |               7700 |    170 |              249 |  94447 |
+| 2 Weeks Ago | 2020-03-27 |     3198 |              14770 |     46 |              373 |  34322 |
 
 Parsed from the [Florida’s COVID-19 Data and Surveillance
 Dashboard](https://fdoh.maps.arcgis.com/apps/opsdashboard/index.html#/8d0de33f260d444c852a615dc7837c86).

@@ -1,4 +1,4 @@
 2020-03-21 17:31:00 EDT
 
 
-- Extraction failed for case summary tables from page 2
+- Total cases in `cases_county` not equal to total positive: 761 != 763

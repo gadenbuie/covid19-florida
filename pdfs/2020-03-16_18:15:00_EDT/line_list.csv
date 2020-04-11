@@ -57,7 +57,7 @@ timestamp,case,county,age,sex,travel_related,jurisdiction,travel_detail,date_cou
 2020-03-16 18:15:00 EDT,56,Osceola,48,Male,Yes,FL resident,SWITZERLAND,2020-03-14
 2020-03-16 18:15:00 EDT,57,Dade,42,Male,Yes,FL resident,FRANCE,2020-03-14
 2020-03-16 18:15:00 EDT,58,Seminole,68,Female,Yes,FL resident,EGYPT; JORDAN,2020-03-14
-2020-03-16 18:15:00 EDT,59,Dade,77,Female,Yes,FL resident,,NA
+2020-03-16 18:15:00 EDT,59,Dade,77,Female,Yes,FL resident,NA,NA
 2020-03-16 18:15:00 EDT,60,Dade,39,Female,Yes,FL resident,FL; NY,2020-03-14
 2020-03-16 18:15:00 EDT,61,Manatee,62,Female,No,FL resident,,2020-03-14
 2020-03-16 18:15:00 EDT,62,Dade,42,Female,Unknown,FL resident,,2020-03-14
