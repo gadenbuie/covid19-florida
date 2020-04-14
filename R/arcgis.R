@@ -53,7 +53,7 @@ clean_feature_attributes <- function(x) {
 
 line_list_to_df <- function(x) {
   if (!length(x$features)) return(NULL)
-  x %>% 
+  x <- x %>% 
     clean_feature_attributes() %>% 
     dplyr::rename(ed_visit = EDvisit) %>% 
     janitor::clean_names() %>% 
@@ -71,8 +71,14 @@ line_list_to_df <- function(x) {
         contact = readr::col_character()
       )
     ) %>% 
-    dplyr::mutate_at(dplyr::vars(dplyr::matches("case|event_date")), ~ lubridate::as_datetime(.x/1000)) %>% 
-    dplyr::mutate_at(dplyr::vars(dplyr::matches("case|event_date")), lubridate::as_date)
+    dplyr::mutate_at(dplyr::vars(dplyr::matches("event_date")), ~ lubridate::as_datetime(.x/1000)) %>% 
+    dplyr::mutate_at(dplyr::vars(dplyr::matches("event_date")), lubridate::as_date)
+  if (is.character(x$case)) {
+    x$case <- lubridate::as_date(lubridate::floor_date(lubridate::mdy_hm(x$case), "day"))
+  } else if (is.numeric(x$case)) {
+    x$case <- lubridate::as_date(lubridate::as_datetime(x$case / 1000))
+  }
+  x
 }
 
 get_arcgis_summary <- function() {

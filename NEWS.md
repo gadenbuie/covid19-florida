@@ -1,3 +1,9 @@
+# 2020-04-13
+
+- At some point in the last few days, the Cases variable in the Line List table
+  served via ArcGis changed from a numeric timestamp to a character `d/m/Y HH:MM`
+  timestamp.
+
 # 2020-04-09
 
 - Additional tables that have been added to the dashboard are now also available
