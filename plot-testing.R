@@ -725,7 +725,7 @@ g_test_per_case <-
         )
       ) +
       scale_x_datetime(expand = expansion(add = c(0, 3600 * 6))) +
-      scale_y_continuous(expand = expansion(0.2), limits = c(0, NA)) +
+      scale_y_continuous(limits = c(0, NA)) +
       labs(x = NULL, y = NULL) +
       ggtitle(
         "Cumulative Number of Tests per Positive Confirmed Case",
