@@ -729,8 +729,8 @@ g_test_per_case <-
       labs(
         x = NULL, y = NULL,
         caption = glue::glue(
-          "Data: Florida DOH", 
           "Plot: @grrrck",
+          "Data: Florida DOH", 
           "github.com/gadenbuie/covid19-florida",
           .sep = "\n"
         )

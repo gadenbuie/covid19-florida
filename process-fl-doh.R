@@ -260,6 +260,21 @@ if (git2r::in_repository()) {
     )
     if (!is.null(res$error)) message(res$error$message)
     
+    res_index <- callr::r(
+      function(input) {
+        rmd_render <- purrr::partial(
+          rmarkdown::render,
+          output_format = cleanrmd::html_document_clean(),
+          output_options = list(theme = "vanilla", self_contained = FALSE),
+          output_file = "index"
+        )
+        purrr:::safely(rmd_render)(input)
+      },
+      args = list(input = "README.Rmd")
+    )
+    if (!is.null(res_index$error)) message(res_index$error$message)
+    if (file.exists("README.html")) file.rename("README.html", "index.html")
+    
     git2r::add(".", ".")
     git2r::commit(message = glue("[auto update] {ts_current}"))
     git2r::push(credentials = git2r::cred_ssh_key())
