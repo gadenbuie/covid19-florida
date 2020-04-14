@@ -726,9 +726,17 @@ g_test_per_case <-
       ) +
       scale_x_datetime(expand = expansion(add = c(0, 3600 * 6))) +
       scale_y_continuous(limits = c(0, NA)) +
-      labs(x = NULL, y = NULL) +
+      labs(
+        x = NULL, y = NULL,
+        caption = glue::glue(
+          "Data: Florida DOH", 
+          "Plot: @grrrck",
+          "github.com/gadenbuie/covid19-florida",
+          .sep = "\n"
+        )
+      ) +
       ggtitle(
-        "Cumulative Number of Tests per Positive Confirmed Case",
+        "Average Number of Tests per Positive Confirmed Case",
         "Florida COVID-19"
       ) +
       guides(color = FALSE) +
