@@ -39,6 +39,7 @@ fl_summary %>%
     `New Deaths Since` = coalesce(first(deaths) - deaths, deaths)
   ) %>% 
   select(when, day, positive, `New Positive Since`, deaths, `New Deaths Since`, total) %>% 
+  mutate_if(is.numeric, format, big.mark = ",") %>% 
   purrr::set_names(stringr::str_to_title(names(.))) %>% 
   knitr::kable()
 ```

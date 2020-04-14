@@ -264,8 +264,7 @@ if (git2r::in_repository()) {
       function(input) {
         rmd_render <- purrr::partial(
           rmarkdown::render,
-          output_format = cleanrmd::html_document_clean(),
-          output_options = list(theme = "vanilla", self_contained = FALSE),
+          output_format = cleanrmd::html_document_clean(self_contained = FALSE, theme = "stylize"),
           output_file = "index"
         )
         purrr:::safely(rmd_render)(input)
@@ -274,6 +273,11 @@ if (git2r::in_repository()) {
     )
     if (!is.null(res_index$error)) message(res_index$error$message)
     if (file.exists("README.html")) file.rename("README.html", "index.html")
+    if (dir.exists("index_files/cleanrmd-0.0.0.9000/")) {
+      fs::dir_ls("index_files/cleanrmd-0.0.0.9000/", regexp = "css$") %>% 
+        stringr::str_subset("stylize", negate = TRUE) %>% 
+        fs::file_delete()
+    }
     
     git2r::add(".", ".")
     git2r::commit(message = glue("[auto update] {ts_current}"))
