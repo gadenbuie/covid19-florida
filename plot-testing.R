@@ -127,7 +127,7 @@ g_tests <-
   ) +
   ggtitle(
     label = "Cumulative Confirmed Positive Cases",
-    subtitle = "Florida COVID=19"
+    subtitle = "Florida COVID-19"
   ) +
   theme_minimal(base_size = 14) +
   scale_x_date(date_breaks = "7 days", expand = expand_scale(add = 0), date_labels = "%b\n%d") +
@@ -240,7 +240,7 @@ g_test_changes <-
     guide = FALSE
   ) +
   theme_minimal(base_size = 14) +
-  scale_x_date(date_breaks = "4 days", expand = expand_scale(add = 0.5), date_labels = "%b\n%d") +
+  scale_x_date(date_breaks = "7 days", expand = expand_scale(add = 0.5), date_labels = "%b\n%d") +
   scale_y_continuous() +
   coord_cartesian(clip = "off") +
   theme(
@@ -586,7 +586,8 @@ g_county_trajectory <-
     trans = scales::log1p_trans(),
     breaks = c(0, 10, 20, 50, 100, 200, 500, 1000, 5000, 10000),
   ) +
-  scale_x_continuous(breaks = 0:90) +
+  # scale_x_continuous(breaks = seq(0, 360, 4)) +
+  scale_x_continuous(breaks = scales::pretty_breaks(n = 10)) +
   scale_color_manual(
     values = c("#ec4e20", "#ffc61e", "#440154", "#3e78b2", "#6baa75", "#69747c")
   ) +
