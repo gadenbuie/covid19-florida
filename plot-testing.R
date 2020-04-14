@@ -678,7 +678,7 @@ ggsave(fs::path("plots", "covid-19-florida-county-top-6.png"), gg_county_traject
 
 # Tests per Positive Case -------------------------------------------------
 
-g_test_per_case <- 
+g_test_per_case <-
   dash %>%
   select(timestamp, county_1, t_positive, t_total) %>%
   mutate(
@@ -691,6 +691,7 @@ g_test_per_case <-
       county_1 %in% c("Gadsden", "Jefferson", "Leon", "Wakulla") ~ "Tallahassee"
     )
   ) %>% 
+  bind_rows(mutate(., metro = "Florida")) %>% 
   filter(!is.na(metro)) %>%
   select(-county_1) %>% 
   group_by(timestamp, metro) %>% 
@@ -702,7 +703,7 @@ g_test_per_case <-
     xlim_text <- max(.x$timestamp) + 3600 * 10
     ggplot(.x) +
       aes(timestamp, test_per_positive, color = metro) +
-      geom_line(size = 1, alpha = 0.8) +
+      geom_line(aes(size = metro == "Florida"), alpha = 0.8, show.legend = FALSE) +
       ggrepel::geom_text_repel(
         data = . %>% filter(timestamp == max(timestamp)) %>% 
           mutate(text = glue::glue("{metro} ({round(test_per_positive, 1)})")),
@@ -716,21 +717,23 @@ g_test_per_case <-
       ) +
       scale_color_manual(
         values = c(
-          Jacksonville = "#ec4e20",
-          Orlando = "#ffc61e",
-          Tallahassee = "#440154",
-          "Tampa Bay" = "#3e78b2",
-          Gainesville = "#6baa75",
-          Miami = "#69747c"
+          Jacksonville = "#ec4e20", # orange
+          Orlando      = "#ef7674", # yellow
+          Florida      = "#440154", # purple
+          "Tampa Bay"  = "#3e78b2", # blue
+          Gainesville  = "#6baa75", # green
+          Miami        = "#69747c", # gray
+          Tallahassee  = "#f9a03f"  # dark
         )
       ) +
       scale_x_datetime(expand = expansion(add = c(0, 3600 * 6))) +
       scale_y_continuous(limits = c(0, NA)) +
+      scale_size_manual(values = c(1, 1.5)) +
       labs(
         x = NULL, y = NULL,
         caption = glue::glue(
-          "Plot: @grrrck",
-          "Data: Florida DOH", 
+          "Source: Florida DOH", 
+          "Last update: {max(line_list$timestamp)}",
           "github.com/gadenbuie/covid19-florida",
           .sep = "\n"
         )
