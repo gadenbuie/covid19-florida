@@ -254,7 +254,10 @@ if (git2r::in_repository()) {
     error = function(e) message(e$message)
     )
     
-    res <- purrr:::safely(rmarkdown::render)("README.Rmd")
+    res <- callr::r(
+      function(input) purrr:::safely(rmarkdown::render)(input), 
+      args = list(input = "README.Rmd")
+    )
     if (!is.null(res$error)) message(res$error$message)
     
     git2r::add(".", ".")
