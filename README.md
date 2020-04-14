@@ -17,6 +17,8 @@ Dashboard](https://fdoh.maps.arcgis.com/apps/opsdashboard/index.html#/8d0de33f26
 
 ![](plots/covid-19-florida-county-top-6.png)
 
+![](plots/covid-19-florida-tests-per-case.png)
+
 ![](plots/covid-19-florida-change-new-cases.png)
 
 ![](plots/covid-19-florida-daily-test-changes.png)
