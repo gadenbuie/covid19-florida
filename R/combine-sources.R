@@ -16,7 +16,8 @@ combine_scraped_and_api_data <- function(data_scraped = NULL, data_api = NULL) {
       dplyr::mutate(source = 1, timestamp = lubridate::ymd_hms(timestamp)),
     data_api %>%
       dplyr::group_by(timestamp) %>%
-      dplyr::summarize_at(vars(t_positive, t_negative, t_pending, t_inconc, c_non_res_deaths, fl_res_deaths), sum, na.rm = TRUE) %>%
+      dplyr::mutate(c_fl_res_deaths = dplyr::coalesce(c_fl_res_deaths, fl_res_deaths)) %>% 
+      dplyr::summarize_at(vars(t_positive, t_negative, t_pending, t_inconc, c_non_res_deaths, c_fl_res_deaths), sum, na.rm = TRUE) %>%
       dplyr::ungroup() %>%
       dplyr::mutate(source = 0)
   ) %>%
@@ -30,7 +31,7 @@ combine_scraped_and_api_data <- function(data_scraped = NULL, data_api = NULL) {
       negative = dplyr::coalesce(t_negative, negative),
       positive = dplyr::coalesce(t_positive, positive),
       pending = dplyr::coalesce(t_pending, pending),
-      deaths = dplyr::coalesce(fl_res_deaths + c_non_res_deaths, deaths),
+      deaths = dplyr::coalesce(c_fl_res_deaths + c_non_res_deaths, deaths),
       inconclusive = t_inconc
     ) %>%
     tidyr::replace_na(list(inconclusive = 0)) %>%

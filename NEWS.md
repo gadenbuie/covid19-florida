@@ -1,8 +1,12 @@
 # 2020-04-13
 
 - At some point in the last few days, the Cases variable in the Line List table
-  served via ArcGis changed from a numeric timestamp to a character `d/m/Y HH:MM`
+  served via ArcGIS changed from a numeric timestamp to a character `d/m/Y HH:MM`
   timestamp.
+  
+- Similarly Florida resident deaths were previously reported in the variable
+  `fl_res_deaths`, which was renamed `c_fl_res_deaths` in the county-level
+  summary table served via ArcGIS.
 
 # 2020-04-09
 
