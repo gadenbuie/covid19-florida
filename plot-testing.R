@@ -678,9 +678,15 @@ ggsave(fs::path("plots", "covid-19-florida-county-top-6.png"), gg_county_traject
 
 # Tests per Positive Case -------------------------------------------------
 
-g_test_per_case <-
+library(patchwork)
+
+test_per_case <- 
   dash %>%
   select(timestamp, county_1, t_positive, t_total) %>%
+  group_by(day = floor_date(timestamp - hours(10), "day")) %>% 
+  filter(timestamp == max(timestamp)) %>% 
+  ungroup() %>% 
+  select(-timestamp, timestamp = day) %>% 
   mutate(
     metro = case_when(
       county_1 %in% c("Dade", "Broward", "Palm Beach") ~ "Miami",
@@ -696,66 +702,95 @@ g_test_per_case <-
   select(-county_1) %>% 
   group_by(timestamp, metro) %>% 
   summarize_all(sum) %>% 
+  group_by(metro) %>%
+  arrange(timestamp) %>% 
+  mutate(lag(t_positive)) %>% 
+  filter(t_positive > lag(t_positive)) %>%
+  mutate_at(vars(t_positive, t_total), ~ .x - lag(.x)) %>% 
   ungroup() %>% 
-  mutate(test_per_positive = if_else(t_positive > 0, t_total / t_positive, t_total)) %>%
-  {
-    .x <- .
-    xlim_text <- max(.x$timestamp) + 3600 * 10
-    ggplot(.x) +
-      aes(timestamp, test_per_positive, color = metro) +
-      geom_line(aes(size = metro == "Florida"), alpha = 0.8, show.legend = FALSE) +
-      ggrepel::geom_text_repel(
-        data = . %>% filter(timestamp == max(timestamp)) %>% 
-          mutate(text = glue::glue("{metro} ({round(test_per_positive, 1)})")),
-        aes(label = text),
-        min.segment.length = 1,
-        direction = "y",
-        hjust = 0,
-        xlim = c(xlim_text, xlim_text + 3600 * 24 * 10),
-        fontface = "bold",
-        seed = 424242
-      ) +
-      scale_color_manual(
-        values = c(
-          Jacksonville = "#ec4e20", # orange
-          Orlando      = "#ef7674", # yellow
-          Florida      = "#440154", # purple
-          "Tampa Bay"  = "#3e78b2", # blue
-          Gainesville  = "#6baa75", # green
-          Miami        = "#69747c", # gray
-          Tallahassee  = "#f9a03f"  # dark
-        )
-      ) +
-      scale_x_datetime(expand = expansion(add = c(0, 3600 * 6))) +
-      scale_y_continuous(limits = c(0, NA)) +
-      scale_size_manual(values = c(1, 1.5)) +
-      labs(
-        x = NULL, y = NULL,
-        caption = glue::glue(
-          "Source: Florida DOH", 
-          "Last update: {max(line_list$timestamp)}",
-          "github.com/gadenbuie/covid19-florida",
-          .sep = "\n"
-        )
-      ) +
-      ggtitle(
-        "Average Number of Tests per Positive Confirmed Case",
-        "Florida COVID-19"
-      ) +
-      guides(color = FALSE) +
-      theme_minimal(14) +
-      coord_cartesian(clip = "off") +
-      theme(
-        legend.position = "bottom",
-        legend.background = element_rect(fill = "white", color = "transparent"),
-        axis.title.y = element_text(angle = 90, vjust = 0.5, hjust = 0.5, color = "#666666"),
-        plot.margin = margin(r = 9, 0.5, 0.5, 0.5, unit = "lines"),
-        plot.subtitle = element_text(margin = margin(b = 1.25, unit = "lines")),
-        plot.caption = element_text(color = "#444444"),
-        panel.grid.major.x = element_blank(),
-        panel.grid.minor.x = element_blank(),
-        panel.grid.minor.y = element_blank()
-      )
-  }
+  filter(!is.na(t_positive)) %>% 
+  # mutate(test_per_positive = if_else(t_positive > 0, t_total / t_positive, t_positive)) %>%
+  # mutate(test_per_positive = slider::slide_dbl(test_per_positive, ~ mean(.x), .before = 0)) %>%
+  mutate(t_total = t_total - t_positive) %>% 
+  gather(status, count, t_positive, t_total) %>% 
+  mutate(
+    status = if_else(status == "t_total", "test", metro),
+    status = forcats::fct_relevel(status, "test")
+  )
 
-ggsave(fs::path("plots", "covid-19-florida-tests-per-case.png"), g_test_per_case, width = 6.66, height = 3.33, dpi = 150, scale = 1.5)
+
+g_test_per_case_counties <-
+  test_per_case %>% 
+  filter(metro != "Florida") %>% 
+  ggplot() +
+  aes(timestamp, y = count, fill = status) +
+  geom_col(position = "stack", show.legend = FALSE) +
+  facet_wrap(vars(metro), scales = "free_y") +
+  scale_fill_manual(
+    values = c(
+      test = "#dddddd",
+      Jacksonville = "#ec4e20", # orange
+      Orlando      = "#ef7674", # yellow
+      Florida      = "#440154", # purple
+      "Tampa Bay"  = "#3e78b2", # blue
+      Gainesville  = "#6baa75", # green
+      Miami        = "#69747c", # gray
+      Tallahassee  = "#f9a03f"  # dark
+    )
+  ) +
+  scale_y_continuous(labels = grkmisc::format_pretty_num()) +
+  theme_minimal(14) +
+  theme(
+    strip.text = element_text(face = "bold"),
+    axis.text.x = element_text(size = 8)
+  )
+
+g_test_per_case_florida <-
+  test_per_case %>% 
+  filter(metro == "Florida") %>% 
+  ggplot() +
+  aes(timestamp, y = count, fill = status) +
+  geom_col(position = "stack", show.legend = FALSE) +
+  facet_wrap(vars(metro), scales = "free") +
+  scale_fill_manual(
+    values = c(
+      test = "#dddddd",
+      Jacksonville = "#ec4e20", # orange
+      Orlando      = "#ef7674", # yellow
+      Florida      = "#440154", # purple
+      "Tampa Bay"  = "#3e78b2", # blue
+      Gainesville  = "#6baa75", # green
+      Miami        = "#69747c", # gray
+      Tallahassee  = "#f9a03f"  # dark
+    )
+  ) +
+  scale_y_continuous(labels = grkmisc::format_pretty_num()) +
+  theme_minimal(14) +
+  theme(strip.text = element_text(face = "bold", size = 18))
+
+g_test_per_case <-
+  (g_test_per_case_florida / g_test_per_case_counties) * 
+  labs(x = NULL, y = NULL) *
+  scale_x_datetime(date_breaks = "1 week", date_labels = "%b %d") *
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.minor.y = element_blank()
+  ) +
+  plot_annotation(
+    title = "Daily New Test Results and New Positive Confirmed Cases",
+    subtitle = "Florida COVID-19",
+    caption = glue::glue(
+      "Source: Florida DOH", 
+      "Last update: {max(line_list$timestamp)}",
+      "github.com/gadenbuie/covid19-florida",
+      .sep = "\n"
+    ),
+    theme = theme(
+      plot.margin = margin(0.5, 0.5, 0.5, 0.5, unit = "lines"),
+      plot.subtitle = element_text(margin = margin(b = 1.25, unit = "lines")),
+      plot.caption = element_text(color = "#444444")
+    )
+  )
+
+ggsave(fs::path("plots", "covid-19-florida-tests-per-case.png"), g_test_per_case, width = 6.66, height = 4, dpi = 150, scale = 1.5)
