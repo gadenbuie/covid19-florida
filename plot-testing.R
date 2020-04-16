@@ -771,7 +771,7 @@ g_test_per_case_florida <-
 g_test_per_case <-
   (g_test_per_case_florida / g_test_per_case_counties) * 
   labs(x = NULL, y = NULL) *
-  scale_x_datetime(date_breaks = "1 week", date_labels = "%b %d") *
+  scale_x_datetime(date_breaks = "1 week", date_labels = "%b %d", expand = expansion()) *
   theme(
     panel.grid.major.x = element_blank(),
     panel.grid.minor.x = element_blank(),
@@ -787,10 +787,11 @@ g_test_per_case <-
       .sep = "\n"
     ),
     theme = theme(
+      plot.title = element_text(hjust = 0, size = 18, face = "plain"),
       plot.margin = margin(0.5, 0.5, 0.5, 0.5, unit = "lines"),
       plot.subtitle = element_text(margin = margin(b = 1.25, unit = "lines")),
       plot.caption = element_text(color = "#444444")
     )
   )
 
-ggsave(fs::path("plots", "covid-19-florida-tests-per-case.png"), g_test_per_case, width = 6.66, height = 4, dpi = 150, scale = 1.5)
+ggsave(fs::path("plots", "covid-19-florida-tests-per-case.png"), g_test_per_case, width = 6, height = 6, dpi = 150, scale = 1.5)
