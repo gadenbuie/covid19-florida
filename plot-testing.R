@@ -748,25 +748,24 @@ g_test_per_case_counties <-
 g_test_per_case_florida <-
   test_per_case %>% 
   filter(metro == "Florida") %>% 
+  mutate(status = recode(status, "Florida" = "Positive", "test" = "Negative")) %>% 
   ggplot() +
   aes(timestamp, y = count, fill = status) +
-  geom_col(position = "stack", show.legend = FALSE) +
+  geom_col(position = "stack") +
   facet_wrap(vars(metro), scales = "free") +
+  labs(fill = NULL) +
   scale_fill_manual(
     values = c(
-      test = "#dddddd",
-      Jacksonville = "#ec4e20", # orange
-      Orlando      = "#ef7674", # yellow
-      Florida      = "#440154", # purple
-      "Tampa Bay"  = "#3e78b2", # blue
-      Gainesville  = "#6baa75", # green
-      Miami        = "#69747c", # gray
-      Tallahassee  = "#f9a03f"  # dark
+      Negative = "#dddddd",
+      Positive = "#440154"
     )
   ) +
   scale_y_continuous(labels = grkmisc::format_pretty_num()) +
   theme_minimal(14) +
-  theme(strip.text = element_text(face = "bold", size = 18))
+  theme(
+    strip.text = element_text(face = "bold", size = 18),
+    legend.position = c(0.06, 1)
+  )
 
 g_test_per_case <-
   (g_test_per_case_florida / g_test_per_case_counties) * 
