@@ -612,7 +612,7 @@ g_county_trajectory <-
       label.theme = element_text(margin = margin(r = 4, l = 0)), 
       override.aes = list(size = 3), 
       reverse = TRUE
-      )
+    )
   ) +
   theme_minimal(14) +
   theme(
@@ -646,7 +646,7 @@ gct <-
     show.legend = FALSE
   ) +
   labs(y = "Logarithmic Scale")
-  
+
 
 gct_exp <-
   g_county_trajectory +
@@ -717,7 +717,6 @@ test_per_case <-
     status = if_else(status == "t_total", "test", metro),
     status = forcats::fct_relevel(status, "test")
   )
-
 
 g_test_per_case_counties <-
   test_per_case %>% 
@@ -794,3 +793,56 @@ g_test_per_case <-
   )
 
 ggsave(fs::path("plots", "covid-19-florida-tests-per-case.png"), g_test_per_case, width = 6, height = 6, dpi = 150, scale = 1.5)
+
+# Test and case growth ----------------------------------------------------
+
+growth_rate <- test_per_case %>% 
+  filter(metro == "Florida") %>% 
+  group_by(status) %>%
+  arrange(timestamp) %>%
+  mutate(growth = 
+           if_else(count > lag(count), 
+                   (count-lag(count))/count,
+                   -(lag(count)-count)/lag(count))) %>%
+  ungroup() %>%
+  filter(!is.na(growth))
+
+g_growth <-
+  growth_rate %>% 
+  ggplot(aes(x = timestamp, y = growth)) +
+  geom_line(aes(color = status),
+            linetype = "dashed", 
+            alpha = .8) +
+  stat_smooth(aes(color = status), 
+              se = FALSE,
+              span = .5) +
+  scale_color_manual(
+    values = c("#6baa75", "#440154"),
+    labels = c("Test growth", "Case growth"),
+    name = NULL) + 
+  labs(
+    x = NULL, y = NULL,
+    caption = glue::glue(
+      "Last update: {max(line_list$timestamp)}",
+      "Source: Florida DOH and covidtracking.com", 
+      "github.com/gadenbuie/covid19-florida",
+      .sep = "\n"
+    )
+  ) +
+  ggtitle(
+    label = "Test and case growth",
+    subtitle = "Florida COVID-19"
+  ) +
+  theme_minimal(base_size = 14) +
+  coord_cartesian(clip = "off") +
+  theme(
+    legend.position = c(.88, 1.08),
+    plot.margin = margin(0.5, 0.5, 0.5, 0.5, unit = "lines"),
+    plot.subtitle = element_text(margin = margin(b = 1.25, unit = "lines")),
+    plot.caption = element_text(color = "#444444", size = 10),
+    axis.title.y = element_text(angle = 0, hjust = 1),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.minor.y = element_blank()
+  )
+
+ggsave(fs::path("plots", "covid-19-florida-test-and-case-growth.png"), g_growth, width = 6, height = 6, dpi = 150, scale = 1.5)
