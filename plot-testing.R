@@ -704,7 +704,6 @@ test_per_case <-
   summarize_all(sum) %>% 
   group_by(metro) %>%
   arrange(timestamp) %>% 
-  mutate(lag(t_positive)) %>% 
   filter(t_positive > lag(t_positive)) %>%
   mutate_at(vars(t_positive, t_total), ~ .x - lag(.x)) %>% 
   ungroup() %>% 
@@ -796,30 +795,41 @@ ggsave(fs::path("plots", "covid-19-florida-tests-per-case.png"), g_test_per_case
 
 # Test and case growth ----------------------------------------------------
 
-growth_rate <- test_per_case %>% 
+growth_rate <-
+  test_per_case %>% 
   filter(metro == "Florida") %>% 
   group_by(status) %>%
   arrange(timestamp) %>%
-  mutate(growth = 
-           if_else(count > lag(count), 
-                   (count-lag(count))/count,
-                   -(lag(count)-count)/lag(count))) %>%
+  mutate(
+    growth = if_else(
+      count > lag(count), 
+      (count-lag(count))/count,
+      -(lag(count)-count)/lag(count)
+    ),
+    growth = if_else(is.na(growth), 0, growth),
+    growth_smooth = slider::slide_dbl(growth, mean, .before = 2, .after = 2, .complete = FALSE),
+    linetype = "Daily Rate",
+    linetype = factor(linetype, levels = c("5-Day Average", "Daily Rate"))
+  ) %>%
   ungroup() %>%
   filter(!is.na(growth))
 
 g_growth <-
   growth_rate %>% 
   ggplot(aes(x = timestamp, y = growth)) +
-  geom_line(aes(color = status),
-            linetype = "dashed", 
+  geom_line(aes(color = status, linetype = linetype),
             alpha = .8) +
-  stat_smooth(aes(color = status), 
-              se = FALSE,
-              span = .5) +
+  geom_smooth(aes(color = status, y = growth_smooth), size = 1, se = FALSE, span = 0.33) +
   scale_color_manual(
     values = c("#6baa75", "#440154"),
     labels = c("Test growth", "Case growth"),
-    name = NULL) + 
+    name = NULL
+  ) + 
+  scale_linetype_manual(
+    values = c("Daily Rate" = 2, "5-Day Average" = 1),
+    drop = FALSE,
+    name = NULL
+  ) +
   labs(
     x = NULL, y = NULL,
     caption = glue::glue(
@@ -836,7 +846,12 @@ g_growth <-
   theme_minimal(base_size = 14) +
   coord_cartesian(clip = "off") +
   theme(
-    legend.position = c(.88, 1.08),
+    legend.position = c(1, 1.25),
+    legend.justification = c(1, 1),
+    legend.direction = "vertical",
+    legend.box = "horizontal",
+    legend.margin = margin(b = 0.5, unit = "line"),
+    legend.spacing.y = unit(0, "line"),
     plot.margin = margin(0.5, 0.5, 0.5, 0.5, unit = "lines"),
     plot.subtitle = element_text(margin = margin(b = 1.25, unit = "lines")),
     plot.caption = element_text(color = "#444444", size = 10),
@@ -845,4 +860,4 @@ g_growth <-
     panel.grid.minor.y = element_blank()
   )
 
-ggsave(fs::path("plots", "covid-19-florida-test-and-case-growth.png"), g_growth, width = 6, height = 6, dpi = 150, scale = 1.5)
+ggsave(fs::path("plots", "covid-19-florida-test-and-case-growth.png"), g_growth, width = 6, height = 3, dpi = 150, scale = 1.5)
