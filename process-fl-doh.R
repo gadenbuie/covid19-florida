@@ -259,6 +259,7 @@ if (git2r::in_repository()) {
       args = list(input = "README.Rmd")
     )
     if (!is.null(res$error)) message(res$error$message)
+    if (file.exists("README.html")) file.rename("README.html", "index.html")
     
     res_index <- callr::r(
       function(input) {
@@ -272,7 +273,6 @@ if (git2r::in_repository()) {
       args = list(input = "README.Rmd")
     )
     if (!is.null(res_index$error)) message(res_index$error$message)
-    if (file.exists("README.html")) file.rename("README.html", "index.html")
     if (dir.exists("index_files/cleanrmd-0.0.0.9000/")) {
       fs::dir_ls("index_files/cleanrmd-0.0.0.9000/", regexp = "css$") %>% 
         stringr::str_subset("stylize", negate = TRUE) %>% 
