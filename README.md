@@ -1,5 +1,5 @@
-
-# Florida COVID-19 Data
+Florida COVID-19 Data
+================
 
 | When           | Day        | Positive | New Positive Since | Deaths | New Deaths Since | Total   |
 | :------------- | :--------- | :------- | :----------------- | :----- | :--------------- | :------ |
