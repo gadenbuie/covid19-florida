@@ -23,7 +23,7 @@ test_summary_long <-
   mutate(positive = positive - deaths) %>% 
   pivot_longer(names_to = "status", values_to = "count", -c(day, timestamp)) %>%
   filter(!status %in% c("negative", "total")) %>%
-  mutate(status = factor(status, c("negative", "pending", "deaths", "positive", "inconclusive")))
+  mutate(status = factor(status, c("negative", "pending", "inconclusive", "deaths", "positive")))
 
 g <-
   test_summary_long %>% 
@@ -39,7 +39,10 @@ g <-
         count_label = paste(count, status)
       ),
     aes(label = count_label, y = placement, x = day + 0.40, segment.color = status), 
-    xlim = test_summary %>% pull(day) %>% max() + 0.6,
+    xlim = test_summary %>% pull(day) %>% max() + 10,
+    hjust = 1,
+    direction = "y", 
+    box.padding = 0.33,
     segment.size = 0.75
   ) +
   labs(
@@ -63,15 +66,15 @@ g <-
       .sep = "\n"
     ),
     x = min(test_summary$day) - 0.25, 
-    y = test_summary %>% tail(1) %>% pull(positive) + test_summary %>% tail(1) %>% pull(pending),
+    y = test_summary %>% tail(1) %>% pull(positive) + test_summary %>% tail(1) %>% pull(pending) + 1000,
     hjust = 0, vjust = 1,
     label.size = NA,
     color = "#444444",
     fill = "#FFFFFF"
   ) +
   theme_minimal(base_size = 14) +
-  scale_x_date(expand = expand_scale(add = 0)) +
-  scale_y_continuous(expand = expand_scale(add = 0)) +
+  scale_x_date(expand = expand_scale(add = c(0, 10))) +
+  scale_y_continuous(expand = expand_scale(add = c(0, 1000))) +
   scale_color_manual(
     aesthetics = "segment.color",
     values = c(negative = "#acc2d1", pending = "#aee2c9", positive = "#440154", deaths = "#fde725", inconclusive = "grey80"),
@@ -83,7 +86,7 @@ g <-
   ) +
   coord_cartesian(clip = "off") +
   theme(
-    plot.margin = margin(0.5, 8, 0.5, 0.5, unit = "lines"),
+    plot.margin = margin(0.5, 0.5, 0.5, 0.5, unit = "lines"),
     plot.subtitle = element_text(margin = margin(b = 1, unit = "lines"), color = "#444444"),
     plot.caption = element_text(color = "#444444", size = 10),
     panel.grid.major.x = element_blank(),
