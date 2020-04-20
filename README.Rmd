@@ -57,6 +57,8 @@ Parsed from the [Florida's COVID-19 Data and Surveillance Dashboard][dashboard].
 
 ![](plots/covid-19-florida-change-new-cases.png)
 
+![](plots/covid-19-florida-test-and-case-growth.png)
+
 ![](plots/covid-19-florida-daily-test-changes.png)
 
 ![](plots/covid-19-florida-age.png)
