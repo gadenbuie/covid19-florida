@@ -176,7 +176,8 @@ g_new_cases <-
     )
   ) +
   ggtitle(
-    label = "New Positive Cases Added - Florida COVID-19"
+    label = "New Positive Cases Added",
+    subtitle = "Florida COVID-19"
   ) +
   scale_alpha_manual(
     values = c(past = 1, today = 0.33),
@@ -232,7 +233,8 @@ g_test_changes <-
     )
   ) +
   ggtitle(
-    label = "Daily Change in Florida COVID-19 Testing"
+    label = "Daily Change in Testing",
+    subtitle = "Florida COVID-19"
   ) +
   scale_alpha_manual(
     values = c(past = 1, today = 0.33),
@@ -387,9 +389,9 @@ g_age <-
     )
   ) +
   ggtitle(
-    label = "Florida COVID-19 Positive Cases by Age",
+    label = "Positive Cases by Age",
     subtitle = glue::glue(
-      "{line_list %>% nrow() %>% format(big.mark = ',')} known positive cases"
+      "Florida COVID-19\n{line_list %>% nrow() %>% format(big.mark = ',')} known positive cases"
     )
   ) +
   guides(fill = FALSE) +
@@ -443,9 +445,9 @@ g_age_deaths <-
     )
   ) +
   ggtitle(
-    label = "Florida COVID-19 Deaths by Age",
+    label = "Deaths by Age",
     subtitle = glue::glue(
-      "{line_list %>% pull(died) %>% `==`('Yes') %>% sum(na.rm = TRUE) %>% format(big.mark = ',')} deaths"
+      "Florida COVID-19\n{line_list %>% pull(died) %>% `==`('Yes') %>% sum(na.rm = TRUE) %>% format(big.mark = ',')} deaths"
     )
   ) +
   guides(fill = FALSE) +
@@ -606,7 +608,8 @@ g_county_trajectory <-
     )
   ) +
   ggtitle(
-    label = "Florida COVID-19 Known Positive Cases by Metropolitan Area"
+    label = "Known Positive Cases by Metropolitan Area",
+    subtitle = "Florida COVID-19"
   ) +
   guides(
     color = guide_legend(
