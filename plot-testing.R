@@ -807,9 +807,7 @@ growth_rate <-
       -(lag(count)-count)/lag(count)
     ),
     growth = if_else(is.na(growth), 0, growth),
-    growth_smooth = slider::slide_dbl(growth, mean, .before = 2, .after = 2, .complete = FALSE),
-    linetype = "Daily Rate",
-    linetype = factor(linetype, levels = c("5-Day Average", "Daily Rate"))
+    growth_smooth = slider::slide_dbl(growth, mean, .before = 2, .after = 2, .complete = FALSE)
   ) %>%
   ungroup() %>%
   filter(!is.na(growth))
@@ -817,9 +815,13 @@ growth_rate <-
 g_growth <-
   growth_rate %>% 
   ggplot(aes(x = timestamp, y = growth)) +
-  geom_line(aes(color = status, linetype = linetype),
-            alpha = .8) +
-  geom_smooth(aes(color = status, y = growth_smooth), size = 1, se = FALSE, span = 0.33) +
+  geom_line(
+    aes(color = status, linetype = "Daily Rate"),
+    alpha = .8) +
+  geom_smooth(
+    aes(color = status, y = growth_smooth, linetype = "5-Day Average"), 
+    size = 1, se = FALSE, span = 0.33
+  ) +
   scale_color_manual(
     values = c("#6baa75", "#440154"),
     labels = c("Test growth", "Case growth"),
@@ -829,6 +831,9 @@ g_growth <-
     values = c("Daily Rate" = 2, "5-Day Average" = 1),
     drop = FALSE,
     name = NULL
+  ) +
+  guides(
+    linetype = guide_legend(override.aes = list(color = "#444444", size = 0.5))
   ) +
   labs(
     x = NULL, y = NULL,
