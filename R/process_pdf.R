@@ -298,7 +298,7 @@ harmonize_pdf_data <- function() {
   csvs <- dir_ls(dirs, regexp = "csv$")
   outdir <- here::here("data")
   dir_create(outdir)
-  data <- map(csvs, read_csv)
+  data <- map(csvs, read_csv, col_types = cols(.default = col_character()))
   out <- list()
   for (df_name in names(data)) {
     name <- path_ext_remove(path_file(df_name))
