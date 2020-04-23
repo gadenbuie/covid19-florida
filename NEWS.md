@@ -1,3 +1,13 @@
+# 2020-04-22 and 2020-04-23
+
+- The evening update on 2020-04-22 may have come later than usual and my 
+  snapshot may have missed the last update of the day. I've manually adjusted
+  the `dash_summary` and `arcgis_summary` tables to match.
+  
+- As of 2020-04-23 in the morning, the line list is currently not available.
+  This is causing the dashboard to show "0 Total Cases". I adjusted the snapshot
+  scripts so that updates will be stored only when the table is available.
+
 # 2020-04-13
 
 - At some point in the last few days, the Cases variable in the Line List table
