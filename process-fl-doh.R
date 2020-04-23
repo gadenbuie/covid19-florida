@@ -61,7 +61,7 @@ ts_current <- strftime(ts_now, '%FT%H%M%S', tz = "America/New_York")
 # Get data from arcgis API--------------------------------------------------
 source("R/arcgis.R")
 arcgis_line_list <- purrr::safely(get_arcgis_line_list)()
-if (is.null(arcgis_line_list$error)) {
+if (is.null(arcgis_line_list$error) && nrow(arcgis_line_list$result)) {
   arcgis_line_list$result %>% 
     mutate(timestamp = ts_current) %>% 
     select(timestamp, everything()) %>% 
@@ -71,7 +71,7 @@ if (is.null(arcgis_line_list$error)) {
 }
 
 arcgis_summary <- purrr::safely(get_arcgis_summary)()
-if (is.null(arcgis_summary$error)) {
+if (is.null(arcgis_summary$error) && nrow(get_arcgis_summary$result)) {
   arcgis_summary$result %>% 
     mutate(timestamp = ts_current) %>% 
     select(timestamp, everything()) %>% 
@@ -81,7 +81,7 @@ if (is.null(arcgis_summary$error)) {
 }
 
 arcgis_cases_by_day <- purrr::safely(get_arcgis_cases_by_day)()
-if (is.null(arcgis_cases_by_day$error)) {
+if (is.null(arcgis_cases_by_day$error) && nrow(arcgis_cases_by_day$result)) {
   arcgis_cases_by_day$result %>% 
     mutate(timestamp = ts_current) %>% 
     select(timestamp, everything()) %>% 
@@ -92,7 +92,7 @@ if (is.null(arcgis_cases_by_day$error)) {
 
 
 arcgis_cases_by_zip <- purrr::safely(get_arcgis_cases_by_zip)()
-if (is.null(arcgis_cases_by_zip$error)) {
+if (is.null(arcgis_cases_by_zip$error) && nrow(arcgis_cases_by_zip$result)) {
   arcgis_cases_by_zip$result %>% 
     mutate(timestamp = ts_current) %>% 
     select(timestamp, everything()) %>% 
