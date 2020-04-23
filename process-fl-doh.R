@@ -71,7 +71,7 @@ if (is.null(arcgis_line_list$error) && nrow(arcgis_line_list$result)) {
 }
 
 arcgis_summary <- purrr::safely(get_arcgis_summary)()
-if (is.null(arcgis_summary$error) && nrow(get_arcgis_summary$result)) {
+if (is.null(arcgis_summary$error) && nrow(arcgis_summary$result)) {
   arcgis_summary$result %>% 
     mutate(timestamp = ts_current) %>% 
     select(timestamp, everything()) %>% 
@@ -245,7 +245,7 @@ if (git2r::in_repository()) {
     },
     error = function(e) message(e$message))
     
-    # Create plot -------------------------------------------------------------
+    # > Create plot -------------------------------------------------------------
     tryCatch({
       message("generating testing summary plot")
       callr::rscript("plot-testing.R", fail_on_status = FALSE)
@@ -254,6 +254,7 @@ if (git2r::in_repository()) {
     error = function(e) message(e$message)
     )
     
+    # > Render README and webpage ----
     res <- callr::r(
       function(input) purrr:::safely(rmarkdown::render)(input), 
       args = list(input = "README.Rmd")
@@ -279,6 +280,7 @@ if (git2r::in_repository()) {
         fs::file_delete()
     }
     
+    # > Commit Everything ----
     git2r::add(".", ".")
     git2r::commit(message = glue("[auto update] {ts_current}"))
     git2r::push(credentials = git2r::cred_ssh_key())
