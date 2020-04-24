@@ -819,7 +819,7 @@ g_pct_positive_florida <-
     legend.position = c(0.06, 1)
   )
 
-# g_pct_positive_counties <-
+g_pct_positive_counties <-
   pct_positive %>% 
   filter(metro != "Florida") %>% 
   ggplot() +
