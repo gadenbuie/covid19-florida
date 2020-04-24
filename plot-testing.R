@@ -809,6 +809,7 @@ g_pct_positive_florida <-
   filter(metro == "Florida") %>% 
   ggplot() +
   aes(timestamp, y = pct_positive) +
+  geom_smooth(fill = "#440154", alpha = 0.2, color = NA, se = TRUE, show.legend = FALSE) +
   geom_line(color = "#440154") +
   facet_wrap(vars(metro), scales = "free") +
   scale_y_continuous(labels = scales::percent_format(5), limits = c(0, max(pct_positive$pct_positive))) +
@@ -818,15 +819,28 @@ g_pct_positive_florida <-
     legend.position = c(0.06, 1)
   )
 
-g_pct_positive_counties <-
+# g_pct_positive_counties <-
   pct_positive %>% 
   filter(metro != "Florida") %>% 
   ggplot() +
   aes(timestamp, y = pct_positive, color = metro) +
+  geom_smooth(aes(fill = metro), alpha = 0.2, color = NA, se = TRUE, show.legend = FALSE) +
   geom_line(show.legend = FALSE) +
   facet_wrap(vars(metro)) +
   scale_y_continuous(labels = scales::percent_format(5)) +
   scale_color_manual(
+    values = c(
+      test = "#dddddd",
+      Jacksonville = "#ec4e20", # orange
+      Orlando      = "#ef7674", # yellow
+      Florida      = "#440154", # purple
+      "Tampa Bay"  = "#3e78b2", # blue
+      Gainesville  = "#6baa75", # green
+      Miami        = "#69747c", # gray
+      Tallahassee  = "#f9a03f"  # dark
+    )
+  ) +
+  scale_fill_manual(
     values = c(
       test = "#dddddd",
       Jacksonville = "#ec4e20", # orange
