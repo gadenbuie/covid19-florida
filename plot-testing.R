@@ -686,7 +686,7 @@ ggsave(fs::path("plots", "covid-19-florida-county-top-6.png"), gg_county_traject
 
 library(patchwork)
 
-test_per_case <- 
+test_per_case <-
   dash %>%
   select(timestamp, county_1, t_positive, t_total) %>%
   group_by(day = floor_date(timestamp - hours(10), "day")) %>% 
@@ -714,14 +714,15 @@ test_per_case <-
   mutate_at(vars(t_positive, t_total), ~ .x - lag(.x)) %>% 
   ungroup() %>% 
   filter(!is.na(t_positive)) %>% 
-  # mutate(test_per_positive = if_else(t_positive > 0, t_total / t_positive, t_positive)) %>%
-  # mutate(test_per_positive = slider::slide_dbl(test_per_positive, ~ mean(.x), .before = 0)) %>%
-  mutate(t_total = t_total - t_positive) %>% 
+  mutate(pct_positive = t_positive / t_total) %>% 
   gather(status, count, t_positive, t_total) %>% 
   mutate(
     status = if_else(status == "t_total", "test", metro),
+    metro = forcats::fct_reorder(metro, count, mean, .desc = TRUE),
     status = forcats::fct_relevel(status, "test")
   )
+
+pct_positive <- test_per_case %>% filter(paste(status) == paste(metro))
 
 g_test_per_case_counties <-
   test_per_case %>% 
@@ -729,7 +730,7 @@ g_test_per_case_counties <-
   ggplot() +
   aes(timestamp, y = count, fill = status) +
   geom_col(position = "stack", show.legend = FALSE) +
-  facet_wrap(vars(metro), scales = "free_y") +
+  facet_wrap(vars(metro), scales = "free_y", as.table = TRUE) +
   scale_fill_manual(
     values = c(
       test = "#dddddd",
@@ -798,6 +799,79 @@ g_test_per_case <-
   )
 
 ggsave(fs::path("plots", "covid-19-florida-tests-per-case.png"), g_test_per_case, width = 6, height = 6, dpi = 150, scale = 1.5)
+
+
+
+# Percent Positivity ------------------------------------------------------
+
+g_pct_positive_florida <-
+  pct_positive %>% 
+  filter(metro == "Florida") %>% 
+  ggplot() +
+  aes(timestamp, y = pct_positive) +
+  geom_line(color = "#440154") +
+  facet_wrap(vars(metro), scales = "free") +
+  scale_y_continuous(labels = scales::percent_format(5), limits = c(0, max(pct_positive$pct_positive))) +
+  theme_minimal(14) +
+  theme(
+    strip.text = element_text(face = "bold", size = 18),
+    legend.position = c(0.06, 1)
+  )
+
+g_pct_positive_counties <-
+  pct_positive %>% 
+  filter(metro != "Florida") %>% 
+  ggplot() +
+  aes(timestamp, y = pct_positive, color = metro) +
+  geom_line(show.legend = FALSE) +
+  facet_wrap(vars(metro)) +
+  scale_y_continuous(labels = scales::percent_format(5)) +
+  scale_color_manual(
+    values = c(
+      test = "#dddddd",
+      Jacksonville = "#ec4e20", # orange
+      Orlando      = "#ef7674", # yellow
+      Florida      = "#440154", # purple
+      "Tampa Bay"  = "#3e78b2", # blue
+      Gainesville  = "#6baa75", # green
+      Miami        = "#69747c", # gray
+      Tallahassee  = "#f9a03f"  # dark
+    )
+  ) +
+  theme_minimal(14) +
+  theme(
+    strip.text = element_text(face = "bold"),
+    axis.text.x = element_text(size = 8)
+  )
+
+g_pct_positive <- 
+  (g_pct_positive_florida / g_pct_positive_counties) * 
+  labs(x = NULL, y = NULL) *
+  scale_x_datetime(date_breaks = "1 week", date_labels = "%b %d", expand = expansion()) *
+  theme(
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.minor.y = element_blank()
+  ) +
+  plot_layout(nrow = 2, heights = c(1, 2)) +
+  plot_annotation(
+    title = "Percent Positive of Daily Test Results",
+    subtitle = "Florida COVID-19",
+    caption = glue::glue(
+      "Source: Florida DOH", 
+      "Last update: {max(line_list$timestamp)}",
+      "github.com/gadenbuie/covid19-florida",
+      .sep = "\n"
+    ),
+    theme = theme(
+      plot.title = element_text(hjust = 0, size = 18, face = "plain"),
+      plot.margin = margin(0.5, 0.5, 0.5, 0.5, unit = "lines"),
+      plot.subtitle = element_text(margin = margin(b = 1.25, unit = "lines")),
+      plot.caption = element_text(color = "#444444")
+    )
+  )
+
+ggsave(fs::path("plots", "covid-19-florida-tests-percent-positive.png"), g_pct_positive, width = 6, height = 4, dpi = 150, scale = 1.5)
 
 # Test and case growth ----------------------------------------------------
 
