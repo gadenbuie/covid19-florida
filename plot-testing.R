@@ -711,10 +711,12 @@ test_per_case <-
   group_by(metro) %>%
   arrange(timestamp) %>% 
   filter(t_positive > lag(t_positive)) %>%
+  # Convert from cumulative to daily new
   mutate_at(vars(t_positive, t_total), ~ .x - lag(.x)) %>% 
   ungroup() %>% 
   filter(!is.na(t_positive)) %>% 
   mutate(pct_positive = t_positive / t_total) %>% 
+  # mutate_at(vars(pct_positive), slider::slide_dbl, mean, .before = 5) %>% 
   gather(status, count, t_positive, t_total) %>% 
   mutate(
     status = if_else(status == "t_total", "test", metro),
@@ -804,13 +806,29 @@ ggsave(fs::path("plots", "covid-19-florida-tests-per-case.png"), g_test_per_case
 
 # Percent Positivity ------------------------------------------------------
 
+geom_binomial <- function(...) {
+  geom_smooth(method = "glm", method.args = list(family = "binomial"), ..., color = NA)
+}
+
 g_pct_positive_florida <-
   pct_positive %>% 
-  filter(metro == "Florida") %>% 
+  filter(metro == "Florida", timestamp >= today() - 21) %>% 
   ggplot() +
   aes(timestamp, y = pct_positive) +
-  geom_smooth(fill = "#440154", alpha = 0.2, color = NA, se = TRUE, show.legend = FALSE) +
+  geom_binomial(fill = "#440154", alpha = 0.2, se = TRUE, show.legend = FALSE, aes(weight = count)) +
   geom_line(color = "#440154") +
+  geom_text(
+    data = . %>% 
+      summarize(
+        label = glue::glue("Avg. Daily Tests: {format(mean(count / pct_positive), , big.mark = ',', digits = 2)}"),
+        timestamp = mean(timestamp),
+        pct_positive = max(pct_positive)
+      ) %>% 
+      ungroup() %>% 
+      mutate(pct_positive = max(pct_positive), metro = "Florida"),
+    aes(label = label),
+    y = max(pct_positive$pct_positive)
+  ) +
   facet_wrap(vars(metro), scales = "free") +
   scale_y_continuous(labels = scales::percent_format(5), limits = c(0, max(pct_positive$pct_positive))) +
   theme_minimal(14) +
@@ -821,13 +839,29 @@ g_pct_positive_florida <-
 
 g_pct_positive_counties <-
   pct_positive %>% 
-  filter(metro != "Florida") %>% 
+  filter(metro != "Florida", timestamp >= today() - 21) %>% 
   ggplot() +
   aes(timestamp, y = pct_positive, color = metro) +
-  geom_smooth(aes(fill = metro), alpha = 0.2, color = NA, se = TRUE, show.legend = FALSE) +
+  geom_binomial(aes(fill = metro, weight = count), alpha = 0.2, se = TRUE, show.legend = FALSE) +
   geom_line(show.legend = FALSE) +
+  geom_point(aes(size = count / pct_positive), alpha = 0.66, shape = 21) +
   facet_wrap(vars(metro)) +
+  geom_text(
+    data = . %>% 
+      group_by(metro) %>% 
+      summarize(
+        label = glue::glue("Avg. Daily Tests: {format(mean(count / pct_positive), , big.mark = ',', digits = 0)}"),
+        timestamp = mean(timestamp),
+        pct_positive = max(pct_positive)
+      ) %>% 
+      ungroup() %>% 
+      mutate(pct_positive = max(pct_positive)),
+    aes(label = label)
+  ) +
+  labs(size = "Number of Tests") +
+  guides(color = FALSE) +
   scale_y_continuous(labels = scales::percent_format(5)) +
+  scale_size_continuous(range = c(1, 10)) +
   scale_color_manual(
     values = c(
       test = "#dddddd",
@@ -854,12 +888,14 @@ g_pct_positive_counties <-
   ) +
   theme_minimal(14) +
   theme(
+    legend.position = "top",
     strip.text = element_text(face = "bold"),
     axis.text.x = element_text(size = 8)
   )
 
 g_pct_positive <- 
   (g_pct_positive_florida / g_pct_positive_counties) * 
+  # scale_y_continuous(labels = scales::percent_format(5), limits = c(, 0.35)) * 
   labs(x = NULL, y = NULL) *
   scale_x_datetime(date_breaks = "1 week", date_labels = "%b %d", expand = expansion()) *
   theme(
@@ -885,7 +921,7 @@ g_pct_positive <-
     )
   )
 
-ggsave(fs::path("plots", "covid-19-florida-tests-percent-positive.png"), g_pct_positive, width = 6, height = 4, dpi = 150, scale = 1.5)
+ggsave(fs::path("plots", "covid-19-florida-tests-percent-positive.png"), g_pct_positive, width = 6, height = 5, dpi = 150, scale = 1.5)
 
 # Test and case growth ----------------------------------------------------
 
