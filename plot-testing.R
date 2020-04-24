@@ -40,7 +40,7 @@ g <-
       ),
     aes(label = count_label, y = placement, x = day + 0.40, segment.color = status), 
     xlim = test_summary %>% pull(day) %>% max() + 10,
-    hjust = 1,
+    hjust = 0,
     direction = "y", 
     box.padding = 0.33,
     segment.size = 0.75
