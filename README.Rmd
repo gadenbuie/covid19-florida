@@ -45,6 +45,9 @@ fl_summary %>%
 
 Parsed from the [Florida's COVID-19 Data and Surveillance Dashboard][dashboard].
 
+Since Florida DOH only updates once per day at 11am (starting 2020-04-25),
+the daily reported cumulative count used is the last value reported prior to 1pm
+on a given day.
 
 ![](plots/covid-19-florida-testing.png)
 

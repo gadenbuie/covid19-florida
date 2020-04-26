@@ -25,6 +25,7 @@ test_summary_long <-
   filter(!status %in% c("negative", "total")) %>%
   mutate(status = factor(status, c("negative", "pending", "inconclusive", "deaths", "positive")))
 
+set.seed(4242)
 g <-
   test_summary_long %>% 
   ggplot() +
@@ -38,8 +39,8 @@ g <-
         placement = cumsum(count) - count / 2,
         count_label = paste(count, status)
       ),
-    aes(label = count_label, y = placement, x = day + 0.40, segment.color = status), 
-    xlim = test_summary %>% pull(day) %>% max() + 10,
+    aes(label = count_label, y = placement, x = day, segment.color = status), 
+    xlim = c((test_summary %>% pull(day) %>% max()) + 2, NA),
     hjust = 0,
     direction = "y", 
     box.padding = 0.33,
@@ -96,7 +97,6 @@ g <-
 
 fs::dir_create("plots")
 ggsave(fs::path("plots", "covid-19-florida-testing.png"), g, width = 6.66, height = 3.33, dpi = 150, scale = 1.5)
-
 
 
 # positive count ----------------------------------------------------------
@@ -689,7 +689,7 @@ library(patchwork)
 test_per_case <-
   dash %>%
   select(timestamp, county_1, t_positive, t_total) %>%
-  group_by(day = floor_date(timestamp - hours(10), "day")) %>% 
+  group_by(day = floor_date(timestamp + hours(11), "day")) %>% 
   filter(timestamp == max(timestamp)) %>% 
   ungroup() %>% 
   select(-timestamp, timestamp = day) %>% 
@@ -810,6 +810,11 @@ geom_binomial <- function(...) {
   geom_smooth(method = "glm", method.args = list(family = "binomial"), ..., color = NA)
 }
 
+max_percent_positive <- pct_positive %>% 
+  filter(timestamp >= today() - 21) %>% 
+  pull(pct_positive) %>% 
+  max()
+
 g_pct_positive_florida <-
   pct_positive %>% 
   filter(metro == "Florida", timestamp >= today() - 21) %>% 
@@ -830,7 +835,7 @@ g_pct_positive_florida <-
     y = max(pct_positive$pct_positive)
   ) +
   facet_wrap(vars(metro), scales = "free") +
-  scale_y_continuous(labels = scales::percent_format(5), limits = c(0, max(pct_positive$pct_positive))) +
+  scale_y_continuous(labels = scales::percent_format(5), limits = c(0, max_percent_positive)) +
   theme_minimal(14) +
   theme(
     strip.text = element_text(face = "bold", size = 18),

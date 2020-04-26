@@ -1,3 +1,10 @@
+# 2020-04-25
+
+- Starting Saturday April 25, the COVID-19 case and testing counts are only
+  updated once daily, at around 11am. I've modified my summary plots and scripts
+  to use the last snapshot of reported counts prior to 1pm, so that daily changes
+  prior to the 2020-04-25 change are comparable to changes obsevered after.
+
 # 2020-04-22 and 2020-04-23
 
 - The evening update on 2020-04-22 may have come later than usual and my 

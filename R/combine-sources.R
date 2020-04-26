@@ -23,8 +23,13 @@ combine_scraped_and_api_data <- function(data_scraped = NULL, data_api = NULL) {
     dplyr::mutate(source = 0)
 
   dplyr::bind_rows(data_scraped_sel, data_api_sel) %>%
-    dplyr::mutate(day = lubridate::floor_date(timestamp, "day")) %>%
-    dplyr::mutate_at(vars(day), as_date) %>%
+    dplyr::mutate(
+      # since updates will happen daily at 11am, a "day" is now 
+      # 1pm on day (x - 1) -- 1pm on day X
+      # timestamp = timestamp + lubridate::hours(12),
+      day = lubridate::floor_date(timestamp + lubridate::hours(11), "day")
+    ) %>%
+    dplyr::mutate_at(vars(day), lubridate::as_date) %>%
     dplyr::group_by(day) %>%
     dplyr::arrange(dplyr::desc(timestamp), source) %>%
     dplyr::slice(1) %>%
