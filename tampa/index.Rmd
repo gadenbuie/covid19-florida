@@ -1,0 +1,192 @@
+---
+title: "Tampa Report"
+subtitle: "COVID-19 Testing Summary"
+# author:
+#   - name: Garrick Aden-Buie
+#     url: "https://garrickadenbuie.com"
+#     extra: 
+#       - "Moffitt Cancer Center"
+#       - "&commat;grrrck"
+date: '`r strftime(Sys.time(), "%F %T", tz = "America/New_York")`'
+bulma:
+  hero: "link"
+  hero_button: ["is-outlined"]
+  hero_links:
+    - name: Github
+      url: https://github.com/gadenbuie/covid19-florida
+output: 
+  bulma::bulma_document:
+    pandoc_args: ["--variable", "no-font-awesome"]
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+```{r library, include=FALSE}
+library(dplyr, warn.conflicts = FALSE)
+library(tidyr, warn.conflicts = FALSE)
+library(readr, warn.conflicts = FALSE)
+library(lubridate, warn.conflicts = FALSE)
+library(ggplot2, warn.conflicts = FALSE)
+library(purrr, warn.conflicts = FALSE)
+source(here::here("R/combine-sources.R"))
+
+line_list <- readr::read_csv(here::here("data/covid-19-florida_arcgis_line-list.csv"), guess_max = 1e5)
+dash <- readr::read_csv(here::here("data/covid-19-florida_arcgis_summary.csv"), guess_max = 1e5)
+doh_ts <- readr::read_csv(here::here("data/covid-19-florida_arcgis_cases-by-day.csv"))
+
+# Test summary import -----------------------------------------------------
+
+testing_summary_dash <- read_csv(here::here("data/covid-19-florida_dash_summary.csv"))
+
+test_summary <-
+  combine_scraped_and_api_data(testing_summary_dash, dash)
+
+tampa_test_summary <- 
+  dash %>%
+  select(timestamp, county = county_1, t_positive, t_total, deaths, t_inconc, c_ed_yes) %>%
+  group_by(day = floor_date(timestamp + hours(11), "day")) %>% 
+  filter(timestamp == max(timestamp)) %>% 
+  ungroup() %>% 
+  select(-timestamp, timestamp = day) %>% 
+  bind_rows(mutate(., county = "Florida")) %>% 
+  filter(county %in% c("Hillsborough", "Pinellas", "Florida")) %>% 
+  group_by(timestamp, county) %>% 
+  summarize_all(sum) %>% 
+  ungroup()
+```
+
+
+## Reported Positive Cases and Tests
+
+The following table shows **new positive cases and tests**
+with associated test positivity percentage for Hillsborough and Pinellas counties,
+in addition to Florida in general.
+
+These values are calculated based on the reported county-level confirmed cases and tests,
+available at [Florida DOH's COVID-19 Data and Surveillance Dashboard][dashboard].
+Note that these numbers are provisional and are based on cumulative county-level
+testing and positive confirmed cases
+and therefore may differ from a more detailed timeseries of daily testing.
+Unfortunately, this is the closest approximation possible with publicly released data.
+
+```{r pct_positive}
+# pct_positive <- 
+tampa_test_summary %>%
+  select(timestamp:t_total) %>% 
+  group_by(county) %>%
+  arrange(timestamp) %>% 
+  filter(t_positive > lag(t_positive)) %>%
+  # Convert from cumulative to daily new
+  mutate(
+    daily_t_positive = t_positive - lag(t_positive),
+    daily_t_total = t_total - lag(t_total)
+  ) %>% 
+  ungroup() %>% 
+  filter(!is.na(daily_t_positive)) %>% 
+  mutate(
+    pct_positive = daily_t_positive / daily_t_total,
+    day = strftime(timestamp, "%B__%d"),
+    pct_positive = scales::percent(pct_positive, 1.1)
+  ) %>% 
+  mutate_at(vars(starts_with("daily")), format, big.mark = ',') %>% 
+  mutate_at(vars(starts_with("t_")), format, big.mark = ',') %>% 
+  filter(timestamp > today() - 10, timestamp < today()) %>% 
+  # select(day, county, starts_with("daily"), pct_positive) %>%
+  select(day, county, contains("t_"), pct_positive) %>%
+  pivot_longer(-day:-county) %>% 
+  pivot_wider(names_from = day, values_from = value) %>% 
+  mutate(name = recode(
+    name, 
+    daily_t_positive = "New Positive", 
+    daily_t_total = "New Total Tests", 
+    pct_positive = "% Positive",
+    t_positive = "Positive",
+    t_total = "Total Tests"
+  )) %>% 
+  group_by(county) %>% 
+  gt::gt() %>%
+  gt::tab_header("New and Cumulative Positive and Total Tests") %>% 
+  gt::cols_label(name = "") %>% 
+  gt::tab_spanner_delim("__") %>%
+  gt::tab_style(
+    gt::cell_text(align = "right"),
+    gt::cells_body(columns = contains("__"))
+  ) %>% 
+  gt::tab_style(
+    gt::cell_fill(color = "#eeeeee"),
+    gt::cells_body(rows = name == "% Positive")
+  ) %>%
+  gt::tab_style(
+    gt::cell_borders(sides = "top", color = "#d8d8d8", weight = "2px"),
+    gt::cells_body(rows = name == "New Positive")
+  ) %>%
+  gt::tab_style(
+    gt::cell_text(weight = "bold"),
+    gt::cells_row_groups()
+  )
+```
+
+## Daily Changes
+
+```{r daily-changes-in-testing}
+tampa_test_summary %>% 
+  select(day = timestamp, county, total = t_total, positive = t_positive, deaths) %>% 
+  filter(!is.na(positive), !is.na(deaths)) %>% 
+  arrange(day) %>% 
+  group_by(county) %>% 
+  mutate(
+    positive = positive - lag(positive),
+    total = total - lag(total),
+    deaths = deaths - lag(deaths),
+    complete = if_else(day == today(), "today", "past")
+  ) %>% 
+  filter(!is.na(positive)) %>% 
+  ungroup() %>% 
+  select(county, day, complete, positive, `total tests` = total, deaths) %>% 
+  pivot_longer(cols = c(positive, `total tests`, deaths), names_to = "status") %>% 
+  mutate_at(vars(status), tools::toTitleCase) %>% 
+  mutate_at(vars(status), factor, levels = c("Total Tests", "Positive", "Deaths")) %>% 
+  mutate_at(vars(day), lubridate::as_date) %>% 
+  ggplot() +
+  aes(day, value) +
+  geom_col(aes(alpha = complete, fill = status)) +
+  facet_wrap(~ status + county, scales = "free_y") +
+  labs(
+    x = NULL, y = NULL,
+    caption = glue::glue(
+      "Source: Florida DOH", 
+      "Last update: {max(test_summary$timestamp)}",
+      "github.com/gadenbuie/covid19-florida",
+      .sep = "\n"
+    )
+  ) +
+  scale_alpha_manual(
+    values = c(past = 1, today = 0.33),
+    guide = FALSE
+  ) +
+  scale_fill_manual(
+    values = c("Total Tests" = "#63768d", Positive = "#ec4e20", Deaths = "#440154"), 
+    guide = FALSE
+  ) +
+  theme_minimal(base_size = 14) +
+  scale_x_date(date_breaks = "7 days", expand = expansion(add = 0.5), date_labels = "%b\n%d") +
+  scale_y_continuous() +
+  coord_cartesian(clip = "off") +
+  theme(
+    plot.margin = margin(0.5, 0.5, 0.5, 0.5, unit = "lines"),
+    plot.subtitle = element_text(margin = margin(b = 1.25, unit = "lines")),
+    plot.caption = element_text(color = "#444444"),
+    panel.border = element_rect(color = "#dddddd", fill = NA),
+    strip.text = element_text(face = "bold", margin = margin(b = 0.25, unit = "line")),
+    axis.title.y = element_text(angle = 0, hjust = 1),
+    # panel.grid.major.x = element_blank(),
+    panel.grid.minor.x = element_blank(),
+    panel.grid.minor.y = element_blank()
+  )
+```
+
+
+[dashboard]: https://fdoh.maps.arcgis.com/apps/opsdashboard/index.html#/8d0de33f260d444c852a615dc7837c86
