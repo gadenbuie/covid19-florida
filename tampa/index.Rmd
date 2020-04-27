@@ -93,7 +93,7 @@ tampa_test_summary %>%
   ) %>% 
   mutate_at(vars(starts_with("daily")), format, big.mark = ',') %>% 
   mutate_at(vars(starts_with("t_")), format, big.mark = ',') %>% 
-  filter(timestamp > today() - 10, timestamp < today()) %>% 
+  filter(timestamp > today() - 10) %>% 
   # select(day, county, starts_with("daily"), pct_positive) %>%
   select(day, county, contains("t_"), pct_positive) %>%
   pivot_longer(-day:-county) %>% 
@@ -107,7 +107,7 @@ tampa_test_summary %>%
     t_total = "Total Tests"
   )) %>% 
   group_by(county) %>% 
-  gt::gt() %>%
+  gt::gt(id = "table-new-test-summary") %>%
   gt::tab_header("New and Cumulative Positive and Total Tests") %>% 
   gt::cols_label(name = "") %>% 
   gt::tab_spanner_delim("__") %>%
