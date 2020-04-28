@@ -37,3 +37,8 @@ safe_download <- safely(download.file)
 if (length(pdf_files)) {
   walk(pdf_files, ~ safe_download(url = .x, destfile = path("pdfs", path_file(.x))))
 }
+
+if (hour(now("America/New_York")) > 11) {
+  county_report <- strftime(Sys.time(), "pdfs/covid-19-florida_county-report_%F.pdf")
+  safe_download(url = "https://floridahealthcovid19.gov/fl_county/", destfile = county_report)
+}
