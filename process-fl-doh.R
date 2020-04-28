@@ -280,6 +280,10 @@ if (git2r::in_repository()) {
         fs::file_delete()
     }
     
+    callr::r(function() {
+      rmarkdown::render("tampa/index.Rmd")
+    })
+    
     # > Commit Everything ----
     git2r::add(".", ".")
     git2r::commit(message = glue("[auto update] {ts_current}"))
