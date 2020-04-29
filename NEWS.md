@@ -1,3 +1,10 @@
+# 2020-04-29
+
+- Added **Health Metrics** data set that was released on 2020-04-28.
+  <https://fdoh.maps.arcgis.com/home/item.html?id=492f02b473df4c8f8aa68fedf420c933>
+  
+- Fixed directory names in `pdfs/` so that they do not include `":"` (#18).
+
 # 2020-04-25
 
 - Starting Saturday April 25, the COVID-19 case and testing counts are only
