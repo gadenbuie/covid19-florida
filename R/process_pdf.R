@@ -266,6 +266,7 @@ process_and_output_pdf <- function(pdf_files) {
     if (!file_exists(pdf_file)) next
     tables <- process_pdf(pdf_file)
     outdir <- path("pdfs", str_replace_all(tables$timestamp_pdf, " ", "_"))
+    outdir <- str_replace_all(outdir, ":", "")
     dir_create(outdir)
     if ("timestamp_pdf" %in% names(tables)) {
       write_lines(tables[["timestamp_pdf"]], path(outdir, "README.md"), append = FALSE)
