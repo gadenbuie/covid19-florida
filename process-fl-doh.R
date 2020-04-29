@@ -106,6 +106,16 @@ if (!is.null(arcgis_cases_by_zip_geojson$error)) {
   message("Unable to get cases by zip geojson from arcgis api: ", arcgis_cases_by_zip_geojson$error$message)
 }
 
+arcgis_health_metrics <- purrr::safely(get_arcgis_health_metrics)()
+if (is.null(arcgis_health_metrics$error) && nrow(arcgis_health_metrics$result)) {
+  arcgis_health_metrics$result %>% 
+    mutate(timestamp = ts_current) %>% 
+    select(timestamp, everything()) %>% 
+    write_csv("data/covid-19-florida_arcgis_health-metrics.csv")
+} else {
+  message("Unable to get cases by zip summary from arcgis api: ", arcgis_health_metrics$error$message)
+}
+
 
 # Get FL DOH Main Page -----------------------------------------------------
 
