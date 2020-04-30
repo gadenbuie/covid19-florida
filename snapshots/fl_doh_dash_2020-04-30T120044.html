@@ -1,0 +1,2072 @@
+<!DOCTYPE html><html dir="ltr" class="en-us en dj_webkit dj_chrome dj_contentbox"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Florida COVID-19 Confirmed Cases</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="assets/images/favicon.ico?" type="image/x-icon">
+  <link href="https://js.arcgis.com/3.32/dijit/themes/claro/claro.css" rel="stylesheet" type="text/css">
+  <link href="https://js.arcgis.com/3.32/esri/css/esri.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="assets/vendor-ff6a5e0c0264e398e1ffaeb015926635.css">
+  <link rel="stylesheet" href="assets/app-dark-a8116e0262a64a5113c183f5acb0a03b.css">
+  <script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/nls/jsapi_en-us.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/dijit/ColorPicker.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/dijit/ColorPicker/HexPalette.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/dijit/form/DateTextBox.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/dijit/form/TimeTextBox.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/dojox/color.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/dijit/Legend.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/dijit/Scalebar.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/dijit/BasemapGallery.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/dijit/LayerList.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/dijit/Search.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/tasks/locator.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/toolbars/draw.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/plugins/FeatureLayerStatistics.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/geometry/geometryEngineAsync.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/geometry/geometryEngine.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/dojo/fx/easing.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/arcgis/Portal.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/styles/colors.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/dojox/gfx/svg.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/dijit/_Tooltip.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/dijit/ColorPicker/colorUtil.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/dijit/HorizontalSlider.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/dijit/form/RadioButton.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/dijit/Calendar.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/dijit/form/_DateTimeTextBox.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/dijit/_TimePicker.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/dojox/color/_base.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/tasks/AddressCandidate.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/toolbars/_toolbar.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/styles/basic.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/layers/VectorTileLayerImpl.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/workers/WorkerClient.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/tasks/GenerateRendererTask.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/tasks/UniqueValueDefinition.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/tasks/ClassBreaksDefinition.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/tasks/GenerateRendererParameters.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/tasks/generateRenderer.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/tasks/ProjectParameters.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/workers/heatmapCalculator.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/dojox/gfx/filters.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/dojox/gfx/svgext.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/dijit/form/HorizontalRuleLabels.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/dijit/form/HorizontalSlider.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/dijit/form/CheckBox.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/dijit/form/_RadioButtonMixin.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/dijit/CalendarLite.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/dijit/form/RangeBoundTextBox.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/dojox/main.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/dojo/colors.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/dijit/form/_ListMouseMixin.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/layers/nls/VectorTileLayerImpl_en-us.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/esri/tasks/ClassificationDefinition.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/dijit/form/HorizontalRule.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/dojo/dnd/move.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/dijit/form/_CheckBoxMixin.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/dojo/selector/lite.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/dijit/form/MappedTextBox.js"></script><script type="text/javascript" charset="utf-8" src="https://js.arcgis.com/3.32/dijit/form/_ListBase.js"></script><script type="text/javascript" charset="utf-8" src="assets/vendor-557b494b34c1b4f592d5f2948d530f35.js"></script><script type="text/javascript" charset="utf-8" src="assets/nickel-122f2be932fe8e42c7401c4190951f4c.js"></script><script type="text/javascript" charset="utf-8" src="assets/moment-timezone-with-data.min-f71eb5eba513b3ab182b567941a82ef5.js"></script><script src="assets/amd-config-7e9801fc9c916a27bb75c6f356e09e0d.js"></script>
+<style>.cke{visibility:hidden;}</style></head>
+
+<body class="claro ember-application">
+  <script src="https://js.arcgis.com/3.32/init.js" data-amd="true"></script>
+  <script src="assets/amd-loading-d8029d0343fa400ebae9865c42984750.js" data-amd-loading="true"></script>
+  
+
+
+<!---->
+<div id="ember6" class="dashboard-page flex-vertical full panel panel-no-border panel-no-padding position-relative ember-view">  
+<!---->
+<!---->
+
+  
+<!---->
+<div style="color:#fff7c5;" id="ember8" class="flex-fluid flex-vertical overflow-hidden dashboard-container ember-view">
+<div id="ember9" class="flex-fix panel-container flex-vertical top-panel-container ember-view"><div class="margin-container" style="color:#c0efff;">
+<!---->
+  <div class="full-container">
+                  <div style="" id="ember10" class="header-panel flex-horizontal large ember-view">  <div class="flex-fix flex-align-center margin-left-1">
+    <a target="_blank" class="logo-img-btn" href="http://www.floridahealth.gov/">
+      <img src="https://geojones2.files.wordpress.com/2020/03/dohlogo.png">
+    </a>
+  </div>
+
+<div class="flex-fix flex-align-center allow-shrink margin-left-1 flex-vertical">
+  <div class="title no-pointer-events text-ellipsis">Florida's  COVID-19 Data and Surveillance Dashboard</div>
+  <div class="subtitle text-ellipsis no-pointer-events">Florida Department of Health, Division of Disease Control and Health Protection</div>
+</div>
+
+<div class="selectors-container flex-fluid flex-align-center flex-horizontal flex-justify-end">
+      <div id="ember12" class="margin-left-quarter selector-container ember-view">
+<!---->
+<div id="ember13" class="selector full-height flex-vertical category-selector-widget flex-justify-center ember-view">
+<div id="ember14" class="no-padding block-container flex-horizontal flex-align-items-center ember-view">  <div id="ember15" class="title block-container-header flex-horizontal flex-align-items-center flex-fix flex-align-center ember-view">  Select a County 
+</div>
+<div id="ember16" class="position-relative block-container-body flex-fluid padding-left-quarter ember-view"><!---->
+          <div tabindex="0" id="ember478" class="no-padding power-element as-select ember-view">  <div class="value-container">
+        None
+        </div>
+
+<input>
+
+  <a class="btn btn-white toggle-btn" data-ember-action="" data-ember-action-481="481"><span id="ember479" class="icon-element ember-view"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" height="16px" width="16px" viewBox="0 0 16 16" id="ember480" class="ember-view"><path d="M15.5 5l-7 7-7-7zM3.914 6L8.5 10.586 13.086 6z"></path></svg></span></a>
+
+  <nav class="side-nav dropdown-menu" data-ember-action="" data-ember-action-482="482">
+
+      <a class="side-nav-link is-active highlight" data-ember-action="" data-ember-action-484="484">
+          None
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-486="486">
+          Alachua
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-488="488">
+          Baker
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-490="490">
+          Bay
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-492="492">
+          Bradford
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-494="494">
+          Brevard
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-496="496">
+          Broward
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-498="498">
+          Calhoun
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-500="500">
+          Charlotte
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-502="502">
+          Citrus
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-504="504">
+          Clay
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-506="506">
+          Collier
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-508="508">
+          Columbia
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-510="510">
+          Dade
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-512="512">
+          Desoto
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-514="514">
+          Dixie
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-516="516">
+          Duval
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-518="518">
+          Escambia
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-520="520">
+          Flagler
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-522="522">
+          Franklin
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-524="524">
+          Gadsden
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-526="526">
+          Gilchrist
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-528="528">
+          Glades
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-530="530">
+          Gulf
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-532="532">
+          Hamilton
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-534="534">
+          Hardee
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-536="536">
+          Hendry
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-538="538">
+          Hernando
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-540="540">
+          Highlands
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-542="542">
+          Hillsborough
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-544="544">
+          Holmes
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-546="546">
+          Indian River
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-548="548">
+          Jackson
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-550="550">
+          Jefferson
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-552="552">
+          Lafayette
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-554="554">
+          Lake
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-556="556">
+          Lee
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-558="558">
+          Leon
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-560="560">
+          Levy
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-562="562">
+          Liberty
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-564="564">
+          Madison
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-566="566">
+          Manatee
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-568="568">
+          Marion
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-570="570">
+          Martin
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-572="572">
+          Monroe
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-574="574">
+          Nassau
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-576="576">
+          Okaloosa
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-578="578">
+          Okeechobee
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-580="580">
+          Orange
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-582="582">
+          Osceola
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-584="584">
+          Palm Beach
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-586="586">
+          Pasco
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-588="588">
+          Pinellas
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-590="590">
+          Polk
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-592="592">
+          Putnam
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-594="594">
+          Santa Rosa
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-596="596">
+          Sarasota
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-598="598">
+          Seminole
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-600="600">
+          St. Johns
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-602="602">
+          St. Lucie
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-604="604">
+          Sumter
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-606="606">
+          Suwannee
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-608="608">
+          Taylor
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-610="610">
+          Union
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-612="612">
+          Unknown
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-614="614">
+          Volusia
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-616="616">
+          Wakulla
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-618="618">
+          Walton
+      </a>
+      <a class="side-nav-link" data-ember-action="" data-ember-action-620="620">
+          Washington
+      </a>
+  </nav>
+</div>
+        </div>
+</div></div>
+</div>
+</div>
+
+<div id="ember17" class="margin-left-1 flex-fix flex-align-center menu-links dropdown ember-view"><button aria-expanded="false" aria-haspopup="true" tabindex="0" id="ember18" class="btn btn-large dropdown-btn ember-view">        <span id="ember19" class="icon-element ember-view"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" height="24px" width="24px" viewBox="0 0 24 24" id="ember20" class="ember-view"><path d="M21 6H3V4h18zm0 5H3v2h18zm0 7H3v2h18z"></path></svg></span>
+
+</button>
+<nav role="menu" id="ember21" class="dropdown-right dropdown-menu ember-view">
+<!---->
+        <a target="_blank" href="https://arcg.is/1vyjWr" role="menu-item" id="ember23" class="dropdown-link dropdown-menu-item ember-view">  <div class="flex-horizontal flex-align-items-center">
+<!---->    <div class="flex-fluid text-ellipsis ">View Mobile Version</div> 
+<!---->  </div>
+
+</a>
+        <a target="_blank" href="https://fdoh.maps.arcgis.com/home/item.html?id=8d0de33f260d444c852a615dc7837c86" role="menu-item" id="ember25" class="dropdown-link dropdown-menu-item ember-view">  <div class="flex-horizontal flex-align-items-center">
+<!---->    <div class="flex-fluid text-ellipsis ">About this Map</div> 
+<!---->  </div>
+
+</a>
+        <a target="_blank" href="https://floridahealthcovid19.gov/" role="menu-item" id="ember27" class="dropdown-link dropdown-menu-item ember-view">  <div class="flex-horizontal flex-align-items-center">
+<!---->    <div class="flex-fluid text-ellipsis ">DOH COVID-19 Website</div> 
+<!---->  </div>
+
+</a>
+
+<!---->
+</nav>
+</div></div>
+
+  </div>
+
+<!---->
+<!----></div>
+</div>
+      <div class="flex-fluid flex-horizontal position-relative overflow-hidden">
+
+<!---->
+
+          <div class="flex-fluid position-relative overflow-hidden">
+            <div class="position-absolute full margin-container">
+<div id="ember28" class="dock-container ember-view"><margin-container class="left top right bottom">
+  <full-container class="layout-reference">
+
+<div style="left:0px;top:0px;width:239.19898444810948px;height:273.3735540674355px;" id="ember29" class="dock-element ember-view"> <margin-container class="left top">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember30" class="widget flex-vertical full-height indicator-widget ember-view"><!---->
+<!---->
+<!---->
+
+
+  <div class="flex-justify-center widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden">
+    
+    <div class="flex-vertical flex-fix allow-shrink">
+      
+        <div style="fill:#fff7c5" id="ember476" class="flex-fix allow-shrink indicator-top-text responsive-text flex-vertical ember-view"><svg class="responsive-text-group" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0.000005086263172415784 0.3255208432674408 344.01043701171875 80.01301574707031" width="191" height="10">
+  <g class="responsive-text-icon">
+    <!---->
+  </g>
+
+  <g class="responsive-text-label">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -76 412 96" height="80" width="343.33333333333337">
+      <text vector-effect="non-scaling-stroke" style="fill: rgb(230, 152, 0); stroke-width: 2; font-size: 80px; line-height: normal;">Total Cases</text>
+    </svg>
+  </g>
+</svg></div>
+
+        <div style="fill:#fff7c5" id="ember477" class="flex-fix allow-shrink indicator-center-text responsive-text flex-vertical ember-view"><svg class="responsive-text-group" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -0.1683911383152008 439.0025634765625 161.01036071777344" width="191" height="10">
+  <g class="responsive-text-icon">
+    <!---->
+  </g>
+
+  <g class="responsive-text-label">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -153 532 193" height="160" width="441.0362694300518">
+      <text vector-effect="non-scaling-stroke" style="fill: rgb(230, 152, 0); stroke-width: 2; font-size: 160px; line-height: normal;">33,690</text>
+    </svg>
+  </g>
+</svg></div>
+
+<!---->    </div>
+      
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:0px;top:273.3735540674355px;width:239.19898444810948px;height:60.93032260198207px;" id="ember36" class="dock-element ember-view"> <margin-container class="left">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember37" class="widget flex-vertical full-height rich-text-widget ember-view"><!---->
+<!---->
+<!---->
+
+
+  <div class="external-html panel-padding-quarter widget-body flex-fluid full-width flex-vertical overflow-y-auto overflow-x-hidden">
+        <p style="text-align:center">Cumulative Data for Florida Residents:</p>
+
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:0px;top:334.30387666941755px;width:239.19898444810948px;height:198.26906603802385px;" id="ember41" class="dock-element ember-view"> <margin-container class="left">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember42" class="widget flex-vertical full-height indicator-widget ember-view"><!---->
+<!---->
+<!---->
+
+
+  <div class="flex-justify-center widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden">
+    
+    <div class="flex-vertical flex-fix allow-shrink">
+      
+        <div style="fill:#fff7c5" id="ember472" class="flex-fix allow-shrink indicator-top-text responsive-text flex-vertical ember-view"><svg class="responsive-text-group" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0.3255223333835602 544.0103759765625 80.01301574707031" width="191" height="10">
+  <g class="responsive-text-icon">
+    <!---->
+  </g>
+
+  <g class="responsive-text-label">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -76 649 96" height="80" width="540.8333333333334">
+      <text vector-effect="non-scaling-stroke" style="fill: rgb(254, 214, 10); stroke-width: 2; font-size: 80px; line-height: normal;">Positive Residents</text>
+    </svg>
+  </g>
+</svg></div>
+
+        <div style="fill:#fff7c5" id="ember473" class="flex-fix allow-shrink indicator-center-text responsive-text flex-vertical ember-view"><svg class="responsive-text-group" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -0.1683911383152008 439.0025634765625 161.01036071777344" width="191" height="10">
+  <g class="responsive-text-icon">
+    <!---->
+  </g>
+
+  <g class="responsive-text-label">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -153 532 193" height="160" width="441.0362694300518">
+      <text vector-effect="non-scaling-stroke" style="fill: rgb(254, 214, 10); stroke-width: 2; font-size: 160px; line-height: normal;">32,801</text>
+    </svg>
+  </g>
+</svg></div>
+
+<!---->    </div>
+      
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:0px;top:532.5729427074414px;width:120.8785565377264px;height:248.4270572925585px;" id="ember48" class="dock-element ember-view"> <margin-container class="left">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember49" class="widget flex-vertical full-height indicator-widget ember-view"><!---->
+<!---->
+<!---->
+
+
+  <div class="flex-justify-center widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden">
+    
+    <div class="flex-vertical flex-fix allow-shrink">
+      
+        <div style="fill:#fff7c5" id="ember470" class="flex-fix allow-shrink indicator-top-text responsive-text flex-vertical ember-view"><svg class="responsive-text-group" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0.32552167773246765 482.00518798828125 80.01301574707031" width="73" height="10">
+  <g class="responsive-text-icon">
+    <!---->
+  </g>
+
+  <g class="responsive-text-label">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -76 575 96" height="80" width="479.1666666666667">
+      <text vector-effect="non-scaling-stroke" style="fill: rgb(230, 76, 0); stroke-width: 2; font-size: 80px; line-height: normal;">Hospitalizations</text>
+    </svg>
+  </g>
+</svg></div>
+
+        <div style="fill:#fff7c5" id="ember471" class="flex-fix allow-shrink indicator-center-text responsive-text flex-vertical ember-view"><svg class="responsive-text-group" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0.0000045064816731610335 -0.16839377582073212 358.00518798828125 161.01036071777344" width="73" height="10">
+  <g class="responsive-text-icon">
+    <!---->
+  </g>
+
+  <g class="responsive-text-label">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -153 434 193" height="160" width="359.7927461139896">
+      <text vector-effect="non-scaling-stroke" style="fill: rgb(230, 76, 0); stroke-width: 2; font-size: 160px; line-height: normal;">5,589</text>
+    </svg>
+  </g>
+</svg></div>
+
+<!---->    </div>
+      
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:120.8785565377264px;top:532.5729427074414px;width:118.32042791038309px;height:248.4270572925585px;" id="ember55" class="dock-element ember-view"> <margin-container class="">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember56" class="widget flex-vertical full-height indicator-widget ember-view"><!---->
+<!---->
+<!---->
+
+
+  <div class="flex-justify-center widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden">
+    
+    <div class="flex-vertical flex-fix allow-shrink">
+      
+        <div style="fill:#fff7c5" id="ember468" class="flex-fix allow-shrink indicator-top-text responsive-text flex-vertical ember-view"><svg class="responsive-text-group" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0.6640629768371582 107.00520324707031 39.01041793823242" width="76" height="10">
+  <g class="responsive-text-icon">
+    <!---->
+  </g>
+
+  <g class="responsive-text-label">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -38 128 48" height="40" width="106.66666666666667">
+      <text vector-effect="non-scaling-stroke" style="fill: rgb(214, 214, 214); stroke-width: 2; font-size: 40px; line-height: normal;">Deaths</text>
+    </svg>
+  </g>
+</svg></div>
+
+        <div style="fill:#fff7c5" id="ember469" class="flex-fix allow-shrink indicator-center-text responsive-text flex-vertical ember-view"><svg class="responsive-text-group" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0.0000045064816731610335 -0.16839377582073212 358.00518798828125 161.01036071777344" width="76" height="10">
+  <g class="responsive-text-icon">
+    <!---->
+  </g>
+
+  <g class="responsive-text-label">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -153 434 193" height="160" width="359.7927461139896">
+      <text vector-effect="non-scaling-stroke" style="fill: rgb(214, 214, 214); stroke-width: 2; font-size: 160px; line-height: normal;">1,268</text>
+    </svg>
+  </g>
+</svg></div>
+
+<!---->    </div>
+      
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:239.19898444810948px;top:0px;width:421.435964744866px;height:781px;" id="ember62" class="dock-element ember-view"> <margin-container class="top">
+  <full-container>
+                            <div style="background-color:#858585;color:#fff7c5;" id="ember63" class="widget flex-vertical full-height map-container dropdownBorder map-widget ember-view"><!---->
+<!---->
+<!---->
+
+
+  <div class="position-relative widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden">
+          <div class="map flex-fluid" data-zoom="5" data-scale="9244648.868618" data-loaded=""><div id="esri.Map_1_root" class="esriMapContainer" style="width: 421px; height: 775px; direction: ltr;"><div id="esri.Map_1_container" class="esriMapContainer" style="position: absolute; cursor: default; touch-action: none; clip: auto;"><div id="esri.Map_1_layers" class="esriMapLayers"><div data-vectortiles="true" id="esri.Map_1_VectorTile_2846" style="position: absolute; width: 421px; height: 775px; overflow: visible; opacity: 1; display: block;"><canvas class="esri-display-object" width="0" height="0" style="width: 0px; height: 0px;"></canvas></div><svg overflow="hidden" width="421" height="775" id="esri.Map_1_gc" style="touch-action: none; will-change: transform; overflow: visible; position: absolute;"><defs></defs><g id="esri.Map_1_graphics_layer"><g></g></g></svg></div></div><div class="esriControlsBR"><span class="esriAttribution" tabindex="" style="max-width: 189px; cursor: default;"><span class="esriAttributionList"></span></span></div><div class="esriPopup esriPopupHidden"><div class="esriPopupWrapper" style="position: absolute;"><div class="sizer"><div class="titlePane"><div class="spinner hidden" title="Searching..."></div><div class="title"></div><div class="titleButton prev hidden" title="Previous feature"></div><div class="titleButton next hidden" title="Next feature"></div><div class="titleButton maximize" title="Maximize"></div><div class="titleButton close" title="Close"></div></div></div><div class="sizer content"><div class="contentPane"></div></div><div class="sizer"><div class="actionsPane"><div class="actionList hidden"><a title="Zoom to" class="action zoomTo" href="javascript:void(0);"><span>Zoom to</span></a></div></div></div><div class="pointer hidden"></div></div><div class="outerPointer hidden"></div></div><div id="esri.Map_1_zoom_slider" class="esriSimpleSlider esriSimpleSliderVertical esriSimpleSliderBR" style="z-index: 30;"><div class="esriSimpleSliderIncrementButton" tabindex="0" role="button" title="Zoom In"><span aria-hidden="true" role="presentation">+</span><span class="esriIconFallbackText">Zoom In</span></div><div class="esriSimpleSliderDecrementButton" tabindex="0" role="button" title="Zoom Out"><span aria-hidden="true" role="presentation">−</span><span class="esriIconFallbackText">Zoom Out</span></div></div></div></div>
+
+<!---->
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:660.6349491929755px;top:0px;width:229.36505080702474px;height:80.77783530644723px;" id="ember67" class="dock-element ember-view"> <margin-container class="right top">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember68" class="widget flex-vertical full-height rich-text-widget ember-view"><!---->
+<!---->
+<!---->
+
+
+  <div class="external-html panel-padding-quarter widget-body flex-fluid full-width flex-vertical overflow-y-auto overflow-x-hidden">
+        <p style="text-align:center">Recent Data for Florida Residents (Last 30 Days):</p>
+
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:660.6349491929755px;top:80.77783530644723px;width:229.36505080702474px;height:334.41631469003505px;" id="ember72" class="dock-element ember-view"> <margin-container class="right">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember73" class="widget flex-vertical full-height chart-widget serial-chart-widget ember-view"><!---->
+  <div class="flex-fix widget-header">
+    <div class="caption">
+      <h5 style="text-align:center">New Cases by Day (Last 30 Days)</h5>
+
+    </div>
+  </div>
+
+    <div class="flex-fluid flex-vertical flex-justify-center">
+      <div class="flex-fix flex-align-center flex-horizontal flex-align-items-center text-center">
+        <span id="ember76" class="spin icon-element ember-view"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" height="32px" width="32px" viewBox="0 0 32 32" id="ember77" class="ember-view"><path d="M13.986 1.9a14.1 14.1 0 1 0 4.028 0l.013-.875a15 15 0 1 1-4.054 0z"></path></svg></span><!---->
+      </div>
+    </div>
+
+
+
+  <div class="position-relative widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden hide">
+        <div id="ember79" class="flex-fluid am-chart ember-view" style="overflow: hidden; text-align: left;"><div class="amcharts-main-div" style="position: relative;"><div class="amcharts-chart-div" style="overflow: hidden; position: relative; text-align: left;"><svg version="1.1" style="position: absolute; width: 10px; height: 10px;"><desc>JavaScript chart by amCharts 3.21.14</desc><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g transform="translate(0,20)"></g><g></g><g></g></svg></div></div></div>
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:660.6349491929755px;top:415.19414999648234px;width:229.36505080702474px;height:365.8058500035178px;" id="ember80" class="dock-element ember-view"> <margin-container class="right">
+  <full-container>
+                            <div style="color:#999999;" id="ember81" class="widget flex-vertical full-height chart-widget serial-chart-widget ember-view"><!---->
+  <div class="flex-fix widget-header">
+    <div class="caption">
+      <h5 style="text-align:center">Deaths by Day (Last 30 Days)</h5>
+
+    </div>
+  </div>
+
+<!---->
+
+
+  <div class="position-relative widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden">
+        <div id="ember87" class="flex-fluid am-chart ember-view" style="overflow: hidden; text-align: left;"><div class="amcharts-main-div" style="position: relative;"><div class="amcharts-chart-div" style="overflow: hidden; position: relative; text-align: left;"><svg version="1.1" style="position: absolute; width: 10px; height: 10px;"><desc>JavaScript chart by amCharts 3.21.14</desc><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g transform="translate(0,20)"></g><g></g><g></g></svg></div></div></div>
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:0px;top:0px;width:200.63669981704012px;height:155.58096423699922px;" id="ember88" class="dock-element invisible ember-view"> <margin-container class="left top">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember89" class="widget flex-vertical full-height indicator-widget ember-view"><!---->
+<!---->
+    <div class="flex-fluid flex-vertical flex-justify-center">
+      <div class="flex-fix flex-align-center flex-horizontal flex-align-items-center text-center">
+        <span id="ember92" class="spin icon-element ember-view"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" height="32px" width="32px" viewBox="0 0 32 32" id="ember93" class="ember-view"><path d="M13.986 1.9a14.1 14.1 0 1 0 4.028 0l.013-.875a15 15 0 1 1-4.054 0z"></path></svg></span><!---->
+      </div>
+    </div>
+
+
+
+<!---->
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:0px;top:155.58096423699922px;width:200.63669981704012px;height:167.56301964606055px;" id="ember95" class="dock-element invisible ember-view"> <margin-container class="left">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember96" class="widget flex-vertical full-height indicator-widget ember-view"><!---->
+<!---->
+<!---->
+
+
+  <div class="flex-justify-center widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden">
+    
+    <div class="flex-vertical flex-fix allow-shrink">
+      
+        <div style="fill:#fff7c5" id="ember466" class="flex-fix allow-shrink indicator-top-text responsive-text flex-vertical ember-view"><svg class="responsive-text-group" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0.000002543131586207892 0.3255208432674408 232.00521850585938 80.01301574707031" width="153" height="10">
+  <g class="responsive-text-icon">
+    <!---->
+  </g>
+
+  <g class="responsive-text-label">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -76 275 96" height="80" width="229.16666666666669">
+      <text vector-effect="non-scaling-stroke" style="fill: rgb(255, 0, 0); stroke-width: 2; font-size: 80px; line-height: normal;">Positive </text>
+    </svg>
+  </g>
+</svg></div>
+
+        <div style="fill:#fff7c5" id="ember467" class="flex-fix allow-shrink indicator-center-text responsive-text flex-vertical ember-view"><svg class="responsive-text-group" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -0.1683911383152008 439.0025634765625 161.01036071777344" width="153" height="10">
+  <g class="responsive-text-icon">
+    <!---->
+  </g>
+
+  <g class="responsive-text-label">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -153 532 193" height="160" width="441.0362694300518">
+      <text vector-effect="non-scaling-stroke" style="fill: rgb(255, 0, 0); stroke-width: 2; font-size: 160px; line-height: normal;">33,690</text>
+    </svg>
+  </g>
+</svg></div>
+
+<!---->    </div>
+      
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:0px;top:323.1439838830598px;width:200.63669981704012px;height:156.36557058425305px;" id="ember102" class="dock-element invisible ember-view"> <margin-container class="left">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember103" class="widget flex-vertical full-height indicator-widget ember-view"><!---->
+<!---->
+<!---->
+
+
+  <div class="flex-justify-center widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden">
+    
+    <div class="flex-vertical flex-fix allow-shrink">
+      
+        <div style="fill:#fff7c5" id="ember474" class="flex-fix allow-shrink indicator-top-text responsive-text flex-vertical ember-view"><svg class="responsive-text-group" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0.000005086263172415784 0.3255208432674408 276.00262451171875 80.01301574707031" width="153" height="10">
+  <g class="responsive-text-icon">
+    <!---->
+  </g>
+
+  <g class="responsive-text-label">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -76 331 96" height="80" width="275.83333333333337">
+      <text vector-effect="non-scaling-stroke" style="fill: rgb(56, 168, 0); stroke-width: 2; font-size: 80px; line-height: normal;">Negative</text>
+    </svg>
+  </g>
+</svg></div>
+
+        <div style="fill:#fff7c5" id="ember475" class="flex-fix allow-shrink indicator-center-text responsive-text flex-vertical ember-view"><svg class="responsive-text-group" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -0.168392613530159 520 161.01036071777344" width="153" height="10">
+  <g class="responsive-text-icon">
+    <!---->
+  </g>
+
+  <g class="responsive-text-label">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -153 630 193" height="160" width="522.2797927461139">
+      <text vector-effect="non-scaling-stroke" style="fill: rgb(56, 168, 0); stroke-width: 2; font-size: 160px; line-height: normal;">348,715</text>
+    </svg>
+  </g>
+</svg></div>
+
+<!---->    </div>
+      
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:0px;top:479.5095544673128px;width:200.63669981704012px;height:301.4904455326872px;" id="ember109" class="dock-element invisible ember-view"> <margin-container class="left">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember110" class="widget flex-vertical full-height chart-widget gauge-widget ember-view"><!---->
+  <div class="flex-fix widget-header">
+    <div class="caption">
+      <h6 style="text-align:center">Overall Percent Positive</h6>
+
+    </div>
+  </div>
+
+    <div class="flex-fluid flex-vertical flex-justify-center">
+      <div class="flex-fix flex-align-center flex-horizontal flex-align-items-center text-center">
+        <span id="ember113" class="spin icon-element ember-view"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" height="32px" width="32px" viewBox="0 0 32 32" id="ember114" class="ember-view"><path d="M13.986 1.9a14.1 14.1 0 1 0 4.028 0l.013-.875a15 15 0 1 1-4.054 0z"></path></svg></span><!---->
+      </div>
+    </div>
+
+
+
+  <div class="position-relative widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden hide">
+        <div id="ember116" class="flex-fluid am-chart ember-view" style="overflow: hidden; text-align: left;"><div class="amcharts-main-div" style="position: relative;"><div class="amcharts-chart-div" style="overflow: hidden; position: relative; text-align: left;"><svg version="1.1" style="position: absolute; width: 10px; height: 10px; top: 0px; left: 0px;"><desc>JavaScript chart by amCharts 3.21.14</desc><g></g><g></g><g></g><g></g><g></g><g></g><g><g class="amcharts-gauge-axis amcharts-gauge-axis-main"><g><g opacity="1"><path cs="1000,1000" d=" M-8,-7.500000000000001 L-10,-7.500000000000001 A10,10,0,0,1,10,-7.500000000000001 L8,-7.500000000000001 A8,8,0,0,0,-8,-7.500000000000001 Z" fill="#267300" stroke="#000000" stroke-width="0" stroke-opacity="0" class="amcharts-axis-band amcharts-axis-band-background"></path></g><g opacity="1"><path cs="1000,1000" d=" M-8,-7.500000000000001 L-10,-7.500000000000001 A10,10,0,0,1,0,-17.5 L0,-15.5 A8,8,0,0,0,-8,-7.500000000000001 Z" fill="#ff0000" stroke="#000000" stroke-width="0" stroke-opacity="0" class="amcharts-axis-band amcharts-axis-band-value"></path></g></g><g><path cs="1000,1000" d=" M-10,-7.500000000000001 L-10,-7.500000000000001 A10,10,0,0,1,10,-7.500000000000001 L10,-7.500000000000001 A10,10,0,0,0,-10,-7.500000000000001 Z" fill="" fill-opacity="0" stroke-width="0" stroke-opacity="0" class="amcharts-axis-line"></path></g><path cs="100,100" d="M-9.5,-7 L-9.5,-7" fill="none" stroke-width="0" stroke-opacity="0" class="amcharts-axis-tick"></path><path cs="100,100" d="M-9.42115,-8.25333 L-9.42115,-8.25333" fill="none" stroke-width="0" stroke-opacity="0" class="amcharts-axis-tick-minor"></path><path cs="100,100" d="M-9.18583,-9.4869 L-9.18583,-9.4869" fill="none" stroke-width="0" stroke-opacity="0" class="amcharts-axis-tick-minor"></path><path cs="100,100" d="M-8.79776,-10.68125 L-8.79776,-10.68125" fill="none" stroke-width="0" stroke-opacity="0" class="amcharts-axis-tick-minor"></path><path cs="100,100" d="M-8.26307,-11.81754 L-8.26307,-11.81754" fill="none" stroke-width="0" stroke-opacity="0" class="amcharts-axis-tick-minor"></path><path cs="100,100" d="M-7.5901700000000005,-12.87785 L-7.5901700000000005,-12.87785" fill="none" stroke-width="0" stroke-opacity="0" class="amcharts-axis-tick"></path><path cs="100,100" d="M-6.78969,-13.84547 L-6.78969,-13.84547" fill="none" stroke-width="0" stroke-opacity="0" class="amcharts-axis-tick-minor"></path><path cs="100,100" d="M-5.87424,-14.70513 L-5.87424,-14.70513" fill="none" stroke-width="0" stroke-opacity="0" class="amcharts-axis-tick-minor"></path><path cs="100,100" d="M-4.85827,-15.44328 L-4.85827,-15.44328" fill="none" stroke-width="0" stroke-opacity="0" class="amcharts-axis-tick-minor"></path><path cs="100,100" d="M-3.75779,-16.04827 L-3.75779,-16.04827" fill="none" stroke-width="0" stroke-opacity="0" class="amcharts-axis-tick-minor"></path><path cs="100,100" d="M-2.59017,-16.51057 L-2.59017,-16.51057" fill="none" stroke-width="0" stroke-opacity="0" class="amcharts-axis-tick"></path><path cs="100,100" d="M-1.37381,-16.82287 L-1.37381,-16.82287" fill="none" stroke-width="0" stroke-opacity="0" class="amcharts-axis-tick-minor"></path><path cs="100,100" d="M-0.12790999999999997,-16.98027 L-0.12790999999999997,-16.98027" fill="none" stroke-width="0" stroke-opacity="0" class="amcharts-axis-tick-minor"></path><path cs="100,100" d="M1.12791,-16.98027 L1.12791,-16.98027" fill="none" stroke-width="0" stroke-opacity="0" class="amcharts-axis-tick-minor"></path><path cs="100,100" d="M2.3738099999999998,-16.82287 L2.3738099999999998,-16.82287" fill="none" stroke-width="0" stroke-opacity="0" class="amcharts-axis-tick-minor"></path><path cs="100,100" d="M3.59017,-16.51057 L3.59017,-16.51057" fill="none" stroke-width="0" stroke-opacity="0" class="amcharts-axis-tick"></path><path cs="100,100" d="M4.75779,-16.04827 L4.75779,-16.04827" fill="none" stroke-width="0" stroke-opacity="0" class="amcharts-axis-tick-minor"></path><path cs="100,100" d="M5.85827,-15.44328 L5.85827,-15.44328" fill="none" stroke-width="0" stroke-opacity="0" class="amcharts-axis-tick-minor"></path><path cs="100,100" d="M6.87424,-14.70513 L6.87424,-14.70513" fill="none" stroke-width="0" stroke-opacity="0" class="amcharts-axis-tick-minor"></path><path cs="100,100" d="M7.78969,-13.84547 L7.78969,-13.84547" fill="none" stroke-width="0" stroke-opacity="0" class="amcharts-axis-tick-minor"></path><path cs="100,100" d="M8.59017,-12.87785 L8.59017,-12.87785" fill="none" stroke-width="0" stroke-opacity="0" class="amcharts-axis-tick"></path><path cs="100,100" d="M9.26307,-11.81754 L9.26307,-11.81754" fill="none" stroke-width="0" stroke-opacity="0" class="amcharts-axis-tick-minor"></path><path cs="100,100" d="M9.79776,-10.68125 L9.79776,-10.68125" fill="none" stroke-width="0" stroke-opacity="0" class="amcharts-axis-tick-minor"></path><path cs="100,100" d="M10.18583,-9.4869 L10.18583,-9.4869" fill="none" stroke-width="0" stroke-opacity="0" class="amcharts-axis-tick-minor"></path><path cs="100,100" d="M10.42115,-8.25333 L10.42115,-8.25333" fill="none" stroke-width="0" stroke-opacity="0" class="amcharts-axis-tick-minor"></path><path cs="100,100" d="M10.5,-7 L10.5,-7" fill="none" stroke-width="0" stroke-opacity="0" class="amcharts-axis-tick"></path><text y="6" fill="#e7e7e7" font-family="inherit" font-size="11px" opacity="1" font-weight="bold" text-anchor="middle" class="amcharts-axis-bottom-label" transform="translate(0,-2)"><tspan y="6" x="0"></tspan></text></g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg></div></div></div>
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:200.63669981704012px;top:0px;width:522.5680962558079px;height:781px;" id="ember117" class="dock-element invisible ember-view"> <margin-container class="top">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember118" class="widget flex-vertical full-height map-container dropdownBorder map-widget ember-view"><!---->
+<!---->
+<!---->
+
+
+  <div class="position-relative widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden">
+          <div class="map flex-fluid" data-zoom="5" data-scale="9244648.868618" data-loaded=""><div id="esri.Map_0_root" class="esriMapContainer" style="width: 523px; height: 775px; direction: ltr;"><div id="esri.Map_0_container" class="esriMapContainer" style="position: absolute; cursor: default; touch-action: none; clip: auto;"><div id="esri.Map_0_layers" class="esriMapLayers"><div data-vectortiles="true" id="esri.Map_0_VectorTile_2846" style="position: absolute; width: 523px; height: 775px; overflow: visible; opacity: 1; display: block;"><canvas class="esri-display-object" width="0" height="0" style="width: 0px; height: 0px;"></canvas></div><svg overflow="hidden" width="523" height="775" id="esri.Map_0_gc" style="touch-action: none; will-change: transform; overflow: visible; position: absolute;"><defs></defs><g id="esri.Map_0_graphics_layer"><g></g></g></svg></div></div><div class="esriControlsBR"><span class="esriAttribution" tabindex="" style="max-width: 235px; cursor: default;"><span class="esriAttributionList"></span></span></div><div class="esriPopup esriPopupHidden"><div class="esriPopupWrapper" style="position: absolute;"><div class="sizer"><div class="titlePane"><div class="spinner hidden" title="Searching..."></div><div class="title"></div><div class="titleButton prev hidden" title="Previous feature"></div><div class="titleButton next hidden" title="Next feature"></div><div class="titleButton maximize" title="Maximize"></div><div class="titleButton close" title="Close"></div></div></div><div class="sizer content"><div class="contentPane"></div></div><div class="sizer"><div class="actionsPane"><div class="actionList hidden"><a title="Zoom to" class="action zoomTo" href="javascript:void(0);"><span>Zoom to</span></a></div></div></div><div class="pointer hidden"></div></div><div class="outerPointer hidden"></div></div><div id="esri.Map_0_zoom_slider" class="esriSimpleSlider esriSimpleSliderVertical esriSimpleSliderBR" style="z-index: 30;"><div class="esriSimpleSliderIncrementButton" tabindex="0" role="button" title="Zoom In"><span aria-hidden="true" role="presentation">+</span><span class="esriIconFallbackText">Zoom In</span></div><div class="esriSimpleSliderDecrementButton" tabindex="0" role="button" title="Zoom Out"><span aria-hidden="true" role="presentation">−</span><span class="esriIconFallbackText">Zoom Out</span></div></div></div></div>
+
+<!---->
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:723.2047960728479px;top:0px;width:166.7952039271523px;height:104.64239238382247px;" id="ember122" class="dock-element invisible ember-view"> <margin-container class="right top">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember123" class="widget flex-vertical full-height rich-text-widget ember-view"><!---->
+<!---->
+<!---->
+
+
+  <div class="external-html panel-padding-quarter widget-body flex-fluid full-width flex-vertical overflow-y-auto overflow-x-hidden">
+        <p style="text-align:center"><span style="color:#bee8ff"><em>Use the drop-down menu above to select a county.&nbsp;</em></span></p>
+
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:723.2047960728479px;top:104.64239238382247px;width:166.7952039271523px;height:676.3576076161775px;" id="ember127" class="dock-element invisible ember-view"> <margin-container class="right">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember128" class="widget flex-vertical full-height chart-widget serial-chart-widget ember-view"><!---->
+  <div class="flex-fix widget-header">
+    <div class="caption">
+      <p style="text-align:center"><span style="color:#38a800"><strong>Negative </strong></span>and <span style="color:#ff0000"><strong>Positive</strong></span> Persons Tested&nbsp;by Week</p>
+
+    </div>
+  </div>
+
+    <div class="flex-fluid flex-vertical flex-justify-center">
+      <div class="flex-fix flex-align-center flex-horizontal flex-align-items-center text-center">
+        <span id="ember131" class="spin icon-element ember-view"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" height="32px" width="32px" viewBox="0 0 32 32" id="ember132" class="ember-view"><path d="M13.986 1.9a14.1 14.1 0 1 0 4.028 0l.013-.875a15 15 0 1 1-4.054 0z"></path></svg></span><!---->
+      </div>
+    </div>
+
+
+
+  <div class="position-relative widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden hide">
+        <div id="ember134" class="flex-fluid am-chart ember-view" style="overflow: hidden; text-align: left;"><div class="amcharts-main-div" style="position: relative;"><div class="amcharts-chart-div" style="overflow: hidden; position: relative; text-align: left;"><svg version="1.1" style="position: absolute; width: 10px; height: 10px;"><desc>JavaScript chart by amCharts 3.21.14</desc><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g transform="translate(0,20)"></g><g></g><g></g></svg></div></div></div>
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:0px;top:0px;width:234.180622632401px;height:781px;" id="ember135" class="dock-element invisible ember-view"> <margin-container class="left top">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember136" class="widget flex-vertical full-height chart-widget serial-chart-widget ember-view"><!---->
+  <div class="flex-fix widget-header">
+    <div class="caption">
+      <h5 style="text-align:center">New Cases by Day</h5>
+
+    </div>
+  </div>
+
+    <div class="flex-fluid flex-vertical flex-justify-center">
+      <div class="flex-fix flex-align-center flex-horizontal flex-align-items-center text-center">
+        <span id="ember139" class="spin icon-element ember-view"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" height="32px" width="32px" viewBox="0 0 32 32" id="ember140" class="ember-view"><path d="M13.986 1.9a14.1 14.1 0 1 0 4.028 0l.013-.875a15 15 0 1 1-4.054 0z"></path></svg></span><!---->
+      </div>
+    </div>
+
+
+
+  <div class="position-relative widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden hide">
+        <div id="ember142" class="flex-fluid am-chart ember-view" style="overflow: hidden; text-align: left;"><div class="amcharts-main-div" style="position: relative;"><div class="amcharts-chart-div" style="overflow: hidden; position: relative; text-align: left;"><svg version="1.1" style="position: absolute; width: 10px; height: 10px;"><desc>JavaScript chart by amCharts 3.21.14</desc><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g transform="translate(0,20)"></g><g></g><g></g></svg></div></div></div>
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:234.180622632401px;top:0px;width:346.42024669319346px;height:369.95933358446626px;" id="ember143" class="dock-element invisible ember-view"> <margin-container class="top">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember144" class="widget flex-vertical full-height chart-widget serial-chart-widget ember-view"><!---->
+  <div class="flex-fix widget-header">
+    <div class="caption">
+      <h5 style="text-align:center">Age Distribution of Cases</h5>
+
+    </div>
+  </div>
+
+<!---->
+
+
+  <div class="position-relative widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden">
+        <div id="ember150" class="flex-fluid am-chart ember-view" style="overflow: hidden; text-align: left;"><div class="amcharts-main-div" style="position: relative;"><div class="amcharts-chart-div" style="overflow: hidden; position: relative; text-align: left;"><svg version="1.1" style="position: absolute; width: 10px; height: 10px;"><desc>JavaScript chart by amCharts 3.21.14</desc><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g transform="translate(0,20)"></g><g></g><g></g></svg></div></div></div>
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:580.6008693255944px;top:0px;width:127.2019576076477px;height:369.95933358446626px;" id="ember151" class="dock-element invisible ember-view"> <margin-container class="top">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember152" class="widget flex-vertical full-height map-container dropdownBorder map-widget ember-view"><!---->
+<!---->
+<!---->
+
+
+  <div class="position-relative widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden">
+          <div class="map flex-fluid"><div id="esri.Map_4_root" class="esriMapContainer" style="width: 127px; height: 364px; direction: ltr;"><div id="esri.Map_4_container" class="esriMapContainer" style="position: absolute; cursor: default; touch-action: none;"><div id="esri.Map_4_layers" class="esriMapLayers"></div></div><div class="esriControlsBR"><span class="esriAttribution" style="max-width: 57px;"><span class="esriAttributionList"></span></span></div></div></div>
+
+<!---->
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:234.180622632401px;top:369.95933358446626px;width:192.83617589673327px;height:411.04066641553374px;" id="ember156" class="dock-element invisible ember-view"> <margin-container class="">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember157" class="widget flex-vertical full-height chart-widget pie-chart-widget ember-view"><!---->
+  <div class="flex-fix widget-header">
+    <div class="caption">
+      <h6 style="text-align:center">Cases by Gender Distribution</h6>
+
+    </div>
+  </div>
+
+<!---->
+
+
+  <div class="position-relative widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden">
+        <div id="ember163" class="flex-fluid am-chart ember-view" style="overflow: hidden; text-align: left;"><div class="amcharts-main-div" style="position: relative; width: 100%; height: 100%;"><div class="amcharts-chart-div" style="overflow: hidden; position: absolute; text-align: left; width: 0px; left: 0px;"><svg version="1.1" style="position: absolute; width: 10px; height: 10px;"><desc>JavaScript chart by amCharts 3.21.14</desc><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g></svg></div><div style="overflow: hidden; position: relative; text-align: left; left: 0px;"></div></div></div>
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:427.01679852913423px;top:369.95933358446626px;width:280.78602840410787px;height:411.04066641553374px;" id="ember164" class="dock-element invisible ember-view"> <margin-container class="">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember165" class="widget flex-vertical full-height chart-widget serial-chart-widget ember-view"><!---->
+  <div class="flex-fix widget-header">
+    <div class="caption">
+      <h6 style="text-align:center">Cases by Race Distribution</h6>
+
+    </div>
+  </div>
+
+<!---->
+
+
+  <div class="position-relative widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden">
+        <div id="ember171" class="flex-fluid am-chart ember-view" style="overflow: hidden; text-align: left;"><div class="amcharts-main-div" style="position: relative;"><div class="amcharts-chart-div" style="overflow: hidden; position: relative; text-align: left;"><svg version="1.1" style="position: absolute; width: 10px; height: 10px;"><desc>JavaScript chart by amCharts 3.21.14</desc><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g transform="translate(0,20)"></g><g></g><g></g></svg></div></div></div>
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:707.8028269332422px;top:0px;width:182.19717306675744px;height:94.37205917605561px;" id="ember172" class="dock-element invisible ember-view"> <margin-container class="right top">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember173" class="widget flex-vertical full-height rich-text-widget ember-view"><!---->
+<!---->
+<!---->
+
+
+  <div class="external-html panel-padding-quarter widget-body flex-fluid full-width flex-vertical overflow-y-auto overflow-x-hidden">
+        <p style="text-align:center"><span style="color:#bee8ff"><em>Use the drop-down menu above to select a county.&nbsp;</em></span></p>
+
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:707.8028269332422px;top:94.37205917605561px;width:182.19717306675744px;height:208.63726456894824px;" id="ember177" class="dock-element invisible ember-view"> <margin-container class="right">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember178" class="widget flex-vertical full-height indicator-widget ember-view"><!---->
+<!---->
+<!---->
+
+
+  <div class="flex-justify-center widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden">
+    
+    <div class="flex-vertical flex-fix allow-shrink">
+      
+        <div style="fill:#fff7c5" id="ember464" class="flex-fix allow-shrink indicator-top-text responsive-text flex-vertical ember-view"><svg class="responsive-text-group" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0.3255223333835602 544.0103759765625 80.01301574707031" width="134" height="10">
+  <g class="responsive-text-icon">
+    <!---->
+  </g>
+
+  <g class="responsive-text-label">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -76 649 96" height="80" width="540.8333333333334">
+      <text vector-effect="non-scaling-stroke" style="fill: rgb(255, 255, 115); stroke-width: 2; font-size: 80px; line-height: normal;">Positive Residents</text>
+    </svg>
+  </g>
+</svg></div>
+
+        <div style="fill:#fff7c5" id="ember465" class="flex-fix allow-shrink indicator-center-text responsive-text flex-vertical ember-view"><svg class="responsive-text-group" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -0.1683911383152008 439.0025634765625 161.01036071777344" width="134" height="10">
+  <g class="responsive-text-icon">
+    <!---->
+  </g>
+
+  <g class="responsive-text-label">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -153 532 193" height="160" width="441.0362694300518">
+      <text vector-effect="non-scaling-stroke" style="fill: rgb(255, 255, 115); stroke-width: 2; font-size: 160px; line-height: normal;">32,801</text>
+    </svg>
+  </g>
+</svg></div>
+
+<!---->    </div>
+      
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:707.8028269332422px;top:303.0093237450039px;width:182.19717306675744px;height:152.2501137726885px;" id="ember184" class="dock-element invisible ember-view"> <margin-container class="right">
+  <full-container>
+                            <div style="color:#a8a800;" id="ember185" class="widget flex-vertical full-height indicator-widget ember-view"><!---->
+<!---->
+<!---->
+
+
+  <div class="flex-justify-center widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden">
+    
+    <div class="flex-vertical flex-fix allow-shrink">
+      
+        <div style="fill:#fff7c5" id="ember462" class="flex-fix allow-shrink indicator-top-text responsive-text flex-vertical ember-view"><svg class="responsive-text-group" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0.32552167773246765 482.00518798828125 80.01301574707031" width="134" height="10">
+  <g class="responsive-text-icon">
+    <!---->
+  </g>
+
+  <g class="responsive-text-label">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -76 575 96" height="80" width="479.1666666666667">
+      <text vector-effect="non-scaling-stroke" style="fill: rgb(230, 76, 0); stroke-width: 2; font-size: 80px; line-height: normal;">Hospitalizations</text>
+    </svg>
+  </g>
+</svg></div>
+
+        <div style="fill:#fff7c5" id="ember463" class="flex-fix allow-shrink indicator-center-text responsive-text flex-vertical ember-view"><svg class="responsive-text-group" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0.0000045064816731610335 -0.16839377582073212 358.00518798828125 161.01036071777344" width="134" height="10">
+  <g class="responsive-text-icon">
+    <!---->
+  </g>
+
+  <g class="responsive-text-label">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -153 434 193" height="160" width="359.7927461139896">
+      <text vector-effect="non-scaling-stroke" style="fill: rgb(230, 76, 0); stroke-width: 2; font-size: 160px; line-height: normal;">5,589</text>
+    </svg>
+  </g>
+</svg></div>
+
+<!---->    </div>
+      
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:707.8028269332422px;top:455.2594375176924px;width:182.19717306675744px;height:155.57420584090272px;" id="ember191" class="dock-element invisible ember-view"> <margin-container class="right">
+  <full-container>
+                            <div style="color:#999999;" id="ember192" class="widget flex-vertical full-height indicator-widget ember-view"><!---->
+<!---->
+<!---->
+
+
+  <div class="flex-justify-center widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden">
+    
+    <div class="flex-vertical flex-fix allow-shrink">
+      
+        <div style="fill:#fff7c5" id="ember460" class="flex-fix allow-shrink indicator-top-text responsive-text flex-vertical ember-view"><svg class="responsive-text-group" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0.000002543131586207892 0.3255208432674408 213.0078125 80.01301574707031" width="134" height="10">
+  <g class="responsive-text-icon">
+    <!---->
+  </g>
+
+  <g class="responsive-text-label">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -76 257 96" height="80" width="214.16666666666669">
+      <text vector-effect="non-scaling-stroke" style="fill: rgb(153, 153, 153); stroke-width: 2; font-size: 80px; line-height: normal;">Deaths</text>
+    </svg>
+  </g>
+</svg></div>
+
+        <div style="fill:#fff7c5" id="ember461" class="flex-fix allow-shrink indicator-center-text responsive-text flex-vertical ember-view"><svg class="responsive-text-group" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0.0000045064816731610335 -0.16839377582073212 358.00518798828125 161.01036071777344" width="134" height="10">
+  <g class="responsive-text-icon">
+    <!---->
+  </g>
+
+  <g class="responsive-text-label">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -153 434 193" height="160" width="359.7927461139896">
+      <text vector-effect="non-scaling-stroke" style="fill: rgb(153, 153, 153); stroke-width: 2; font-size: 160px; line-height: normal;">1,268</text>
+    </svg>
+  </g>
+</svg></div>
+
+<!---->    </div>
+      
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:707.8028269332422px;top:610.833643358595px;width:182.19717306675744px;height:170.1663566414051px;" id="ember198" class="dock-element invisible ember-view"> <margin-container class="right">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember199" class="widget flex-vertical full-height indicator-widget ember-view"><!---->
+<!---->
+<!---->
+
+
+  <div class="flex-justify-center widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden">
+    
+    <div class="flex-vertical flex-fix allow-shrink">
+      
+        <div style="fill:#fff7c5" id="ember458" class="flex-fix allow-shrink indicator-top-text responsive-text flex-vertical ember-view"><svg class="responsive-text-group" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0.3255208432674408 696.0026245117188 80.01301574707031" width="134" height="10">
+  <g class="responsive-text-icon">
+    <!---->
+  </g>
+
+  <g class="responsive-text-label">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -76 831 96" height="80" width="692.5">
+      <text vector-effect="non-scaling-stroke" style="fill: rgb(0, 132, 168); stroke-width: 2; font-size: 80px; line-height: normal;">Positive Non-Residents</text>
+    </svg>
+  </g>
+</svg></div>
+
+        <div style="fill:#fff7c5" id="ember459" class="flex-fix allow-shrink indicator-center-text responsive-text flex-vertical ember-view"><svg class="responsive-text-group" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0.0000028066683626093436 -0.16839377582073212 243.00518798828125 161.01036071777344" width="134" height="10">
+  <g class="responsive-text-icon">
+    <!---->
+  </g>
+
+  <g class="responsive-text-label">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -153 294 193" height="160" width="243.7305699481865">
+      <text vector-effect="non-scaling-stroke" style="fill: rgb(0, 132, 168); stroke-width: 2; font-size: 160px; line-height: normal;">889</text>
+    </svg>
+  </g>
+</svg></div>
+
+<!---->    </div>
+      
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:0px;top:0px;width:734.9218612367167px;height:781px;" id="ember205" class="dock-element invisible ember-view"> <margin-container class="left top">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember206" class="widget flex-vertical full-height map-container dropdownBorder map-widget ember-view"><!---->
+<!---->
+<!---->
+
+
+  <div class="position-relative widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden">
+          <div class="map flex-fluid" data-zoom="6" data-scale="4622324.434309" data-loaded=""><div id="esri.Map_3_root" class="esriMapContainer" style="width: 729px; height: 775px; direction: ltr;"><div id="esri.Map_3_container" class="esriMapContainer" style="position: absolute; cursor: default; touch-action: none; clip: auto;"><div id="esri.Map_3_layers" class="esriMapLayers"><div data-vectortiles="true" id="esri.Map_3_VectorTile_2846" style="position: absolute; width: 729px; height: 775px; overflow: visible; opacity: 1; display: block;"><canvas class="esri-display-object" width="0" height="0" style="width: 0px; height: 0px;"></canvas></div><svg overflow="hidden" width="729" height="775" id="esri.Map_3_gc" style="touch-action: none; will-change: transform; overflow: visible; position: absolute;"><defs></defs><g id="esri.Map_3_graphics_layer"><g></g></g></svg></div></div><div class="esriControlsBR"><span class="esriAttribution" tabindex="" style="max-width: 328px; cursor: default;"><span class="esriAttributionList"></span></span></div><div class="esriPopup esriPopupHidden"><div class="esriPopupWrapper" style="position: absolute;"><div class="sizer"><div class="titlePane"><div class="spinner hidden" title="Searching..."></div><div class="title"></div><div class="titleButton prev hidden" title="Previous feature"></div><div class="titleButton next hidden" title="Next feature"></div><div class="titleButton maximize" title="Maximize"></div><div class="titleButton close" title="Close"></div></div></div><div class="sizer content"><div class="contentPane"></div></div><div class="sizer"><div class="actionsPane"><div class="actionList hidden"><a title="Zoom to" class="action zoomTo" href="javascript:void(0);"><span>Zoom to</span></a></div></div></div><div class="pointer hidden"></div></div><div class="outerPointer hidden"></div></div><div id="esri.Map_3_zoom_slider" class="esriSimpleSlider esriSimpleSliderVertical esriSimpleSliderBR" style="z-index: 30;"><div class="esriSimpleSliderIncrementButton" tabindex="0" role="button" title="Zoom In"><span aria-hidden="true" role="presentation">+</span><span class="esriIconFallbackText">Zoom In</span></div><div class="esriSimpleSliderDecrementButton" tabindex="0" role="button" title="Zoom Out"><span aria-hidden="true" role="presentation">−</span><span class="esriIconFallbackText">Zoom Out</span></div></div></div></div>
+
+<!---->
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:734.9218612367167px;top:0px;width:155.07813876328336px;height:97.79550357864457px;" id="ember210" class="dock-element invisible ember-view"> <margin-container class="right top">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember211" class="widget flex-vertical full-height rich-text-widget ember-view"><!---->
+<!---->
+<!---->
+
+
+  <div class="external-html panel-padding-quarter widget-body flex-fluid full-width flex-vertical overflow-y-auto overflow-x-hidden">
+        <p style="text-align:center"><span style="color:#bee8ff"><em>Use the drop-down menu above to select a county.&nbsp;</em></span></p>
+
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:734.9218612367167px;top:97.79550357864457px;width:155.07813876328336px;height:683.2044964213554px;" id="ember215" class="dock-element invisible ember-view"> <margin-container class="right">
+  <full-container>
+                            <div style="background-color:#242424;color:#fff7c5;" id="ember216" class="widget flex-vertical full-height list-widget ember-view"><!---->
+  <div class="flex-fix widget-header">
+    <div class="caption">
+      <p style="text-align:center"><span style="color:#ffaa00"><strong>Zip Codes</strong></span></p>
+
+    </div>
+  </div>
+
+    <div class="flex-fluid flex-vertical flex-justify-center">
+      <div class="flex-fix flex-align-center flex-horizontal flex-align-items-center text-center">
+        <span id="ember219" class="spin icon-element ember-view"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" height="32px" width="32px" viewBox="0 0 32 32" id="ember220" class="ember-view"><path d="M13.986 1.9a14.1 14.1 0 1 0 4.028 0l.013-.875a15 15 0 1 1-4.054 0z"></path></svg></span><!---->
+      </div>
+    </div>
+
+
+
+<!---->
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:0px;top:0px;width:234.97050147492627px;height:781px;" id="ember222" class="dock-element invisible ember-view"> <margin-container class="left top">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember223" class="widget flex-vertical full-height rich-text-widget ember-view"><!---->
+<!---->
+<!---->
+
+
+  <div class="external-html panel-padding-quarter widget-body flex-fluid full-width flex-vertical overflow-y-auto overflow-x-hidden">
+        <h3 style="text-align:center"><span style="color:#bee8ff">Florida Health Metrics</span></h3>
+
+<p style="text-align:center"><span style="font-size:12pt"><span style="background-color:#222222"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-size:10.5pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:#fff7c5">Florida monitors COVID-19 in multiple ways, including emergency department visits, case counts, and laboratory test data.</span></span></span></span></span></span></p>
+
+<p style="text-align:center"><span style="font-size:12pt"><span style="background-color:#222222"><span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp;</span></span></span></p>
+
+<p style="text-align:center"><span style="font-size:12pt"><span style="background-color:#222222"><span style="font-family:&quot;Times New Roman&quot;,serif"><span style="font-size:10.5pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:#fff7c5">Charts shown here summarize four critical data elements by week for&nbsp;the last six weeks, based on data from ESSENCE-FL&nbsp;</span></span></span><sup><span style="font-size:7.5pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:#fff7c5">1</span></span></span></sup><span style="font-size:10.5pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:#fff7c5">&nbsp;and Merlin</span></span></span><sup><span style="font-size:7.5pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:#fff7c5">2</span></span></span></sup><span style="font-size:10.5pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:#fff7c5">.</span></span></span></span></span></span></p>
+
+<p style="text-align:center"><span style="font-size:12pt"><span style="background-color:#222222"><span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp;</span></span></span></p>
+
+<p style="text-align:center"><span style="font-size:12pt"><span style="background-color:#222222"><span style="font-family:&quot;Times New Roman&quot;,serif"><strong><span style="font-size:10.5pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:#ffa77f">ED visits with Influenza-like&nbsp;illness&nbsp;</span></span></span></strong><sup><span style="font-size:7.5pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:#ffa77f">1</span></span></span></sup></span></span></span></p>
+
+<p style="text-align:center"><span style="font-size:12pt"><span style="background-color:#222222"><span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp;</span></span></span></p>
+
+<p style="text-align:center"><span style="font-size:12pt"><span style="background-color:#222222"><span style="font-family:&quot;Times New Roman&quot;,serif"><strong><span style="font-size:10.5pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:#e8beff">ED visits with COVID-like illness</span></span></span></strong><sup><span style="font-size:7.5pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:#fff7c5">1</span></span></span></sup></span></span></span></p>
+
+<p style="text-align:center"><span style="font-size:12pt"><span style="background-color:#222222"><span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp;</span></span></span></p>
+
+<p style="text-align:center"><span style="font-size:12pt"><span style="background-color:#222222"><span style="font-family:&quot;Times New Roman&quot;,serif"><strong><span style="font-size:10.5pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:#ffff73">Documented new cases&nbsp;</span></span></span></strong><sup><span style="font-size:7.5pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:#ffff73">2</span></span></span></sup></span></span></span></p>
+
+<p style="text-align:center"><span style="font-size:12pt"><span style="background-color:#222222"><span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp;</span></span></span></p>
+
+<p style="text-align:center"><span style="font-size:12pt"><span style="background-color:#222222"><span style="font-family:&quot;Times New Roman&quot;,serif"><strong><span style="font-size:10.5pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:#38a800">Percent positive for laboratory testing&nbsp;</span></span></span></strong><sup><span style="font-size:7.5pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:#38a800">2</span></span></span></sup></span></span></span></p>
+
+<p style="text-align:center"><span style="font-size:12pt"><span style="background-color:#222222"><span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp;</span></span></span></p>
+
+<p style="text-align:center"><span style="font-size:12pt"><span style="background-color:#222222"><span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp;</span></span></span></p>
+
+<p style="text-align:center"><span style="font-size:12pt"><span style="background-color:#222222"><span style="font-family:&quot;Times New Roman&quot;,serif"><em><span style="font-size:10.5pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:#bee8ff">Weekly counts summarize data from 12:00 AM Sunday to 11:59 PM Saturday.</span></span></span></em></span></span></span></p>
+
+<p style="text-align:center"><span style="font-size:12pt"><span style="background-color:#222222"><span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp;</span></span></span></p>
+
+<p style="text-align:center"><span style="font-size:12pt"><span style="background-color:#222222"><span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp;</span></span></span></p>
+
+<p style="text-align:center"><span style="font-size:12pt"><span style="background-color:#222222"><span style="font-family:&quot;Times New Roman&quot;,serif"><strong><span style="font-size:9.0pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:#fff7c5">Information about surveillance data</span></span></span></strong></span></span></span></p>
+
+<p style="text-align:center"><span style="font-size:12pt"><span style="background-color:#222222"><span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp;</span></span></span></p>
+
+<p><span style="font-size:12pt"><span style="background-color:#222222"><span style="font-family:&quot;Times New Roman&quot;,serif"><em><span style="font-size:9.0pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:#fff7c5">1. Early Notification of Community-Based Epidemics (ESSENCE-FL) is Florida’s syndromic surveillance system.</span></span></span></em></span></span></span></p>
+
+<p><span style="font-size:12pt"><span style="background-color:#222222"><span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp;</span></span></span></p>
+
+<p><span style="font-size:12pt"><span style="background-color:#222222"><span style="font-family:&quot;Times New Roman&quot;,serif"><em><span style="font-size:9.0pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:#fff7c5">2. Merlin is Florida’s reportable disease surveillance application where case and laboratory data are managed.</span></span></span></em></span></span></span></p>
+
+<p><span style="font-size:12pt"><span style="background-color:#222222"><span style="font-family:&quot;Times New Roman&quot;,serif">&nbsp;</span></span></span></p>
+
+<p><span style="font-size:12pt"><span style="background-color:#222222"><span style="font-family:&quot;Times New Roman&quot;,serif"><em><span style="font-size:9.0pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:#fff7c5">To learn more about how these data are collected,<a href="https://fdoh.maps.arcgis.com/home/item.html?id=492f02b473df4c8f8aa68fedf420c933">&nbsp;</a></span></span></span></em><a href="https://fdoh.maps.arcgis.com/home/item.html?id=492f02b473df4c8f8aa68fedf420c933"><em><span style="font-size:9.0pt"><span style="font-family:&quot;Arial&quot;,sans-serif"><span style="color:#2493f2">click here.&nbsp;</span></span></span></em></a></span></span></span></p>
+
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:234.97050147492627px;top:0px;width:655.0294985250738px;height:70.40794835793295px;" id="ember227" class="dock-element invisible ember-view"> <margin-container class="right top">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember228" class="widget flex-vertical full-height rich-text-widget ember-view"><!---->
+<!---->
+<!---->
+
+
+  <div class="external-html panel-padding-quarter widget-body flex-fluid full-width flex-vertical overflow-y-auto overflow-x-hidden">
+        <p style="text-align:right"><span style="color:#bee8ff"><em>Use the drop-down menu on the top-right of the page to select a county.&nbsp;</em></span></p>
+
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:234.97050147492627px;top:70.40794835793295px;width:327.6814995094895px;height:344.82388459598207px;" id="ember232" class="dock-element invisible ember-view"> <margin-container class="">
+  <full-container>
+                            <div style="color:#ffa77f;" id="ember233" class="widget flex-vertical full-height chart-widget serial-chart-widget ember-view"><!---->
+  <div class="flex-fix widget-header">
+    <div class="caption">
+      <p style="text-align:center"><span style="color:#ffa77f"><strong>ED&nbsp;VISITS WITH INFLUENZA-LIKE ILNNESSES (ILI)&nbsp;</strong></span></p>
+
+    </div>
+  </div>
+
+    <div class="flex-fluid flex-vertical flex-justify-center">
+      <div class="flex-fix flex-align-center flex-horizontal flex-align-items-center text-center">
+        <span id="ember236" class="spin icon-element ember-view"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" height="32px" width="32px" viewBox="0 0 32 32" id="ember237" class="ember-view"><path d="M13.986 1.9a14.1 14.1 0 1 0 4.028 0l.013-.875a15 15 0 1 1-4.054 0z"></path></svg></span><!---->
+      </div>
+    </div>
+
+
+
+  <div class="position-relative widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden hide">
+        <div id="ember239" class="flex-fluid am-chart ember-view" style="overflow: hidden; text-align: left;"><div class="amcharts-main-div" style="position: relative;"><div class="amcharts-chart-div" style="overflow: hidden; position: relative; text-align: left;"><svg version="1.1" style="position: absolute; width: 10px; height: 10px;"><desc>JavaScript chart by amCharts 3.21.14</desc><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g transform="translate(0,20)"></g><g></g><g></g></svg></div></div></div>
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:562.6520009844157px;top:70.40794835793295px;width:327.3479990155843px;height:344.82388459598207px;" id="ember240" class="dock-element invisible ember-view"> <margin-container class="right">
+  <full-container>
+                            <div style="color:#ffff73;" id="ember241" class="widget flex-vertical full-height chart-widget serial-chart-widget ember-view"><!---->
+  <div class="flex-fix widget-header">
+    <div class="caption">
+      <p style="text-align:center"><span style="color:#ffff00"><strong>NEW CASES BY WEEK</strong></span></p>
+
+    </div>
+  </div>
+
+    <div class="flex-fluid flex-vertical flex-justify-center">
+      <div class="flex-fix flex-align-center flex-horizontal flex-align-items-center text-center">
+        <span id="ember244" class="spin icon-element ember-view"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" height="32px" width="32px" viewBox="0 0 32 32" id="ember245" class="ember-view"><path d="M13.986 1.9a14.1 14.1 0 1 0 4.028 0l.013-.875a15 15 0 1 1-4.054 0z"></path></svg></span><!---->
+      </div>
+    </div>
+
+
+
+  <div class="position-relative widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden hide">
+        <div id="ember247" class="flex-fluid am-chart ember-view" style="overflow: hidden; text-align: left;"><div class="amcharts-main-div" style="position: relative;"><div class="amcharts-chart-div" style="overflow: hidden; position: relative; text-align: left;"><svg version="1.1" style="position: absolute; width: 10px; height: 10px;"><desc>JavaScript chart by amCharts 3.21.14</desc><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g transform="translate(0,20)"></g><g></g><g></g></svg></div></div></div>
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:234.97050147492627px;top:415.231832953915px;width:327.5147492625369px;height:365.768167046085px;" id="ember248" class="dock-element invisible ember-view"> <margin-container class="">
+  <full-container>
+                            <div style="color:#df73ff;" id="ember249" class="widget flex-vertical full-height chart-widget serial-chart-widget ember-view"><!---->
+  <div class="flex-fix widget-header">
+    <div class="caption">
+      <p style="text-align:center"><span style="color:#df73ff"><strong>ED&nbsp;VISITS FOR COVID-19 SYMPTOMS</strong></span></p>
+
+    </div>
+  </div>
+
+    <div class="flex-fluid flex-vertical flex-justify-center">
+      <div class="flex-fix flex-align-center flex-horizontal flex-align-items-center text-center">
+        <span id="ember252" class="spin icon-element ember-view"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" height="32px" width="32px" viewBox="0 0 32 32" id="ember253" class="ember-view"><path d="M13.986 1.9a14.1 14.1 0 1 0 4.028 0l.013-.875a15 15 0 1 1-4.054 0z"></path></svg></span><!---->
+      </div>
+    </div>
+
+
+
+  <div class="position-relative widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden hide">
+        <div id="ember255" class="flex-fluid am-chart ember-view" style="overflow: hidden; text-align: left;"><div class="amcharts-main-div" style="position: relative;"><div class="amcharts-chart-div" style="overflow: hidden; position: relative; text-align: left;"><svg version="1.1" style="position: absolute; width: 10px; height: 10px;"><desc>JavaScript chart by amCharts 3.21.14</desc><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g transform="translate(0,20)"></g><g></g><g></g></svg></div></div></div>
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:562.4852507374632px;top:415.231832953915px;width:327.5147492625369px;height:365.768167046085px;" id="ember256" class="dock-element invisible ember-view"> <margin-container class="right">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember257" class="widget flex-vertical full-height chart-widget serial-chart-widget ember-view"><!---->
+  <div class="flex-fix widget-header">
+    <div class="caption">
+      <p style="text-align:center"><span style="color:#4ce600"><strong>PERCENT OF NEW POSITIVE OF ALL TESTS BY WEEK</strong></span></p>
+
+    </div>
+  </div>
+
+    <div class="flex-fluid flex-vertical flex-justify-center">
+      <div class="flex-fix flex-align-center flex-horizontal flex-align-items-center text-center">
+        <span id="ember260" class="spin icon-element ember-view"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" height="32px" width="32px" viewBox="0 0 32 32" id="ember261" class="ember-view"><path d="M13.986 1.9a14.1 14.1 0 1 0 4.028 0l.013-.875a15 15 0 1 1-4.054 0z"></path></svg></span><!---->
+      </div>
+    </div>
+
+
+
+  <div class="position-relative widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden hide">
+        <div id="ember263" class="flex-fluid am-chart ember-view" style="overflow: hidden; text-align: left;"><div class="amcharts-main-div" style="position: relative;"><div class="amcharts-chart-div" style="overflow: hidden; position: relative; text-align: left;"><svg version="1.1" style="position: absolute; width: 10px; height: 10px;"><desc>JavaScript chart by amCharts 3.21.14</desc><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g transform="translate(0,20)"></g><g></g><g></g></svg></div></div></div>
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:0px;top:0px;width:559.2490445771422px;height:135.3775544673774px;" id="ember264" class="dock-element invisible ember-view"> <margin-container class="left top">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember265" class="widget flex-vertical full-height embedded-content-widget ember-view"><!---->
+<!---->
+<!---->
+
+  
+  <div class="external-html widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden">
+              <div id="ember269" class="flex-fluid position-relative ember-view"><div class="position-absolute full-height full-width">
+  <img src="https://geojones2.files.wordpress.com/2020/04/covidcallcenterbanner.png" style="margin-top: 46.2963px; margin-left: 0px; width: 553px; height: 36.4075px;">
+</div></div>
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:0px;top:135.3775544673774px;width:559.2490445771422px;height:595.4974291267541px;" id="ember270" class="dock-element invisible ember-view"> <margin-container class="left">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember271" class="widget flex-vertical full-height map-container dropdownBorder map-widget ember-view"><!---->
+<!---->
+<!---->
+
+
+  <div class="position-relative widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden">
+          <div class="map flex-fluid" data-zoom="3" data-scale="36978595.474472" data-loaded=""><div id="esri.Map_2_root" class="esriMapContainer" style="width: 553px; height: 595px; direction: ltr;"><div id="esri.Map_2_container" class="esriMapContainer" style="position: absolute; cursor: default; touch-action: none; clip: auto;"><div id="esri.Map_2_layers" class="esriMapLayers"><div data-vectortiles="true" id="esri.Map_2_VectorTile_2846" style="position: absolute; width: 553px; height: 595px; overflow: visible; opacity: 1; display: block;"><canvas class="esri-display-object" width="0" height="0" style="width: 0px; height: 0px;"></canvas></div><svg overflow="hidden" width="553" height="595" id="esri.Map_2_gc" style="touch-action: none; will-change: transform; overflow: visible; position: absolute;"><defs></defs><g id="esri.Map_2_graphics_layer"><g></g></g></svg></div></div><div class="esriControlsBR"><span class="esriAttribution" tabindex="" style="max-width: 248px; cursor: default;"><span class="esriAttributionList"></span></span></div><div class="esriPopup esriPopupHidden"><div class="esriPopupWrapper" style="position: absolute;"><div class="sizer"><div class="titlePane"><div class="spinner hidden" title="Searching..."></div><div class="title"></div><div class="titleButton prev hidden" title="Previous feature"></div><div class="titleButton next hidden" title="Next feature"></div><div class="titleButton maximize" title="Maximize"></div><div class="titleButton close" title="Close"></div></div></div><div class="sizer content"><div class="contentPane"></div></div><div class="sizer"><div class="actionsPane"><div class="actionList hidden"><a title="Zoom to" class="action zoomTo" href="javascript:void(0);"><span>Zoom to</span></a></div></div></div><div class="pointer hidden"></div></div><div class="outerPointer hidden"></div></div><div id="esri.Map_2_zoom_slider" class="esriSimpleSlider esriSimpleSliderVertical esriSimpleSliderBR" style="z-index: 30;"><div class="esriSimpleSliderIncrementButton" tabindex="0" role="button" title="Zoom In"><span aria-hidden="true" role="presentation">+</span><span class="esriIconFallbackText">Zoom In</span></div><div class="esriSimpleSliderDecrementButton" tabindex="0" role="button" title="Zoom Out"><span aria-hidden="true" role="presentation">−</span><span class="esriIconFallbackText">Zoom Out</span></div></div></div></div>
+
+<!---->
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:0px;top:730.8749835941315px;width:559.2490445771422px;height:50.12501640586865px;" id="ember275" class="dock-element invisible ember-view"> <margin-container class="left">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember276" class="widget flex-vertical full-height rich-text-widget ember-view"><!---->
+<!---->
+<!---->
+
+
+  <div class="external-html panel-padding-quarter widget-body flex-fluid full-width flex-vertical overflow-y-auto overflow-x-hidden">
+        <p><span style="font-size:10px">Zoom in and out to see a global heat map of cases and cases by state.&nbsp;Data for States and Countries comes from Johns Hopkins University. Expand this box to see more.</span></p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p><em>Lancet Inf Dis</em>&nbsp;Article:&nbsp;<a href="https://doi.org/10.1016/S1473-3099(20)30120-1">Here</a>. Mobile Version:&nbsp;<a href="https://arcgis.com/apps/opsdashboard/index.html#/85320e2ea5424dfaaa75ae62e5c06e61">Here</a>. Visualization:&nbsp;<a href="https://systems.jhu.edu/">JHU CSSE</a>. Automation Support:&nbsp;<a href="https://livingatlas.arcgis.com/en/">Esri&nbsp;Living Atlas team</a>&nbsp;and&nbsp;<a href="https://www.jhuapl.edu/">JHU APL</a>.&nbsp;<a href="mailto:jhusystems@gmail.com">Contact&nbsp;US</a>.&nbsp;<a href="https://systems.jhu.edu/research/public-health/2019-ncov-map-faqs/">FAQ</a>.</p>
+
+<p>Data sources:&nbsp;<a href="https://www.who.int/emergencies/diseases/novel-coronavirus-2019/situation-reports">WHO</a>,&nbsp;<a href="https://www.cdc.gov/coronavirus/2019-ncov/index.html">CDC</a>,&nbsp;<a href="https://www.ecdc.europa.eu/en/geographical-distribution-2019-ncov-cases">ECDC</a>,&nbsp;<a href="http://www.nhc.gov.cn/xcs/yqtb/list_gzbd.shtml">NHC</a>,&nbsp;<a href="https://3g.dxy.cn/newh5/view/pneumonia?scene=2&amp;clicktime=1579582238&amp;enterid=1579582238&amp;from=singlemessage&amp;isappinstalled=0">DXY</a>,&nbsp;<a href="https://coronavirus.1point3acres.com/">1point3acres</a>,&nbsp;<a href="https://www.worldometers.info/coronavirus/">Worldometers.info</a>,&nbsp;<a href="https://bnonews.com/index.php/2020/02/the-latest-coronavirus-cases/">BNO</a>,&nbsp;state and national government health departments,&nbsp;and local media reports.&nbsp;&nbsp;Read more in this&nbsp;<a href="https://systems.jhu.edu/research/public-health/ncov/">blog</a>.&nbsp;</p>
+
+<p>Downloadable database: GitHub:&nbsp;<a href="https://github.com/CSSEGISandData/2019-nCoV">Here</a>. Feature layer:&nbsp;<a href="https://www.arcgis.com/home/item.html?id=c0b356e20b30490c8b8b4c7bb9554e7c">Here</a>.</p>
+
+<p><strong>Confirmed</strong>&nbsp;cases include&nbsp;<strong>presumptive positive</strong>&nbsp;cases.</p>
+
+<p><strong>Recovered&nbsp;</strong>cases outside China are estimates based on local media reports, and may be substantially lower than the true number.</p>
+
+<p><strong>Active cases</strong>&nbsp;= total confirmed - total recovered - total deaths.</p>
+
+<p><strong>Point level</strong>: County level - US; Province/State level - China,&nbsp;Canada,&nbsp;Australia; Country level - other countries.&nbsp;All points (except for Australia)&nbsp;shown on the map are based on geographic centroids, and are not representative of a specific address, building or any location at a spatial scale finer than a province/state. Australian dots are located at the centroid of the largest city in each state.</p>
+
+<p><strong>Time Zones</strong>: lower-left corner indicator - your local time; lower-right corner plot - UTC.&nbsp;</p>
+
+<p>&nbsp;</p>
+
+<p>Visit the&nbsp;<a href="https://coronavirus.jhu.edu/">Johns Hopkins Coronavirus Resource Center</a>&nbsp;where our experts help to advance understanding of the virus, inform the public, and brief policymakers in order to guide a response, improve care, and save lives.</p>
+
+<p>&nbsp;</p>
+
+<p>Note:&nbsp;All cases of COVID-19 in repatriated US citizens from the&nbsp;<strong>Diamond Princess</strong>&nbsp;are grouped together, and their location is currently designated at the ship’s port location off the coast of Japan. These individuals have been assigned to various quarantine locations (in military bases and hospitals) around the US.&nbsp;This grouping is consistent with the CDC.</p>
+
+<p>&nbsp;</p>
+
+<p>*This website and its contents herein, including all data, mapping, and analysis (“Website”), copyright 2020 Johns Hopkins University, all rights reserved, is provided to the public strictly for educational and academic research purposes.&nbsp;The Website relies upon publicly available data from multiple sources, that do not always agree.&nbsp;The names of locations correspond with the official designations used by the U.S. State Department, including for Taiwan.&nbsp;The Johns Hopkins University hereby disclaims any and all representations and warranties with respect to the Website, including accuracy, fitness for use, and merchantability.&nbsp;Reliance on the Website for medical guidance or use of the Website in commerce is strictly prohibited.</p>
+
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:559.2490445771422px;top:0px;width:330.7509554228578px;height:76.27156049939289px;" id="ember280" class="dock-element invisible ember-view"> <margin-container class="right top">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember281" class="widget flex-vertical full-height rich-text-widget ember-view"><!---->
+<!---->
+<!---->
+
+
+  <div class="external-html panel-padding-quarter widget-body flex-fluid full-width flex-vertical overflow-y-auto overflow-x-hidden">
+        <h5><span style="color:#0070ff"><strong>DISCLAIMER FOR USA AND WORLD&nbsp;&nbsp;DATA:</strong></span></h5>
+
+<p><span style="font-size:11px"><strong>Data for states and countries (as shown below) comes from a public service maintained by&nbsp;the&nbsp;Johns Hopkins University Center for Systems Science and Engineering (CSSE).&nbsp;</strong></span><span style="font-size:11px"><strong>The Florida Deparment of Health does not quality control or publish the data. Viewers should understand that methodologies for reporting cases vary across states and countries, and consequently some of the numbers shown here may not reflect the most recent or accurate numbers.&nbsp;&nbsp;</strong></span></p>
+
+<p><span style="font-size:11px"><strong>To see the Johns Hopkins Dashboard and learn about the methods behind their maps,&nbsp;<a href="https://gisanddata.maps.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6">click here</a>.&nbsp;</strong></span></p>
+
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:559.2490445771422px;top:76.27156049939289px;width:165.3754777114289px;height:319.33611308320855px;" id="ember285" class="dock-element invisible ember-view"> <margin-container class="">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember286" class="widget flex-vertical full-height indicator-widget ember-view"><!---->
+<!---->
+<!---->
+
+
+  <div class="flex-justify-center widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden">
+    
+    <div class="flex-vertical flex-fix allow-shrink">
+      
+        <div style="fill:#fff7c5" id="ember456" class="flex-fix allow-shrink indicator-top-text responsive-text flex-vertical ember-view"><svg class="responsive-text-group" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0.3255220651626587 329.0104064941406 80.01301574707031" width="123" height="10">
+  <g class="responsive-text-icon">
+    <!---->
+  </g>
+
+  <g class="responsive-text-label">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -76 395 96" height="80" width="329.1666666666667">
+      <text vector-effect="non-scaling-stroke" style="fill: rgb(0, 92, 230); stroke-width: 2; font-size: 80px; line-height: normal;">USA Cases</text>
+    </svg>
+  </g>
+</svg></div>
+
+        <div style="fill:#fff7c5" id="ember457" class="flex-fix allow-shrink indicator-center-text responsive-text flex-vertical ember-view"><svg class="responsive-text-group" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0.000005534275715035619 -0.16839377582073212 635 161.01036071777344" width="123" height="10">
+  <g class="responsive-text-icon">
+    <!---->
+  </g>
+
+  <g class="responsive-text-label">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -153 770 193" height="160" width="638.3419689119171">
+      <text vector-effect="non-scaling-stroke" style="fill: rgb(0, 92, 230); stroke-width: 2; font-size: 160px; line-height: normal;">1,043,595</text>
+    </svg>
+  </g>
+</svg></div>
+
+<!---->    </div>
+      
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:724.6245222885711px;top:76.27156049939289px;width:165.3754777114289px;height:319.33611308320855px;" id="ember292" class="dock-element invisible ember-view"> <margin-container class="right">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember293" class="widget flex-vertical full-height indicator-widget ember-view"><!---->
+<!---->
+<!---->
+
+
+  <div class="flex-justify-center widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden">
+    
+    <div class="flex-vertical flex-fix allow-shrink">
+      
+        <div style="fill:#fff7c5" id="ember454" class="flex-fix allow-shrink indicator-top-text responsive-text flex-vertical ember-view"><svg class="responsive-text-group" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0.3255218267440796 402.00518798828125 80.01301574707031" width="117" height="10">
+  <g class="responsive-text-icon">
+    <!---->
+  </g>
+
+  <g class="responsive-text-label">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -76 482 96" height="80" width="401.6666666666667">
+      <text vector-effect="non-scaling-stroke" style="fill: rgb(230, 0, 0); stroke-width: 2; font-size: 80px; line-height: normal;">Global Cases</text>
+    </svg>
+  </g>
+</svg></div>
+
+        <div style="fill:#fff7c5" id="ember455" class="flex-fix allow-shrink indicator-center-text responsive-text flex-vertical ember-view"><svg class="responsive-text-group" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0.000005534275715035619 -0.16839377582073212 635 161.01036071777344" width="117" height="10">
+  <g class="responsive-text-icon">
+    <!---->
+  </g>
+
+  <g class="responsive-text-label">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -153 770 193" height="160" width="638.3419689119171">
+      <text vector-effect="non-scaling-stroke" style="fill: rgb(230, 0, 0); stroke-width: 2; font-size: 160px; line-height: normal;">3,224,079</text>
+    </svg>
+  </g>
+</svg></div>
+
+<!---->    </div>
+      
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:559.2490445771422px;top:395.6076735826014px;width:165.3754777114289px;height:385.39232641739903px;" id="ember299" class="dock-element invisible ember-view"> <margin-container class="">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember300" class="widget flex-vertical full-height indicator-widget ember-view"><!---->
+<!---->
+<!---->
+
+
+  <div class="flex-justify-center widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden">
+    
+    <div class="flex-vertical flex-fix allow-shrink">
+      
+        <div style="fill:#fff7c5" id="ember452" class="flex-fix allow-shrink indicator-top-text responsive-text flex-vertical ember-view"><svg class="responsive-text-group" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0.3255208432674408 362.0052185058594 80.01301574707031" width="123" height="27.186351007617734">
+  <g class="responsive-text-icon">
+    <!---->
+  </g>
+
+  <g class="responsive-text-label">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -76 435 96" height="80" width="362.5">
+      <text vector-effect="non-scaling-stroke" style="fill: rgb(0, 92, 230); stroke-width: 2; font-size: 80px; line-height: normal;">USA Deaths</text>
+    </svg>
+  </g>
+</svg></div>
+
+        <div style="fill:#fff7c5" id="ember453" class="flex-fix allow-shrink indicator-center-text responsive-text flex-vertical ember-view"><svg class="responsive-text-group" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -0.1683911383152008 439.0025634765625 161.01036071777344" width="123" height="45.11197887194899">
+  <g class="responsive-text-icon">
+    <!---->
+  </g>
+
+  <g class="responsive-text-label">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -153 532 193" height="160" width="441.0362694300518">
+      <text vector-effect="non-scaling-stroke" style="fill: rgb(0, 112, 255); stroke-width: 2; font-size: 160px; line-height: normal;">61,187</text>
+    </svg>
+  </g>
+</svg></div>
+
+<!---->    </div>
+      
+
+  </div>
+
+
+
+<!---->
+<!----></div>
+
+
+  </full-container>
+</margin-container>
+</div><div style="left:724.6245222885711px;top:395.6076735826014px;width:165.3754777114289px;height:385.39232641739903px;" id="ember306" class="dock-element invisible ember-view"> <margin-container class="right">
+  <full-container>
+                            <div style="color:#fff7c5;" id="ember307" class="widget flex-vertical full-height indicator-widget ember-view"><!---->
+<!---->
+<!---->
+
+
+  <div class="flex-justify-center widget-body flex-fluid full-width flex-vertical overflow-y-hidden overflow-x-hidden">
+    
+    <div class="flex-vertical flex-fix allow-shrink">
+      
+        <div style="fill:#fff7c5" id="ember450" class="flex-fix allow-shrink indicator-top-text responsive-text flex-vertical ember-view"><svg class="responsive-text-group" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0.3255208432674408 435 80.01301574707031" width="117" height="21.52074216645339">
+  <g class="responsive-text-icon">
+    <!---->
+  </g>
+
+  <g class="responsive-text-label">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -76 522 96" height="80" width="435">
+      <text vector-effect="non-scaling-stroke" style="fill: rgb(230, 0, 0); stroke-width: 2; font-size: 80px; line-height: normal;">Global Deaths</text>
+    </svg>
+  </g>
+</svg></div>
+
+        <div style="fill:#fff7c5" id="ember451" class="flex-fix allow-shrink indicator-center-text responsive-text flex-vertical ember-view"><svg class="responsive-text-group" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -0.168392613530159 520 161.01036071777344" width="117" height="36.22733116149902">
+  <g class="responsive-text-icon">
+    <!---->
+  </g>
+
+  <g class="responsive-text-label">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 -153 630 193" height="160" width="522.2797927461139">
+      <text vector-effect="non-scaling-stroke" style="fill: rgb(255, 0, 0); stroke-width: 2; font-size: 160px; line-height: normal;">228,908</text>
+    </svg>
+  </g>
+</svg></div>
+
+<!---->    </div>
+      
+
+  </div>
+
+
+
+<!---->
+  <div class="flex-fix flex-horizontal flex-align-items-center widget-status padding-right-quarter padding-left-quarter">
+<!---->    <div class="flex-fluid"></div>
+      <div class="flex-fix">
+        <i>Last update: a few seconds ago</i>
+      </div>
+  </div>
+</div>
+
+
+  </full-container>
+</margin-container>
+</div>
+      <div style="left:0px;top:781px;width:890px;height:35px" id="ember314" class="dock-tabs ember-view"><margin-container class="left right " style="border-color: #beffe8;">
+  <full-container>
+    <div class="tabs-container">
+<!---->
+<nav id="ember315" class="tab-nav sortable-collection disabled ember-view">  <span style="border-left-color:#beffe8;border-right-color:#beffe8;border-bottom-color:#bee8ff;" id="ember317" class="tab-title is-active ember-view"><a id="ember318" class="ember-view">            <div id="ember319" class="ember-view">Florida Cases
+</div>
+
+</a><!---->
+</span>
+  <span style="border-left-color:#beffe8;border-right-color:#beffe8;border-top-color:#beffe8;color:#858585;" id="ember321" class="tab-title ember-view"><a id="ember322" class="ember-view">            <div id="ember323" class="ember-view">Florida Testing
+</div>
+
+</a><!---->
+</span>
+  <span style="border-left-color:#beffe8;border-right-color:#beffe8;border-top-color:#beffe8;color:#858585;" id="ember325" class="tab-title ember-view"><a id="ember326" class="ember-view">            <div id="ember327" class="ember-view">Cases by County
+</div>
+
+</a><!---->
+</span>
+  <span style="border-left-color:#beffe8;border-right-color:#beffe8;border-top-color:#beffe8;color:#858585;" id="ember329" class="tab-title ember-view"><a id="ember330" class="ember-view">            <div id="ember331" class="ember-view">Cases by Zip Code
+</div>
+
+</a><!---->
+</span>
+  <span style="border-left-color:#beffe8;border-right-color:#beffe8;border-top-color:#beffe8;color:#858585;" id="ember333" class="tab-title ember-view"><a id="ember334" class="ember-view">            <div id="ember335" class="ember-view">Health Metrics
+</div>
+
+</a><!---->
+</span>
+  <span style="border-left-color:#beffe8;border-right-color:#beffe8;border-top-color:#beffe8;color:#858585;" id="ember337" class="tab-title ember-view"><a id="ember338" class="ember-view">            <div id="ember339" class="ember-view">USA and World
+</div>
+
+</a><!---->
+</span>
+</nav>
+    </div>
+  </full-container>
+</margin-container>
+</div>
+
+      <a style="visibility: hidden;" id="ember340" class="dock-expand ember-view">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 16 16" width="12px" height="12px">
+    <path vector-effect="non-scaling-stroke" d="M9.645 5.648L13.244 2h-3.205V1h4.9v5h-1V2.719l-3.584 3.633zm-4 4L2.06 13.281V10h-1v5h4.9v-1H2.756l3.6-3.648zM14 10.04v3.205l-3.648-3.6-.704.711 3.633 3.584H10v1h5v-4.9zM2 2.756l3.648 3.6.704-.711L2.719 2.06H6v-1H1v4.9h1z"></path>
+</svg></a>
+
+        <div style="left:120.8785565377264px;top:532.5729427074414px;height:248.4270572925585px;" id="ember342" class="dock-splitter col group ember-view"><margin-container class="">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:0px;top:273.3735540674355px;width:239.19898444810948px;" id="ember344" class="dock-splitter row group ember-view"><margin-container class="left">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:0px;top:334.30387666941755px;width:239.19898444810948px;" id="ember346" class="dock-splitter row group ember-view"><margin-container class="left">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:0px;top:532.5729427074414px;width:239.19898444810948px;" id="ember348" class="dock-splitter row group ember-view"><margin-container class="left">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:660.6349491929755px;top:80.77783530644723px;width:229.36505080702474px;" id="ember350" class="dock-splitter row group ember-view"><margin-container class="right">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:660.6349491929755px;top:415.19414999648234px;width:229.36505080702474px;" id="ember352" class="dock-splitter row group ember-view"><margin-container class="right">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:239.19898444810948px;top:0px;height:781px;" id="ember354" class="dock-splitter col group ember-view"><margin-container class="top">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:660.6349491929755px;top:0px;height:781px;" id="ember356" class="dock-splitter col group ember-view"><margin-container class="top">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:0px;top:155.58096423699922px;width:200.63669981704012px;" id="ember358" class="dock-splitter row invisible group ember-view"><margin-container class="left">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:0px;top:323.1439838830598px;width:200.63669981704012px;" id="ember360" class="dock-splitter row invisible group ember-view"><margin-container class="left">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:0px;top:479.5095544673128px;width:200.63669981704012px;" id="ember362" class="dock-splitter row invisible group ember-view"><margin-container class="left">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:723.2047960728479px;top:104.64239238382247px;width:166.7952039271523px;" id="ember364" class="dock-splitter row invisible group ember-view"><margin-container class="right">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:200.63669981704012px;top:0px;height:781px;" id="ember366" class="dock-splitter col invisible group ember-view"><margin-container class="top">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:723.2047960728479px;top:0px;height:781px;" id="ember368" class="dock-splitter col invisible group ember-view"><margin-container class="top">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:580.6008693255944px;top:0px;height:369.95933358446626px;" id="ember370" class="dock-splitter col invisible group ember-view"><margin-container class="top">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:427.01679852913423px;top:369.95933358446626px;height:411.04066641553374px;" id="ember372" class="dock-splitter col invisible group ember-view"><margin-container class="">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:234.180622632401px;top:369.95933358446626px;width:473.62220430084113px;" id="ember374" class="dock-splitter row invisible group ember-view"><margin-container class="">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:707.8028269332422px;top:94.37205917605561px;width:182.19717306675744px;" id="ember376" class="dock-splitter row invisible group ember-view"><margin-container class="right">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:707.8028269332422px;top:303.0093237450039px;width:182.19717306675744px;" id="ember378" class="dock-splitter row invisible group ember-view"><margin-container class="right">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:707.8028269332422px;top:455.2594375176924px;width:182.19717306675744px;" id="ember380" class="dock-splitter row invisible group ember-view"><margin-container class="right">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:707.8028269332422px;top:610.833643358595px;width:182.19717306675744px;" id="ember382" class="dock-splitter row invisible group ember-view"><margin-container class="right">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:234.180622632401px;top:0px;height:781px;" id="ember384" class="dock-splitter col invisible group ember-view"><margin-container class="top">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:707.8028269332422px;top:0px;height:781px;" id="ember386" class="dock-splitter col invisible group ember-view"><margin-container class="top">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:734.9218612367167px;top:97.79550357864457px;width:155.07813876328336px;" id="ember388" class="dock-splitter row invisible group ember-view"><margin-container class="right">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:734.9218612367167px;top:0px;height:781px;" id="ember390" class="dock-splitter col invisible group ember-view"><margin-container class="top">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:562.6520009844157px;top:70.40794835793295px;height:344.82388459598207px;" id="ember392" class="dock-splitter col invisible group ember-view"><margin-container class="">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:562.4852507374632px;top:415.231832953915px;height:365.768167046085px;" id="ember394" class="dock-splitter col invisible group ember-view"><margin-container class="">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:234.97050147492627px;top:70.40794835793295px;width:655.0294985250738px;" id="ember396" class="dock-splitter row invisible group ember-view"><margin-container class="right">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:234.97050147492627px;top:415.231832953915px;width:655.0294985250738px;" id="ember398" class="dock-splitter row invisible group ember-view"><margin-container class="right">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:234.97050147492627px;top:0px;height:781px;" id="ember400" class="dock-splitter col invisible group ember-view"><margin-container class="top">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:0px;top:135.3775544673774px;width:559.2490445771422px;" id="ember402" class="dock-splitter row invisible group ember-view"><margin-container class="left">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:0px;top:730.8749835941315px;width:559.2490445771422px;" id="ember404" class="dock-splitter row invisible group ember-view"><margin-container class="left">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:724.6245222885711px;top:76.27156049939289px;height:319.33611308320855px;" id="ember406" class="dock-splitter col invisible group ember-view"><margin-container class="">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:724.6245222885711px;top:395.6076735826014px;height:385.39232641739903px;" id="ember408" class="dock-splitter col invisible group ember-view"><margin-container class="">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:559.2490445771422px;top:76.27156049939289px;width:330.7509554228578px;" id="ember410" class="dock-splitter row invisible group ember-view"><margin-container class="right">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:559.2490445771422px;top:395.6076735826014px;width:330.7509554228578px;" id="ember412" class="dock-splitter row invisible group ember-view"><margin-container class="right">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+        <div style="left:559.2490445771422px;top:0px;height:781px;" id="ember414" class="dock-splitter col invisible group ember-view"><margin-container class="top">
+  <full-container>
+    <div class="separator"></div>
+  </full-container>
+</margin-container>
+</div>
+
+<!---->  </full-container>
+</margin-container>
+</div>            </div>
+          </div>
+
+      </div>
+</div>
+<!---->
+
+</div>
+<!----></body></html>
