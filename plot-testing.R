@@ -102,21 +102,21 @@ ggsave(fs::path("plots", "covid-19-florida-testing.png"), g, width = 6.66, heigh
 # positive count ----------------------------------------------------------
 
 g_tests <-
-  line_list %>% 
+  line_list %>%
   count(day = event_date, name = "positive", .drop = FALSE) %>% 
   complete(day = seq(min(day), max(day), by = "day"), fill = list(positive = 0)) %>% 
   mutate(positive = cumsum(positive)) %>% 
-  filter(day > today() - 45) %>%
+  filter(day > ymd("2020-02-01")) %>%
   arrange(day) %>% 
   ggplot() +
   aes(day, positive) +
   geom_line(color = "#ec4e20") +
-  geom_point(color = "#ec4e20") +
+  geom_point(color = "#ec4e20", size = 0.5) +
   geom_text(
     data = function(d) d %>% filter(day == max(day)),
-    aes(label = positive),
-    hjust = 1.5,
-    vjust = 0.5,
+    aes(label = format(positive, big.mark = ",")),
+    hjust = 0.9,
+    vjust = -1,
     color = "#ec4e20"
   ) +
   labs(
