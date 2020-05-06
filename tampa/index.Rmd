@@ -12,7 +12,9 @@ bulma:
   hero: "link"
   hero_button: ["is-outlined"]
   hero_links:
-    - name: Github
+    - name: All of Florida
+      url: https://pkg.garrickadenbuie.com/covid19-florida
+    - name: Data and Code
       url: https://github.com/gadenbuie/covid19-florida
 output: 
   bulma::bulma_document:
@@ -131,6 +133,8 @@ tampa_test_summary %>%
 
 ## Daily Changes
 
+
+::: {.has-text-centered}
 ```{r daily-changes-in-testing}
 tampa_test_summary %>% 
   select(day = timestamp, county, total = t_total, positive = t_positive, deaths) %>% 
@@ -187,6 +191,6 @@ tampa_test_summary %>%
     panel.grid.minor.y = element_blank()
   )
 ```
-
+:::
 
 [dashboard]: https://fdoh.maps.arcgis.com/apps/opsdashboard/index.html#/8d0de33f260d444c852a615dc7837c86
