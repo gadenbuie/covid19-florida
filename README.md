@@ -1,6 +1,6 @@
 Florida COVID-19 Data
 ================
-2020-05-07 14:43:41
+2020-05-07 19:10:14
 
 <style type="text/css">
 .hero.is-blue {
