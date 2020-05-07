@@ -1,6 +1,17 @@
 ---
 title: "Florida COVID-19 Data"
-output: github_document
+date: '`r strftime(Sys.time(), "%F %T", tz = "America/New_York")`'
+bulma:
+  hero: "blue"
+  hero_button: ["is-outlined"]
+  hero_links:
+    - name: Data and Code
+      url: https://github.com/gadenbuie/covid19-florida
+output: 
+  bulma::bulma_document:
+    toc: true
+    self_contained: true
+    pandoc_args: ["--variable", "no-font-awesome"]
 ---
 
 ```{r include=FALSE}
@@ -9,6 +20,18 @@ library(dplyr)
 library(readr)
 library(lubridate)
 ```
+
+```{css echo=FALSE}
+.hero.is-blue {
+  background-color: #3e78b2;
+  color: white;
+}
+.hero.is-blue .title, .hero.is-blue .subtitle {
+	color: white;
+}
+```
+
+## Today
 
 ```{r}
 source(here::here("R/combine-sources.R"))
@@ -49,11 +72,17 @@ Since Florida DOH only updates once per day at 11am (starting 2020-04-25),
 the daily reported cumulative count used is the last value reported prior to 1pm
 on a given day.
 
+## Confirmed Cases
+
 ![](plots/covid-19-florida-testing.png)
 
 ![](plots/covid-19-florida-total-positive.png)
 
 ![](plots/covid-19-florida-county-top-6.png)
+
+![](plots/covid-19-florida-daily-test-changes.png)
+
+## Daily Testing
 
 ![](plots/covid-19-florida-tests-per-case.png)
 
@@ -63,7 +92,7 @@ on a given day.
 
 ![](plots/covid-19-florida-test-and-case-growth.png)
 
-![](plots/covid-19-florida-daily-test-changes.png)
+## Cases and Deaths by Age
 
 ![](plots/covid-19-florida-age.png)
 

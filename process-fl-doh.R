@@ -266,29 +266,17 @@ if (git2r::in_repository()) {
     
     # > Render README and webpage ----
     res <- callr::r(
+      function(input) purrr:::safely(rmarkdown::render)(input, output_format = rmarkdown::github_document()),
+      args = list(input = "README.Rmd")
+    )
+    if (!is.null(res$error)) message(res$error$message)
+    
+    res <- callr::r(
       function(input) purrr:::safely(rmarkdown::render)(input), 
       args = list(input = "README.Rmd")
     )
     if (!is.null(res$error)) message(res$error$message)
     if (file.exists("README.html")) file.rename("README.html", "index.html")
-    
-    res_index <- callr::r(
-      function(input) {
-        rmd_render <- purrr::partial(
-          rmarkdown::render,
-          output_format = cleanrmd::html_document_clean(self_contained = FALSE, theme = "stylize"),
-          output_file = "index"
-        )
-        purrr:::safely(rmd_render)(input)
-      },
-      args = list(input = "README.Rmd")
-    )
-    if (!is.null(res_index$error)) message(res_index$error$message)
-    if (dir.exists("index_files/cleanrmd-0.0.0.9000/")) {
-      fs::dir_ls("index_files/cleanrmd-0.0.0.9000/", regexp = "css$") %>% 
-        stringr::str_subset("stylize", negate = TRUE) %>% 
-        fs::file_delete()
-    }
     
     callr::r(function() {
       rmarkdown::render("tampa/index.Rmd")
