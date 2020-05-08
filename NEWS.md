@@ -8,6 +8,14 @@
   
 - The URL for the cases by day timeseries API changed, I may have also missed
   an update here.
+  
+# 2020-05-06 -- 2020-05-07
+
+- It appears that there were issues with updates to the dashboard and data on
+  these days. I believe the 11am update on 2020-05-07 was late (updated
+  sometime between 12pm and 7pm). I've corrected the daily counts in the data
+  used in my charts by treating the 2020-05-07 19:00 snapshot as if it happened
+  at 2020-05-07 12:59.
 
 # 2020-04-29
 

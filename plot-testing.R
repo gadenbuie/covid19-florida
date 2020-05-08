@@ -6,12 +6,27 @@ library(ggplot2, warn.conflicts = FALSE)
 library(purrr, warn.conflicts = FALSE)
 source(here::here("R/combine-sources.R"))
 
+fix_late_reporting <- function(x, start, end, adjusted) {
+  dplyr::mutate(
+    x,
+    timestamp = dplyr::if_else(
+      timestamp >= lubridate::ymd_hm(start, truncated = 2) &
+        timestamp <= lubridate::ymd_hm(end, truncated = 2),
+      lubridate::ymd_hm(adjusted, truncated = 2),
+      timestamp
+    )
+  )
+}
+
 line_list <- readr::read_csv("data/covid-19-florida_arcgis_line-list.csv", guess_max = 1e5)
-dash <- readr::read_csv("data/covid-19-florida_arcgis_summary.csv", guess_max = 1e5)
+dash <- readr::read_csv("data/covid-19-florida_arcgis_summary.csv", guess_max = 1e5) %>% 
+  fix_late_reporting("2020-05-07 13", "2020-05-07 23", "2020-05-07 12:59")
 
 # Test summary import -----------------------------------------------------
 
-testing_summary_dash <- read_csv("data/covid-19-florida_dash_summary.csv")
+testing_summary_dash <- read_csv("data/covid-19-florida_dash_summary.csv") %>%
+  mutate_at("timestamp", lubridate::ymd_hms) %>% 
+  fix_late_reporting("2020-05-07 13", "2020-05-07 23", "2020-05-07 12:59")
 
 test_summary <-
   combine_scraped_and_api_data(testing_summary_dash, dash)
@@ -103,7 +118,7 @@ ggsave(fs::path("plots", "covid-19-florida-testing.png"), g, width = 6.66, heigh
 
 g_tests <-
   line_list %>%
-  count(day = event_date, name = "positive", .drop = FALSE) %>% 
+  count(day = case, name = "positive", .drop = FALSE) %>% 
   complete(day = seq(min(day), max(day), by = "day"), fill = list(positive = 0)) %>% 
   mutate(positive = cumsum(positive)) %>% 
   filter(day > ymd("2020-02-01")) %>%
@@ -361,162 +376,163 @@ g_case_heatmap <-
     plot.margin = margin(t = 1, l = 1, r = 2, unit = "lines")
   )
 
-# Age Distribution --------------------------------------------------------
 
-g_age <-
-  line_list %>%
-  rename(sex = gender) %>% 
-  filter(!is.na(age)) %>% 
-  mutate(
-    age = if_else(age > 80, 81, age),
-    age = santoku::chop_width(age, 10, 0, labels = santoku::lbl_dash(), drop = FALSE),
-    age = forcats::fct_recode(age, "85+" = "80 - 90")
-  ) %>% 
-  group_by(age) %>% 
-  count(name = "count") %>% 
-  ggplot() +
-  aes(age, count) %>% 
-  geom_col(fill = "#ec4e20") +
-  geom_text(aes(label = count, x = age, y = count), color = "#ec4e20", size = 4, vjust = -0.5) +
-  scale_y_continuous(expand = c(0, 0, 0, 20)) +
-  labs(
-    x = NULL, y = NULL,
-    caption = glue::glue(
-      "Source: Florida DOH", 
-      "Last update: {max(line_list$timestamp)}",
-      "github.com/gadenbuie/covid19-florida",
-      .sep = "\n"
+if ("age" %in% names(line_list)) {
+  # Age Distribution --------------------------------------------------------
+  g_age <-
+    line_list %>%
+    rename(sex = gender) %>% 
+    filter(!is.na(age)) %>% 
+    mutate(
+      age = if_else(age > 80, 81, age),
+      age = santoku::chop_width(age, 10, 0, labels = santoku::lbl_dash(), drop = FALSE),
+      age = forcats::fct_recode(age, "85+" = "80 - 90")
+    ) %>% 
+    group_by(age) %>% 
+    count(name = "count") %>% 
+    ggplot() +
+    aes(age, count) %>% 
+    geom_col(fill = "#ec4e20") +
+    geom_text(aes(label = count, x = age, y = count), color = "#ec4e20", size = 4, vjust = -0.5) +
+    scale_y_continuous(expand = c(0, 0, 0, 20)) +
+    labs(
+      x = NULL, y = NULL,
+      caption = glue::glue(
+        "Source: Florida DOH", 
+        "Last update: {max(line_list$timestamp)}",
+        "github.com/gadenbuie/covid19-florida",
+        .sep = "\n"
+      )
+    ) +
+    ggtitle(
+      label = "Positive Cases by Age",
+      subtitle = glue::glue(
+        "Florida COVID-19\n{line_list %>% nrow() %>% format(big.mark = ',')} known positive cases"
+      )
+    ) +
+    guides(fill = FALSE) +
+    coord_cartesian(clip = "off") +
+    theme_minimal(base_size = 14) +
+    theme(
+      panel.grid.major.x = element_blank(),
+      panel.grid.minor.x = element_blank(),
+      panel.grid.major.y = element_blank(),
+      panel.grid.minor.y = element_blank(),
+      plot.caption = element_text(color = "#444444", margin = margin(t = 1.5, unit = "lines")),
+      plot.subtitle = element_text(color = "#444444"),
+      axis.text.y = element_blank()
     )
-  ) +
-  ggtitle(
-    label = "Positive Cases by Age",
-    subtitle = glue::glue(
-      "Florida COVID-19\n{line_list %>% nrow() %>% format(big.mark = ',')} known positive cases"
+  
+  ggsave(fs::path("plots", "covid-19-florida-age.png"), g_age, width = 6.66, height = 2, dpi = 150, scale = 1.5)
+  
+  # Deaths by Age -----------------------------------------------------------
+  
+  g_age_deaths <-
+    line_list %>%
+    filter(!is.na(age), died == "Yes") %>% 
+    mutate(
+      age = if_else(age > 85, 86, age),
+      age = santoku::chop_width(age, 5, floor(min(age) / 5) * 5, labels = santoku::lbl_format("%s"), drop = FALSE),
+      age = forcats::fct_recode(age, "85+" = "85")
+    ) %>% 
+    group_by(age) %>% 
+    count(name = "count") %>% 
+    ungroup() %>% 
+    complete(age, fill = list(count = 0)) %>%
+    ggplot() +
+    aes(age, count) +
+    geom_col(fill = "#893168") +
+    geom_text(
+      data = . %>% filter(count > 0),
+      aes(label = count), 
+      color = "#893168",
+      size = 4, 
+      vjust = -0.5
+    )+
+    scale_y_continuous(expand = c(0, 0.1, 0, 0)) +
+    labs(
+      x = NULL, y = NULL,
+      caption = glue::glue(
+        "Source: Florida DOH", 
+        "Last update: {max(line_list$timestamp)}",
+        "github.com/gadenbuie/covid19-florida",
+        .sep = "\n"
+      )
+    ) +
+    ggtitle(
+      label = "Deaths by Age",
+      subtitle = glue::glue(
+        "Florida COVID-19\n{line_list %>% pull(died) %>% `==`('Yes') %>% sum(na.rm = TRUE) %>% format(big.mark = ',')} deaths"
+      )
+    ) +
+    guides(fill = FALSE) +
+    coord_cartesian(clip = "off") +
+    theme_minimal(base_size = 14) +
+    theme(
+      panel.grid.major.x = element_blank(),
+      panel.grid.minor.x = element_blank(),
+      panel.grid.major.y = element_blank(),
+      panel.grid.minor.y = element_blank(),
+      plot.caption = element_text(color = "#444444", margin = margin(t = 1.5, unit = "lines")),
+      plot.subtitle = element_text(color = "#444444"),
+      axis.text.y = element_blank()
     )
-  ) +
-  guides(fill = FALSE) +
-  coord_cartesian(clip = "off") +
-  theme_minimal(base_size = 14) +
-  theme(
-    panel.grid.major.x = element_blank(),
-    panel.grid.minor.x = element_blank(),
-    panel.grid.major.y = element_blank(),
-    panel.grid.minor.y = element_blank(),
-    plot.caption = element_text(color = "#444444", margin = margin(t = 1.5, unit = "lines")),
-    plot.subtitle = element_text(color = "#444444"),
-    axis.text.y = element_blank()
-  )
-
-ggsave(fs::path("plots", "covid-19-florida-age.png"), g_age, width = 6.66, height = 2, dpi = 150, scale = 1.5)
-
-
-# Deaths by Age -----------------------------------------------------------
-
-g_age_deaths <-
-  line_list %>%
-  filter(!is.na(age), died == "Yes") %>% 
-  mutate(
-    age = if_else(age > 85, 86, age),
-    age = santoku::chop_width(age, 5, floor(min(age) / 5) * 5, labels = santoku::lbl_format("%s"), drop = FALSE),
-    age = forcats::fct_recode(age, "85+" = "85")
-  ) %>% 
-  group_by(age) %>% 
-  count(name = "count") %>% 
-  ungroup() %>% 
-  complete(age, fill = list(count = 0)) %>%
-  ggplot() +
-  aes(age, count) +
-  geom_col(fill = "#893168") +
-  geom_text(
-    data = . %>% filter(count > 0),
-    aes(label = count), 
-    color = "#893168",
-    size = 4, 
-    vjust = -0.5
-  )+
-  scale_y_continuous(expand = c(0, 0.1, 0, 0)) +
-  labs(
-    x = NULL, y = NULL,
-    caption = glue::glue(
-      "Source: Florida DOH", 
-      "Last update: {max(line_list$timestamp)}",
-      "github.com/gadenbuie/covid19-florida",
-      .sep = "\n"
+  
+  ggsave(fs::path("plots", "covid-19-florida-age-deaths.png"), g_age_deaths, width = 6.66, height = 2, dpi = 150, scale = 1.5)
+  
+  
+  # Age & Sex Distribution ---------------------------------------------------
+  
+  g_age_sex <-
+    line_list %>%
+    rename(sex = gender) %>% 
+    filter(!is.na(age), sex %in% c("Male", "Female")) %>% 
+    mutate(
+      age = santoku::chop(age, seq(5, 80, 5), labels = santoku::lbl_format("%s")),
+      age = forcats::fct_recode(age, `80+` = "80")
+    ) %>% 
+    group_by(age, sex) %>% 
+    count(name = "count") %>% 
+    group_by(sex) %>% 
+    mutate(total_sex = sum(count)) %>% 
+    ungroup() %>% 
+    mutate(
+      total = sum(count),
+      sex = glue::glue("{sex} ({scales::percent(total_sex / total, accuracy = 1)})")
+    ) %>%
+    ggplot(.) +
+    aes(age, count, fill = sex) +
+    geom_col(color = "white", size = 1) +
+    facet_wrap(~ sex, ncol = 2) +
+    labs(
+      x = NULL, y = NULL,
+      caption = glue::glue(
+        "Source: Florida DOH", 
+        "Last update: {max(line_list$timestamp)}",
+        "github.com/gadenbuie/covid19-florida",
+        .sep = "\n"
+      )
+    ) +
+    ggtitle(
+      label = "Age Distribution by Sex", 
+      subtitle = "Florida COVID-19 Positive Cases"
+    ) +
+    guides(fill = FALSE) +
+    scale_fill_manual(values = c("#440154", "#6baa75")) +
+    scale_y_continuous(expand = expand_scale(add = c(0, 5))) +
+    scale_x_discrete(breaks = c(seq(0, 70, 10), "80+")) +
+    coord_cartesian(clip = "off") +
+    theme_minimal(base_size = 14) +
+    theme(
+      panel.grid.major.x = element_blank(),
+      panel.grid.minor.x = element_blank(),
+      strip.text = element_text(size = 12),
+      panel.grid.minor.y = element_blank(),
+      plot.caption = element_text(color = "#444444", margin = margin(t = 1.5, unit = "lines"))
     )
-  ) +
-  ggtitle(
-    label = "Deaths by Age",
-    subtitle = glue::glue(
-      "Florida COVID-19\n{line_list %>% pull(died) %>% `==`('Yes') %>% sum(na.rm = TRUE) %>% format(big.mark = ',')} deaths"
-    )
-  ) +
-  guides(fill = FALSE) +
-  coord_cartesian(clip = "off") +
-  theme_minimal(base_size = 14) +
-  theme(
-    panel.grid.major.x = element_blank(),
-    panel.grid.minor.x = element_blank(),
-    panel.grid.major.y = element_blank(),
-    panel.grid.minor.y = element_blank(),
-    plot.caption = element_text(color = "#444444", margin = margin(t = 1.5, unit = "lines")),
-    plot.subtitle = element_text(color = "#444444"),
-    axis.text.y = element_blank()
-  )
-
-ggsave(fs::path("plots", "covid-19-florida-age-deaths.png"), g_age_deaths, width = 6.66, height = 2, dpi = 150, scale = 1.5)
-
-# Age & Sex Distribution ---------------------------------------------------
-
-g_age_sex <-
-  line_list %>%
-  rename(sex = gender) %>% 
-  filter(!is.na(age), sex %in% c("Male", "Female")) %>% 
-  mutate(
-    age = santoku::chop(age, seq(5, 80, 5), labels = santoku::lbl_format("%s")),
-    age = forcats::fct_recode(age, `80+` = "80")
-  ) %>% 
-  group_by(age, sex) %>% 
-  count(name = "count") %>% 
-  group_by(sex) %>% 
-  mutate(total_sex = sum(count)) %>% 
-  ungroup() %>% 
-  mutate(
-    total = sum(count),
-    sex = glue::glue("{sex} ({scales::percent(total_sex / total, accuracy = 1)})")
-  ) %>%
-  ggplot(.) +
-  aes(age, count, fill = sex) +
-  geom_col(color = "white", size = 1) +
-  facet_wrap(~ sex, ncol = 2) +
-  labs(
-    x = NULL, y = NULL,
-    caption = glue::glue(
-      "Source: Florida DOH", 
-      "Last update: {max(line_list$timestamp)}",
-      "github.com/gadenbuie/covid19-florida",
-      .sep = "\n"
-    )
-  ) +
-  ggtitle(
-    label = "Age Distribution by Sex", 
-    subtitle = "Florida COVID-19 Positive Cases"
-  ) +
-  guides(fill = FALSE) +
-  scale_fill_manual(values = c("#440154", "#6baa75")) +
-  scale_y_continuous(expand = expand_scale(add = c(0, 5))) +
-  scale_x_discrete(breaks = c(seq(0, 70, 10), "80+")) +
-  coord_cartesian(clip = "off") +
-  theme_minimal(base_size = 14) +
-  theme(
-    panel.grid.major.x = element_blank(),
-    panel.grid.minor.x = element_blank(),
-    strip.text = element_text(size = 12),
-    panel.grid.minor.y = element_blank(),
-    plot.caption = element_text(color = "#444444", margin = margin(t = 1.5, unit = "lines"))
-  )
-
-ggsave(fs::path("plots", "covid-19-florida-age-sex.png"), g_age_sex, width = 6.66, height = 3, dpi = 150, scale = 1.5)
-
+  
+  ggsave(fs::path("plots", "covid-19-florida-age-sex.png"), g_age_sex, width = 6.66, height = 3, dpi = 150, scale = 1.5)
+}
 
 # County Cases Log Scale --------------------------------------------------
 
@@ -533,7 +549,7 @@ county_daily <-
     )
   ) %>% 
   filter(!is.na(county)) %>% 
-  count(county, day = event_date, name = "count") %>% 
+  count(county, day = case, name = "count") %>% 
   mutate(county = recode(county, "Dade" = "Miami-Dade")) %>% 
   complete(county, day, fill = list(count = 0)) %>% 
   group_by(county) %>%
@@ -1001,3 +1017,4 @@ g_growth <-
   )
 
 ggsave(fs::path("plots", "covid-19-florida-test-and-case-growth.png"), g_growth, width = 6, height = 3, dpi = 150, scale = 1.5)
+
