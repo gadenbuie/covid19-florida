@@ -1,3 +1,14 @@
+# 2020-05-08
+
+- The `event_date` column was removed on 2020-05-07 from the line list and
+  as of 2020-05-08 the `age` column is missing for all cases. It's likely that
+  the removal of the `event_date` is related to recent news coverage about
+  early cases of coronavirus, see [issue #17](https://github.com/gadenbuie/covid19-florida/issues/17)
+  for more discussion. I may have missed a day of updates (2020-05-07).
+  
+- The URL for the cases by day timeseries API changed, I may have also missed
+  an update here.
+
 # 2020-04-29
 
 - Added **Health Metrics** data set that was released on 2020-04-28.

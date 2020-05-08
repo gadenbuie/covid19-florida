@@ -1,16 +1,6 @@
 Florida COVID-19 Data
 ================
-2020-05-08 12:10:37
-
-<style type="text/css">
-.hero.is-blue {
-  background-color: #3e78b2;
-  color: white;
-}
-.hero.is-blue .title, .hero.is-blue .subtitle {
-    color: white;
-}
-</style>
+2020-05-08 14:25:15
 
 ## Today
 
@@ -120,3 +110,13 @@ link. I’ve been able to extract most of the data from the PDF tables.
 Individual tables are stored in time stamped folders, using the time
 stamp in the PDF file name. The unified data files are available in
 [data/](data/) and prefixed with `covid-19-florida_pdf_`.
+
+<style type="text/css">
+.hero.is-blue {
+  background-color: #3e78b2;
+  color: white;
+}
+.hero.is-blue .title, .hero.is-blue .subtitle {
+    color: white;
+}
+</style>
