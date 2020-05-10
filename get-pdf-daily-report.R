@@ -24,7 +24,7 @@ pdf_files <-
     fl_disaster %>% xml_nodes("a") %>% xml_attr("href") %>% str_replace("^/", "https://floridadisaster.org/")
   ) %>% 
   str_subset("pdf$") %>% 
-  str_subset("daily-report") %>% 
+  str_subset("daily-report|LTC-Report|LTCF-Deaths|FDC-") %>% 
   unique() %>% 
   .[!duplicated(path_file(.))]
 

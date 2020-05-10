@@ -311,7 +311,7 @@ harmonize_pdf_data <- function() {
 }
 
 process_all_pdfs <- function() {
-  pdf_files <- fs::dir_ls(here::here("pdfs"), regexp = "pdf$")
+  pdf_files <- fs::dir_ls(here::here("pdfs"), regexp = "daily.+pdf$")
   process_and_output_pdf(pdf_files)
   harmonize_pdf_data()
 }
