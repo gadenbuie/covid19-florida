@@ -58,6 +58,8 @@ if (!interactive()) {
 ts_now <- now()
 ts_current <- strftime(ts_now, '%FT%H%M%S', tz = "America/New_York")
 
+msgs <- c()
+
 # Get data from arcgis API--------------------------------------------------
 source("R/arcgis.R")
 arcgis_line_list <- purrr::safely(get_arcgis_line_list)()
@@ -67,6 +69,7 @@ if (is.null(arcgis_line_list$error) && nrow(arcgis_line_list$result)) {
     select(timestamp, everything()) %>% 
     write_csv("data/covid-19-florida_arcgis_line-list.csv")
 } else {
+  msgs <- c(msgs, "Could not download the line list from arcgis api")
   message("Unable to get line list from arcgis api: ", arcgis_line_list$error$message)
 }
 
@@ -77,6 +80,7 @@ if (is.null(arcgis_summary$error) && nrow(arcgis_summary$result)) {
     select(timestamp, everything()) %>% 
     append_csv("data/covid-19-florida_arcgis_summary.csv")
 } else {
+  msgs <- c(msgs, "Unable to get dashboard summary from arcgis api")
   message("Unable to get dashboard summary from arcgis api: ", arcgis_summary$error$message)
 }
 
@@ -87,6 +91,7 @@ if (is.null(arcgis_cases_by_day$error) && nrow(arcgis_cases_by_day$result)) {
     select(timestamp, everything()) %>% 
     append_csv("data/covid-19-florida_arcgis_cases-by-day.csv")
 } else {
+  msgs <- c(msgs, "Unable to get cases by day from arcgis api")
   message("Unable to get cases by day from arcgis api: ", arcgis_cases_by_day$error$message)
 }
 
@@ -113,6 +118,7 @@ if (is.null(arcgis_health_metrics$error) && nrow(arcgis_health_metrics$result)) 
     select(timestamp, everything()) %>% 
     write_csv("data/covid-19-florida_arcgis_health-metrics.csv")
 } else {
+  msgs <- c(msgs, "Unable to get cases by zip summary from arcgis api")
   message("Unable to get cases by zip summary from arcgis api: ", arcgis_health_metrics$error$message)
 }
 
@@ -284,7 +290,7 @@ if (git2r::in_repository()) {
     
     # > Commit Everything ----
     git2r::add(".", ".")
-    git2r::commit(message = glue("[auto update] {ts_current}"))
+    git2r::commit(message = glue("[auto update] {ts_current}\n\n{paste(msgs, collapse = '\n')}"))
     git2r::push(credentials = git2r::cred_ssh_key())
   } else {
     fs::file_delete(unlist(git2r::status()$untracked))

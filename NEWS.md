@@ -1,3 +1,10 @@
+# 2020-05-10
+
+- The line list API was removed on 2020-05-09 from the public FeatureServer but 
+  is still available under a new URL. I've updated my scripts to pull from that 
+  URL and I don't think I've missed any updates.
+  
+
 # 2020-05-08
 
 - The `event_date` column was removed on 2020-05-07 from the line list and
