@@ -1,15 +1,15 @@
 Florida COVID-19 Data
 ================
-2020-05-11 07:06:52
+2020-05-11 12:06:25
 
 ## Today
 
 | When        | Day        | Positive | New Positive Since | Deaths | New Deaths Since | Total   |
 | :---------- | :--------- | :------- | :----------------- | :----- | :--------------- | :------ |
-| Today       | 2020-05-11 | 40,596   | 0                  | 1,791  | 0                | 539,630 |
-| Yesterday   | 2020-05-10 | 40,001   | 595                | 1,785  | 6                | 528,413 |
-| Last Week   | 2020-05-04 | 36,897   | 3,699              | 1,423  | 368              | 444,814 |
-| 2 Weeks Ago | 2020-04-27 | 32,138   | 8,458              | 1,108  | 683              | 357,028 |
+| Today       | 2020-05-11 | 40,982   | 0                  | 1,805  | 0                | 561,741 |
+| Yesterday   | 2020-05-10 | 40,001   | 981                | 1,785  | 20               | 528,413 |
+| Last Week   | 2020-05-04 | 36,897   | 4,085              | 1,423  | 382              | 444,814 |
+| 2 Weeks Ago | 2020-04-27 | 32,138   | 8,844              | 1,108  | 697              | 357,028 |
 
 Parsed from the [Florida’s COVID-19 Data and Surveillance
 Dashboard](https://fdoh.maps.arcgis.com/apps/opsdashboard/index.html#/8d0de33f260d444c852a615dc7837c86).
