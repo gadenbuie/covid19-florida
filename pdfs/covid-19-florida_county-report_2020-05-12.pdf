@@ -49,7 +49,7 @@
 	<meta property="og:description" content="The Florida Department of Health is issuing 2019 Novel Coronavirus (COVID-19) updates every day to keep residents and visitors safe and aware." />
 	<meta property="og:url" content="https://floridahealthcovid19.gov/" />
 	<meta property="og:site_name" content="Florida Department of Health COVID-19 Outbreak" />
-	<meta property="article:modified_time" content="2020-05-11T19:00:54+00:00" />
+	<meta property="article:modified_time" content="2020-05-12T19:55:10+00:00" />
 	<meta property="og:image" content="https://s33330.pcdn.co/wp-content/uploads/2020/03/og-img_v1a.jpg" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
@@ -57,7 +57,7 @@
 	<meta name="twitter:title" content="Florida Department of Health COVID-19 Response" />
 	<meta name="twitter:description" content="The Florida Department of Health is issuing 2019 Novel Coronavirus (COVID-19) updates every day to keep residents and visitors safe and aware." />
 	<meta name="twitter:image" content="https://s33330.pcdn.co/wp-content/uploads/2020/03/og-img_v1a.jpg" />
-	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://floridahealthcovid19.gov/#organization","name":"Florida Department of Health","url":"https://floridahealthcovid19.gov/","sameAs":[],"logo":{"@type":"ImageObject","@id":"https://floridahealthcovid19.gov/#logo","inLanguage":"en-US","url":"https://s33330.pcdn.co/wp-content/uploads/2020/03/og-img_v1a.jpg","width":1200,"height":630,"caption":"Florida Department of Health"},"image":{"@id":"https://floridahealthcovid19.gov/#logo"}},{"@type":"WebSite","@id":"https://floridahealthcovid19.gov/#website","url":"https://floridahealthcovid19.gov/","name":"Florida Department of Health COVID-19 Outbreak","description":"Providing regular updates on the coronavirus outbreak in Florida","publisher":{"@id":"https://floridahealthcovid19.gov/#organization"},"potentialAction":[{"@type":"SearchAction","target":"https://floridahealthcovid19.gov/?s={search_term_string}","query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"WebPage","@id":"https://floridahealthcovid19.gov/#webpage","url":"https://floridahealthcovid19.gov/","name":"Home | Florida Department of Health COVID-19 Outbreak","isPartOf":{"@id":"https://floridahealthcovid19.gov/#website"},"about":{"@id":"https://floridahealthcovid19.gov/#organization"},"datePublished":"2020-03-13T01:04:32+00:00","dateModified":"2020-05-11T19:00:54+00:00","description":"The Florida Department of Health is issuing 2019 Novel Coronavirus (COVID-19) updates every day to keep residents and visitors safe and aware.","inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://floridahealthcovid19.gov/"]}]}]}</script>
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://floridahealthcovid19.gov/#organization","name":"Florida Department of Health","url":"https://floridahealthcovid19.gov/","sameAs":[],"logo":{"@type":"ImageObject","@id":"https://floridahealthcovid19.gov/#logo","inLanguage":"en-US","url":"https://s33330.pcdn.co/wp-content/uploads/2020/03/og-img_v1a.jpg","width":1200,"height":630,"caption":"Florida Department of Health"},"image":{"@id":"https://floridahealthcovid19.gov/#logo"}},{"@type":"WebSite","@id":"https://floridahealthcovid19.gov/#website","url":"https://floridahealthcovid19.gov/","name":"Florida Department of Health COVID-19 Outbreak","description":"Providing regular updates on the coronavirus outbreak in Florida","publisher":{"@id":"https://floridahealthcovid19.gov/#organization"},"potentialAction":[{"@type":"SearchAction","target":"https://floridahealthcovid19.gov/?s={search_term_string}","query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"WebPage","@id":"https://floridahealthcovid19.gov/#webpage","url":"https://floridahealthcovid19.gov/","name":"Home | Florida Department of Health COVID-19 Outbreak","isPartOf":{"@id":"https://floridahealthcovid19.gov/#website"},"about":{"@id":"https://floridahealthcovid19.gov/#organization"},"datePublished":"2020-03-13T01:04:32+00:00","dateModified":"2020-05-12T19:55:10+00:00","description":"The Florida Department of Health is issuing 2019 Novel Coronavirus (COVID-19) updates every day to keep residents and visitors safe and aware.","inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://floridahealthcovid19.gov/"]}]}]}</script>
 	<!-- / Yoast SEO plugin. -->
 
 
@@ -214,7 +214,7 @@ var loadmore_params = {"ajaxurl":"https:\/\/floridahealthcovid19.gov\/wp-admin\/
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" type="text/css" href="https://s33330.pcdn.co/wp-content/themes/wordpress-template/public/build/dist/css/main-dd7f101a0e.css">
+    <link rel="stylesheet" type="text/css" href="https://s33330.pcdn.co/wp-content/themes/wordpress-template/public/build/dist/css/main-88e485a169.css">
 
     <script type="application/javascript">(function(w,d,t,r,u){w[u]=w[u]||[];w[u].push({'projectId':'10000','properties':{'pixelId':'10101640'}});var s=d.createElement(t);s.src=r;s.async=true;s.onload=s.onreadystatechange=function(){var y,rs=this.readyState,c=w[u];if(rs&&rs!="complete"&&rs!="loaded"){return}try{y=YAHOO.ywa.I13N.fireBeacon;w[u]=[];w[u].push=function(p){y([p])};y(c)}catch(e){}};var scr=d.getElementsByTagName(t)[0],par=scr.parentNode;par.insertBefore(s,scr)})(window,document,"script","https://s.yimg.com/wi/ytc.js","dotq");</script>
 
@@ -312,7 +312,7 @@ var loadmore_params = {"ajaxurl":"https:\/\/floridahealthcovid19.gov\/wp-admin\/
 
         <div class="header-bottom__inner">
 
-                      <div class="header-bottom__timestamp">Mon 5/11/2020 10:21:33 a.m. EST</div>
+                      <div class="header-bottom__timestamp">Tuesday, May 12, 2020 12:17 PM</div>
           
           <a href="https://floridahealthcovid19.gov/#latest-stats" class="header-bottom__outbreak-button">
             See latest data <i class="fa fas fa-chevron-right"></i>
@@ -440,7 +440,7 @@ Here’s what you can do right now.</h5>
     <div id="latest-stats" class="row section--wrapper three text-center">
       <div class="col-xs-12">
         <h2>Current Situation in Florida</h2>
-                  <p class="sml">Updated as of Mon 5/11/2020 10:21:33 a.m. EST</p>
+                  <p class="sml">Updated as of Tuesday, May 12, 2020 12:17 PM</p>
               </div>
       <div class="situation__boxes-wrapper">
         <div class="col-xs-12 col-md-12 outer--box outer--box--left">
@@ -519,15 +519,15 @@ Here’s what you can do right now.</h5>
 <table id="tablepress-8" class="tablepress tablepress-id-8">
 <tbody class="row-hover">
 <tr class="row-1 odd">
-	<td class="column-1">Positive</td><td class="column-2">40,982</td>
+	<td class="column-1">Positive</td><td class="column-2">41,923</td>
 </tr>
 <tr class="row-2 even">
-	<td class="column-1">Negative</td><td class="column-2">520,075</td>
+	<td class="column-1">Negative</td><td class="column-2">537,681</td>
 </tr>
 </tbody>
 <tfoot>
 <tr class="row-3 odd">
-	<th class="column-1">Total</th><th class="column-2">561,057</th>
+	<th class="column-1">Total</th><th class="column-2">580,316</th>
 </tr>
 </tfoot>
 </table>
@@ -543,21 +543,21 @@ Here’s what you can do right now.</h5>
 <table id="tablepress-5" class="tablepress tablepress-id-5">
 <tbody class="row-hover">
 <tr class="row-1 odd">
-	<td class="column-1">Traveled</td><td class="column-2">1,878</td>
+	<td class="column-1">Traveled</td><td class="column-2">1,902</td>
 </tr>
 <tr class="row-2 even">
-	<td class="column-1">Contact with confirmed case</td><td class="column-2">16,507</td>
+	<td class="column-1">Contact with confirmed case</td><td class="column-2">17,130</td>
 </tr>
 <tr class="row-3 odd">
-	<td class="column-1">Travel &amp; contact with confirmed case</td><td class="column-2">1,730</td>
+	<td class="column-1">Travel &amp; contact with confirmed case</td><td class="column-2">1,746</td>
 </tr>
 <tr class="row-4 even">
-	<td class="column-1">Under Investigation</td><td class="column-2">16,435</td>
+	<td class="column-1">Under Investigation</td><td class="column-2">20,026</td>
 </tr>
 </tbody>
 <tfoot>
 <tr class="row-5 odd">
-	<th class="column-1">Total</th><th class="column-2">40,982</th>
+	<th class="column-1">Total</th><th class="column-2">41,923</th>
 </tr>
 </tfoot>
 </table>
@@ -573,15 +573,15 @@ Here’s what you can do right now.</h5>
 <table id="tablepress-3" class="tablepress tablepress-id-3">
 <tbody class="row-hover">
 <tr class="row-1 odd">
-	<td class="column-1">Confirmed by DOH</td><td class="column-2">4,102</td>
+	<td class="column-1">Confirmed by DOH</td><td class="column-2">4,134</td>
 </tr>
 <tr class="row-2 even">
-	<td class="column-1">Tested by private labs</td><td class="column-2">35,786</td>
+	<td class="column-1">Tested by private labs</td><td class="column-2">36,670</td>
 </tr>
 </tbody>
 <tfoot>
 <tr class="row-3 odd">
-	<th class="column-1">Total</th><th class="column-2">39,888</th>
+	<th class="column-1">Total</th><th class="column-2">40,804</th>
 </tr>
 </tfoot>
 </table>
@@ -621,41 +621,69 @@ Here’s what you can do right now.</h5>
         </div>
       </div>
 
-                        
-                      <div class="col-xs-12 button--wrap">
-                              <h5>Review case, monitoring and PUI information on the latest COVID-19 Report. </h5>
-                            <a href="https://floridadisaster.org/globalassets/covid19/dailies/covid-19-data---daily-report-2020-05-11-10am.pdf" target="_blank" class="button--orange hidden-xs hidden-sm">See state report</a>
-              <a href="https://floridadisaster.org/globalassets/covid19/dailies/covid-19-data---daily-report-2020-05-11-10am.pdf" target="_blank" class="button--orange hidden-md hidden-lg">See state report</a>
-            </div>
-          
-                  
-                      <div class="col-xs-12 button--wrap">
-                            <a href="https://s33330.pcdn.co/wp-content/uploads/2020/04/County-Reports-2020-05-12-10am.pdf" target="_blank" class="button--orange hidden-xs hidden-sm">See county report</a>
-              <a href="https://s33330.pcdn.co/wp-content/uploads/2020/04/County-Reports-2020-05-12-10am.pdf" target="_blank" class="button--orange hidden-md hidden-lg">See county report</a>
-            </div>
-          
-                  
-                      <div class="col-xs-12 button--wrap">
-                              <h5>Review long-term care facilities with positive COVID-19 cases.</h5>
-                            <a href="https://s33330.pcdn.co/wp-content/uploads/2020/04/COVID-Positive-in-LTC-List-and-Bar-Charts_5-12-20-AM.pdf" target="_blank" class="button--orange hidden-xs hidden-sm">See the report</a>
-              <a href="https://s33330.pcdn.co/wp-content/uploads/2020/04/COVID-Positive-in-LTC-List-and-Bar-Charts_5-12-20-AM.pdf" target="_blank" class="button--orange hidden-md hidden-lg">See the report</a>
-            </div>
-          
-                  
-                      <div class="col-xs-12 button--wrap">
-                              <h5>Review long-term care facility deaths associated with COVID-19. This report is updated on a weekly basis.</h5>
-                            <a href="https://s33330.pcdn.co/wp-content/uploads/2020/05/5-8-LTCF-Deaths-List.pdf" target="_blank" class="button--orange hidden-xs hidden-sm">See the report</a>
-              <a href="https://s33330.pcdn.co/wp-content/uploads/2020/05/5-8-LTCF-Deaths-List.pdf" target="_blank" class="button--orange hidden-md hidden-lg">See the report</a>
-            </div>
-          
-                  
-                      <div class="col-xs-12 button--wrap">
-                              <h5>Review deaths associated with COVID-19 at Florida Department of Corrections facilities.</h5>
-                            <a href="https://s33330.pcdn.co/wp-content/uploads/2020/05/FDC-05062020-1841-LWS.pdf" target="_blank" class="button--orange hidden-xs hidden-sm">See the report</a>
-              <a href="https://s33330.pcdn.co/wp-content/uploads/2020/05/FDC-05062020-1841-LWS.pdf" target="_blank" class="button--orange hidden-md hidden-lg">See the report</a>
-            </div>
-          
-                  </div>
+              <div class="cards col-xs-12">
+                      
+                          <div class="card">
+                <div class="copy">
+                  <h4>Review case, monitoring and PUI information on the latest COVID-19 Report. </h4>
+
+                                  </div>
+
+                                  <div class="buttons">
+                                          <div class="button--wrapper">
+                        <a href="https://floridadisaster.org/globalassets/covid19/dailies/covid-19-data---daily-report-2020-05-12-10am.pdf" target="_blank" class="button--orange hidden-xs hidden-sm">See state report</a>
+                        <a href="https://floridadisaster.org/globalassets/covid19/dailies/covid-19-data---daily-report-2020-05-12-10am.pdf" target="_blank" class="button--orange hidden-md hidden-lg">See state report</a>
+                      </div>
+                                          <div class="button--wrapper">
+                        <a href="https://s33330.pcdn.co/wp-content/uploads/2020/04/County-Reports-2020-05-12-10am.pdf" target="_blank" class="button--orange hidden-xs hidden-sm">See county report</a>
+                        <a href="https://s33330.pcdn.co/wp-content/uploads/2020/04/County-Reports-2020-05-12-10am.pdf" target="_blank" class="button--orange hidden-md hidden-lg">See county report</a>
+                      </div>
+                                      </div>
+                              </div>
+                                  
+                          <div class="card">
+                <div class="copy">
+                  <h4>Review long-term care facilities with positive COVID-19 cases.</h4>
+
+                                  </div>
+
+                                  <div class="buttons">
+                                          <div class="button--wrapper">
+                        <a href="https://s33330.pcdn.co/wp-content/uploads/2020/04/COVID-Positive-in-LTC-List-and-Bar-Charts_5-12-20-AM.pdf" target="_blank" class="button--orange hidden-xs hidden-sm">See the report</a>
+                        <a href="https://s33330.pcdn.co/wp-content/uploads/2020/04/COVID-Positive-in-LTC-List-and-Bar-Charts_5-12-20-AM.pdf" target="_blank" class="button--orange hidden-md hidden-lg">See the report</a>
+                      </div>
+                                      </div>
+                              </div>
+                                  
+                          <div class="card">
+                <div class="copy">
+                  <h4>Review long-term care facility deaths associated with COVID-19. This report is updated on a weekly basis.</h4>
+
+                                  </div>
+
+                                  <div class="buttons">
+                                          <div class="button--wrapper">
+                        <a href="https://s33330.pcdn.co/wp-content/uploads/2020/05/5-8-LTCF-Deaths-List.pdf" target="_blank" class="button--orange hidden-xs hidden-sm">See the report</a>
+                        <a href="https://s33330.pcdn.co/wp-content/uploads/2020/05/5-8-LTCF-Deaths-List.pdf" target="_blank" class="button--orange hidden-md hidden-lg">See the report</a>
+                      </div>
+                                      </div>
+                              </div>
+                                  
+                          <div class="card">
+                <div class="copy">
+                  <h4>Review deaths associated with COVID-19 at Florida Department of Corrections facilities.</h4>
+
+                                  </div>
+
+                                  <div class="buttons">
+                                          <div class="button--wrapper">
+                        <a href="https://s33330.pcdn.co/wp-content/uploads/2020/05/FDC-05062020-1841-LWS.pdf" target="_blank" class="button--orange hidden-xs hidden-sm">See the report</a>
+                        <a href="https://s33330.pcdn.co/wp-content/uploads/2020/05/FDC-05062020-1841-LWS.pdf" target="_blank" class="button--orange hidden-md hidden-lg">See the report</a>
+                      </div>
+                                      </div>
+                              </div>
+                              </div>
+          </div>
 
     <div class="row section--wrapper two orange--banner">
       <div class="col-xs-12">
@@ -779,7 +807,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <script type='text/javascript' src='https://s33330.pcdn.co/wp-content/themes/wordpress-template/dataTables.bootstrap.min.js?ver=5.4.1'></script>
 
 
-    <script data-main="https://s33330.pcdn.co/wp-content/themes/wordpress-template/public/build/dist/js/main-73b6a0eb48.js" src="https://s33330.pcdn.co/wp-content/themes/wordpress-template/public/build/dist/js/require.js"></script>
+    <script data-main="https://s33330.pcdn.co/wp-content/themes/wordpress-template/public/build/dist/js/main-f7df83a0a4.js" src="https://s33330.pcdn.co/wp-content/themes/wordpress-template/public/build/dist/js/require.js"></script>
 
   </body>
   </html>
