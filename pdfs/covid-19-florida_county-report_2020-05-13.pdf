@@ -5,7 +5,7 @@
   
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="https://s33330.pcdn.co/wp-content/themes/wordpress-template/favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="https://floridahealthcovid19.gov/wp-content/themes/wordpress-template/favicon.ico" />
 
   <meta property="og:title" content="Home"/>
 
@@ -49,15 +49,15 @@
 	<meta property="og:description" content="The Florida Department of Health is issuing 2019 Novel Coronavirus (COVID-19) updates every day to keep residents and visitors safe and aware." />
 	<meta property="og:url" content="https://floridahealthcovid19.gov/" />
 	<meta property="og:site_name" content="Florida Department of Health COVID-19 Outbreak" />
-	<meta property="article:modified_time" content="2020-05-13T16:00:17+00:00" />
-	<meta property="og:image" content="https://s33330.pcdn.co/wp-content/uploads/2020/03/og-img_v1a.jpg" />
+	<meta property="article:modified_time" content="2020-05-13T22:34:20+00:00" />
+	<meta property="og:image" content="https://floridahealthcovid19.gov/wp-content/uploads/2020/03/og-img_v1a.jpg" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
 	<meta name="twitter:card" content="summary_large_image" />
 	<meta name="twitter:title" content="Florida Department of Health COVID-19 Response" />
 	<meta name="twitter:description" content="The Florida Department of Health is issuing 2019 Novel Coronavirus (COVID-19) updates every day to keep residents and visitors safe and aware." />
-	<meta name="twitter:image" content="https://s33330.pcdn.co/wp-content/uploads/2020/03/og-img_v1a.jpg" />
-	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://floridahealthcovid19.gov/#organization","name":"Florida Department of Health","url":"https://floridahealthcovid19.gov/","sameAs":[],"logo":{"@type":"ImageObject","@id":"https://floridahealthcovid19.gov/#logo","inLanguage":"en-US","url":"https://s33330.pcdn.co/wp-content/uploads/2020/03/og-img_v1a.jpg","width":1200,"height":630,"caption":"Florida Department of Health"},"image":{"@id":"https://floridahealthcovid19.gov/#logo"}},{"@type":"WebSite","@id":"https://floridahealthcovid19.gov/#website","url":"https://floridahealthcovid19.gov/","name":"Florida Department of Health COVID-19 Outbreak","description":"Providing regular updates on the coronavirus outbreak in Florida","publisher":{"@id":"https://floridahealthcovid19.gov/#organization"},"potentialAction":[{"@type":"SearchAction","target":"https://floridahealthcovid19.gov/?s={search_term_string}","query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"WebPage","@id":"https://floridahealthcovid19.gov/#webpage","url":"https://floridahealthcovid19.gov/","name":"Home | Florida Department of Health COVID-19 Outbreak","isPartOf":{"@id":"https://floridahealthcovid19.gov/#website"},"about":{"@id":"https://floridahealthcovid19.gov/#organization"},"datePublished":"2020-03-13T01:04:32+00:00","dateModified":"2020-05-13T16:00:17+00:00","description":"The Florida Department of Health is issuing 2019 Novel Coronavirus (COVID-19) updates every day to keep residents and visitors safe and aware.","inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://floridahealthcovid19.gov/"]}]}]}</script>
+	<meta name="twitter:image" content="https://floridahealthcovid19.gov/wp-content/uploads/2020/03/og-img_v1a.jpg" />
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://floridahealthcovid19.gov/#organization","name":"Florida Department of Health","url":"https://floridahealthcovid19.gov/","sameAs":[],"logo":{"@type":"ImageObject","@id":"https://floridahealthcovid19.gov/#logo","inLanguage":"en-US","url":"https://floridahealthcovid19.gov/wp-content/uploads/2020/03/og-img_v1a.jpg","width":1200,"height":630,"caption":"Florida Department of Health"},"image":{"@id":"https://floridahealthcovid19.gov/#logo"}},{"@type":"WebSite","@id":"https://floridahealthcovid19.gov/#website","url":"https://floridahealthcovid19.gov/","name":"Florida Department of Health COVID-19 Outbreak","description":"Providing regular updates on the coronavirus outbreak in Florida","publisher":{"@id":"https://floridahealthcovid19.gov/#organization"},"potentialAction":[{"@type":"SearchAction","target":"https://floridahealthcovid19.gov/?s={search_term_string}","query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"WebPage","@id":"https://floridahealthcovid19.gov/#webpage","url":"https://floridahealthcovid19.gov/","name":"Home | Florida Department of Health COVID-19 Outbreak","isPartOf":{"@id":"https://floridahealthcovid19.gov/#website"},"about":{"@id":"https://floridahealthcovid19.gov/#organization"},"datePublished":"2020-03-13T01:04:32+00:00","dateModified":"2020-05-13T22:34:20+00:00","description":"The Florida Department of Health is issuing 2019 Novel Coronavirus (COVID-19) updates every day to keep residents and visitors safe and aware.","inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://floridahealthcovid19.gov/"]}]}]}</script>
 	<!-- / Yoast SEO plugin. -->
 
 
@@ -158,25 +158,25 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		}
 </script>
 <!-- / Google Analytics by MonsterInsights -->
-<link rel='stylesheet' id='wp-block-library-css'  href='https://s33330.pcdn.co/wp-includes/css/dist/block-library/style.min.css?ver=5.4.1' type='text/css' media='all' />
-<link rel='stylesheet' id='data-tb-style-css'  href='https://s33330.pcdn.co/wp-content/themes/wordpress-template/dataTables.bootstrap.min.css?ver=5.4.1' type='text/css' media='all' />
-<link rel='stylesheet' id='tablepress-default-css'  href='https://s33330.pcdn.co/wp-content/plugins/tablepress/css/default.min.css?ver=1.11' type='text/css' media='all' />
+<link rel='stylesheet' id='wp-block-library-css'  href='https://floridahealthcovid19.gov/wp-includes/css/dist/block-library/style.min.css?ver=5.4.1' type='text/css' media='all' />
+<link rel='stylesheet' id='data-tb-style-css'  href='https://floridahealthcovid19.gov/wp-content/themes/wordpress-template/dataTables.bootstrap.min.css?ver=5.4.1' type='text/css' media='all' />
+<link rel='stylesheet' id='tablepress-default-css'  href='https://floridahealthcovid19.gov/wp-content/plugins/tablepress/css/default.min.css?ver=1.11' type='text/css' media='all' />
 <script type='text/javascript'>
 /* <![CDATA[ */
 var monsterinsights_frontend = {"js_events_tracking":"true","download_extensions":"doc,pdf,ppt,zip,xls,docx,pptx,xlsx","inbound_paths":"[{\"path\":\"\\\/go\\\/\",\"label\":\"affiliate\"},{\"path\":\"\\\/recommend\\\/\",\"label\":\"affiliate\"}]","home_url":"https:\/\/floridahealthcovid19.gov","hash_tracking":"true"};
 /* ]]> */
 </script>
-<script type='text/javascript' src='https://s33330.pcdn.co/wp-content/plugins/google-analytics-for-wordpress/assets/js/frontend.min.js?ver=7.10.4'></script>
-<script type='text/javascript' src='https://s33330.pcdn.co/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
-<script type='text/javascript' src='https://s33330.pcdn.co/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
-<script type='text/javascript' src='https://s33330.pcdn.co/wp-content/plugins/duracelltomi-google-tag-manager/js/gtm4wp-form-move-tracker.js?ver=1.11.4'></script>
-<script type='text/javascript' src='https://s33330.pcdn.co/wp-content/plugins/duracelltomi-google-tag-manager/js/analytics-talk-content-tracking.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://floridahealthcovid19.gov/wp-content/plugins/google-analytics-for-wordpress/assets/js/frontend.min.js?ver=7.10.4'></script>
+<script type='text/javascript' src='https://floridahealthcovid19.gov/wp-includes/js/jquery/jquery.js?ver=1.12.4-wp'></script>
+<script type='text/javascript' src='https://floridahealthcovid19.gov/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+<script type='text/javascript' src='https://floridahealthcovid19.gov/wp-content/plugins/duracelltomi-google-tag-manager/js/gtm4wp-form-move-tracker.js?ver=1.11.4'></script>
+<script type='text/javascript' src='https://floridahealthcovid19.gov/wp-content/plugins/duracelltomi-google-tag-manager/js/analytics-talk-content-tracking.js?ver=1.11.4'></script>
 <script type='text/javascript'>
 /* <![CDATA[ */
 var loadmore_params = {"ajaxurl":"https:\/\/floridahealthcovid19.gov\/wp-admin\/admin-ajax.php","posts":"{\"error\":\"\",\"m\":\"\",\"p\":\"40\",\"post_parent\":\"\",\"subpost\":\"\",\"subpost_id\":\"\",\"attachment\":\"\",\"attachment_id\":0,\"name\":\"\",\"pagename\":\"\",\"page_id\":\"40\",\"second\":\"\",\"minute\":\"\",\"hour\":\"\",\"day\":0,\"monthnum\":0,\"year\":0,\"w\":0,\"category_name\":\"\",\"tag\":\"\",\"cat\":\"\",\"tag_id\":\"\",\"author\":\"\",\"author_name\":\"\",\"feed\":\"\",\"tb\":\"\",\"paged\":0,\"meta_key\":\"\",\"meta_value\":\"\",\"preview\":\"\",\"s\":\"\",\"sentence\":\"\",\"title\":\"\",\"fields\":\"\",\"menu_order\":\"\",\"embed\":\"\",\"category__in\":[],\"category__not_in\":[],\"category__and\":[],\"post__in\":[],\"post__not_in\":[],\"post_name__in\":[],\"tag__in\":[],\"tag__not_in\":[],\"tag__and\":[],\"tag_slug__in\":[],\"tag_slug__and\":[],\"post_parent__in\":[],\"post_parent__not_in\":[],\"author__in\":[],\"author__not_in\":[],\"ignore_sticky_posts\":false,\"suppress_filters\":false,\"cache_results\":true,\"update_post_term_cache\":true,\"lazy_load_term_meta\":true,\"update_post_meta_cache\":true,\"post_type\":\"\",\"posts_per_page\":10,\"nopaging\":false,\"comments_per_page\":\"50\",\"no_found_rows\":false,\"order\":\"DESC\"}","current_page":"1","max_page":"0"};
 /* ]]> */
 </script>
-<script type='text/javascript' src='https://s33330.pcdn.co/wp-content/themes/wordpress-template/resources.js?ver=5.4.1'></script>
+<script type='text/javascript' src='https://floridahealthcovid19.gov/wp-content/themes/wordpress-template/resources.js?ver=5.4.1'></script>
 <link rel='https://api.w.org/' href='https://floridahealthcovid19.gov/wp-json/' />
 <link rel='shortlink' href='https://floridahealthcovid19.gov/' />
 <link rel="alternate" type="application/json+oembed" href="https://floridahealthcovid19.gov/wp-json/oembed/1.0/embed?url=https%3A%2F%2Ffloridahealthcovid19.gov%2F" />
@@ -214,7 +214,7 @@ var loadmore_params = {"ajaxurl":"https:\/\/floridahealthcovid19.gov\/wp-admin\/
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <link rel="stylesheet" type="text/css" href="https://s33330.pcdn.co/wp-content/themes/wordpress-template/public/build/dist/css/main-88e485a169.css">
+    <link rel="stylesheet" type="text/css" href="https://floridahealthcovid19.gov/wp-content/themes/wordpress-template/public/build/dist/css/main-88e485a169.css">
 
     <script type="application/javascript">(function(w,d,t,r,u){w[u]=w[u]||[];w[u].push({'projectId':'10000','properties':{'pixelId':'10101640'}});var s=d.createElement(t);s.src=r;s.async=true;s.onload=s.onreadystatechange=function(){var y,rs=this.readyState,c=w[u];if(rs&&rs!="complete"&&rs!="loaded"){return}try{y=YAHOO.ywa.I13N.fireBeacon;w[u]=[];w[u].push=function(p){y([p])};y(c)}catch(e){}};var scr=d.getElementsByTagName(t)[0],par=scr.parentNode;par.insertBefore(s,scr)})(window,document,"script","https://s.yimg.com/wi/ytc.js","dotq");</script>
 
@@ -249,10 +249,10 @@ var loadmore_params = {"ajaxurl":"https:\/\/floridahealthcovid19.gov\/wp-admin\/
       <div class="logo-section">
         <div class="logo-image">
           <a class="navbar-brand" href="https://floridahealthcovid19.gov/" title="Florida Department of Health COVID-19 Outbreak" rel="home">
-            <img src="https://s33330.pcdn.co/wp-content/themes/wordpress-template/assets/images/logo-fdoh.jpg" alt="Florida Department of Health Logo">
+            <img src="https://floridahealthcovid19.gov/wp-content/themes/wordpress-template/assets/images/logo-fdoh.jpg" alt="Florida Department of Health Logo">
           </a>
         </div>
-        <div class="logo-heading"><img src="https://s33330.pcdn.co/wp-content/themes/wordpress-template/assets/images/logo-fl-covid-response.svg" alt="COVID-19 Response Graphic" data-no-retina></div>
+        <div class="logo-heading"><img src="https://floridahealthcovid19.gov/wp-content/themes/wordpress-template/assets/images/logo-fl-covid-response.svg" alt="COVID-19 Response Graphic" data-no-retina></div>
       </div>
 
         <div class="navbar-header header__menu-toggle">
@@ -312,7 +312,7 @@ var loadmore_params = {"ajaxurl":"https:\/\/floridahealthcovid19.gov\/wp-admin\/
 
         <div class="header-bottom__inner">
 
-                      <div class="header-bottom__timestamp">Tuesday, May 12, 2020 12:17 PM</div>
+                      <div class="header-bottom__timestamp">Wed 5/13/2020 01:28 p.m. ET</div>
           
           <a href="https://floridahealthcovid19.gov/#latest-stats" class="header-bottom__outbreak-button">
             See latest data <i class="fa fas fa-chevron-right"></i>
@@ -370,7 +370,7 @@ Here’s what you can do right now.</h5>
       <div class="row priorities--wrapper">
                                           <div class="col-xs-12 col-sm-6 col-md-3 priority text-center">
               <div class="priority--inside">
-                <img src="https://s33330.pcdn.co/wp-content/uploads/2020/03/cdc_covid19_check_tool_icon_v3.svg" class="icon" alt="Review your symptoms icon" title="Review your symptoms image" data-no-retina>
+                <img src="https://floridahealthcovid19.gov/wp-content/uploads/2020/03/cdc_covid19_check_tool_icon_v3.svg" class="icon" alt="Review your symptoms icon" title="Review your symptoms image" data-no-retina>
                 <h5>Review your symptoms</h5>
                 <p><p>Use the CDC&#8217;s self-checker to help make decisions and seek appropriate medical care regarding COVID-19.</p>
 </p>
@@ -379,7 +379,7 @@ Here’s what you can do right now.</h5>
             </div>
                                   <div class="col-xs-12 col-sm-6 col-md-3 priority text-center">
               <div class="priority--inside">
-                <img src="https://s33330.pcdn.co/wp-content/uploads/2020/03/icon-call.svg" class="icon" alt="Call first about testing icon" title="Call first about testing image" data-no-retina>
+                <img src="https://floridahealthcovid19.gov/wp-content/uploads/2020/03/icon-call.svg" class="icon" alt="Call first about testing icon" title="Call first about testing image" data-no-retina>
                 <h5>Call first about testing</h5>
                 <p><p>Call your health care provider or <a href="http://www.floridahealth.gov/all-county-locations.html">County Health Department</a> if you think you need a test. <a href="https://floridadisaster.org/covid19/testing-sites/" rel="noopener" target="_blank">Find testing sites near you.</a></p>
 </p>
@@ -388,7 +388,7 @@ Here’s what you can do right now.</h5>
             </div>
                                   <div class="col-xs-12 col-sm-6 col-md-3 priority text-center">
               <div class="priority--inside">
-                <img src="https://s33330.pcdn.co/wp-content/uploads/2020/03/icon-wash.svg" class="icon" alt="Wash for 20 sec. icon" title="Wash for 20 sec. image" data-no-retina>
+                <img src="https://floridahealthcovid19.gov/wp-content/uploads/2020/03/icon-wash.svg" class="icon" alt="Wash for 20 sec. icon" title="Wash for 20 sec. image" data-no-retina>
                 <h5>Wash for 20 sec.</h5>
                 <p><p>Wash hands often with soap and water – 20 seconds or longer (or use alcohol-based hand sanitizer with at least 60% alcohol).</p>
 </p>
@@ -397,7 +397,7 @@ Here’s what you can do right now.</h5>
             </div>
                                   <div class="col-xs-12 col-sm-6 col-md-3 priority text-center">
               <div class="priority--inside">
-                <img src="https://s33330.pcdn.co/wp-content/uploads/2020/03/icon-distancing.svg" class="icon" alt="Practice social distancing icon" title="Practice social distancing image" data-no-retina>
+                <img src="https://floridahealthcovid19.gov/wp-content/uploads/2020/03/icon-distancing.svg" class="icon" alt="Practice social distancing icon" title="Practice social distancing image" data-no-retina>
                 <h5>Practice social distancing</h5>
                 <p><p><span style="font-weight: 400;">If you are around other people, keep 6 feet between you when possible. Avoid hugs, handshakes, large gatherings and close quarters. </span></p>
 </p>
@@ -432,7 +432,7 @@ Here’s what you can do right now.</h5>
 
     <div class="row section--wrapper two orange--banner">
       <div class="col-xs-12">
-        <img src="https://s33330.pcdn.co/wp-content/themes/wordpress-template/assets/images/icon-247-clock.svg" alt="24/7 clock icon" title="24/7 clock image" data-no-retina>
+        <img src="https://floridahealthcovid19.gov/wp-content/themes/wordpress-template/assets/images/icon-247-clock.svg" alt="24/7 clock icon" title="24/7 clock image" data-no-retina>
         <h5>The COVID-19 Call Center is available 24/7  |  <a href="tel:1 (866) 779-6121">1 (866) 779-6121</a>  |  <a href="mailto:COVID-19@flhealth.gov">COVID-19@flhealth.gov</a></h5>
       </div>
     </div>
@@ -440,7 +440,7 @@ Here’s what you can do right now.</h5>
     <div id="latest-stats" class="row section--wrapper three text-center">
       <div class="col-xs-12">
         <h2>Current Situation in Florida</h2>
-                  <p class="sml">Updated as of Tuesday, May 12, 2020 12:17 PM</p>
+                  <p class="sml">Updated as of Wed 5/13/2020 01:28 p.m. ET</p>
               </div>
       <div class="situation__boxes-wrapper">
         <div class="col-xs-12 col-md-12 outer--box outer--box--left">
@@ -449,61 +449,31 @@ Here’s what you can do right now.</h5>
                   <div class="stat-title">
                     <p>Positive Residents</p>
                   </div>
-                                    <h2 id="resident-cases-stat">
-                    <div class="spinner">
-                      <div class="bounce1"></div>
-                      <div class="bounce2"></div>
-                      <div class="bounce3"></div>
-                    </div>
-                  </h2>
+                                      <h2>41,236</h2>
                                   </div>
                                               <div class="stat--box">
                   <div class="stat-title">
                     <p>Positive Non-Residents</p>
                   </div>
-                                    <h2 id="nonresident-cases-stat">
-                    <div class="spinner">
-                      <div class="bounce1"></div>
-                      <div class="bounce2"></div>
-                      <div class="bounce3"></div>
-                    </div>
-                  </h2>
+                                      <h2>1,166</h2>
                                   </div>
                                               <div class="stat--box">
                   <div class="stat-title">
                     <p>Total Cases</p>
                   </div>
-                                    <h2 id="total-cases-stat">
-                    <div class="spinner">
-                      <div class="bounce1"></div>
-                      <div class="bounce2"></div>
-                      <div class="bounce3"></div>
-                    </div>
-                  </h2>
+                                      <h2>42,402</h2>
                                   </div>
                                               <div class="stat--box">
                   <div class="stat-title">
                     <p>Deaths</p>
                   </div>
-                                    <h2 id="deaths-stat">
-                    <div class="spinner">
-                      <div class="bounce1"></div>
-                      <div class="bounce2"></div>
-                      <div class="bounce3"></div>
-                    </div>
-                  </h2>
+                                      <h2>1,827</h2>
                                   </div>
                                               <div class="stat--box">
                   <div class="stat-title">
                     <p>Positive Residents Out of State</p>
                   </div>
-                                    <h2 id="residents-out-stat">
-                    <div class="spinner">
-                      <div class="bounce1"></div>
-                      <div class="bounce2"></div>
-                      <div class="bounce3"></div>
-                    </div>
-                  </h2>
+                                      <h2>8</h2>
                                   </div>
                                     </div>
         </div>
@@ -519,15 +489,15 @@ Here’s what you can do right now.</h5>
 <table id="tablepress-8" class="tablepress tablepress-id-8">
 <tbody class="row-hover">
 <tr class="row-1 odd">
-	<td class="column-1">Positive</td><td class="column-2">41,923</td>
+	<td class="column-1">Positive</td><td class="column-2">42,402</td>
 </tr>
 <tr class="row-2 even">
-	<td class="column-1">Negative</td><td class="column-2">537,681</td>
+	<td class="column-1">Negative</td><td class="column-2">552,361</td>
 </tr>
 </tbody>
 <tfoot>
 <tr class="row-3 odd">
-	<th class="column-1">Total</th><th class="column-2">580,316</th>
+	<th class="column-1">Total</th><th class="column-2">595,478</th>
 </tr>
 </tfoot>
 </table>
@@ -543,21 +513,21 @@ Here’s what you can do right now.</h5>
 <table id="tablepress-5" class="tablepress tablepress-id-5">
 <tbody class="row-hover">
 <tr class="row-1 odd">
-	<td class="column-1">Traveled</td><td class="column-2">1,902</td>
+	<td class="column-1">Traveled</td><td class="column-2">1,921</td>
 </tr>
 <tr class="row-2 even">
-	<td class="column-1">Contact with confirmed case</td><td class="column-2">17,130</td>
+	<td class="column-1">Contact with confirmed case</td><td class="column-2">17,727</td>
 </tr>
 <tr class="row-3 odd">
-	<td class="column-1">Travel &amp; contact with confirmed case</td><td class="column-2">1,746</td>
+	<td class="column-1">Travel &amp; contact with confirmed case</td><td class="column-2">1,768</td>
 </tr>
 <tr class="row-4 even">
-	<td class="column-1">Under Investigation</td><td class="column-2">20,026</td>
+	<td class="column-1">Under Investigation</td><td class="column-2">19,820</td>
 </tr>
 </tbody>
 <tfoot>
 <tr class="row-5 odd">
-	<th class="column-1">Total</th><th class="column-2">41,923</th>
+	<th class="column-1">Total</th><th class="column-2">42,402</th>
 </tr>
 </tfoot>
 </table>
@@ -573,15 +543,15 @@ Here’s what you can do right now.</h5>
 <table id="tablepress-3" class="tablepress tablepress-id-3">
 <tbody class="row-hover">
 <tr class="row-1 odd">
-	<td class="column-1">Confirmed by DOH</td><td class="column-2">4,134</td>
+	<td class="column-1">Confirmed by DOH</td><td class="column-2">4,158</td>
 </tr>
 <tr class="row-2 even">
-	<td class="column-1">Tested by private labs</td><td class="column-2">36,670</td>
+	<td class="column-1">Tested by private labs</td><td class="column-2">37,078</td>
 </tr>
 </tbody>
 <tfoot>
 <tr class="row-3 odd">
-	<th class="column-1">Total</th><th class="column-2">40,804</th>
+	<th class="column-1">Total</th><th class="column-2">41,236</th>
 </tr>
 </tfoot>
 </table>
@@ -594,7 +564,7 @@ Here’s what you can do right now.</h5>
      <div class="col-xs-12 col-md-4 hidden-xs hidden-sm outer--box outer--box--right">
        <div class="twitter-feed">
          <a class="es5-twitter" href="https://twitter.com/HealthyFla?ref_src=twsrc%5Etfw">
-           <img class="img-responsive" src="https://s33330.pcdn.co/wp-content/themes/wordpress-template/assets/images/twitter-placeholder.png">
+           <img class="img-responsive" src="https://floridahealthcovid19.gov/wp-content/themes/wordpress-template/assets/images/twitter-placeholder.png">
          </a>
          <a href="https://twitter.com/HealthyFla?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @HealthyFla</a>
          <a class="twitter-timeline" href="https://twitter.com/HealthyFla?ref_src=twsrc%5Etfw">Tweets by HealthyFla</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -604,7 +574,7 @@ Here’s what you can do right now.</h5>
       <div class="col-xs-12 col-md-4 hidden-md hidden-lg outer--box">
         <div class="twitter-feed">
           <a class="es5-twitter" href="https://twitter.com/HealthyFla?ref_src=twsrc%5Etfw">
-            <img class="img-responsive" src="https://s33330.pcdn.co/wp-content/themes/wordpress-template/assets/images/twitter-placeholder.png">
+            <img class="img-responsive" src="https://floridahealthcovid19.gov/wp-content/themes/wordpress-template/assets/images/twitter-placeholder.png">
           </a>
           <a href="https://twitter.com/HealthyFla?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @HealthyFla</a>
           <a class="twitter-timeline" href="https://twitter.com/HealthyFla?ref_src=twsrc%5Etfw">Tweets by HealthyFla</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
@@ -631,12 +601,12 @@ Here’s what you can do right now.</h5>
 
                                   <div class="buttons">
                                           <div class="button--wrapper">
-                        <a href="https://floridadisaster.org/globalassets/covid19/dailies/covid-19-data---daily-report-2020-05-12-10am.pdf" target="_blank" class="button--orange hidden-xs hidden-sm">See state report</a>
-                        <a href="https://floridadisaster.org/globalassets/covid19/dailies/covid-19-data---daily-report-2020-05-12-10am.pdf" target="_blank" class="button--orange hidden-md hidden-lg">See state report</a>
+                        <a href="https://floridadisaster.org/globalassets/covid19/dailies/covid-19-data---daily-report-2020-05-13-10am.pdf" target="_blank" class="button--orange hidden-xs hidden-sm">See state report</a>
+                        <a href="https://floridadisaster.org/globalassets/covid19/dailies/covid-19-data---daily-report-2020-05-13-10am.pdf" target="_blank" class="button--orange hidden-md hidden-lg">See state report</a>
                       </div>
                                           <div class="button--wrapper">
-                        <a href="https://floridahealthcovid19.gov/archive-county-reports/" target="_blank" class="button--orange hidden-xs hidden-sm">See county report</a>
-                        <a href="https://floridahealthcovid19.gov/archive-county-reports/" target="_blank" class="button--orange hidden-md hidden-lg">See county report</a>
+                        <a href="http://ww11.doh.state.fl.us/comm/_partners/action/report_archive/fdc_death/fdc_death_20200512.pdf" target="_blank" class="button--orange hidden-xs hidden-sm">See county report</a>
+                        <a href="http://ww11.doh.state.fl.us/comm/_partners/action/report_archive/fdc_death/fdc_death_20200512.pdf" target="_blank" class="button--orange hidden-md hidden-lg">See county report</a>
                       </div>
                                       </div>
                               </div>
@@ -649,8 +619,8 @@ Here’s what you can do right now.</h5>
 
                                   <div class="buttons">
                                           <div class="button--wrapper">
-                        <a href="https://s33330.pcdn.co/wp-content/uploads/report_archive/ltcf/ltcf_20200513.pdf" target="_blank" class="button--orange hidden-xs hidden-sm">See the report</a>
-                        <a href="https://s33330.pcdn.co/wp-content/uploads/report_archive/ltcf/ltcf_20200513.pdf" target="_blank" class="button--orange hidden-md hidden-lg">See the report</a>
+                        <a href="http://ww11.doh.state.fl.us/comm/_partners/action/report_archive/ltcf/ltcf_20200513.pdf" target="_blank" class="button--orange hidden-xs hidden-sm">See the report</a>
+                        <a href="http://ww11.doh.state.fl.us/comm/_partners/action/report_archive/ltcf/ltcf_20200513.pdf" target="_blank" class="button--orange hidden-md hidden-lg">See the report</a>
                       </div>
                                       </div>
                               </div>
@@ -663,8 +633,8 @@ Here’s what you can do right now.</h5>
 
                                   <div class="buttons">
                                           <div class="button--wrapper">
-                        <a href="https://s33330.pcdn.co/wp-content/uploads/report_archive/ltcf_death/ltcf_deaths_20200508.pdf" target="_blank" class="button--orange hidden-xs hidden-sm">See the report</a>
-                        <a href="https://s33330.pcdn.co/wp-content/uploads/report_archive/ltcf_death/ltcf_deaths_20200508.pdf" target="_blank" class="button--orange hidden-md hidden-lg">See the report</a>
+                        <a href="http://ww11.doh.state.fl.us/comm/_partners/action/report_archive/ltcf_death/ltcf_deaths_20200508.pdf" target="_blank" class="button--orange hidden-xs hidden-sm">See the report</a>
+                        <a href="http://ww11.doh.state.fl.us/comm/_partners/action/report_archive/ltcf_death/ltcf_deaths_20200508.pdf" target="_blank" class="button--orange hidden-md hidden-lg">See the report</a>
                       </div>
                                       </div>
                               </div>
@@ -677,8 +647,8 @@ Here’s what you can do right now.</h5>
 
                                   <div class="buttons">
                                           <div class="button--wrapper">
-                        <a href="https://s33330.pcdn.co/wp-content/uploads/report_archive/fdc_death/fdc_20200506_1841.pdf" target="_blank" class="button--orange hidden-xs hidden-sm">See the report</a>
-                        <a href="https://s33330.pcdn.co/wp-content/uploads/report_archive/fdc_death/fdc_20200506_1841.pdf" target="_blank" class="button--orange hidden-md hidden-lg">See the report</a>
+                        <a href="http://ww11.doh.state.fl.us/comm/_partners/action/report_archive/fdc_death/fdc_20200506_1841.pdf" target="_blank" class="button--orange hidden-xs hidden-sm">See the report</a>
+                        <a href="http://ww11.doh.state.fl.us/comm/_partners/action/report_archive/fdc_death/fdc_20200506_1841.pdf" target="_blank" class="button--orange hidden-md hidden-lg">See the report</a>
                       </div>
                                       </div>
                               </div>
@@ -687,7 +657,7 @@ Here’s what you can do right now.</h5>
 
     <div class="row section--wrapper two orange--banner">
       <div class="col-xs-12">
-        <img src="https://s33330.pcdn.co/wp-content/themes/wordpress-template/assets/images/icon-247-clock.svg" alt="24/7 clock icon" title="24/7 clock image" data-no-retina>
+        <img src="https://floridahealthcovid19.gov/wp-content/themes/wordpress-template/assets/images/icon-247-clock.svg" alt="24/7 clock icon" title="24/7 clock image" data-no-retina>
         <h5>The COVID-19 Call Center is available 24/7  |  <a href="tel:1 (866) 779-6121">1 (866) 779-6121</a>  |  <a href="mailto:COVID-19@flhealth.gov">COVID-19@flhealth.gov</a></h5>
       </div>
     </div>
@@ -695,55 +665,55 @@ Here’s what you can do right now.</h5>
     <div class="row section--wrapper four">
                                   <div class="col-xs-12 col-sm-6 col-md-3 audience text-center">
             <a class="audience--inside" href="mental-health" >
-              <img src="https://s33330.pcdn.co/wp-content/uploads/2020/04/icon-mental-health.svg" class="icon"  alt="Mental Health icon" title="Mental Health image" data-no-retina>
+              <img src="https://floridahealthcovid19.gov/wp-content/uploads/2020/04/icon-mental-health.svg" class="icon"  alt="Mental Health icon" title="Mental Health image" data-no-retina>
               <h5>Mental Health</h5>
             </a>
           </div>
                             <div class="col-xs-12 col-sm-6 col-md-3 audience text-center">
             <a class="audience--inside" href="/travelers" >
-              <img src="https://s33330.pcdn.co/wp-content/uploads/2020/04/icon-travlers.svg" class="icon"  alt="Travelers icon" title="Travelers image" data-no-retina>
+              <img src="https://floridahealthcovid19.gov/wp-content/uploads/2020/04/icon-travlers.svg" class="icon"  alt="Travelers icon" title="Travelers image" data-no-retina>
               <h5>Travelers</h5>
             </a>
           </div>
                             <div class="col-xs-12 col-sm-6 col-md-3 audience text-center">
             <a class="audience--inside" href="/schools" >
-              <img src="https://s33330.pcdn.co/wp-content/uploads/2020/04/icon-schools.svg" class="icon"  alt="Schools & Childcare icon" title="Schools & Childcare image" data-no-retina>
+              <img src="https://floridahealthcovid19.gov/wp-content/uploads/2020/04/icon-schools.svg" class="icon"  alt="Schools & Childcare icon" title="Schools & Childcare image" data-no-retina>
               <h5>Schools & Childcare</h5>
             </a>
           </div>
                             <div class="col-xs-12 col-sm-6 col-md-3 audience text-center">
             <a class="audience--inside" href="/businesses" >
-              <img src="https://s33330.pcdn.co/wp-content/uploads/2020/03/icon-business.svg" class="icon"  alt="Businesses icon" title="Businesses image" data-no-retina>
+              <img src="https://floridahealthcovid19.gov/wp-content/uploads/2020/03/icon-business.svg" class="icon"  alt="Businesses icon" title="Businesses image" data-no-retina>
               <h5>Businesses</h5>
             </a>
           </div>
                             <div class="col-xs-12 col-sm-6 col-md-3 audience text-center">
             <a class="audience--inside" href="/community-events" >
-              <img src="https://s33330.pcdn.co/wp-content/uploads/2020/04/icon-community-events.svg" class="icon"  alt="Community Events icon" title="Community Events image" data-no-retina>
+              <img src="https://floridahealthcovid19.gov/wp-content/uploads/2020/04/icon-community-events.svg" class="icon"  alt="Community Events icon" title="Community Events image" data-no-retina>
               <h5>Community Events</h5>
             </a>
           </div>
                             <div class="col-xs-12 col-sm-6 col-md-3 audience text-center">
             <a class="audience--inside" href="/high-risk-populations" >
-              <img src="https://s33330.pcdn.co/wp-content/uploads/2020/04/icon-high-risk-pop.svg" class="icon"  alt="High-Risk Populations icon" title="High-Risk Populations image" data-no-retina>
+              <img src="https://floridahealthcovid19.gov/wp-content/uploads/2020/04/icon-high-risk-pop.svg" class="icon"  alt="High-Risk Populations icon" title="High-Risk Populations image" data-no-retina>
               <h5>High-Risk Populations</h5>
             </a>
           </div>
                             <div class="col-xs-12 col-sm-6 col-md-3 audience text-center">
             <a class="audience--inside" href="/nursing-homes" >
-              <img src="https://s33330.pcdn.co/wp-content/uploads/2020/03/icon-nursing-homes.svg" class="icon"  alt="Nursing Homes icon" title="Nursing Homes image" data-no-retina>
+              <img src="https://floridahealthcovid19.gov/wp-content/uploads/2020/03/icon-nursing-homes.svg" class="icon"  alt="Nursing Homes icon" title="Nursing Homes image" data-no-retina>
               <h5>Nursing Homes</h5>
             </a>
           </div>
                             <div class="col-xs-12 col-sm-6 col-md-3 audience text-center">
             <a class="audience--inside" href="/county-health-departments" >
-              <img src="https://s33330.pcdn.co/wp-content/uploads/2020/03/icon-county-health-dept.svg" class="icon"  alt="County Health Departments icon" title="County Health Departments image" data-no-retina>
+              <img src="https://floridahealthcovid19.gov/wp-content/uploads/2020/03/icon-county-health-dept.svg" class="icon"  alt="County Health Departments icon" title="County Health Departments image" data-no-retina>
               <h5>County Health Departments</h5>
             </a>
           </div>
                             <div class="col-xs-12 col-sm-6 col-md-3 audience text-center">
             <a class="audience--inside" href="/health-care-providers" >
-              <img src="https://s33330.pcdn.co/wp-content/uploads/2020/03/icon-health-care.svg" class="icon"  alt="Health Care Providers icon" title="Health Care Providers image" data-no-retina>
+              <img src="https://floridahealthcovid19.gov/wp-content/uploads/2020/03/icon-health-care.svg" class="icon"  alt="Health Care Providers icon" title="Health Care Providers image" data-no-retina>
               <h5>Health Care Providers</h5>
             </a>
           </div>
@@ -767,7 +737,7 @@ Here’s what you can do right now.</h5>
     <div class="row">
       <div class="col-xs-12 footer__inner">
         <a href="http://www.floridahealth.gov/" title="Florida Department of Health" target="_blank">
-          <img class="footer__logo" src="https://s33330.pcdn.co/wp-content/themes/wordpress-template/assets/images/logo-fdoh.jpg" alt="Florida Department of Health Logo">
+          <img class="footer__logo" src="https://floridahealthcovid19.gov/wp-content/themes/wordpress-template/assets/images/logo-fdoh.jpg" alt="Florida Department of Health Logo">
         </a>
         <div class="footer__nav">
           <a href="/public-services" class="footer__link">Public Services</a>
@@ -803,11 +773,11 @@ Here’s what you can do right now.</h5>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M8XDTMR"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) --><script type='text/javascript' src='https://s33330.pcdn.co/wp-content/themes/wordpress-template/jquery.dataTables.min.js?ver=5.4.1'></script>
-<script type='text/javascript' src='https://s33330.pcdn.co/wp-content/themes/wordpress-template/dataTables.bootstrap.min.js?ver=5.4.1'></script>
+<!-- End Google Tag Manager (noscript) --><script type='text/javascript' src='https://floridahealthcovid19.gov/wp-content/themes/wordpress-template/jquery.dataTables.min.js?ver=5.4.1'></script>
+<script type='text/javascript' src='https://floridahealthcovid19.gov/wp-content/themes/wordpress-template/dataTables.bootstrap.min.js?ver=5.4.1'></script>
 
 
-    <script data-main="https://s33330.pcdn.co/wp-content/themes/wordpress-template/public/build/dist/js/main-f7df83a0a4.js" src="https://s33330.pcdn.co/wp-content/themes/wordpress-template/public/build/dist/js/require.js"></script>
+    <script data-main="https://floridahealthcovid19.gov/wp-content/themes/wordpress-template/public/build/dist/js/main-f7df83a0a4.js" src="https://floridahealthcovid19.gov/wp-content/themes/wordpress-template/public/build/dist/js/require.js"></script>
 
   </body>
   </html>
