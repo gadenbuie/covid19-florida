@@ -49,7 +49,7 @@
 	<meta property="og:description" content="The Florida Department of Health is issuing 2019 Novel Coronavirus (COVID-19) updates every day to keep residents and visitors safe and aware." />
 	<meta property="og:url" content="https://floridahealthcovid19.gov/" />
 	<meta property="og:site_name" content="Florida Department of Health COVID-19 Outbreak" />
-	<meta property="article:modified_time" content="2020-05-14T15:30:17+00:00" />
+	<meta property="article:modified_time" content="2020-05-14T18:31:34+00:00" />
 	<meta property="og:image" content="https://floridahealthcovid19.gov/wp-content/uploads/2020/03/og-img_v1a.jpg" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
@@ -57,7 +57,7 @@
 	<meta name="twitter:title" content="Florida Department of Health COVID-19 Response" />
 	<meta name="twitter:description" content="The Florida Department of Health is issuing 2019 Novel Coronavirus (COVID-19) updates every day to keep residents and visitors safe and aware." />
 	<meta name="twitter:image" content="https://floridahealthcovid19.gov/wp-content/uploads/2020/03/og-img_v1a.jpg" />
-	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://floridahealthcovid19.gov/#organization","name":"Florida Department of Health","url":"https://floridahealthcovid19.gov/","sameAs":[],"logo":{"@type":"ImageObject","@id":"https://floridahealthcovid19.gov/#logo","inLanguage":"en-US","url":"https://floridahealthcovid19.gov/wp-content/uploads/2020/03/og-img_v1a.jpg","width":1200,"height":630,"caption":"Florida Department of Health"},"image":{"@id":"https://floridahealthcovid19.gov/#logo"}},{"@type":"WebSite","@id":"https://floridahealthcovid19.gov/#website","url":"https://floridahealthcovid19.gov/","name":"Florida Department of Health COVID-19 Outbreak","description":"Providing regular updates on the coronavirus outbreak in Florida","publisher":{"@id":"https://floridahealthcovid19.gov/#organization"},"potentialAction":[{"@type":"SearchAction","target":"https://floridahealthcovid19.gov/?s={search_term_string}","query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"WebPage","@id":"https://floridahealthcovid19.gov/#webpage","url":"https://floridahealthcovid19.gov/","name":"Home | Florida Department of Health COVID-19 Outbreak","isPartOf":{"@id":"https://floridahealthcovid19.gov/#website"},"about":{"@id":"https://floridahealthcovid19.gov/#organization"},"datePublished":"2020-03-13T01:04:32+00:00","dateModified":"2020-05-14T15:30:17+00:00","description":"The Florida Department of Health is issuing 2019 Novel Coronavirus (COVID-19) updates every day to keep residents and visitors safe and aware.","inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://floridahealthcovid19.gov/"]}]}]}</script>
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://floridahealthcovid19.gov/#organization","name":"Florida Department of Health","url":"https://floridahealthcovid19.gov/","sameAs":[],"logo":{"@type":"ImageObject","@id":"https://floridahealthcovid19.gov/#logo","inLanguage":"en-US","url":"https://floridahealthcovid19.gov/wp-content/uploads/2020/03/og-img_v1a.jpg","width":1200,"height":630,"caption":"Florida Department of Health"},"image":{"@id":"https://floridahealthcovid19.gov/#logo"}},{"@type":"WebSite","@id":"https://floridahealthcovid19.gov/#website","url":"https://floridahealthcovid19.gov/","name":"Florida Department of Health COVID-19 Outbreak","description":"Providing regular updates on the coronavirus outbreak in Florida","publisher":{"@id":"https://floridahealthcovid19.gov/#organization"},"potentialAction":[{"@type":"SearchAction","target":"https://floridahealthcovid19.gov/?s={search_term_string}","query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"WebPage","@id":"https://floridahealthcovid19.gov/#webpage","url":"https://floridahealthcovid19.gov/","name":"Home | Florida Department of Health COVID-19 Outbreak","isPartOf":{"@id":"https://floridahealthcovid19.gov/#website"},"about":{"@id":"https://floridahealthcovid19.gov/#organization"},"datePublished":"2020-03-13T01:04:32+00:00","dateModified":"2020-05-14T18:31:34+00:00","description":"The Florida Department of Health is issuing 2019 Novel Coronavirus (COVID-19) updates every day to keep residents and visitors safe and aware.","inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://floridahealthcovid19.gov/"]}]}]}</script>
 	<!-- / Yoast SEO plugin. -->
 
 
@@ -312,7 +312,7 @@ var loadmore_params = {"ajaxurl":"https:\/\/floridahealthcovid19.gov\/wp-admin\/
 
         <div class="header-bottom__inner">
 
-                      <div class="header-bottom__timestamp">Wed 5/13/2020 01:28 p.m. ET</div>
+                      <div class="header-bottom__timestamp">Thu 5/14/2020 12:33 p.m. ET</div>
           
           <a href="https://floridahealthcovid19.gov/#latest-stats" class="header-bottom__outbreak-button">
             See latest data <i class="fa fas fa-chevron-right"></i>
@@ -440,7 +440,7 @@ Here’s what you can do right now.</h5>
     <div id="latest-stats" class="row section--wrapper three text-center">
       <div class="col-xs-12">
         <h2>Current Situation in Florida</h2>
-                  <p class="sml">Updated as of Wed 5/13/2020 01:28 p.m. ET</p>
+                  <p class="sml">Updated as of Thu 5/14/2020 12:33 p.m. ET</p>
               </div>
       <div class="situation__boxes-wrapper">
         <div class="col-xs-12 col-md-12 outer--box outer--box--left">
@@ -449,25 +449,25 @@ Here’s what you can do right now.</h5>
                   <div class="stat-title">
                     <p>Positive Residents</p>
                   </div>
-                                      <h2>41,236</h2>
+                                      <h2>42,038</h2>
                                   </div>
                                               <div class="stat--box">
                   <div class="stat-title">
                     <p>Positive Non-Residents</p>
                   </div>
-                                      <h2>1,166</h2>
+                                      <h2>1,172</h2>
                                   </div>
                                               <div class="stat--box">
                   <div class="stat-title">
                     <p>Total Cases</p>
                   </div>
-                                      <h2>42,402</h2>
+                                      <h2>43,210</h2>
                                   </div>
                                               <div class="stat--box">
                   <div class="stat-title">
                     <p>Deaths</p>
                   </div>
-                                      <h2>1,827</h2>
+                                      <h2>1,875</h2>
                                   </div>
                                               <div class="stat--box">
                   <div class="stat-title">
@@ -489,15 +489,15 @@ Here’s what you can do right now.</h5>
 <table id="tablepress-8" class="tablepress tablepress-id-8">
 <tbody class="row-hover">
 <tr class="row-1 odd">
-	<td class="column-1">Positive</td><td class="column-2">42,402</td>
+	<td class="column-1">Positive</td><td class="column-2">43,210</td>
 </tr>
 <tr class="row-2 even">
-	<td class="column-1">Negative</td><td class="column-2">552,361</td>
+	<td class="column-1">Negative</td><td class="column-2">565,627</td>
 </tr>
 </tbody>
 <tfoot>
 <tr class="row-3 odd">
-	<th class="column-1">Total</th><th class="column-2">595,478</th>
+	<th class="column-1">Total</th><th class="column-2">609,574</th>
 </tr>
 </tfoot>
 </table>
@@ -513,21 +513,21 @@ Here’s what you can do right now.</h5>
 <table id="tablepress-5" class="tablepress tablepress-id-5">
 <tbody class="row-hover">
 <tr class="row-1 odd">
-	<td class="column-1">Traveled</td><td class="column-2">1,921</td>
+	<td class="column-1">Traveled</td><td class="column-2">1,929</td>
 </tr>
 <tr class="row-2 even">
-	<td class="column-1">Contact with confirmed case</td><td class="column-2">17,727</td>
+	<td class="column-1">Contact with confirmed case</td><td class="column-2">18,236</td>
 </tr>
 <tr class="row-3 odd">
-	<td class="column-1">Travel &amp; contact with confirmed case</td><td class="column-2">1,768</td>
+	<td class="column-1">Travel &amp; contact with confirmed case</td><td class="column-2">1,787</td>
 </tr>
 <tr class="row-4 even">
-	<td class="column-1">Under Investigation</td><td class="column-2">19,820</td>
+	<td class="column-1">Under Investigation</td><td class="column-2">20,086</td>
 </tr>
 </tbody>
 <tfoot>
 <tr class="row-5 odd">
-	<th class="column-1">Total</th><th class="column-2">42,402</th>
+	<th class="column-1">Total</th><th class="column-2">43,210</th>
 </tr>
 </tfoot>
 </table>
@@ -543,15 +543,15 @@ Here’s what you can do right now.</h5>
 <table id="tablepress-3" class="tablepress tablepress-id-3">
 <tbody class="row-hover">
 <tr class="row-1 odd">
-	<td class="column-1">Confirmed by DOH</td><td class="column-2">4,158</td>
+	<td class="column-1">Confirmed by DOH</td><td class="column-2">4,262</td>
 </tr>
 <tr class="row-2 even">
-	<td class="column-1">Tested by private labs</td><td class="column-2">37,078</td>
+	<td class="column-1">Tested by private labs</td><td class="column-2">37,776</td>
 </tr>
 </tbody>
 <tfoot>
 <tr class="row-3 odd">
-	<th class="column-1">Total</th><th class="column-2">41,236</th>
+	<th class="column-1">Total</th><th class="column-2">42,038</th>
 </tr>
 </tfoot>
 </table>
@@ -601,8 +601,8 @@ Here’s what you can do right now.</h5>
 
                                   <div class="buttons">
                                           <div class="button--wrapper">
-                        <a href="https://floridadisaster.org/globalassets/covid19/dailies/covid-19-data---daily-report-2020-05-13-10am.pdf" target="_blank" class="button--orange hidden-xs hidden-sm">See state report</a>
-                        <a href="https://floridadisaster.org/globalassets/covid19/dailies/covid-19-data---daily-report-2020-05-13-10am.pdf" target="_blank" class="button--orange hidden-md hidden-lg">See state report</a>
+                        <a href="https://floridadisaster.org/globalassets/covid19/dailies/covid-19-data---daily-report-2020-05-14-10am.pdf" target="_blank" class="button--orange hidden-xs hidden-sm">See state report</a>
+                        <a href="https://floridadisaster.org/globalassets/covid19/dailies/covid-19-data---daily-report-2020-05-14-10am.pdf" target="_blank" class="button--orange hidden-md hidden-lg">See state report</a>
                       </div>
                                           <div class="button--wrapper">
                         <a href="http://ww11.doh.state.fl.us/comm/_partners/action/report_archive/county/county_reports_20200514.pdf" target="_blank" class="button--orange hidden-xs hidden-sm">See county report</a>
@@ -619,8 +619,8 @@ Here’s what you can do right now.</h5>
 
                                   <div class="buttons">
                                           <div class="button--wrapper">
-                        <a href="http://ww11.doh.state.fl.us/comm/_partners/action/report_archive/ltcf/ltcf_20200513.pdf" target="_blank" class="button--orange hidden-xs hidden-sm">See the report</a>
-                        <a href="http://ww11.doh.state.fl.us/comm/_partners/action/report_archive/ltcf/ltcf_20200513.pdf" target="_blank" class="button--orange hidden-md hidden-lg">See the report</a>
+                        <a href="http://ww11.doh.state.fl.us/comm/_partners/action/report_archive/ltcf/ltcf_20200514.pdf" target="_blank" class="button--orange hidden-xs hidden-sm">See the report</a>
+                        <a href="http://ww11.doh.state.fl.us/comm/_partners/action/report_archive/ltcf/ltcf_20200514.pdf" target="_blank" class="button--orange hidden-md hidden-lg">See the report</a>
                       </div>
                                       </div>
                               </div>
