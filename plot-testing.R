@@ -716,6 +716,11 @@ library(patchwork)
 test_per_case <-
   dash %>%
   select(timestamp, county_1, t_positive, t_total) %>%
+  mutate(t_total = if_else(
+    timestamp < ymd_hm("2020-05-16 08:00") & timestamp > ymd_hm("2020-05-15 19:00"),
+    NA_real_,
+    t_total
+  )) %>% 
   group_by(day = floor_date(timestamp - hours(8), "day")) %>% 
   filter(timestamp == max(timestamp)) %>%
   ungroup() %>% 
@@ -738,14 +743,6 @@ test_per_case <-
   group_by(metro) %>%
   arrange(timestamp) %>% 
   filter(t_positive > lag(t_positive)) %>% 
-  mutate(
-    t_total = if_else(
-      # The dash data has inaccurate total tests for counties between these two dates
-      timestamp >= ymd_hm("2020-05-15 19:00") & timestamp <= ymd_hm("2020-05-16 08:00"),
-      NA_real_,
-      t_total
-    )
-  )
   complete(
     timestamp = seq(min(timestamp), max(timestamp), by = "day"),
     metro

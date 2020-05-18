@@ -1,6 +1,6 @@
 Florida COVID-19 Data
 ================
-2020-05-18 09:30:19
+2020-05-18 11:19:13
 
 ## Today
 
@@ -27,15 +27,15 @@ DOH data sources at 7am, noon and 7pm daily.
 
 ![](plots/covid-19-florida-county-top-6.png)
 
-<div class="columns is-desktop">
+<div class="columns">
 
-<div class="column">
+<div class="column is-full-mobile">
 
 ![](plots/covid-19-florida-testing.png)
 
 </div>
 
-<div class="column">
+<div class="column is-full-mobile">
 
 ![](plots/covid-19-florida-total-positive.png)
 
