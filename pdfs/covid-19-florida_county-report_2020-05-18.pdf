@@ -49,7 +49,7 @@
 	<meta property="og:description" content="The Florida Department of Health is issuing 2019 Novel Coronavirus (COVID-19) updates every day to keep residents and visitors safe and aware." />
 	<meta property="og:url" content="https://floridahealthcovid19.gov/" />
 	<meta property="og:site_name" content="Florida Department of Health COVID-19 Outbreak" />
-	<meta property="article:modified_time" content="2020-05-17T18:57:17+00:00" />
+	<meta property="article:modified_time" content="2020-05-18T20:26:58+00:00" />
 	<meta property="og:image" content="https://floridahealthcovid19.gov/wp-content/uploads/2020/03/og-img_v1a.jpg" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
@@ -57,7 +57,7 @@
 	<meta name="twitter:title" content="Florida Department of Health COVID-19 Response" />
 	<meta name="twitter:description" content="The Florida Department of Health is issuing 2019 Novel Coronavirus (COVID-19) updates every day to keep residents and visitors safe and aware." />
 	<meta name="twitter:image" content="https://floridahealthcovid19.gov/wp-content/uploads/2020/03/og-img_v1a.jpg" />
-	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://floridahealthcovid19.gov/#organization","name":"Florida Department of Health","url":"https://floridahealthcovid19.gov/","sameAs":[],"logo":{"@type":"ImageObject","@id":"https://floridahealthcovid19.gov/#logo","inLanguage":"en-US","url":"https://floridahealthcovid19.gov/wp-content/uploads/2020/03/og-img_v1a.jpg","width":1200,"height":630,"caption":"Florida Department of Health"},"image":{"@id":"https://floridahealthcovid19.gov/#logo"}},{"@type":"WebSite","@id":"https://floridahealthcovid19.gov/#website","url":"https://floridahealthcovid19.gov/","name":"Florida Department of Health COVID-19 Outbreak","description":"Providing regular updates on the coronavirus outbreak in Florida","publisher":{"@id":"https://floridahealthcovid19.gov/#organization"},"potentialAction":[{"@type":"SearchAction","target":"https://floridahealthcovid19.gov/?s={search_term_string}","query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"WebPage","@id":"https://floridahealthcovid19.gov/#webpage","url":"https://floridahealthcovid19.gov/","name":"Home | Florida Department of Health COVID-19 Outbreak","isPartOf":{"@id":"https://floridahealthcovid19.gov/#website"},"about":{"@id":"https://floridahealthcovid19.gov/#organization"},"datePublished":"2020-03-13T01:04:32+00:00","dateModified":"2020-05-17T18:57:17+00:00","description":"The Florida Department of Health is issuing 2019 Novel Coronavirus (COVID-19) updates every day to keep residents and visitors safe and aware.","inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://floridahealthcovid19.gov/"]}]}]}</script>
+	<script type="application/ld+json" class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://floridahealthcovid19.gov/#organization","name":"Florida Department of Health","url":"https://floridahealthcovid19.gov/","sameAs":[],"logo":{"@type":"ImageObject","@id":"https://floridahealthcovid19.gov/#logo","inLanguage":"en-US","url":"https://floridahealthcovid19.gov/wp-content/uploads/2020/03/og-img_v1a.jpg","width":1200,"height":630,"caption":"Florida Department of Health"},"image":{"@id":"https://floridahealthcovid19.gov/#logo"}},{"@type":"WebSite","@id":"https://floridahealthcovid19.gov/#website","url":"https://floridahealthcovid19.gov/","name":"Florida Department of Health COVID-19 Outbreak","description":"Providing regular updates on the coronavirus outbreak in Florida","publisher":{"@id":"https://floridahealthcovid19.gov/#organization"},"potentialAction":[{"@type":"SearchAction","target":"https://floridahealthcovid19.gov/?s={search_term_string}","query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"WebPage","@id":"https://floridahealthcovid19.gov/#webpage","url":"https://floridahealthcovid19.gov/","name":"Home | Florida Department of Health COVID-19 Outbreak","isPartOf":{"@id":"https://floridahealthcovid19.gov/#website"},"about":{"@id":"https://floridahealthcovid19.gov/#organization"},"datePublished":"2020-03-13T01:04:32+00:00","dateModified":"2020-05-18T20:26:58+00:00","description":"The Florida Department of Health is issuing 2019 Novel Coronavirus (COVID-19) updates every day to keep residents and visitors safe and aware.","inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://floridahealthcovid19.gov/"]}]}]}</script>
 	<!-- / Yoast SEO plugin. -->
 
 
@@ -647,12 +647,12 @@ Here’s what you can do right now.</h5>
 
                                   <div class="buttons">
                                           <div class="button--wrapper">
-                        <a href="https://floridadisaster.org/globalassets/covid19/dailies/covid-daily-report-5.17.20_.pdf" target="_blank" class="button--orange hidden-xs hidden-sm">See state report</a>
-                        <a href="https://floridadisaster.org/globalassets/covid19/dailies/covid-daily-report-5.17.20_.pdf" target="_blank" class="button--orange hidden-md hidden-lg">See state report</a>
+                        <a href="https://floridadisaster.org/globalassets/covid19/dailies/covid-daily-report-5.18.20-.pdf" target="_blank" class="button--orange hidden-xs hidden-sm">See state report</a>
+                        <a href="https://floridadisaster.org/globalassets/covid19/dailies/covid-daily-report-5.18.20-.pdf" target="_blank" class="button--orange hidden-md hidden-lg">See state report</a>
                       </div>
                                           <div class="button--wrapper">
-                        <a href="http://ww11.doh.state.fl.us/comm/_partners/action/report_archive/county/county_reports_20200517.pdf" target="_blank" class="button--orange hidden-xs hidden-sm">See county report</a>
-                        <a href="http://ww11.doh.state.fl.us/comm/_partners/action/report_archive/county/county_reports_20200517.pdf" target="_blank" class="button--orange hidden-md hidden-lg">See county report</a>
+                        <a href="http://ww11.doh.state.fl.us/comm/_partners/action/report_archive/county/county_reports_20200518.pdf" target="_blank" class="button--orange hidden-xs hidden-sm">See county report</a>
+                        <a href="http://ww11.doh.state.fl.us/comm/_partners/action/report_archive/county/county_reports_20200518.pdf" target="_blank" class="button--orange hidden-md hidden-lg">See county report</a>
                       </div>
                                       </div>
                               </div>
