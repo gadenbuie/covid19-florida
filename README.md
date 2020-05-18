@@ -1,6 +1,6 @@
 Florida COVID-19 Data
 ================
-2020-05-17 19:07:51
+2020-05-17 23:49:59
 
 ## Today
 
@@ -8,7 +8,7 @@ Florida COVID-19 Data
 | :---------- | :--------- | :------- | :----------------- | :----- | :--------------- | :------ |
 | Today       | 2020-05-17 | 45,588   | 0                  | 2,049  | 0                | 640,100 |
 | Yesterday   | 2020-05-16 | 44,811   | 777                | 2,040  | 9                | 630,795 |
-| Last Week   | 2020-05-10 | 40,001   | 5,587              | 1,785  | 264              | 528,413 |
+| Last Week   | 2020-05-10 | 40,596   | 4,992              | 1,791  | 258              | 539,630 |
 | 2 Weeks Ago | 2020-05-03 | 36,078   | 9,510              | 1,403  | 646              | 428,744 |
 
 Parsed from the [Florida’s COVID-19 Data and Surveillance
@@ -110,13 +110,3 @@ link. I’ve been able to extract most of the data from the PDF tables.
 Individual tables are stored in time stamped folders, using the time
 stamp in the PDF file name. The unified data files are available in
 [data/](data/) and prefixed with `covid-19-florida_pdf_`.
-
-<style type="text/css">
-.hero.is-blue {
-  background-color: #3e78b2;
-  color: white;
-}
-.hero.is-blue .title, .hero.is-blue .subtitle {
-    color: white;
-}
-</style>

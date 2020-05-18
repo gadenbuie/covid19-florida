@@ -16,6 +16,17 @@ output:
     pandoc_args: ["--variable", "no-font-awesome"]
 ---
 
+```{css echo=FALSE, eval=knitr::is_html_output(excludes = "gfm")}
+.hero.is-blue {
+  background-color: #3e78b2;
+  color: white;
+}
+.hero.is-blue .title, .hero.is-blue .subtitle {
+	color: white;
+}
+```
+
+
 ```{r include=FALSE}
 knitr::opts_chunk$set(echo=FALSE, warning=FALSE, message=FALSE)
 library(dplyr)
@@ -143,14 +154,3 @@ and prefixed with `covid-19-florida_pdf_`.
 [main-page]: http://www.floridahealth.gov/diseases-and-conditions/COVID-19/
 [dashboard]: https://fdoh.maps.arcgis.com/apps/opsdashboard/index.html#/8d0de33f260d444c852a615dc7837c86
 [fl-disaster]: http://www.floridahealth.gov/diseases-and-conditions/COVID-19/
-
-
-```{css echo=FALSE}
-.hero.is-blue {
-  background-color: #3e78b2;
-  color: white;
-}
-.hero.is-blue .title, .hero.is-blue .subtitle {
-	color: white;
-}
-```

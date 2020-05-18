@@ -49,7 +49,7 @@ test_summary <-
 tampa_test_summary <- 
   dash %>%
   select(timestamp, county = county_1, t_positive, t_total, deaths, t_inconc, c_ed_yes) %>%
-  group_by(day = floor_date(timestamp + hours(11), "day")) %>% 
+  group_by(day = floor_date(timestamp - hours(8), "day")) %>% 
   filter(timestamp == max(timestamp)) %>% 
   ungroup() %>% 
   select(-timestamp, timestamp = day) %>% 

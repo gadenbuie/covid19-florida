@@ -7,6 +7,7 @@ library(purrr, warn.conflicts = FALSE)
 source(here::here("R/combine-sources.R"))
 
 fix_late_reporting <- function(x, start, end, adjusted) {
+  return(x)
   dplyr::mutate(
     x,
     timestamp = dplyr::if_else(
@@ -52,7 +53,7 @@ g <-
       arrange(desc(status)) %>% 
       mutate(
         placement = cumsum(count) - count / 2,
-        count_label = paste(count, status)
+        count_label = paste(format(count, big.mark = ','), status)
       ),
     aes(label = count_label, y = placement, x = day, segment.color = status), 
     xlim = c((test_summary %>% pull(day) %>% max()) + 2, NA),
@@ -89,7 +90,7 @@ g <-
     fill = "#FFFFFF"
   ) +
   theme_minimal(base_size = 14) +
-  scale_x_date(expand = expand_scale(add = c(0, 10))) +
+  scale_x_date(expand = expand_scale(add = c(0, 20))) +
   scale_y_continuous(expand = expand_scale(add = c(0, 1000))) +
   scale_color_manual(
     aesthetics = "segment.color",
@@ -225,18 +226,24 @@ g_test_changes <-
   arrange(day) %>% 
   mutate(
     positive = positive - lag(positive),
-    pending = pending - lag(pending),
     deaths = deaths - lag(deaths),
     complete = if_else(day == today(), "today", "past")
   ) %>% 
   filter(!is.na(positive)) %>% 
-  select(day, complete, positive, pending, deaths) %>% 
-  pivot_longer(cols = c(positive, pending, deaths), names_to = "status") %>% 
+  select(day, complete, positive, deaths) %>% 
+  pivot_longer(cols = c(positive, deaths), names_to = "status") %>% 
   mutate_at(vars(status), tools::toTitleCase) %>% 
-  mutate_at(vars(status), factor, levels = c("Pending", "Positive", "Deaths")) %>% 
+  mutate_at(vars(status), factor, levels = c("Positive", "Deaths")) %>% 
   ggplot() +
   aes(day, value) +
-  geom_col(aes(alpha = complete, fill = status)) +
+  geom_col(aes(alpha = complete, fill = status), width = 1) +
+  geom_line(
+    data = . %>% 
+      group_by(status) %>% 
+      mutate_at(vars(value), ~ slider::slide_dbl(.x, mean, .before = 7)),
+    aes(color = status),
+    size = 1
+  ) +
   facet_wrap(~ status, scales = "free_y") +
   labs(
     x = NULL, y = NULL,
@@ -255,13 +262,18 @@ g_test_changes <-
     values = c(past = 1, today = 0.33),
     guide = FALSE
   ) +
+  scale_color_manual(
+    values = c(Pending = "#63768d", Positive = "#ec4e20", Deaths = "#440154"),
+    guide = FALSE
+  ) +
   scale_fill_manual(
-    values = c(Pending = "#63768d", Positive = "#ec4e20", Deaths = "#440154"), 
+    # values = c(Pending = "#63768d", Positive = "#ec4e20", Deaths = "#440154"), 
+    values = c(Pending = "#63768d", Positive = "#f7b8a5", Deaths = "#b499ba"),
     guide = FALSE
   ) +
   theme_minimal(base_size = 14) +
   scale_x_date(date_breaks = "7 days", expand = expand_scale(add = 0.5), date_labels = "%b\n%d") +
-  scale_y_continuous() +
+  scale_y_continuous(expand = expansion()) +
   coord_cartesian(clip = "off") +
   theme(
     plot.margin = margin(0.5, 0.5, 0.5, 0.5, unit = "lines"),
@@ -535,7 +547,6 @@ if ("age" %in% names(line_list)) {
 }
 
 # County Cases Log Scale --------------------------------------------------
-
 county_daily <-
   line_list %>% 
   mutate(
@@ -704,9 +715,13 @@ library(patchwork)
 
 test_per_case <-
   dash %>%
+  filter(
+    # The dash data has inaccurate total tests for counties between these two dates
+    timestamp < ymd_hm("2020-05-15 19:00") | timestamp > ymd_hm("2020-05-16 08:00")
+  ) %>% 
   select(timestamp, county_1, t_positive, t_total) %>%
-  group_by(day = floor_date(timestamp + hours(11), "day")) %>% 
-  filter(timestamp == max(timestamp)) %>% 
+  group_by(day = floor_date(timestamp - hours(8), "day")) %>% 
+  filter(timestamp == max(timestamp)) %>%
   ungroup() %>% 
   select(-timestamp, timestamp = day) %>% 
   mutate(
@@ -719,18 +734,27 @@ test_per_case <-
       county_1 %in% c("Gadsden", "Jefferson", "Leon", "Wakulla") ~ "Tallahassee"
     )
   ) %>% 
+  filter(!is.na(metro)) %>% 
   bind_rows(mutate(., metro = "Florida")) %>% 
-  filter(!is.na(metro)) %>%
   select(-county_1) %>% 
-  group_by(timestamp, metro) %>% 
+  group_by(timestamp, metro) %>%
   summarize_all(sum) %>% 
   group_by(metro) %>%
   arrange(timestamp) %>% 
-  filter(t_positive > lag(t_positive)) %>%
+  filter(t_positive > lag(t_positive)) %>% 
+  complete(
+    timestamp = seq(min(timestamp), max(timestamp), by = "day"),
+    metro
+  ) %>%
+  mutate_at(
+    # fill in missing days with midpoint between day before and after
+    vars(t_positive, t_total), 
+    ~ ifelse(is.na(.x), slider::slide_dbl(.x, mean, .before = 1, .after = 1, na.rm = TRUE), .x)
+  ) %>% 
   # Convert from cumulative to daily new
   mutate_at(vars(t_positive, t_total), ~ .x - lag(.x)) %>% 
+  filter(timestamp != min(timestamp)) %>%
   ungroup() %>% 
-  filter(!is.na(t_positive)) %>% 
   mutate(pct_positive = t_positive / t_total) %>% 
   # mutate_at(vars(pct_positive), slider::slide_dbl, mean, .before = 5) %>% 
   gather(status, count, t_positive, t_total) %>% 
@@ -851,7 +875,7 @@ g_pct_positive_florida <-
     y = max(pct_positive$pct_positive)
   ) +
   facet_wrap(vars(metro), scales = "free") +
-  scale_y_continuous(labels = scales::percent_format(5), limits = c(0, max_percent_positive)) +
+  scale_y_continuous(labels = scales::percent_format(0.5), limits = c(0, max_percent_positive)) +
   theme_minimal(14) +
   theme(
     strip.text = element_text(face = "bold", size = 18),

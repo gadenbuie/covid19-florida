@@ -1,3 +1,11 @@
+# 2020-05-16
+
+- The total tests reported on the dashboard between 2020-05-15 19:00 and 
+  2020-05-16 08:00 EDT were out of range and are clearly erroneous.
+  
+- The data updates seem to be happening later in the day after 1pm, so I've
+  gone back to using the last snapshot of the day for the day's counts.
+
 # 2020-05-10
 
 - The line list API was removed on 2020-05-09 from the public FeatureServer but 

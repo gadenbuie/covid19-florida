@@ -23,20 +23,9 @@ combine_scraped_and_api_data <- function(data_scraped = NULL, data_api = NULL) {
     dplyr::mutate(source = 0)
 
   dplyr::bind_rows(data_scraped_sel, data_api_sel) %>%
-    dplyr::mutate(
-      timestamp = dplyr::if_else(
-        timestamp >= lubridate::ymd_h("2020-05-07 12", tz = "America/New_York") &
-          timestamp <= lubridate::ymd_h("2020-05-07 23", tz = "America/New_York"),
-        lubridate::ymd_hm("2020-05-07 12:59", tz = "America/New_York"),
-        timestamp
-      )
-    ) %>% 
-    dplyr::mutate(
-      # since updates will happen daily at 11am, a "day" is now 
-      # 1pm on day (x - 1) -- 1pm on day X
-      # timestamp = timestamp + lubridate::hours(12),
-      day = lubridate::floor_date(timestamp + lubridate::hours(11), "day")
-    ) %>%
+    # Updates never occur before 11am, so the first snapshot is from the previous day
+    # In general, use the last reported value of the day as the day's results
+    dplyr::mutate(day = lubridate::floor_date(timestamp - lubridate::hours(9)), "day") %>% 
     dplyr::mutate_at(vars(day), lubridate::as_date) %>%
     dplyr::group_by(day) %>%
     dplyr::arrange(dplyr::desc(timestamp), source) %>%
