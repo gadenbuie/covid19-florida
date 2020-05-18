@@ -43,12 +43,13 @@ fl_summary <- combine_scraped_and_api_data()
 today <- today(tz = "America/New_York")
 total_today <- fl_summary %>% filter(day == today) %>% pull(total)
 total_yesterday <- fl_summary %>% filter(day == (today - 1)) %>% pull(total)
-not_updated_yet <- total_today == total_yesterday
+not_updated_yet <- !length(total_today) || total_today == total_yesterday
 
 date_adjust <- c(0, 1, 7, 14) * -1
 if (not_updated_yet) date_adjust[1:2] <- date_adjust[1:2] - 1
 
-fl_summary %>% 
+fl_summary_tbl <- 
+  fl_summary %>% 
   filter(day %in% (today + date_adjust)) %>% 
   arrange(desc(day)) %>% 
   mutate(
@@ -65,25 +66,42 @@ fl_summary %>%
   ) %>% 
   select(when, day, positive, `New Positive Since`, deaths, `New Deaths Since`, total) %>% 
   mutate_if(is.numeric, format, big.mark = ",") %>% 
-  purrr::set_names(stringr::str_to_title(names(.))) %>% 
-  knitr::kable()
+  purrr::set_names(stringr::str_to_title(names(.)))
+
+if (knitr::is_html_output(excludes = "gfm")) {
+  gt::gt(fl_summary_tbl)
+} else {
+  knitr::kable(fl_summary_tbl)
+}
 ```
 
 Parsed from the [Florida's COVID-19 Data and Surveillance Dashboard][dashboard].
 
-Since Florida DOH only updates once per day at 11am (starting 2020-04-25),
-the daily reported cumulative count used is the last value reported prior to 1pm
-on a given day.
+Prior to 2020-04-25,
+Florida DOH published updated data twice per day.
+Starting 2020-04-25, 
+Florida DOH updates once per day at approximately 11am.
+Since 2020-05-06, 
+the updates are occasionally later in the day.
+In the following charts,
+for a given day, 
+I use the last value reported prior to 8am of the subsequent day.
+I take snapshots of the various FL DOH data sources at 7am, noon and 7pm daily.
 
 ## Confirmed Cases
 
-![](plots/covid-19-florida-testing.png)
-
-![](plots/covid-19-florida-total-positive.png)
+![](plots/covid-19-florida-daily-test-changes.png)
 
 ![](plots/covid-19-florida-county-top-6.png)
 
-![](plots/covid-19-florida-daily-test-changes.png)
+<div class="columns is-desktop">
+<div class="column">
+![](plots/covid-19-florida-testing.png)
+</div>
+<div class="column">
+![](plots/covid-19-florida-total-positive.png)
+</div>
+</div>
 
 ## Daily Testing
 

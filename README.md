@@ -1,32 +1,47 @@
 Florida COVID-19 Data
 ================
-2020-05-17 23:49:59
+2020-05-18 08:47:38
 
 ## Today
 
-| When        | Day        | Positive | New Positive Since | Deaths | New Deaths Since | Total   |
-| :---------- | :--------- | :------- | :----------------- | :----- | :--------------- | :------ |
-| Today       | 2020-05-17 | 45,588   | 0                  | 2,049  | 0                | 640,100 |
-| Yesterday   | 2020-05-16 | 44,811   | 777                | 2,040  | 9                | 630,795 |
-| Last Week   | 2020-05-10 | 40,596   | 4,992              | 1,791  | 258              | 539,630 |
-| 2 Weeks Ago | 2020-05-03 | 36,078   | 9,510              | 1,403  | 646              | 428,744 |
+| When           | Day        | Positive | New Positive Since | Deaths | New Deaths Since | Total   |
+| :------------- | :--------- | :------- | :----------------- | :----- | :--------------- | :------ |
+| Yesterday      | 2020-05-17 | 45,588   | 0                  | 2,049  | 0                | 640,100 |
+| The Day Before | 2020-05-16 | 44,811   | 777                | 2,040  | 9                | 630,795 |
+| Last Week      | 2020-05-11 | 40,982   | 4,606              | 1,805  | 244              | 561,741 |
+| 2 Weeks Ago    | 2020-05-04 | 36,897   | 8,691              | 1,423  | 626              | 444,814 |
 
 Parsed from the [Florida’s COVID-19 Data and Surveillance
 Dashboard](https://fdoh.maps.arcgis.com/apps/opsdashboard/index.html#/8d0de33f260d444c852a615dc7837c86).
 
-Since Florida DOH only updates once per day at 11am (starting
-2020-04-25), the daily reported cumulative count used is the last value
-reported prior to 1pm on a given day.
+Prior to 2020-04-25, Florida DOH published updated data twice per day.
+Starting 2020-04-25, Florida DOH updates once per day at approximately
+11am. Since 2020-05-06, the updates are occasionally later in the day.
+In the following charts, for a given day, I use the last value reported
+prior to 8am of the subsequent day. I take snapshots of the various FL
+DOH data sources at 7am, noon and 7pm daily.
 
 ## Confirmed Cases
 
-![](plots/covid-19-florida-testing.png)
-
-![](plots/covid-19-florida-total-positive.png)
+![](plots/covid-19-florida-daily-test-changes.png)
 
 ![](plots/covid-19-florida-county-top-6.png)
 
-![](plots/covid-19-florida-daily-test-changes.png)
+<div class="columns">
+
+<div class="column">
+
+![](plots/covid-19-florida-testing.png)
+
+</div>
+
+<div class="column">
+
+![](plots/covid-19-florida-total-positive.png)
+
+</div>
+
+</div>
 
 ## Daily Testing
 
