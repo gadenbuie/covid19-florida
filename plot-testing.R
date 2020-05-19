@@ -787,6 +787,7 @@ g_test_per_case_counties <-
     )
   ) +
   scale_y_continuous(labels = grkmisc::format_pretty_num()) +
+  scale_x_datetime(date_breaks = "1 week", labels = function(x) gsub("0(\\d)", "\\1", strftime(x, "%m/%d")), expand = expansion()) +
   theme_minimal(14) +
   theme(
     strip.text = element_text(face = "bold"),
@@ -809,6 +810,7 @@ g_test_per_case_florida <-
     )
   ) +
   scale_y_continuous(labels = grkmisc::format_pretty_num()) +
+  scale_x_datetime(date_breaks = "1 week", date_labels = "%b %d", expand = expansion()) +
   theme_minimal(14) +
   theme(
     strip.text = element_text(face = "bold", size = 18),
@@ -818,7 +820,6 @@ g_test_per_case_florida <-
 g_test_per_case <-
   (g_test_per_case_florida / g_test_per_case_counties) * 
   labs(x = NULL, y = NULL) *
-  scale_x_datetime(date_breaks = "1 week", date_labels = "%b %d", expand = expansion()) *
   theme(
     panel.grid.major.x = element_blank(),
     panel.grid.minor.x = element_blank(),
