@@ -1,3 +1,8 @@
+# 2020-05-19
+
+- I've found the updated link to the cases by zip code data and have resumed
+  collecting those data.
+
 # 2020-05-16
 
 - The total tests reported on the dashboard between 2020-05-15 19:00 and 
