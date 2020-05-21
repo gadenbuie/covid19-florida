@@ -1,3 +1,13 @@
+# 2020-05-21
+
+- I updated the PDF extraction scripts to fix the extraction of the lab testing
+  summary tables. In working on this, I noticed that the column headers have
+  changed three times since these reports have been published:
+  
+  - Originally "Laboratory", "Negative", "Positive", "Total", "% Positive"
+  - On 2020-03-18, "Laboratory" was changed to "Reporting Lab"
+  - On 2020-04-11 (afternoon update), the "Inconclusive" column was added
+
 # 2020-05-19
 
 - I've found the updated link to the cases by zip code data and have resumed

@@ -167,9 +167,14 @@ process_pdf <- function(pdf_file) {
   page_one_text <- page_text[1]
   
   timestamp_pdf <-
-    pdf_file %>% 
-    str_extract("\\d[\\d_-]{6,}") %>% 
-    ymd_hm(tz = "America/New_York") %>% 
+    tibble(file = pdf_file) %>% 
+    mutate(
+      date_string = str_extract(file, "\\d[\\d._-]{5,}"),
+      ts = ymd_hm(date_string, truncated = 2, tz = "America/New_York"),
+      fallback = with_tz(as_datetime(mdy(date_string)), tz = "America/New_York"),
+      ts = coalesce(ts, fallback + hours(12))
+    ) %>%
+    pull(ts) %>%
     strftime("%F %T %Z", tz = "America/New_York")
   
   out$timestamp_pdf <- timestamp_pdf
@@ -234,10 +239,32 @@ process_pdf <- function(pdf_file) {
     which()
   
   out$lab_testing <- try_safely(function() {
+    col_header <- page_text[pages_lab_testing][[1]] %>% 
+      str_extract("\n(Reporting lab|Laboratory).*\n.*\n") %>%
+      str_trim() %>%
+      str_split("\\s{3,}") %>% 
+      .[[1]]
+    
+    col_names_std <- c(
+      "Laboratory" = "reporting_lab",
+      "Reporting lab" = "reporting_lab",
+      "Negative" = "negative",
+      "Positive" = "positive",
+      "Total" = "total",
+      "positive" = "percent_positive",
+      "Inconclusive" = "inconclusive"
+    )
+    
+    col_names <- unname(col_names_std[col_header])
+    
+    if (is.na(col_names)) return(NULL)
+    
     page_text[pages_lab_testing] %>% 
-      read_table_pages(col_names = c("reporting_lab", "negative", "positive", "percent_positive", "total")) %>% 
-      select(-contains("percent")) %>%
-      filter(reporting_lab != "Total") %>% 
+      read_table_pages(col_names = col_names) %>%
+      select(-matches("percent|total")) %>%
+      filter(reporting_lab != "Total") %>%
+      mutate_at(vars(matches("negative|positive|inconclusive")), str_remove_all, pattern = ",") %>%
+      mutate_at(vars(matches("negative|positive|inconclusive")), as.numeric) %>%
       add_total(from = c("negative", "positive")) %>% 
       add_this_timestamp()
   })
