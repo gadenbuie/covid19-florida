@@ -99,6 +99,13 @@ read_table_pages <- function(
     quietly(readr::read_tsv, col_names = col_names)
 }
 
+extract_table_lines <- function(page_text, pattern_filter = "\\d\\s{4,}\\d") {
+  page_text %>%
+    str_split("\n") %>%
+    map(str_subset, pattern = pattern_filter) %>%
+    keep(~ length(.x) > 0)
+}
+
 add_total <- function(df, from) {
   if ("total" %in% names(df)) {
     if (!all(is.na(df[["total"]]))) {
@@ -107,7 +114,7 @@ add_total <- function(df, from) {
   }
   df$total <- 0
   for (col in from) {
-    df$total <- df$total + df[[col]]
+    df$total <- df$total + ifelse(is.na(df[[col]]), 0, df[[col]])
   }
   df
 }
