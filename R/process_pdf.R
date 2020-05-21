@@ -266,13 +266,34 @@ process_pdf <- function(pdf_file) {
     
     if (is.na(col_names)) return(NULL)
     
-    page_text[pages_lab_testing] %>% 
-      read_table_pages(col_names = col_names) %>%
+    testing_data <- if (timestamp_pdf <= ymd_h("2020-04-11 12", tz = "America/New_York")) {
+      page_text[pages_lab_testing] %>%
+        read_table_pages(col_names = c("reporting_lab", "negative", "positive", "percent", "total"))
+    } else {
+      col_starts <- c(1, 87, 104, 116, 128, 138)
+      col_ends <- c(86, 103, 115, 127, 137, 160)
+      
+      page_text[pages_lab_testing] %>% 
+        map(extract_table_lines) %>%
+        map(~ map(.x, paste, collapse = "\n")) %>% 
+        map_chr(paste, collapse = "\n") %>% 
+        paste(collapse = "\n") %>% 
+        readr::read_fwf(
+          col_types = cols(.default = col_character()),
+          col_positions = readr::fwf_positions(
+            col_starts,
+            col_ends, 
+            col_names = c("reporting_lab", "inconclusive", "negative", "positive", "percent", "total")
+          )
+        )
+    }
+    
+    testing_data %>%
       select(-matches("percent|total")) %>%
       filter(reporting_lab != "Total") %>%
       mutate_at(vars(matches("negative|positive|inconclusive")), str_remove_all, pattern = ",") %>%
       mutate_at(vars(matches("negative|positive|inconclusive")), as.numeric) %>%
-      add_total(from = c("negative", "positive")) %>% 
+      add_total(from = c("negative", "positive")) %>%
       add_this_timestamp()
   })
   
