@@ -173,16 +173,7 @@ process_pdf <- function(pdf_file) {
   
   page_one_text <- page_text[1]
   
-  timestamp_pdf <-
-    tibble(file = pdf_file) %>% 
-    mutate(
-      date_string = str_extract(file, "\\d[\\d._-]{5,}"),
-      ts = ymd_hm(date_string, truncated = 2, tz = "America/New_York"),
-      fallback = with_tz(as_datetime(mdy(date_string)), tz = "America/New_York"),
-      ts = coalesce(ts, fallback + hours(12))
-    ) %>%
-    pull(ts) %>%
-    strftime("%F %T %Z", tz = "America/New_York")
+  timestamp_pdf <- get_timestamp_from_pdf_path(pdf_file)
   
   out$timestamp_pdf <- timestamp_pdf
   
@@ -264,7 +255,7 @@ process_pdf <- function(pdf_file) {
     
     col_names <- unname(col_names_std[col_header])
     
-    if (is.na(col_names)) return(NULL)
+    if (any(is.na(col_names))) return(NULL)
     
     testing_data <- if (timestamp_pdf <= ymd_h("2020-04-11 12", tz = "America/New_York")) {
       page_text[pages_lab_testing] %>%
@@ -313,6 +304,18 @@ process_pdf <- function(pdf_file) {
   }
   
   qc_pdf_read(out)
+}
+
+get_timestamp_from_pdf_path <- function(pdf_file) {
+  tibble(file = pdf_file) %>% 
+    mutate(
+      date_string = str_extract(file, "\\d[\\d._-]{5,}"),
+      ts = ymd_hm(date_string, truncated = 2, tz = "America/New_York"),
+      fallback = with_tz(as_datetime(mdy(date_string)), tz = "America/New_York"),
+      ts = coalesce(ts, fallback + hours(12))
+    ) %>%
+    pull(ts) %>%
+    strftime("%F %T %Z", tz = "America/New_York")
 }
 
 process_and_output_pdf <- function(pdf_files) {
