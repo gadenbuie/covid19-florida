@@ -112,6 +112,7 @@ add_total <- function(df, from) {
       return(df)
     }
   }
+  from <- intersect(from, names(df))
   df$total <- 0
   for (col in from) {
     df$total <- df$total + ifelse(is.na(df[[col]]), 0, df[[col]])
@@ -284,7 +285,7 @@ process_pdf <- function(pdf_file) {
       filter(reporting_lab != "Total") %>%
       mutate_at(vars(matches("negative|positive|inconclusive")), str_remove_all, pattern = ",") %>%
       mutate_at(vars(matches("negative|positive|inconclusive")), as.numeric) %>%
-      add_total(from = c("negative", "positive")) %>%
+      add_total(from = c("negative", "positive", "inconclusive")) %>%
       add_this_timestamp()
   })
   
