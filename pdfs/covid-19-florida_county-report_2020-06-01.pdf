@@ -181,7 +181,7 @@ var loadmore_params = {"ajaxurl":"https:\/\/floridahealthcovid19.gov\/wp-admin\/
 <link rel='shortlink' href='https://floridahealthcovid19.gov/' />
 <link rel="alternate" type="application/json+oembed" href="https://floridahealthcovid19.gov/wp-json/oembed/1.0/embed?url=https%3A%2F%2Ffloridahealthcovid19.gov%2F" />
 <link rel="alternate" type="text/xml+oembed" href="https://floridahealthcovid19.gov/wp-json/oembed/1.0/embed?url=https%3A%2F%2Ffloridahealthcovid19.gov%2F&#038;format=xml" />
-<meta name="generator" content="Site Kit by Google 1.8.1" />		<style type="text/css" id="wp-custom-css">
+<meta name="generator" content="Site Kit by Google 1.9.0" />		<style type="text/css" id="wp-custom-css">
 			#latest-stats #tablepress-4>tbody tr.row-1 td {
   /*FDOH-wmFry Non-Florida Residents make blue with only one row*/
   padding: unset !important;
