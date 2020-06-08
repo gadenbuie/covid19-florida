@@ -372,7 +372,7 @@ harmonize_pdf_data <- function() {
 process_all_pdfs <- function() {
   library(furrr)
   plan(multicore)
-  pdf_files <- fs::dir_ls(here::here("pdfs"), regexp = "daily.+pdf$")
+  pdf_files <- fs::dir_ls(here::here("pdfs"), regexp = "(daily|state_reports).+pdf$")
   .null <- future_map(pdf_files, process_and_output_pdf, .progress = TRUE)
   harmonize_pdf_data()
 }

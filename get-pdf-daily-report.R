@@ -24,21 +24,19 @@ pdf_files <-
     fl_disaster %>% xml_nodes("a") %>% xml_attr("href") %>% str_replace("^/", "https://floridadisaster.org/")
   ) %>% 
   str_subset("pdf$") %>% 
-  str_subset("daily-report|LTC-Report|LTCF-Deaths|FDC-") %>% 
+  str_subset("daily-report|LTC-Report|LTCF-Deaths|FDC-|serology|antibody|(state|county)_report") %>% 
   unique() %>% 
   .[!duplicated(path_file(.))]
 
 dir_create("pdfs")
 
-pdf_files <- pdf_files[!file_exists(path("pdfs", path_file(pdf_files)))]
+today <- strftime(today(), "%Y%m%d")
+names(pdf_files) <- sub("_latest", paste0("_", today), fs::path_file(pdf_files))
+pdf_files <- pdf_files[!duplicated(names(pdf_files))]
 
 safe_download <- safely(download.file)
 
 if (length(pdf_files)) {
-  walk(pdf_files, ~ safe_download(url = .x, destfile = path("pdfs", path_file(.x))))
+  iwalk(pdf_files, ~ safe_download(url = .x, destfile = path("pdfs", .y)))
 }
 
-if (hour(now("America/New_York")) > 11) {
-  county_report <- strftime(Sys.time(), "pdfs/covid-19-florida_county-report_%F.pdf")
-  safe_download(url = "https://floridahealthcovid19.gov/fl_county/", destfile = county_report)
-}

@@ -1,3 +1,12 @@
+# 2020-06-08
+
+- The location and file name format of the PDF reports was changed on 2020-06-04.
+  I noticed on 2020-06-08 and updated my scripts, but the reports from
+  2020-06-04 through 2020-06-07 were not stored.
+  
+- Reports on serology and antibody testing were added, presumably at the same
+  time as the change in report location and naming (guess: 2020-06-04).
+
 # 2020-05-21
 
 - I updated the PDF extraction scripts to fix the extraction of the lab testing
