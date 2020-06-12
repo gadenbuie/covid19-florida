@@ -285,8 +285,16 @@ if (git2r::in_repository()) {
     if (file.exists("README.html")) file.rename("README.html", "index.html")
     
     callr::r(function() {
-      rmarkdown::render("tampa/index.Rmd")
+      rmarkdown::render("docs/tampa/index.Rmd")
     })
+    
+    callr::r(function() {rmarkdown::render("NEWS.md")})
+    
+    fs::file_move("index.html", "docs/index.html")
+    fs::file_move("NEWS.html", "docs/NEWS.html")
+    fs::dir_copy("plots", "docs/plots")
+    fs::dir_copy("screenshots", "docs/screenshots")
+    
     
     # > Commit Everything ----
     git2r::add(".", ".")
