@@ -40,3 +40,8 @@ if (length(pdf_files)) {
   iwalk(pdf_files, ~ safe_download(url = .x, destfile = path("pdfs", .y)))
 }
 
+# compress pdfs
+walk(fs::dir_ls("pdfs", regexp = "pdf$"), function(file) {
+  cli::cli_process_start("{file}", on_exit = "done")
+  system(glue("xz {file}"))
+})

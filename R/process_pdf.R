@@ -169,9 +169,13 @@ process_pdf <- function(pdf_file) {
     out$message <<- c(out$message, paste0(..., collapse = ""))
   }
   
-  # Page 1 ------------------------------------------------------------------
-  page_text <- pdftools::pdf_text(pdf_file)
+  page_text <- if (grepl("xz$", pdf_file)) {
+    pdftools::pdf_text(xzfile(pdf_file))
+  } else {
+    pdftools::pdf_text(pdf_file)
+  }
   
+  # Page 1 ------------------------------------------------------------------
   page_one_text <- page_text[1]
   
   timestamp_pdf <- get_timestamp_from_pdf_path(pdf_file)
@@ -319,13 +323,17 @@ get_timestamp_from_pdf_path <- function(pdf_file) {
     strftime("%F %T %Z", tz = "America/New_York")
 }
 
-process_and_output_pdf <- function(pdf_files) {
+process_and_output_pdf <- function(pdf_files, update_old = FALSE) {
   for (pdf_file in pdf_files) {
-    message("Processing ", pdf_file, "...")
     if (!file_exists(pdf_file)) next
-    tables <- process_pdf(pdf_file)
-    outdir <- path("pdfs", str_replace_all(tables$timestamp_pdf, " ", "_"))
+    timestamp_pdf <- get_timestamp_from_pdf_path(pdf_file)
+    outdir <- path("pdfs", str_replace_all(timestamp_pdf, " ", "_"))
     outdir <- str_replace_all(outdir, ":", "")
+    if (!isTRUE(update_old) && dir_exists(outdir)) {
+      next
+    }
+    message("Processing ", pdf_file, "...")
+    tables <- process_pdf(pdf_file)
     dir_create(outdir)
     if ("timestamp_pdf" %in% names(tables)) {
       write_lines(tables[["timestamp_pdf"]], path(outdir, "README.md"), append = FALSE)
@@ -372,7 +380,7 @@ harmonize_pdf_data <- function() {
 process_all_pdfs <- function() {
   library(furrr)
   plan(multicore)
-  pdf_files <- fs::dir_ls(here::here("pdfs"), regexp = "(daily|state_reports).+pdf$")
+  pdf_files <- fs::dir_ls(here::here("pdfs"), regexp = "(daily|state_reports).+pdf([.]xz)?$")
   .null <- future_map(pdf_files, process_and_output_pdf, .progress = TRUE)
   harmonize_pdf_data()
 }
