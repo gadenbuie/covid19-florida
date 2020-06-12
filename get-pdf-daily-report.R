@@ -43,6 +43,7 @@ if (length(pdf_files)) {
 # compress pdfs
 walk(fs::dir_ls("pdfs", regexp = "pdf$"), function(file) {
   cli::cli_process_start("{file}", on_exit = "done")
-  fs::file_delete(glue("{file}.xz"))
+  file_xz <- glue("{file}.xz")
+  if (file_exists(file_xz)) file_delete(file_xz)
   system(glue("xz {file}"))
 })
