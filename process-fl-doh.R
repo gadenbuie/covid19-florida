@@ -292,8 +292,8 @@ if (git2r::in_repository()) {
     
     fs::file_move("index.html", "docs/index.html")
     fs::file_move("NEWS.html", "docs/NEWS.html")
-    fs::dir_copy("plots", "docs/plots")
-    fs::dir_copy("screenshots", "docs/screenshots")
+    fs::dir_copy("plots", "docs/plots", overwrite = TRUE)
+    fs::dir_copy("screenshots", "docs/screenshots", overwrite = TRUE)
     
     
     # > Commit Everything ----
