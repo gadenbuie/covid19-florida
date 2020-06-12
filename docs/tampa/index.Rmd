@@ -91,7 +91,7 @@ tampa_test_summary %>%
   mutate(
     pct_positive = daily_t_positive / daily_t_total,
     day = strftime(timestamp, "%B__%d"),
-    pct_positive = scales::percent(pct_positive, 1.1)
+    pct_positive = scales::percent(pct_positive, 0.1)
   ) %>% 
   mutate_at(vars(starts_with("daily")), format, big.mark = ',') %>% 
   mutate_at(vars(starts_with("t_")), format, big.mark = ',') %>% 
