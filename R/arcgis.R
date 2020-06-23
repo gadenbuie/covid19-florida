@@ -28,7 +28,14 @@ query_paged <- function(target, page_size = 2000, process_fn = clean_feature_att
   i <- 1
   while(keep_going) {
     page <- paste(i)
-    out[[page]] <- query_arcgis(target, low, high = low + page_size) %>% process_fn()
+    
+    out[[page]] <- query_arcgis(
+      target, 
+      low = scientific_result_offset(low), 
+      high = scientific_result_offset(low + page_size)
+    ) %>% 
+      process_fn()
+    
     if (is.null(out[[page]])) {
       keep_going <- FALSE
       next
@@ -52,6 +59,20 @@ clean_feature_attributes <- function(x) {
     purrr::map("attributes") %>% 
     purrr::map(purrr::flatten) %>% 
     purrr::map_dfr(~ .)
+}
+
+scientific_result_offset <- function(x) {
+  if (x < 1e5) return(x)
+  exp <- 5
+  keep_going <- FALSE
+  while (keep_going) {
+    if ((x / (10 ^ exp)) < 1) {
+      keep_going <- FALSE
+    } else {
+      exp <- exp + 1
+    }
+  }
+  paste0(x / (10^(exp)), "e", exp)
 }
 
 line_list_to_df <- function(x) {

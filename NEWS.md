@@ -1,3 +1,10 @@
+# 2020-06-23
+
+- Now that the line list has passed 100k cases, the ArcGIS API requires scientific
+  notation for result offests above 1e5. I've updated the query paging to fix this
+  issue, but it seems that as of 2020-06-23 13:30 the line list has not yet been
+  updated today (the number of rows is equal to yesterday's cases).
+
 # 2020-06-08
 
 - The location and file name format of the PDF reports was changed on 2020-06-04.
