@@ -544,6 +544,69 @@ if ("age" %in% names(line_list)) {
     )
   
   ggsave(fs::path("plots", "covid-19-florida-age-sex.png"), g_age_sex, width = 6.66, height = 3, dpi = 150, scale = 1.5)
+  
+  
+
+  # Events by Age Group -----------------------------------------------------
+  max_age <- max(line_list$age, na.rm = TRUE)
+  
+  g_weekly_events_by_age <-
+    line_list %>%
+    mutate(week = floor_date(case, "week", week_start = 2)) %>%
+    select(week, age, ed_visit, hospitalized, died) %>%
+    mutate_at(vars(ed_visit, hospitalized, died), ~ toupper(.x) == "YES") %>%
+    replace_na(list(died = FALSE, ed_visit = FALSE, hospitalized = FALSE)) %>%
+    mutate(
+      age_group = santoku::chop(age, seq(20, 80, 20), labels = santoku::lbl_dash()),
+      age_group = forcats::fct_recode(age_group, `80+` = paste("80 -", max_age)),
+      age_group = forcats::fct_explicit_na(age_group, "(Unknown)")
+    ) %>%
+    pivot_longer(ed_visit:died) %>% 
+    mutate(
+      name = recode(
+        name,
+        "died" = "Died",
+        "ed_visit" = "Visited ER",
+        "hospitalized" = "Hospitalized"
+      ),
+      name = factor(name, c("Visited ER", "Hospitalized", "Died"))
+    ) %>% 
+    group_by(week, age_group, name) %>% 
+    summarize(n = sum(value)) %>% 
+    ungroup() %>% 
+    complete(week, age_group, name) %>% 
+    replace_na(list(n = 0)) %>% 
+    ggplot() +
+    aes(week, n) +
+    geom_line(aes(color = age_group)) +
+    facet_wrap(vars(name)) +
+    scale_y_continuous(expand = expansion()) +
+    theme_minimal(base_size = 14) +
+    labs(
+      x = NULL, y = NULL,
+      color = "Age Group",
+      caption = glue::glue(
+        "Source: Florida DOH", 
+        "Last update: {max(line_list$timestamp)}",
+        "github.com/gadenbuie/covid19-florida",
+        .sep = "\n"
+      )
+    ) +
+    theme(
+      legend.position = c(0, -0.325),
+      legend.justification = c(0, 0),
+      legend.direction = "horizontal",
+      legend.text = element_text(color = "#444444"),
+      panel.grid.major.x = element_line("#f8f8f8"),
+      panel.grid.minor.x = element_blank(),
+      panel.border = element_rect(color = "#f0f0f0", fill = NA),
+      strip.text = element_text(size = 12),
+      panel.grid.minor.y = element_blank(),
+      plot.caption = element_text(color = "#444444", margin = margin(t = 1.5, unit = "lines"))
+    )
+    
+    ggsave(fs::path("plots", "covid-19-florida-weekly-events-by-age.png"), g_weekly_events_by_age, width = 6.66, height = 3, dpi = 150, scale = 1.5)
+
 }
 
 # County Cases Log Scale --------------------------------------------------

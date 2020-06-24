@@ -115,6 +115,8 @@ I take snapshots of the various FL DOH data sources at 7am, noon and 7pm daily.
 
 ## Cases and Deaths by Age
 
+![](plots/covid-19-florida-weekly-events-by-age.png)
+
 ![](plots/covid-19-florida-age.png)
 
 ![](plots/covid-19-florida-age-deaths.png)

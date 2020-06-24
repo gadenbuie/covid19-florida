@@ -1,6 +1,6 @@
 Florida COVID-19 Data
 ================
-2020-06-24 12:29:58
+2020-06-24 13:19:42
 
 ## Today
 
@@ -54,6 +54,8 @@ DOH data sources at 7am, noon and 7pm daily.
 ![](plots/covid-19-florida-test-and-case-growth.png)
 
 ## Cases and Deaths by Age
+
+![](plots/covid-19-florida-weekly-events-by-age.png)
 
 ![](plots/covid-19-florida-age.png)
 
