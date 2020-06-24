@@ -983,7 +983,7 @@ growth_rate <-
       -(lag(count)-count)/lag(count)
     ),
     growth = if_else(is.na(growth), 0, growth),
-    growth_smooth = slider::slide_dbl(growth, mean, .before = 2, .after = 2, .complete = FALSE)
+    growth_smooth = slider::slide_dbl(growth, mean, .before = 7, .complete = TRUE)
   ) %>%
   ungroup() %>%
   filter(!is.na(growth))
@@ -993,9 +993,10 @@ g_growth <-
   ggplot(aes(x = timestamp, y = growth)) +
   geom_line(
     aes(color = status, linetype = "Daily Rate"),
-    alpha = .8) +
+    alpha = .8
+  ) +
   geom_smooth(
-    aes(color = status, y = growth_smooth, linetype = "5-Day Average"), 
+    aes(color = status, y = growth_smooth, linetype = "7-Day Average"), 
     size = 1, se = FALSE, span = 0.33
   ) +
   scale_color_manual(
@@ -1004,12 +1005,14 @@ g_growth <-
     name = NULL
   ) + 
   scale_linetype_manual(
-    values = c("Daily Rate" = 2, "5-Day Average" = 1),
+    values = c("Daily Rate" = 2, "7-Day Average" = 1),
     drop = FALSE,
     name = NULL
   ) +
   guides(
-    linetype = guide_legend(override.aes = list(color = "#444444", size = 0.5))
+    linetype = guide_legend(
+      override.aes = list(color = "#444444", size = 0.5)
+    )
   ) +
   labs(
     x = NULL, y = NULL,
@@ -1033,6 +1036,7 @@ g_growth <-
     legend.box = "horizontal",
     legend.margin = margin(b = 0.5, unit = "line"),
     legend.spacing.y = unit(0, "line"),
+    legend.background = element_rect("#FFFFFFaa", NA),
     plot.margin = margin(0.5, 0.5, 0.5, 0.5, unit = "lines"),
     plot.subtitle = element_text(margin = margin(b = 1.25, unit = "lines")),
     plot.caption = element_text(color = "#444444", size = 10),
@@ -1040,6 +1044,7 @@ g_growth <-
     panel.grid.minor.x = element_blank(),
     panel.grid.minor.y = element_blank()
   )
+
 
 ggsave(fs::path("plots", "covid-19-florida-test-and-case-growth.png"), g_growth, width = 6, height = 3, dpi = 150, scale = 1.5)
 
