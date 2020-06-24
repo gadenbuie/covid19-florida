@@ -249,7 +249,7 @@ g_test_changes <-
     x = NULL, y = NULL,
     caption = glue::glue(
       "Last update: {max(test_summary$timestamp)}",
-      "Source: Florida DOH and covidtracking.com", 
+      "Source: Florida DOH", 
       "github.com/gadenbuie/covid19-florida",
       .sep = "\n"
     )
@@ -272,7 +272,7 @@ g_test_changes <-
     guide = FALSE
   ) +
   theme_minimal(base_size = 14) +
-  scale_x_date(date_breaks = "7 days", expand = expand_scale(add = 0.5), date_labels = "%b\n%d") +
+  scale_x_date(date_breaks = "1 month", expand = expand_scale(add = 0.5), date_labels = "%B") +
   scale_y_continuous(expand = expansion()) +
   coord_cartesian(clip = "off") +
   theme(
@@ -905,8 +905,7 @@ g_pct_positive_counties <-
       mutate(pct_positive = max(pct_positive)),
     aes(label = label)
   ) +
-  labs(size = "Number of Tests") +
-  guides(color = FALSE) +
+  guides(color = FALSE, size = guide_legend(title = "Number of Tests", override.aes = list(shape = 21, color = "#444444"))) +
   scale_y_continuous(labels = scales::percent_format(5)) +
   scale_size_continuous(range = c(1, 10)) +
   scale_color_manual(
