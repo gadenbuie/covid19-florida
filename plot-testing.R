@@ -786,8 +786,8 @@ g_test_per_case_counties <-
       Tallahassee  = "#f9a03f"  # dark
     )
   ) +
-  scale_y_continuous(labels = grkmisc::format_pretty_num()) +
-  scale_x_datetime(date_breaks = "1 week", labels = function(x) gsub("0(\\d)", "\\1", strftime(x, "%m/%d")), expand = expansion()) +
+  scale_y_continuous(labels = grkmisc::format_pretty_num(), expand = expansion()) +
+  scale_x_datetime(date_breaks = "1 month", date_labels = "%B") +
   theme_minimal(14) +
   theme(
     strip.text = element_text(face = "bold"),
