@@ -550,26 +550,39 @@ if ("age" %in% names(line_list)) {
   # Events by Age Group -----------------------------------------------------
   max_age <- max(line_list$age, na.rm = TRUE)
   
+  wrap <- function(..., width = 80) {
+    paste(
+      stringr::str_wrap(paste(...), width = width),
+      collapse = "\n"
+    )
+  }
+  
   g_weekly_events_by_age <-
     line_list %>%
     mutate(week = floor_date(case, "week", week_start = 2)) %>%
+    filter(
+      !is.na(age),
+      week < floor_date(today(), "week", 2) 
+    ) %>% 
     select(week, age, ed_visit, hospitalized, died) %>%
     mutate_at(vars(ed_visit, hospitalized, died), ~ toupper(.x) == "YES") %>%
     replace_na(list(died = FALSE, ed_visit = FALSE, hospitalized = FALSE)) %>%
     mutate(
+      case = TRUE,
       age_group = santoku::chop(age, seq(20, 80, 20), labels = santoku::lbl_dash()),
       age_group = forcats::fct_recode(age_group, `80+` = paste("80 -", max_age)),
-      age_group = forcats::fct_explicit_na(age_group, "(Unknown)")
+      age_group = forcats::fct_explicit_na(age_group, "(Unknown)"),
     ) %>%
-    pivot_longer(ed_visit:died) %>% 
+    pivot_longer(c(ed_visit, hospitalized, died, case)) %>% 
     mutate(
       name = recode(
         name,
         "died" = "Died",
         "ed_visit" = "Visited ER",
-        "hospitalized" = "Hospitalized"
+        "hospitalized" = "Hospitalized",
+        "case" = "New Cases"
       ),
-      name = factor(name, c("Visited ER", "Hospitalized", "Died"))
+      name = factor(name, c("New Cases", "Visited ER", "Hospitalized", "Died"))
     ) %>% 
     group_by(week, age_group, name) %>% 
     summarize(n = sum(value)) %>% 
@@ -579,12 +592,20 @@ if ("age" %in% names(line_list)) {
     ggplot() +
     aes(week, n) +
     geom_line(aes(color = age_group)) +
-    facet_wrap(vars(name)) +
-    scale_y_continuous(expand = expansion()) +
+    facet_wrap(vars(name), scales = "free") +
+    scale_y_continuous(expand = expansion(c(0, 0.05))) +
+    scale_color_manual(values = c("#69747c", "#440154", "#3e78b2", "#6baa75", "#ec4e20", "#ffc61e")) +
     theme_minimal(base_size = 14) +
     labs(
       x = NULL, y = NULL,
       color = "Age Group",
+      title = "Coronavirus Severity by Age Group",
+      subtitle = paste(
+        "Shows the weekly count of people in each age group who were diagnosed,", 
+        "visited the Emergency Room, were hospitalized, or died.\nThe dates", 
+        "shown are when the case was reported by Florida DOH, not when the", 
+        "ER visit, hospitalization, or death occurred."
+      ),
       caption = glue::glue(
         "Source: Florida DOH", 
         "Last update: {max(line_list$timestamp)}",
@@ -593,19 +614,23 @@ if ("age" %in% names(line_list)) {
       )
     ) +
     theme(
-      legend.position = c(0, -0.325),
+      legend.position = c(0, -0.25),
       legend.justification = c(0, 0),
       legend.direction = "horizontal",
       legend.text = element_text(color = "#444444"),
       panel.grid.major.x = element_line("#f8f8f8"),
       panel.grid.minor.x = element_blank(),
-      panel.border = element_rect(color = "#f0f0f0", fill = NA),
-      strip.text = element_text(size = 12),
+      panel.background = element_rect(color = "#f0f0f0", fill = NA),
+      strip.text = element_text(size = 12, hjust = 0),
       panel.grid.minor.y = element_blank(),
-      plot.caption = element_text(color = "#444444", margin = margin(t = 1.5, unit = "lines"))
+      plot.subtitle = element_text(color = "#999999", size = 9),
+      plot.caption = element_text(
+        color = "#444444", 
+        margin = margin(t = 1.5, unit = "lines")
+      )
     )
     
-    ggsave(fs::path("plots", "covid-19-florida-weekly-events-by-age.png"), g_weekly_events_by_age, width = 6.66, height = 3, dpi = 150, scale = 1.5)
+    ggsave(fs::path("plots", "covid-19-florida-weekly-events-by-age.png"), g_weekly_events_by_age, width = 6.66, height = 4, dpi = 150, scale = 1.5)
 
 }
 
