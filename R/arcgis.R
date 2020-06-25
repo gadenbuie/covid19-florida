@@ -24,17 +24,29 @@ query_arcgis <- function(target, low, high = low + 2000, format = "json", return
 query_paged <- function(target, page_size = 2000, process_fn = clean_feature_attributes) {
   out <- list()
   keep_going <- TRUE
+  retries <- 0
   low <- 0
   i <- 1
   while(keep_going) {
     page <- paste(i)
     
-    out[[page]] <- query_arcgis(
+    res <- query_arcgis(
       target, 
       low = scientific_result_offset(low), 
       high = scientific_result_offset(low + page_size)
-    ) %>% 
-      process_fn()
+    )
+    
+    if (!is.null(res$error)) {
+      retries <- retries + 1L
+      message("Waiting 60s to try again.")
+      if (retries > 25) {
+        stop("Unable to complete request over 25 minutes")
+      }
+      Sys.sleep(60)
+      next
+    }
+    
+    out[[page]] <- process_fn(res)
     
     if (is.null(out[[page]])) {
       keep_going <- FALSE
