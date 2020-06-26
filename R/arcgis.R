@@ -38,13 +38,19 @@ query_paged <- function(target, page_size = 2000, process_fn = clean_feature_att
     
     if (!is.null(res$error)) {
       retries <- retries + 1L
-      message("Waiting 60s to try again.")
+      if (!is.null(res$error$message)) {
+        message("Page ", page, " retry ", retries, ": ", res$error$message)
+      }
+      wait <- runif(1, 1, 30)
+      message("Waiting ", round(wait), "s to try again.")
       if (retries > 25) {
         stop("Unable to complete request over 25 minutes")
       }
-      Sys.sleep(60)
+      Sys.sleep(wait)
       next
     }
+    
+    retries <- 0
     
     out[[page]] <- process_fn(res)
     
