@@ -559,12 +559,8 @@ if ("age" %in% names(line_list)) {
   
   g_weekly_events_by_age <-
     line_list %>%
-    mutate(week = floor_date(case, "week", week_start = 2)) %>%
-    filter(
-      !is.na(age),
-      week < floor_date(today(), "week", 2) 
-    ) %>% 
-    select(week, age, ed_visit, hospitalized, died) %>%
+    filter(!is.na(age)) %>% 
+    select(case_date = case, age, ed_visit, hospitalized, died) %>%
     mutate_at(vars(ed_visit, hospitalized, died), ~ toupper(.x) == "YES") %>%
     replace_na(list(died = FALSE, ed_visit = FALSE, hospitalized = FALSE)) %>%
     mutate(
@@ -584,20 +580,24 @@ if ("age" %in% names(line_list)) {
       ),
       name = factor(name, c("New Cases", "Visited ER", "Hospitalized", "Died"))
     ) %>% 
-    group_by(week, age_group, name) %>% 
+    group_by(case_date, age_group, name) %>% 
     summarize(n = sum(value)) %>% 
     ungroup() %>% 
-    complete(week, age_group, name) %>% 
+    complete(case_date, age_group, name) %>% 
     replace_na(list(n = 0)) %>% 
+    group_by(age_group, name) %>%
+    mutate(n = slider::slide_dbl(n, mean, .before = 7L)) %>%
+    ungroup() %>%
     ggplot() +
-    aes(week, n) +
+    aes(case_date, n) +
     geom_line(aes(color = age_group)) +
     facet_wrap(vars(name), scales = "free") +
     scale_y_continuous(expand = expansion(c(0, 0.05))) +
     scale_color_manual(values = c("#69747c", "#440154", "#3e78b2", "#6baa75", "#ec4e20", "#ffc61e")) +
     theme_minimal(base_size = 14) +
     labs(
-      x = NULL, y = NULL,
+      x = NULL, 
+      y = "Average Cases Over Previous Week",
       color = "Age Group",
       title = "Coronavirus Severity by Age Group",
       subtitle = paste(
