@@ -97,6 +97,15 @@ if (is.null(arcgis_cases_by_day$error) && nrow(arcgis_cases_by_day$result)) {
   message("Unable to get cases by day from arcgis api: ", arcgis_cases_by_day$error$message)
 }
 
+arcgis_deaths_by_day <- purrr::safely(get_arcgis_deaths_by_day)()
+if (is.null(arcgis_deaths_by_day$error) && nrow(arcgis_deaths_by_day$result)) {
+  arcgis_deaths_by_day$result %>% 
+    mutate(timestamp = ts_current) %>% 
+    select(timestamp, everything()) %>% 
+    write_csv("data/covid-19-florida_arcgis_deaths-by-day.csv")
+} else {
+  message("Unable to get deaths by day summary from arcgis api: ", arcgis_deaths_by_day$error$message)
+}
 
 arcgis_cases_by_zip <- purrr::safely(get_arcgis_cases_by_zip)()
 if (is.null(arcgis_cases_by_zip$error) && nrow(arcgis_cases_by_zip$result)) {
@@ -115,10 +124,14 @@ if (!is.null(arcgis_cases_by_zip_geojson$error)) {
 
 arcgis_health_metrics <- purrr::safely(get_arcgis_health_metrics)()
 if (is.null(arcgis_health_metrics$error) && nrow(arcgis_health_metrics$result)) {
+  current_health_metrics <- read_csv("data/covid-19-florida_arcgis_health-metrics.csv")
+  updated <- max(current_health_metrics$week_end_date) < max(arcgis_health_metrics$result$week_end_date)
+  if (updated) {
   arcgis_health_metrics$result %>% 
     mutate(timestamp = ts_current) %>% 
     select(timestamp, everything()) %>% 
     write_csv("data/covid-19-florida_arcgis_health-metrics.csv")
+  }
 } else {
   msgs <- c(msgs, "Unable to get cases by zip summary from arcgis api")
   message("Unable to get cases by zip summary from arcgis api: ", arcgis_health_metrics$error$message)

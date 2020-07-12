@@ -1,3 +1,14 @@
+# 2020-07-12
+
+- I added the "deaths by day" to the data collected from the ArcGIS feature server.
+  Note that the deaths included in this data are only Florida residents, and
+  include residents who were diagnosed/isolated outside of Florida.
+  
+  https://services1.arcgis.com/CY1LXxl9zlJeBuRZ/ArcGIS/rest/services/Florida_COVID_19_Deaths_by_Day/FeatureServer/
+  
+- The health metrics data snapshot is only saved if the data has changed since
+  the last update.
+
 # 2020-06-23
 
 - Now that the line list has passed 100k cases, the ArcGIS API requires scientific
