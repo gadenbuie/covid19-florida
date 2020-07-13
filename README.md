@@ -1,6 +1,6 @@
 Florida COVID-19 Data
 ================
-2020-07-13 15:56:34
+2020-07-13 17:00:01
 
 ## Today
 
@@ -42,6 +42,71 @@ DOH data sources at 7am, noon and 7pm daily.
 </div>
 
 </div>
+
+## Hospital and ICU Utilization
+
+![](plots/covid-19-florida-icu-usage.png)
+
+| County       | COVID Hospitalizations |
+| :----------- | ---------------------: |
+| All          |                   8085 |
+| Miami-Dade   |                   1806 |
+| Broward      |                   1209 |
+| Palm Beach   |                    628 |
+| Orange       |                    561 |
+| Duval        |                    544 |
+| Hillsborough |                    295 |
+| Lee          |                    234 |
+| Pinellas     |                    223 |
+| Osceola      |                    202 |
+| Collier      |                    189 |
+| Seminole     |                    164 |
+| Escambia     |                    156 |
+| Polk         |                    142 |
+| Volusia      |                    140 |
+| St. Lucie    |                    130 |
+| Sarasota     |                    129 |
+| Brevard      |                    125 |
+| Lake         |                    113 |
+| Alachua      |                    106 |
+| Marion       |                     97 |
+| Pasco        |                     97 |
+| Manatee      |                     89 |
+| Leon         |                     71 |
+| Hernando     |                     62 |
+| Bay          |                     58 |
+| Martin       |                     48 |
+| Highlands    |                     45 |
+| Charlotte    |                     39 |
+| Okaloosa     |                     39 |
+| Clay         |                     37 |
+| St. Johns    |                     36 |
+| Indian River |                     34 |
+| Jackson      |                     33 |
+| Baker        |                     30 |
+| Citrus       |                     21 |
+| Putnam       |                     21 |
+| Columbia     |                     20 |
+| Flagler      |                     20 |
+| Santa Rosa   |                     20 |
+| Sumter       |                     20 |
+| Monroe       |                     15 |
+| Okeechobee   |                     14 |
+| Nassau       |                      6 |
+| Hendry       |                      5 |
+| Walton       |                      4 |
+| Washington   |                      4 |
+| Desoto       |                      2 |
+| Calhoun      |                      1 |
+| Gulf         |                      1 |
+| Franklin     |                      0 |
+| Gadsden      |                      0 |
+| Hardee       |                      0 |
+| Holmes       |                      0 |
+| Madison      |                      0 |
+| Suwannee     |                      0 |
+| Taylor       |                      0 |
+| Union        |                      0 |
 
 ## Daily Testing
 

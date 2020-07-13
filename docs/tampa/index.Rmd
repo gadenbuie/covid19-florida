@@ -137,7 +137,7 @@ tampa_test_summary %>%
 ::: {.has-text-centered}
 ```{r daily-changes-in-testing}
 tampa_test_summary %>% 
-  select(day = timestamp, county, total = t_total, positive = t_positive, deaths) %>% 
+  select(day = timestamp, county, total = t_total, positive = t_positive_2, deaths) %>% 
   filter(!is.na(positive), !is.na(deaths)) %>% 
   arrange(day) %>% 
   group_by(county) %>% 

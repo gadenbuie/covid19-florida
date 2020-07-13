@@ -1139,3 +1139,66 @@ g_growth <-
 
 ggsave(fs::path("plots", "covid-19-florida-test-and-case-growth.png"), g_growth, width = 6, height = 3, dpi = 150, scale = 1.5)
 
+
+# ICU Capacity ------------------------------------------------------------
+
+florida <-
+  maps::map("county", region = "Florida", fill = TRUE, plot = FALSE) %>% 
+  sf::st_as_sf()
+
+florida$county <- stringr::str_remove(florida$ID, "florida,")
+florida$county <- stringr::str_replace(florida$county, "de soto", "desoto")
+
+ahca_icu_capacity <- 
+  readr::read_csv("data/covid-19-florida_ahca_icu-beds-county.csv")
+
+g_ahca_icu_usage <- 
+  ahca_icu_capacity %>% 
+  filter(measure_names == "Available Adult ICU%", county != "All") %>%
+  mutate(
+    county = stringr::str_remove_all(tolower(county), "[.]"),
+    usage = 1 - measure_values
+  ) %>% 
+  full_join(florida, by = "county") %>% 
+  ggplot() +
+  geom_sf(aes(fill = usage, geometry = geom), color = "#404040", size = 0.2) +
+  scale_fill_viridis_c(
+    begin = 0, 
+    end = 1,
+    na.value = "#FFFFFF", 
+    option = "B", 
+    limits = c(0, 1),
+    labels = scales::percent_format()
+  ) +
+  coord_sf(
+    crs = "+proj=aea +lat_1=20 +lat_2=60 +lat_0=40 +lon_0=-96 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs",
+    # xlim = c(-88, -79.5), 
+    # ylim = c(24.5, 31.5), 
+    expand = FALSE
+  ) +
+  labs(
+    title = "ICU Utilization in Florida",
+    subtitle = "Percent of Adult ICU Capacity Currently in Use",
+    fill = "ICU capacity in use",
+    caption = glue::glue(
+      "Source: AHCA",
+      "Last update: {max(ahca_icu_capacity$timestamp)}",
+      "github.com/gadenbuie/covid19-florida",
+      .sep = "\n"
+    )
+  ) +
+  guides(
+    fill = guide_colorbar(title.position = "top", frame.colour = "#333333")
+  ) +
+  theme_void() +
+  theme(
+    legend.position = c(0.16, 0.1),
+    legend.direction = "horizontal",
+    legend.key.width = unit(2, "line"),
+    plot.caption = element_text(hjust = 0),
+    plot.margin = margin(0.5, 0.5, 0.5, 0.5, unit = "line"),
+    plot.subtitle = element_text(margin = margin(t = 0.25, b = 0.5, unit = "line"))
+  )
+
+
+ggsave(fs::path("plots", "covid-19-florida-icu-usage.png"), g_ahca_icu_usage, width = 5, height = 4, dpi = 150, scale = 1.5)

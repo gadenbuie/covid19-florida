@@ -103,6 +103,23 @@ I take snapshots of the various FL DOH data sources at 7am, noon and 7pm daily.
 </div>
 </div>
 
+## Hospital and ICU Utilization
+
+![](plots/covid-19-florida-icu-usage.png)
+
+```{r}
+read_csv("data/covid-19-florida_ahca_covid-hospitalizations.csv") %>% 
+  filter(timestamp == max(timestamp)) %>% 
+  mutate(county = stringr::str_to_title(county)) %>% 
+  select(-timestamp) %>% 
+  arrange(desc(covid_hospitalizations)) %>% 
+  rename(
+    County = "county", "COVID Hospitalizations" = covid_hospitalizations
+  ) %>% 
+  knitr::kable()
+```
+
+
 ## Daily Testing
 
 ![](plots/covid-19-florida-tests-per-case.png)
