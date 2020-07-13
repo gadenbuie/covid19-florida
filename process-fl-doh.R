@@ -138,19 +138,23 @@ if (is.null(arcgis_health_metrics$error) && nrow(arcgis_health_metrics$result)) 
 }
 
 
-# AHCA Covid Hospitalizations ---------------------------------------------
+# AHCA Data ----------------------------------------------------------------
 source(here::here("R", "ahca.R"))
 
-ahca_covid_hosp <- purrr::safely(ahca_get_data)("covid-hospitalizations")
-if (is.null(ahca_covid_hosp$error) && nrow(ahca_covid_hosp$result)) {
-  ahca_covid_hosp$result %>% 
-    mutate(timestamp = ts_current) %>% 
-    select(timestamp, everything()) %>% 
-    append_csv("data/covid-19-florida_ahca_covid-hospitalizations.csv")
-} else {
-  msgs <- c(msgs, "Unable to get hospitalizations from AHCA dashboard")
-  message("Unable to get hospitalizations from AHCA dashboard: ", ahca_covid_hosp$error$message)
+for (ahca_source in ahca_sources) {
+  ahca_data <- purrr::safely(ahca_get_data)(ahca_source)
+  if (is.null(ahca_data$error) && nrow(ahca_data$result)) {
+    ahca_data$result %>% 
+      mutate(timestamp = ts_current) %>% 
+      select(timestamp, everything()) %>% 
+      append_csv(glue::glue("data/covid-19-florida_ahca_{ahca_source}.csv"))
+  } else {
+    msg <- glue::glue("Unable to get {ahca_source} from AHCA dashboard")
+    msgs <- c(msgs, msg)
+    message(mgs, ": ", ahca_data$error$message)
+  }
 }
+
 
 # Get FL DOH Main Page -----------------------------------------------------
 

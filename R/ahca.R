@@ -1,17 +1,16 @@
-ahca_data_url <- function(which = c("covid-hospitalizations", "icu-beds-county", "icu-beds-hospital")) {
+ahca_sources <- c("covid-hospitalizations", "icu-beds-county", "hospital-beds-county")
+
+ahca_data_url <- function(which = "covid-hospitalizations") {
   switch(
-    match.arg(which),
-    "covid-hospitalizations" = "https://bi.ahca.myflorida.com/vizql/t/ABICC/w/Public/v/COVIDHospitalizationsCounty/vud/sessions/A3457D37E8BA45BEB99CC560A5B08B55-1:0/views/7247426513482188062_11259638418207441572?csv=true&summary=true",
-    "icu-beds-county" =,
-    "icu-beds-hospital" =,
+    match.arg(which, ahca_sources),
+    "covid-hospitalizations" = "https://bi.ahca.myflorida.com/t/ABICC/views/Public/COVIDHospitalizationsCounty.csv",
+    "hospital-beds-county" = "https://bi.ahca.myflorida.com/t/ABICC/views/Public/HospitalBedsCounty.csv",
+    "icu-beds-county" = "https://bi.ahca.myflorida.com/t/ABICC/views/Public/ICUBedsCounty.csv",
     stop("Not available")
   )
 }
 
 ahca_get_data <- function(which) {
-  read.delim(
-    ahca_data_url(which),
-    stringsAsFactors = FALSE,
-    fileEncoding = "UTF-16"
-  )
+  x <- readr::read_csv(ahca_data_url(which), col_types = readr::cols(.default = "c"))
+  janitor::clean_names(x)
 }

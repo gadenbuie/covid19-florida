@@ -1,7 +1,6 @@
-# 2020-7-13
+# 2020-07-13
 
-- Capture hospitalizations with primary diagnosis of COVID as reported by AHCA
-  at https://bi.ahca.myflorida.com/t/ABICC/views/Public/COVIDHospitalizationsCounty
+- Capture dataa from AHCA: hospitalizations, hospital bed capacity and icu capacity
 
 # 2020-07-12
 
