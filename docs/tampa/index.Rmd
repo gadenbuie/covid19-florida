@@ -48,7 +48,7 @@ test_summary <-
 
 tampa_test_summary <- 
   dash %>%
-  select(timestamp, county = county_1, t_positive, t_total, deaths, t_inconc, c_ed_yes) %>%
+  select(timestamp, county = county_1, t_positive_2, t_total, deaths, t_inconc, c_ed_yes) %>%
   group_by(day = floor_date(timestamp - hours(8), "day")) %>% 
   filter(timestamp == max(timestamp)) %>% 
   ungroup() %>% 
@@ -80,10 +80,10 @@ tampa_test_summary %>%
   select(timestamp:t_total) %>% 
   group_by(county) %>%
   arrange(timestamp) %>% 
-  filter(t_positive > lag(t_positive)) %>%
+  filter(t_positive_2 > lag(t_positive_2)) %>%
   # Convert from cumulative to daily new
   mutate(
-    daily_t_positive = t_positive - lag(t_positive),
+    daily_t_positive = t_positive_2 - lag(t_positive_2),
     daily_t_total = t_total - lag(t_total)
   ) %>% 
   ungroup() %>% 

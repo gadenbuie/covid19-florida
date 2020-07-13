@@ -38,8 +38,8 @@ test_summary_long <-
   test_summary %>%
   mutate(positive = positive - deaths) %>% 
   pivot_longer(names_to = "status", values_to = "count", -c(day, timestamp)) %>%
-  filter(!status %in% c("negative", "total")) %>%
-  mutate(status = factor(status, c("negative", "pending", "inconclusive", "deaths", "positive")))
+  filter(status %in% c("positive", "deaths")) %>%
+  mutate(status = factor(status, c("deaths", "positive")))
 
 set.seed(4242)
 g <-
@@ -78,8 +78,8 @@ g <-
     "label",
     label = glue::glue(
       "{format(test_summary %>% pull(positive) %>% tail(1), big.mark = ',')} confirmed cases",
-      "{format(test_summary %>% pull(total) %>% tail(1), big.mark = ',')} total tests",
-      "{format(test_summary %>% pull(negative) %>% tail(1), big.mark = ',')} negative tests",
+      "{format(test_summary %>% pull(negative) %>% tail(1), big.mark = ',')} people with only negative results",
+      "{format(test_summary %>% pull(total) %>% tail(1), big.mark = ',')} people tested",
       .sep = "\n"
     ),
     x = min(test_summary$day) - 0.25, 
@@ -90,8 +90,8 @@ g <-
     fill = "#FFFFFF"
   ) +
   theme_minimal(base_size = 14) +
-  scale_x_date(expand = expand_scale(add = c(0, 20))) +
-  scale_y_continuous(expand = expand_scale(add = c(0, 1000))) +
+  scale_x_date(expand = expansion(add = c(0, 20))) +
+  scale_y_continuous(expand = expansion(add = c(0, 1000))) +
   scale_color_manual(
     aesthetics = "segment.color",
     values = c(negative = "#acc2d1", pending = "#aee2c9", positive = "#440154", deaths = "#fde725", inconclusive = "grey80"),
@@ -149,8 +149,8 @@ g_tests <-
     subtitle = "Florida COVID-19"
   ) +
   theme_minimal(base_size = 14) +
-  scale_x_date(date_breaks = "7 days", expand = expand_scale(add = 0), date_labels = "%b\n%d") +
-  scale_y_continuous(limits = c(0, NA), expand = expand_scale(add = 0)) +
+  scale_x_date(date_breaks = "7 days", expand = expansion(add = 0), date_labels = "%b\n%d") +
+  scale_y_continuous(limits = c(0, NA), expand = expansion(add = 0), labels = grkmisc::format_pretty_num()) +
   coord_cartesian(clip = "off") +
   theme(
     plot.margin = margin(0.5, 0.5, 0.5, 0.5, unit = "lines"),
@@ -200,8 +200,8 @@ g_new_cases <-
     guide = FALSE
   ) +
   theme_minimal(base_size = 14) +
-  scale_x_date(date_breaks = "2 days", expand = expand_scale(add = 0), date_labels = "%b\n%d") +
-  scale_y_continuous(limits = c(0, NA), expand = expand_scale(add = 0)) +
+  scale_x_date(date_breaks = "2 days", expand = expansion(add = 0), date_labels = "%b\n%d") +
+  scale_y_continuous(limits = c(0, NA), expand = expansion(add = 0), labels = grkmisc::format_pretty_num()) +
   coord_cartesian(clip = "off") +
   theme(
     plot.margin = margin(0.5, 0.5, 0.5, 0.5, unit = "lines"),
@@ -272,7 +272,7 @@ g_test_changes <-
     guide = FALSE
   ) +
   theme_minimal(base_size = 14) +
-  scale_x_date(date_breaks = "1 month", expand = expand_scale(add = 0.5), date_labels = "%B") +
+  scale_x_date(date_breaks = "1 month", expand = expansion(add = 0.5), date_labels = "%B") +
   scale_y_continuous(expand = expansion()) +
   coord_cartesian(clip = "off") +
   theme(
@@ -360,20 +360,20 @@ g_county_heatmap <-
     plot.margin = margin(t = 1, l = 1, r = 2, unit = "lines")
   )
 
-g_case_heatmap <- 
-  read_csv("data/covid-19-florida_pdf_cases_age.csv") %>% 
-  pivot_longer(-timestamp, names_to = "age", values_to = "count") %>% 
-  mutate(age = forcats::fct_inorder(age)) %>% 
+g_case_heatmap <-
+  read_csv("data/covid-19-florida_pdf_cases_age.csv") %>%
+  pivot_longer(-timestamp, names_to = "age", values_to = "count") %>%
+  mutate(age = forcats::fct_inorder(age)) %>%
   mutate(
     timestamp = ymd_hms(timestamp, tz = "America/New_York"),
     day = floor_date(timestamp, "day"),
     day = as_date(day)
-  ) %>% 
+  ) %>%
   arrange(desc(timestamp)) %>%
-  group_by(day, age) %>% 
+  group_by(day, age) %>%
   slice(1) %>%
-  ungroup() %>% 
-  complete(day, age, fill = list(count = 0)) %>% 
+  ungroup() %>%
+  complete(day, age, fill = list(count = 0)) %>%
   ggplot() +
   aes(day, age, fill = count) +
   geom_tile(color = "black", size = 1) +
@@ -405,7 +405,7 @@ if ("age" %in% names(line_list)) {
     ggplot() +
     aes(age, count) %>% 
     geom_col(fill = "#ec4e20") +
-    geom_text(aes(label = count, x = age, y = count), color = "#ec4e20", size = 4, vjust = -0.5) +
+    geom_text(aes(label = grkmisc::pretty_num(count), x = age, y = count), color = "#ec4e20", size = 4, vjust = -0.5) +
     scale_y_continuous(expand = c(0, 0, 0, 20)) +
     labs(
       x = NULL, y = NULL,
@@ -456,7 +456,7 @@ if ("age" %in% names(line_list)) {
     geom_col(fill = "#893168") +
     geom_text(
       data = . %>% filter(count > 0),
-      aes(label = count), 
+      aes(label = grkmisc::pretty_num(count, no_dot_zero = TRUE)), 
       color = "#893168",
       size = 4, 
       vjust = -0.5
@@ -531,7 +531,7 @@ if ("age" %in% names(line_list)) {
     ) +
     guides(fill = FALSE) +
     scale_fill_manual(values = c("#440154", "#6baa75")) +
-    scale_y_continuous(expand = expand_scale(add = c(0, 5))) +
+    scale_y_continuous(expand = expansion(add = c(0, 5)), labels = grkmisc::format_pretty_num()) +
     scale_x_discrete(breaks = c(seq(0, 70, 10), "80+")) +
     coord_cartesian(clip = "off") +
     theme_minimal(base_size = 14) +
@@ -981,17 +981,20 @@ g_pct_positive_counties <-
   geom_line(show.legend = FALSE) +
   geom_point(aes(size = count / pct_positive), alpha = 0.66, shape = 21) +
   facet_wrap(vars(metro)) +
-  geom_text(
+  geom_label(
     data = . %>% 
       group_by(metro) %>% 
       summarize(
-        label = glue::glue("Avg. Daily Tests: {format(mean(count / pct_positive), , big.mark = ',', digits = 0)}"),
+        label = glue::glue("Avg. Daily Tests: {grkmisc::pretty_num(mean(count / pct_positive), no_dot_zero = TRUE)}"),
         timestamp = mean(timestamp),
         pct_positive = max(pct_positive)
       ) %>% 
       ungroup() %>% 
       mutate(pct_positive = max(pct_positive)),
-    aes(label = label)
+    aes(label = label),
+    fill = "white",
+    label.size = 0,
+    label.padding = unit(0.5, "line")
   ) +
   guides(color = FALSE, size = guide_legend(title = "Number of Tests", override.aes = list(shape = 21, color = "#444444"))) +
   scale_y_continuous(labels = scales::percent_format(5)) +

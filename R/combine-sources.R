@@ -18,7 +18,7 @@ combine_scraped_and_api_data <- function(data_scraped = NULL, data_api = NULL) {
     data_api %>%
     dplyr::group_by(timestamp) %>%
     dplyr::mutate(c_fl_res_deaths = dplyr::coalesce(c_fl_res_deaths, fl_res_deaths)) %>% 
-    dplyr::summarize_at(vars(t_positive, t_negative, t_pending, t_inconc, c_non_res_deaths, c_fl_res_deaths), sum, na.rm = TRUE) %>%
+    dplyr::summarize_at(vars(t_positive_2, t_negative_2, t_pending, t_inconc, c_non_res_deaths, c_fl_res_deaths), sum, na.rm = TRUE) %>%
     dplyr::ungroup() %>%
     dplyr::mutate(source = 0)
 
@@ -32,8 +32,8 @@ combine_scraped_and_api_data <- function(data_scraped = NULL, data_api = NULL) {
     dplyr::slice(1) %>%
     dplyr::ungroup() %>%
     dplyr::mutate(
-      negative = dplyr::coalesce(t_negative, negative),
-      positive = dplyr::coalesce(t_positive, positive),
+      negative = dplyr::coalesce(t_negative_2, negative),
+      positive = dplyr::coalesce(t_positive_2, positive),
       pending = dplyr::coalesce(t_pending, pending),
       deaths = dplyr::coalesce(c_fl_res_deaths + c_non_res_deaths, deaths),
       inconclusive = t_inconc
