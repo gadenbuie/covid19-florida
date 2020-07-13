@@ -1,3 +1,8 @@
+# 2020-7-13
+
+- Capture hospitalizations with primary diagnosis of COVID as reported by AHCA
+  at https://bi.ahca.myflorida.com/t/ABICC/views/Public/COVIDHospitalizationsCounty
+
 # 2020-07-12
 
 - I added the "deaths by day" to the data collected from the ArcGIS feature server.
