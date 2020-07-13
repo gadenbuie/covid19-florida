@@ -1,6 +1,6 @@
 Florida COVID-19 Data
 ================
-2020-07-13 17:00:01
+2020-07-13 19:04:40
 
 ## Today
 
@@ -49,24 +49,24 @@ DOH data sources at 7am, noon and 7pm daily.
 
 | County       | COVID Hospitalizations |
 | :----------- | ---------------------: |
-| All          |                   8085 |
-| Miami-Dade   |                   1806 |
-| Broward      |                   1209 |
-| Palm Beach   |                    628 |
+| All          |                   8051 |
+| Miami-Dade   |                   1808 |
+| Broward      |                   1211 |
+| Palm Beach   |                    622 |
 | Orange       |                    561 |
-| Duval        |                    544 |
-| Hillsborough |                    295 |
+| Duval        |                    530 |
+| Hillsborough |                    265 |
 | Lee          |                    234 |
-| Pinellas     |                    223 |
+| Pinellas     |                    215 |
 | Osceola      |                    202 |
-| Collier      |                    189 |
+| Collier      |                    188 |
 | Seminole     |                    164 |
-| Escambia     |                    156 |
+| Escambia     |                    160 |
 | Polk         |                    142 |
-| Volusia      |                    140 |
+| Volusia      |                    142 |
 | St. Lucie    |                    130 |
 | Sarasota     |                    129 |
-| Brevard      |                    125 |
+| Brevard      |                    120 |
 | Lake         |                    113 |
 | Alachua      |                    106 |
 | Marion       |                     97 |
@@ -75,15 +75,15 @@ DOH data sources at 7am, noon and 7pm daily.
 | Leon         |                     71 |
 | Hernando     |                     62 |
 | Bay          |                     58 |
+| Clay         |                     49 |
 | Martin       |                     48 |
 | Highlands    |                     45 |
 | Charlotte    |                     39 |
 | Okaloosa     |                     39 |
-| Clay         |                     37 |
+| Baker        |                     37 |
 | St. Johns    |                     36 |
 | Indian River |                     34 |
 | Jackson      |                     33 |
-| Baker        |                     30 |
 | Citrus       |                     21 |
 | Putnam       |                     21 |
 | Columbia     |                     20 |
@@ -97,8 +97,8 @@ DOH data sources at 7am, noon and 7pm daily.
 | Walton       |                      4 |
 | Washington   |                      4 |
 | Desoto       |                      2 |
+| Gulf         |                      2 |
 | Calhoun      |                      1 |
-| Gulf         |                      1 |
 | Franklin     |                      0 |
 | Gadsden      |                      0 |
 | Hardee       |                      0 |
