@@ -803,7 +803,7 @@ library(patchwork)
 
 test_per_case <-
   dash %>%
-  select(timestamp, county_1, t_positive, t_total) %>%
+  select(timestamp, county_1, t_positive_2, t_total) %>%
   mutate(t_total = if_else(
     timestamp < ymd_hm("2020-05-16 08:00") & timestamp > ymd_hm("2020-05-15 19:00"),
     NA_real_,
@@ -830,23 +830,23 @@ test_per_case <-
   summarize_all(sum) %>% 
   group_by(metro) %>%
   arrange(timestamp) %>% 
-  filter(t_positive > lag(t_positive)) %>% 
+  filter(t_positive_2 > lag(t_positive_2)) %>% 
   complete(
     timestamp = seq(min(timestamp), max(timestamp), by = "day"),
     metro
   ) %>%
   mutate_at(
     # fill in missing days with midpoint between day before and after
-    vars(t_positive, t_total), 
+    vars(t_positive_2, t_total), 
     ~ ifelse(is.na(.x), slider::slide_dbl(.x, mean, .before = 1, .after = 1, na.rm = TRUE), .x)
   ) %>% 
   # Convert from cumulative to daily new
-  mutate_at(vars(t_positive, t_total), ~ .x - lag(.x)) %>% 
+  mutate_at(vars(t_positive_2, t_total), ~ .x - lag(.x)) %>% 
   filter(timestamp != min(timestamp)) %>%
   ungroup() %>% 
-  mutate(pct_positive = t_positive / t_total) %>% 
+  mutate(pct_positive = t_positive_2 / t_total) %>% 
   # mutate_at(vars(pct_positive), slider::slide_dbl, mean, .before = 5) %>% 
-  gather(status, count, t_positive, t_total) %>% 
+  gather(status, count, t_positive_2, t_total) %>% 
   mutate(
     status = if_else(status == "t_total", "test", metro),
     metro = forcats::fct_reorder(metro, count, mean, .desc = TRUE),
