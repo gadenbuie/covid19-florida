@@ -102,7 +102,7 @@ if (is.null(arcgis_deaths_by_day$error) && nrow(arcgis_deaths_by_day$result)) {
   arcgis_deaths_by_day$result %>% 
     mutate(timestamp = ts_current) %>% 
     select(timestamp, everything()) %>% 
-    write_csv("data/covid-19-florida_arcgis_deaths-by-day.csv")
+    append_csv("data/covid-19-florida_arcgis_deaths-by-day.csv")
 } else {
   message("Unable to get deaths by day summary from arcgis api: ", arcgis_deaths_by_day$error$message)
 }
