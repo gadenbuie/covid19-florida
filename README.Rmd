@@ -115,7 +115,7 @@ hospital_beds_available <-
   mutate(county = stringr::str_to_title(county)) %>% 
   tidyr::pivot_wider(names_from = measure_names, values_from = measure_values) %>% 
   mutate(hospital_beds = glue::glue("{Available}<span style=\"color: #aaa\">/{`Bed Census`}</span>")) %>% 
-  select(county, hospital_beds)
+  select(county, hospital_beds, hospital_beds_available = Available, hospital_beds_total = `Bed Census`)
 
 icu_beds_available <- 
   read_csv("data/covid-19-florida_ahca_icu-beds-county.csv") %>% 
@@ -126,7 +126,7 @@ icu_beds_available <-
   mutate(county = stringr::str_to_title(county)) %>% 
   tidyr::pivot_wider(names_from = measure_names, values_from = measure_values) %>% 
   mutate(icu_beds = glue::glue("{`Available Adult ICU`}<span style=\"color: #aaa\">/{`Adult ICU Census`}</span>")) %>% 
-  select(county, icu_beds)
+  select(county, icu_beds, icu_beds_available = `Available Adult ICU`, icu_beds_total = `Adult ICU Census`)
 
 hospitals_by_county <-
   read_csv("data/covid-19-florida_ahca_hospital-beds-hospital.csv") %>% 
@@ -146,14 +146,7 @@ current_hospitalizations <-
   mutate(day = if_else(day == max(day), "today", "yesterday")) %>% 
   select(-timestamp) %>% 
   tidyr::pivot_wider(names_from = day, values_from = covid_hospitalizations) %>% 
-  mutate(
-    change = today - yesterday,
-    change = case_when(
-      change > 0 ~ paste0('<span style="color: #EC4E20">&uarr; ', change, '</span>'),
-      change < 0 ~ paste0('<span style="color: #6BAA75">&darr; ', change, '</span>'),
-      TRUE ~ ""
-    )
-  ) %>% 
+  mutate(change = today - yesterday) %>% 
   select(-yesterday) %>%
   mutate(county = stringr::str_to_title(county)) %>% 
   arrange(desc(today)) %>% 
@@ -162,21 +155,44 @@ current_hospitalizations <-
 
 if (knitr::is_html_output(excludes = "gfm")) {
   current_hospitalizations %>% 
+    select(-hospital_beds, -icu_beds) %>% 
     reactable::reactable(
       searchable = TRUE, 
       highlight = TRUE,
       columns = list(
         county = reactable::colDef(name = "County"),
         today = reactable::colDef(name = "Current COVID Hospitalizations"),
-        change = reactable::colDef(name = "Change Since Yesterday", html = TRUE),
-        hospital_beds = reactable::colDef(
-          name = "Available Hospital Beds",
-          html = TRUE
+        change = reactable::colDef(
+          name = "Change Since Yesterday", 
+          html = TRUE,
+          cell = function(change) {
+            if (change > 0) {
+              paste0('<span style="color: #EC4E20">&uarr; ', change, '</span>')
+            } else if (change < 0) {
+              paste0('<span style="color: #6BAA75">&darr; ', change, '</span>')
+            } else {
+              ""
+            }
+          }
         ),
-        icu_beds = reactable::colDef(
+        hospital_beds_available = reactable::colDef(
+          name = "Available Hospital Beds",
+          html = TRUE,
+          cell = function(value, index) {
+            total <- current_hospitalizations$hospital_beds_total[[index]]
+            paste0(value, '<span style=\"color: #aaa\">/', total, "</span>")
+          }
+        ),
+        icu_beds_available = reactable::colDef(
           name = "Available ICU Beds",
-          html = TRUE
-        )
+          html = TRUE,
+          cell = function(value, index) {
+            total <- current_hospitalizations$icu_beds_total[[index]]
+            paste0(value, '<span style=\"color: #aaa\">/', total, "</span>")
+          }
+        ),
+        hospital_beds_total = reactable::colDef(show = FALSE),
+        icu_beds_total = reactable::colDef(show = FALSE)
       ),
       details = function(index) {
         county <- current_hospitalizations$county[[index]]
@@ -208,7 +224,15 @@ if (knitr::is_html_output(excludes = "gfm")) {
       }
     )
 } else {
-  current_hospitalizations %>% 
+  current_hospitalizations %>%
+    mutate(
+      change = case_when(
+        change > 0 ~ paste0('<span style="color: #EC4E20">&uarr; ', change, '</span>'),
+        change < 0 ~ paste0('<span style="color: #6BAA75">&darr; ', change, '</span>'),
+        TRUE ~ ""
+      )
+    ) %>% 
+    select(county, today, change, hospital_beds, icu_beds) %>%
     slice(1:11) %>% 
     knitr::kable(escape = FALSE, col.names = c(
       "County", "Current COVID Hospitalizations", "Change Since Yesterday",
