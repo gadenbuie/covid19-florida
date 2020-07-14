@@ -92,6 +92,8 @@ I take snapshots of the various FL DOH data sources at 7am, noon and 7pm daily.
 
 ![](plots/covid-19-florida-daily-test-changes.png)
 
+![](plots/covid-19-florida-deaths-by-day.png)
+
 ![](plots/covid-19-florida-county-top-6.png)
 
 <div class="columns">

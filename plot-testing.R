@@ -1202,3 +1202,61 @@ g_ahca_icu_usage <-
 
 
 ggsave(fs::path("plots", "covid-19-florida-icu-usage.png"), g_ahca_icu_usage, width = 5, height = 4, dpi = 150, scale = 1.5)
+
+
+
+# Deaths by Day -----------------------------------------------------------
+
+deaths <- read_csv(here::here("data", "covid-19-florida_arcgis_deaths-by-day.csv"))
+
+g_deaths <- 
+  deaths %>% 
+  mutate(reported_date = floor_date(timestamp, "day")) %>% 
+  group_by(reported_date) %>% 
+  filter(timestamp == max(timestamp)) %>% 
+  ungroup() %>% 
+  mutate(
+    reported_day = as.integer(difftime(max(reported_date), reported_date, unit = "day")),
+    reported_day = case_when(
+      reported_day == 0 ~ "Today",
+      reported_day > 7 ~ "> One week ago",
+      TRUE ~ "This week"
+    ),
+    reported_day = factor(reported_day, rev(c("> One week ago", "This week", "Today")))
+  ) %>% 
+  select(date, deaths, reported_day) %>%
+  group_by(date, reported_day) %>%
+  filter(date == max(date)) %>% 
+  group_by(date) %>% 
+  arrange(desc(reported_day), date) %>%
+  mutate(
+    deaths = deaths - coalesce(lag(deaths), 0)
+  ) %>%
+  ungroup() %>% 
+  arrange(date, reported_day) %>%
+  ggplot() +
+  aes(date, deaths, alpha = reported_day) +
+  geom_col(position = "stack", fill = "#440154", width = 1) +
+  scale_alpha_discrete(range = c(0.5, 1)) +
+  ylim(0, NA) +
+  labs(
+    alpha = "Reported",
+    x = NULL,
+    y = NULL,
+    title = "Deaths by Date of Death",
+    subtitle = "Florida COVID-19",
+    caption = glue::glue(
+      "Source: Florida DOH",
+      "Last update: {max(deaths$timestamp)}",
+      "github.com/gadenbuie/covid19-florida",
+      .sep = "\n"
+    )
+  ) +
+  theme_minimal(18) +
+  theme(
+    legend.position = c(0.125, 0.75),
+    legend.background = element_rect(fill = "#FFFFFF88", color = NA),
+    panel.grid.minor = element_blank()
+  )
+
+ggsave(fs::path("plots", "covid-19-florida-deaths-by-day.png"), g_deaths, width = 8.5, height = 3.33, dpi = 150, scale = 1.5)
