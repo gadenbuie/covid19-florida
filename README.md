@@ -1,15 +1,15 @@
 Florida COVID-19 Data
 ================
-2020-07-13 19:04:40
+2020-07-14 07:04:55
 
 ## Today
 
-| When        | Day        | Positive | New Positive Since | Deaths | New Deaths Since | Total     |
-| :---------- | :--------- | :------- | :----------------- | :----- | :--------------- | :-------- |
-| Today       | 2020-07-13 | 282,435  | 0                  | 4,381  | 0                | 2,639,961 |
-| Yesterday   | 2020-07-12 | 269,811  | 12,624             | 4,346  | 35               | 2,574,394 |
-| Last Week   | 2020-07-06 | 206,447  | 75,988             | 3,880  | 501              | 2,234,325 |
-| 2 Weeks Ago | 2020-06-29 | 146,341  | 136,094            | 3,546  | 835              | 1,913,132 |
+| When           | Day        | Positive | New Positive Since | Deaths | New Deaths Since | Total     |
+| :------------- | :--------- | :------- | :----------------- | :----- | :--------------- | :-------- |
+| Yesterday      | 2020-07-13 | 282,435  | 0                  | 4,381  | 0                | 2,639,961 |
+| The Day Before | 2020-07-12 | 269,811  | 12,624             | 4,346  | 35               | 2,574,394 |
+| Last Week      | 2020-07-07 | 213,794  | 68,641             | 3,943  | 438              | 2,269,577 |
+| 2 Weeks Ago    | 2020-06-30 | 152,434  | 130,001            | 3,604  | 777              | 1,945,385 |
 
 Parsed from the [Florida’s COVID-19 Data and Surveillance
 Dashboard](https://fdoh.maps.arcgis.com/apps/opsdashboard/index.html#/8d0de33f260d444c852a615dc7837c86).
@@ -49,9 +49,9 @@ DOH data sources at 7am, noon and 7pm daily.
 
 | County       | COVID Hospitalizations |
 | :----------- | ---------------------: |
-| All          |                   8051 |
+| All          |                   8050 |
 | Miami-Dade   |                   1808 |
-| Broward      |                   1211 |
+| Broward      |                   1210 |
 | Palm Beach   |                    622 |
 | Orange       |                    561 |
 | Duval        |                    530 |
