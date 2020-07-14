@@ -105,20 +105,84 @@ I take snapshots of the various FL DOH data sources at 7am, noon and 7pm daily.
 
 ## Hospital and ICU Utilization
 
-![](plots/covid-19-florida-icu-usage.png)
-
-```{r}
-read_csv("data/covid-19-florida_ahca_covid-hospitalizations.csv") %>% 
-  filter(timestamp == max(timestamp)) %>% 
-  mutate(county = stringr::str_to_title(county)) %>% 
-  select(-timestamp) %>% 
-  arrange(desc(covid_hospitalizations)) %>% 
-  rename(
-    County = "county", "COVID Hospitalizations" = covid_hospitalizations
+```{r ahca-current-hospitalizations}
+hospital_beds_available <-
+  read_csv("data/covid-19-florida_ahca_hospital-beds-county.csv") %>% 
+  filter(
+    timestamp == max(timestamp),
+    measure_names %in% c("Bed Census", "Available")
   ) %>% 
-  knitr::kable()
+  mutate(county = stringr::str_to_title(county)) %>% 
+  tidyr::pivot_wider(names_from = measure_names, values_from = measure_values) %>% 
+  mutate(hospital_beds = glue::glue("{Available}<span style=\"color: #aaa\">/{`Bed Census`}</span>")) %>% 
+  select(county, hospital_beds)
+
+icu_beds_available <- 
+  read_csv("data/covid-19-florida_ahca_icu-beds-county.csv") %>% 
+  filter(
+    timestamp == max(timestamp),
+    measure_names %in% c("Adult ICU Census", "Available Adult ICU")
+  ) %>% 
+  mutate(county = stringr::str_to_title(county)) %>% 
+  tidyr::pivot_wider(names_from = measure_names, values_from = measure_values) %>% 
+  mutate(icu_beds = glue::glue("{`Available Adult ICU`}<span style=\"color: #aaa\">/{`Adult ICU Census`}</span>")) %>% 
+  select(county, icu_beds)
+
+
+current_hospitalizations <-
+  read_csv("data/covid-19-florida_ahca_covid-hospitalizations.csv") %>% 
+  mutate(day = lubridate::floor_date(timestamp, "day")) %>% 
+  group_by(day) %>% 
+  filter(timestamp == max(timestamp)) %>%
+  ungroup() %>% 
+  filter(day >= max(day) - lubridate::days(1)) %>% 
+  mutate(day = if_else(day == max(day), "today", "yesterday")) %>% 
+  select(-timestamp) %>% 
+  tidyr::pivot_wider(names_from = day, values_from = covid_hospitalizations) %>% 
+  mutate(
+    change = today - yesterday,
+    change = case_when(
+      change > 0 ~ paste0('<span style="color: #EC4E20">&uarr; ', change, '</span>'),
+      change < 0 ~ paste0('<span style="color: #6BAA75">&darr; ', change, '</span>'),
+      TRUE ~ ""
+    )
+  ) %>% 
+  select(-yesterday) %>%
+  mutate(county = stringr::str_to_title(county)) %>% 
+  arrange(desc(today)) %>% 
+  left_join(hospital_beds_available, by = "county") %>% 
+  left_join(icu_beds_available, by = "county")
+
+if (knitr::is_html_output(excludes = "gfm")) {
+  current_hospitalizations %>% 
+    reactable::reactable(
+      searchable = TRUE, 
+      highlight = TRUE,
+      columns = list(
+        county = reactable::colDef(name = "County"),
+        today = reactable::colDef(name = "Current COVID Hospitalizations"),
+        change = reactable::colDef(name = "Change Since Yesterday", html = TRUE),
+        hospital_beds = reactable::colDef(
+          name = "Available Hospital Beds",
+          html = TRUE
+        ),
+        icu_beds = reactable::colDef(
+          name = "Available ICU Beds",
+          html = TRUE
+        )
+      )
+    )
+} else {
+  current_hospitalizations %>% 
+    slice(1:11) %>% 
+    knitr::kable(escape = FALSE, col.names = c(
+      "County", "Current COVID Hospitalizations", "Change Since Yesterday",
+      "Available Hospital Beds", "Available ICU Beds")
+    )
+}
 ```
 
+![](plots/covid-19-florida-icu-usage.png)
 
 ## Daily Testing
 

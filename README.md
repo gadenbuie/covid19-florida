@@ -1,6 +1,6 @@
 Florida COVID-19 Data
 ================
-2020-07-14 07:04:55
+2020-07-14 10:19:34
 
 ## Today
 
@@ -45,68 +45,21 @@ DOH data sources at 7am, noon and 7pm daily.
 
 ## Hospital and ICU Utilization
 
-![](plots/covid-19-florida-icu-usage.png)
+| County       | Current COVID Hospitalizations | Change Since Yesterday                   | Available Hospital Beds                      | Available ICU Beds                         |
+| :----------- | -----------------------------: | :--------------------------------------- | :------------------------------------------- | :----------------------------------------- |
+| All          |                           8050 | <span style="color: #6BAA75">↓ -1</span> | 13756<span style="color: #aaa">/46213</span> | 1153<span style="color: #aaa">/4999</span> |
+| Miami-Dade   |                           1808 |                                          | 1703<span style="color: #aaa">/6666</span>   | 155<span style="color: #aaa">/802</span>   |
+| Broward      |                           1210 | <span style="color: #6BAA75">↓ -1</span> | 1028<span style="color: #aaa">/4396</span>   | 60<span style="color: #aaa">/459</span>    |
+| Palm Beach   |                            622 |                                          | 1258<span style="color: #aaa">/2913</span>   | 109<span style="color: #aaa">/316</span>   |
+| Orange       |                            561 |                                          | 1129<span style="color: #aaa">/3291</span>   | 101<span style="color: #aaa">/264</span>   |
+| Duval        |                            530 |                                          | 976<span style="color: #aaa">/2835</span>    | 115<span style="color: #aaa">/325</span>   |
+| Hillsborough |                            265 |                                          | 742<span style="color: #aaa">/3263</span>    | 39<span style="color: #aaa">/345</span>    |
+| Lee          |                            234 |                                          | 277<span style="color: #aaa">/1484</span>    | 18<span style="color: #aaa">/121</span>    |
+| Pinellas     |                            215 |                                          | 477<span style="color: #aaa">/2461</span>    | 26<span style="color: #aaa">/276</span>    |
+| Osceola      |                            202 |                                          | 208<span style="color: #aaa">/837</span>     | 36<span style="color: #aaa">/91</span>     |
+| Collier      |                            188 |                                          | 134<span style="color: #aaa">/741</span>     | 22<span style="color: #aaa">/58</span>     |
 
-| County       | COVID Hospitalizations |
-| :----------- | ---------------------: |
-| All          |                   8050 |
-| Miami-Dade   |                   1808 |
-| Broward      |                   1210 |
-| Palm Beach   |                    622 |
-| Orange       |                    561 |
-| Duval        |                    530 |
-| Hillsborough |                    265 |
-| Lee          |                    234 |
-| Pinellas     |                    215 |
-| Osceola      |                    202 |
-| Collier      |                    188 |
-| Seminole     |                    164 |
-| Escambia     |                    160 |
-| Polk         |                    142 |
-| Volusia      |                    142 |
-| St. Lucie    |                    130 |
-| Sarasota     |                    129 |
-| Brevard      |                    120 |
-| Lake         |                    113 |
-| Alachua      |                    106 |
-| Marion       |                     97 |
-| Pasco        |                     97 |
-| Manatee      |                     89 |
-| Leon         |                     71 |
-| Hernando     |                     62 |
-| Bay          |                     58 |
-| Clay         |                     49 |
-| Martin       |                     48 |
-| Highlands    |                     45 |
-| Charlotte    |                     39 |
-| Okaloosa     |                     39 |
-| Baker        |                     37 |
-| St. Johns    |                     36 |
-| Indian River |                     34 |
-| Jackson      |                     33 |
-| Citrus       |                     21 |
-| Putnam       |                     21 |
-| Columbia     |                     20 |
-| Flagler      |                     20 |
-| Santa Rosa   |                     20 |
-| Sumter       |                     20 |
-| Monroe       |                     15 |
-| Okeechobee   |                     14 |
-| Nassau       |                      6 |
-| Hendry       |                      5 |
-| Walton       |                      4 |
-| Washington   |                      4 |
-| Desoto       |                      2 |
-| Gulf         |                      2 |
-| Calhoun      |                      1 |
-| Franklin     |                      0 |
-| Gadsden      |                      0 |
-| Hardee       |                      0 |
-| Holmes       |                      0 |
-| Madison      |                      0 |
-| Suwannee     |                      0 |
-| Taylor       |                      0 |
-| Union        |                      0 |
+![](plots/covid-19-florida-icu-usage.png)
 
 ## Daily Testing
 
