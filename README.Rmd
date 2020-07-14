@@ -128,6 +128,13 @@ icu_beds_available <-
   mutate(icu_beds = glue::glue("{`Available Adult ICU`}<span style=\"color: #aaa\">/{`Adult ICU Census`}</span>")) %>% 
   select(county, icu_beds)
 
+hospitals_by_county <-
+  read_csv("data/covid-19-florida_ahca_hospital-beds-hospital.csv") %>% 
+  filter(timestamp == max(timestamp)) %>% 
+  tidyr::pivot_wider(names_from = measure_names, values_from = measure_values) %>% 
+  mutate_at(vars(county), stringr::str_to_title) %>% 
+  select(-timestamp, -file_number, Provider = provider_name)
+
 
 current_hospitalizations <-
   read_csv("data/covid-19-florida_ahca_covid-hospitalizations.csv") %>% 
@@ -170,7 +177,35 @@ if (knitr::is_html_output(excludes = "gfm")) {
           name = "Available ICU Beds",
           html = TRUE
         )
-      )
+      ),
+      details = function(index) {
+        county <- current_hospitalizations$county[[index]]
+        htmltools::div(
+          style = "padding: 1em",
+          reactable::reactable(
+            hospitals_by_county %>% 
+              filter(county == !!county) %>% 
+              select(-county) %>% 
+              arrange(`Available Capacity`),
+            outlined = TRUE,
+            compact = TRUE,
+            borderless = TRUE,
+            highlight = TRUE,
+            columns = list(
+              Provider = reactable::colDef(minWidth = 300),
+              `Available Capacity` = reactable::colDef(
+                format = reactable::colFormat(percent = TRUE, digits = 0),
+                style = function(value) {
+                  color <- if (is.null(value) || is.na(value) || value > 0.25) {
+                    "#000"
+                  } else "#ec4e20"
+                  list(color = color)
+                }
+              )
+            )
+          )
+        )
+      }
     )
 } else {
   current_hospitalizations %>% 

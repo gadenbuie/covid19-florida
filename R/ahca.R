@@ -1,4 +1,4 @@
-ahca_sources <- c("covid-hospitalizations", "icu-beds-county", "hospital-beds-county")
+ahca_sources <- c("covid-hospitalizations", "icu-beds-county", "hospital-beds-county", "hospital-beds-hospital")
 
 ahca_data_url <- function(which = "covid-hospitalizations") {
   switch(
@@ -6,6 +6,7 @@ ahca_data_url <- function(which = "covid-hospitalizations") {
     "covid-hospitalizations" = "https://bi.ahca.myflorida.com/t/ABICC/views/Public/COVIDHospitalizationsCounty.csv",
     "hospital-beds-county" = "https://bi.ahca.myflorida.com/t/ABICC/views/Public/HospitalBedsCounty.csv",
     "icu-beds-county" = "https://bi.ahca.myflorida.com/t/ABICC/views/Public/ICUBedsCounty.csv",
+    "hospital-beds-hospital" = "https://bi.ahca.myflorida.com/t/ABICC/views/Public/HospitalBedsHospital.csv",
     stop("Not available")
   )
 }
