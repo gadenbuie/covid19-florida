@@ -149,6 +149,7 @@ current_hospitalizations <-
   select(-timestamp) %>% 
   tidyr::pivot_wider(names_from = day, values_from = covid_hospitalizations) %>% 
   mutate(change = today - yesterday) %>% 
+  tidyr::replace_na(list(change = 0)) %>%
   select(-yesterday) %>%
   mutate(county = stringr::str_to_title(county)) %>% 
   arrange(desc(today)) %>% 
