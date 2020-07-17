@@ -1,3 +1,8 @@
+# 2020-07-17
+
+- The ArcGIS feature layer with state summary statistics for the dashboard now
+  include a state total where the `countyname` is `State`, or possibly `A State`.
+
 # 2020-07-13
 
 - Capture dataa from AHCA: hospitalizations, hospital bed capacity and icu capacity

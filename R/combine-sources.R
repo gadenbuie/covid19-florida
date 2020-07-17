@@ -17,6 +17,7 @@ combine_scraped_and_api_data <- function(data_scraped = NULL, data_api = NULL) {
   data_api_sel <- 
     data_api %>%
     dplyr::group_by(timestamp) %>%
+    dplyr::filter(!grepl("state", tolower(countyname))) %>% 
     dplyr::mutate(c_fl_res_deaths = dplyr::coalesce(c_fl_res_deaths, fl_res_deaths)) %>% 
     dplyr::summarize_at(vars(t_positive_2, t_neg_res, t_neg_not_fl_res, t_pending, t_inconc, c_non_res_deaths, c_fl_res_deaths), sum, na.rm = TRUE) %>%
     dplyr::ungroup() %>%
