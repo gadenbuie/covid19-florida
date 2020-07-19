@@ -21,35 +21,7 @@ library(readr, warn.conflicts = FALSE)
 dir_create("snapshots")
 
 # Functions ----
-timestamp_from_node <- function(node) {
-  text <- xml_text(node)
-  time <- str_extract(text, "\\d{1,2}:\\d{2} [APMapm.]+")
-  date <- str_extract(text, "(\\d+[/.-]?){3}")
-  ts <- glue("{date} {time}")
-  ts <- str_replace_all(ts, "[.]", "")
-  mdy_hm(ts, tz = "America/New_York")
-}
-
-append_csv <- function(data, path, unique = "timestamp") {
-  existing_data <- if (file.exists(path)) {
-    read_csv(path, col_types = cols(.default = col_character()))
-  }
-  data <- mutate_all(data, as.character)
-  full <- if (!is.null(existing_data)) {
-    only_in_existing <- anti_join(existing_data, data, by = unique)
-    bind_rows(
-      only_in_existing,
-      anti_join(data, only_in_existing, by = unique)
-    )
-  } else data
-  write_csv(full, path)
-}
-
-html_sha <- function(xml_doc) {
-  tmpfile <- tempfile()
-  write_html(xml_doc, tmpfile)
-  digest::sha1_digest(readLines(tmpfile))
-}
+source(here::here("functions.R"))
 
 # Add random wait time to offset regularity of cronlog
 if (!interactive()) {
