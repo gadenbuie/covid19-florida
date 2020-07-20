@@ -803,7 +803,9 @@ library(patchwork)
 
 test_per_case <-
   dash %>%
-  select(timestamp, county_1, t_positive_2, t_total) %>%
+  select(timestamp, county_1, t_positive_2, t_negative_2) %>%
+  mutate(t_total = t_positive_2 + t_negative_2) %>% 
+  select(-t_negative_2) %>% 
   mutate(t_total = if_else(
     timestamp < ymd_hm("2020-05-16 08:00") & timestamp > ymd_hm("2020-05-15 19:00"),
     NA_real_,
