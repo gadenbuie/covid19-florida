@@ -1,7 +1,7 @@
 `%>%` <- magrittr::`%>%`
 
 timestamp_from_node <- function(node) {
-  text <- xlm2::xml_text(node)
+  text <- xml2::xml_text(node)
   time <- stringr::str_extract(text, "\\d{1,2}:\\d{2} [APMapm.]+")
   date <- stringr::str_extract(text, "(\\d+[/.-]?){3}")
   ts <- glue::glue("{date} {time}")

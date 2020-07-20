@@ -21,7 +21,7 @@ library(readr, warn.conflicts = FALSE)
 dir_create("snapshots")
 
 # Functions ----
-source(here::here("functions.R"))
+source(here::here("R", "functions.R"))
 
 # Add random wait time to offset regularity of cronlog
 if (!interactive()) {
