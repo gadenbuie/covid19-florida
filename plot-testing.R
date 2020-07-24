@@ -1213,6 +1213,7 @@ deaths <- read_csv(here::here("data", "covid-19-florida_arcgis_deaths-by-day.csv
 
 g_deaths <- 
   deaths %>% 
+  filter(year(timestamp) >= 2020) %>% 
   mutate(reported_date = floor_date(timestamp, "day")) %>% 
   group_by(reported_date) %>% 
   filter(timestamp == max(timestamp)) %>% 
