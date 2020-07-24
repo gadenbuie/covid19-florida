@@ -46,8 +46,10 @@ testing_summary_dash <- read_csv(here::here("data/covid-19-florida_dash_summary.
 test_summary <-
   combine_scraped_and_api_data(testing_summary_dash, dash)
 
-tampa_test_summary <- 
+tampa_test_summary <-
   dash %>%
+  # get rid of state total row
+  filter(county_1 != "State") %>% 
   select(timestamp, county = county_1, t_positive_2, t_total, deaths, t_inconc, c_ed_yes) %>%
   group_by(day = floor_date(timestamp - hours(8), "day")) %>% 
   filter(timestamp == max(timestamp)) %>% 
