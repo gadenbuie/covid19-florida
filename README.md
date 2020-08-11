@@ -1,6 +1,6 @@
 Florida COVID-19 Data
 ================
-2020-08-10 14:29:46
+2020-08-10 20:24:22
 
 ## Today
 
@@ -49,13 +49,13 @@ DOH data sources at 7am, noon and 7pm daily.
 
 | County       | Current COVID Hospitalizations | Change Since Yesterday                    | Available Hospital Beds                      | Available ICU Beds                         |
 | :----------- | -----------------------------: | :---------------------------------------- | :------------------------------------------- | :----------------------------------------- |
-| All          |                           6948 | <span style="color: #EC4E20">↑ 100</span> | 15379<span style="color: #aaa">/44222</span> | 1286<span style="color: #aaa">/4879</span> |
-| Miami-Dade   |                           1480 | <span style="color: #6BAA75">↓ -23</span> | 1910<span style="color: #aaa">/6561</span>   | 145<span style="color: #aaa">/853</span>   |
-| Broward      |                            933 | <span style="color: #EC4E20">↑ 24</span>  | 1096<span style="color: #aaa">/4158</span>   | 69<span style="color: #aaa">/444</span>    |
-| Palm Beach   |                            441 | <span style="color: #EC4E20">↑ 13</span>  | 1410<span style="color: #aaa">/2771</span>   | 119<span style="color: #aaa">/296</span>   |
+| All          |                           6948 | <span style="color: #EC4E20">↑ 100</span> | 15362<span style="color: #aaa">/44217</span> | 1286<span style="color: #aaa">/4876</span> |
+| Miami-Dade   |                           1480 | <span style="color: #6BAA75">↓ -23</span> | 1896<span style="color: #aaa">/6575</span>   | 142<span style="color: #aaa">/853</span>   |
+| Broward      |                            933 | <span style="color: #EC4E20">↑ 24</span>  | 1081<span style="color: #aaa">/4175</span>   | 69<span style="color: #aaa">/444</span>    |
+| Palm Beach   |                            441 | <span style="color: #EC4E20">↑ 13</span>  | 1406<span style="color: #aaa">/2744</span>   | 119<span style="color: #aaa">/296</span>   |
 | Duval        |                            406 | <span style="color: #EC4E20">↑ 21</span>  | 1053<span style="color: #aaa">/2693</span>   | 111<span style="color: #aaa">/330</span>   |
 | Orange       |                            340 | <span style="color: #EC4E20">↑ 4</span>   | 1061<span style="color: #aaa">/3280</span>   | 97<span style="color: #aaa">/275</span>    |
-| Hillsborough |                            336 | <span style="color: #6BAA75">↓ -16</span> | 744<span style="color: #aaa">/3049</span>    | 64<span style="color: #aaa">/313</span>    |
+| Hillsborough |                            336 | <span style="color: #6BAA75">↓ -16</span> | 743<span style="color: #aaa">/3048</span>    | 64<span style="color: #aaa">/313</span>    |
 | Pinellas     |                            251 | <span style="color: #6BAA75">↓ -8</span>  | 713<span style="color: #aaa">/2188</span>    | 65<span style="color: #aaa">/232</span>    |
 | Polk         |                            228 | <span style="color: #6BAA75">↓ -5</span>  | 358<span style="color: #aaa">/1262</span>    | 13<span style="color: #aaa">/147</span>    |
 | Lee          |                            212 | <span style="color: #EC4E20">↑ 25</span>  | 376<span style="color: #aaa">/1416</span>    | 86<span style="color: #aaa">/75</span>     |
