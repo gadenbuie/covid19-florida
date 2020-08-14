@@ -1,15 +1,15 @@
 Florida COVID-19 Data
 ================
-2020-08-14 12:10:59
+2020-08-14 19:18:19
 
 ## Today
 
-| When           | Day        | Positive | New Positive Since | Deaths | New Deaths Since | Total     |
-| :------------- | :--------- | :------- | :----------------- | :----- | :--------------- | :-------- |
-| Yesterday      | 2020-08-13 | 557,137  | 0                  | 9,047  | 0                | 4,122,118 |
-| The Day Before | 2020-08-12 | 550,901  | 6,236              | 8,898  | 149              | 4,087,579 |
-| Last Week      | 2020-08-07 | 518,075  | 39,062             | 8,051  | 996              | 3,896,939 |
-| 2 Weeks Ago    | 2020-07-31 | 470,386  | 86,751             | 6,966  | 2,081            | 3,628,088 |
+| When        | Day        | Positive | New Positive Since | Deaths | New Deaths Since | Total     |
+| :---------- | :--------- | :------- | :----------------- | :----- | :--------------- | :-------- |
+| Today       | 2020-08-14 | 563,285  | 0                  | 9,276  | 0                | 4,160,565 |
+| Yesterday   | 2020-08-13 | 557,137  | 6,148              | 9,047  | 229              | 4,122,118 |
+| Last Week   | 2020-08-07 | 518,075  | 45,210             | 8,051  | 1,225            | 3,896,939 |
+| 2 Weeks Ago | 2020-07-31 | 470,386  | 92,899             | 6,966  | 2,310            | 3,628,088 |
 
 Parsed from the [Florida’s COVID-19 Data and Surveillance
 Dashboard](https://fdoh.maps.arcgis.com/apps/opsdashboard/index.html#/8d0de33f260d444c852a615dc7837c86).
@@ -49,17 +49,17 @@ DOH data sources at 7am, noon and 7pm daily.
 
 | County       | Current COVID Hospitalizations | Change Since Yesterday                     | Available Hospital Beds                      | Available ICU Beds                         |
 | :----------- | -----------------------------: | :----------------------------------------- | :------------------------------------------- | :----------------------------------------- |
-| All          |                           5902 | <span style="color: #6BAA75">↓ -423</span> | 14192<span style="color: #aaa">/46425</span> | 1134<span style="color: #aaa">/5021</span> |
-| Miami-Dade   |                           1206 | <span style="color: #6BAA75">↓ -86</span>  | 1961<span style="color: #aaa">/6554</span>   | 172<span style="color: #aaa">/824</span>   |
-| Broward      |                            769 | <span style="color: #6BAA75">↓ -98</span>  | 937<span style="color: #aaa">/4231</span>    | 67<span style="color: #aaa">/449</span>    |
-| Palm Beach   |                            363 | <span style="color: #6BAA75">↓ -24</span>  | 1348<span style="color: #aaa">/2849</span>   | 106<span style="color: #aaa">/304</span>   |
-| Hillsborough |                            322 | <span style="color: #6BAA75">↓ -9</span>   | 602<span style="color: #aaa">/3172</span>    | 33<span style="color: #aaa">/344</span>    |
-| Duval        |                            321 | <span style="color: #6BAA75">↓ -21</span>  | 842<span style="color: #aaa">/2825</span>    | 117<span style="color: #aaa">/324</span>   |
-| Orange       |                            263 | <span style="color: #6BAA75">↓ -25</span>  | 953<span style="color: #aaa">/3436</span>    | 79<span style="color: #aaa">/293</span>    |
-| Pinellas     |                            257 | <span style="color: #EC4E20">↑ 1</span>    | 558<span style="color: #aaa">/2399</span>    | 50<span style="color: #aaa">/247</span>    |
-| Polk         |                            180 | <span style="color: #6BAA75">↓ -45</span>  | 401<span style="color: #aaa">/1267</span>    | 9<span style="color: #aaa">/144</span>     |
-| Lee          |                            175 | <span style="color: #EC4E20">↑ 3</span>    | 348<span style="color: #aaa">/1440</span>    | 40<span style="color: #aaa">/101</span>    |
-| Escambia     |                            157 | <span style="color: #6BAA75">↓ -6</span>   | 386<span style="color: #aaa">/1109</span>    | 13<span style="color: #aaa">/134</span>    |
+| All          |                           5893 | <span style="color: #6BAA75">↓ -432</span> | 14173<span style="color: #aaa">/46350</span> | 1186<span style="color: #aaa">/5013</span> |
+| Miami-Dade   |                           1203 | <span style="color: #6BAA75">↓ -89</span>  | 1963<span style="color: #aaa">/6539</span>   | 165<span style="color: #aaa">/826</span>   |
+| Broward      |                            769 | <span style="color: #6BAA75">↓ -98</span>  | 938<span style="color: #aaa">/4230</span>    | 68<span style="color: #aaa">/451</span>    |
+| Palm Beach   |                            363 | <span style="color: #6BAA75">↓ -24</span>  | 1320<span style="color: #aaa">/2825</span>   | 115<span style="color: #aaa">/301</span>   |
+| Hillsborough |                            322 | <span style="color: #6BAA75">↓ -9</span>   | 598<span style="color: #aaa">/3175</span>    | 47<span style="color: #aaa">/335</span>    |
+| Duval        |                            317 | <span style="color: #6BAA75">↓ -25</span>  | 846<span style="color: #aaa">/2821</span>    | 107<span style="color: #aaa">/335</span>   |
+| Orange       |                            263 | <span style="color: #6BAA75">↓ -25</span>  | 953<span style="color: #aaa">/3437</span>    | 86<span style="color: #aaa">/286</span>    |
+| Pinellas     |                            257 | <span style="color: #EC4E20">↑ 1</span>    | 558<span style="color: #aaa">/2399</span>    | 47<span style="color: #aaa">/251</span>    |
+| Polk         |                            180 | <span style="color: #6BAA75">↓ -45</span>  | 401<span style="color: #aaa">/1267</span>    | 29<span style="color: #aaa">/143</span>    |
+| Lee          |                            175 | <span style="color: #EC4E20">↑ 3</span>    | 349<span style="color: #aaa">/1439</span>    | 32<span style="color: #aaa">/109</span>    |
+| Escambia     |                            157 | <span style="color: #6BAA75">↓ -6</span>   | 381<span style="color: #aaa">/1114</span>    | 9<span style="color: #aaa">/138</span>     |
 
 ![](plots/covid-19-florida-icu-usage.png)
 
