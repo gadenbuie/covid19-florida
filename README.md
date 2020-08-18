@@ -1,6 +1,6 @@
 Florida COVID-19 Data
 ================
-2020-08-18 14:33:08
+2020-08-18 19:51:04
 
 ## Today
 
@@ -49,9 +49,9 @@ DOH data sources at 7am, noon and 7pm daily.
 
 | County       | Current COVID Hospitalizations | Change Since Yesterday                     | Available Hospital Beds                      | Available ICU Beds                         |
 | :----------- | -----------------------------: | :----------------------------------------- | :------------------------------------------- | :----------------------------------------- |
-| All          |                           5484 | <span style="color: #6BAA75">↓ -147</span> | 14653<span style="color: #aaa">/46378</span> | 1135<span style="color: #aaa">/4977</span> |
+| All          |                           5484 | <span style="color: #6BAA75">↓ -147</span> | 14653<span style="color: #aaa">/46362</span> | 1138<span style="color: #aaa">/4974</span> |
 | Miami-Dade   |                           1090 | <span style="color: #6BAA75">↓ -8</span>   | 1977<span style="color: #aaa">/6585</span>   | 146<span style="color: #aaa">/835</span>   |
-| Broward      |                            695 | <span style="color: #6BAA75">↓ -44</span>  | 996<span style="color: #aaa">/4338</span>    | 75<span style="color: #aaa">/443</span>    |
+| Broward      |                            695 | <span style="color: #6BAA75">↓ -44</span>  | 996<span style="color: #aaa">/4338</span>    | 78<span style="color: #aaa">/440</span>    |
 | Palm Beach   |                            360 | <span style="color: #EC4E20">↑ 3</span>    | 1288<span style="color: #aaa">/2843</span>   | 104<span style="color: #aaa">/303</span>   |
 | Duval        |                            315 | <span style="color: #6BAA75">↓ -2</span>   | 967<span style="color: #aaa">/2827</span>    | 98<span style="color: #aaa">/343</span>    |
 | Hillsborough |                            286 | <span style="color: #6BAA75">↓ -8</span>   | 714<span style="color: #aaa">/3114</span>    | 31<span style="color: #aaa">/339</span>    |
