@@ -1,6 +1,6 @@
 Florida COVID-19 Data
 ================
-2020-08-19 13:43:58
+2020-08-19 19:13:00
 
 ## Today
 
@@ -49,11 +49,11 @@ DOH data sources at 7am, noon and 7pm daily.
 
 | County       | Current COVID Hospitalizations | Change Since Yesterday                     | Available Hospital Beds                      | Available ICU Beds                         |
 | :----------- | -----------------------------: | :----------------------------------------- | :------------------------------------------- | :----------------------------------------- |
-| All          |                           5312 | <span style="color: #6BAA75">↓ -172</span> | 13887<span style="color: #aaa">/46985</span> | 1109<span style="color: #aaa">/4974</span> |
+| All          |                           5298 | <span style="color: #6BAA75">↓ -186</span> | 13888<span style="color: #aaa">/46978</span> | 1109<span style="color: #aaa">/4974</span> |
 | Miami-Dade   |                           1020 | <span style="color: #6BAA75">↓ -70</span>  | 1986<span style="color: #aaa">/6575</span>   | 150<span style="color: #aaa">/851</span>   |
 | Broward      |                            709 | <span style="color: #EC4E20">↑ 14</span>   | 982<span style="color: #aaa">/4291</span>    | 69<span style="color: #aaa">/433</span>    |
 | Palm Beach   |                            331 | <span style="color: #6BAA75">↓ -29</span>  | 1320<span style="color: #aaa">/2819</span>   | 103<span style="color: #aaa">/301</span>   |
-| Duval        |                            313 | <span style="color: #6BAA75">↓ -2</span>   | 924<span style="color: #aaa">/2835</span>    | 99<span style="color: #aaa">/342</span>    |
+| Duval        |                            304 | <span style="color: #6BAA75">↓ -11</span>  | 924<span style="color: #aaa">/2835</span>    | 99<span style="color: #aaa">/342</span>    |
 | Hillsborough |                            273 | <span style="color: #6BAA75">↓ -13</span>  | 618<span style="color: #aaa">/3176</span>    | 26<span style="color: #aaa">/332</span>    |
 | Orange       |                            234 | <span style="color: #6BAA75">↓ -11</span>  | 967<span style="color: #aaa">/3389</span>    | 81<span style="color: #aaa">/293</span>    |
 | Pinellas     |                            181 | <span style="color: #6BAA75">↓ -12</span>  | 586<span style="color: #aaa">/2287</span>    | 48<span style="color: #aaa">/247</span>    |
