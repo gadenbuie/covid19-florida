@@ -1,15 +1,15 @@
 Florida COVID-19 Data
 ================
-2020-08-29 07:11:54
+2020-08-29 12:12:52
 
 ## Today
 
-| When           | Day        | Positive | New Positive Since | Deaths | New Deaths Since | Total     |
-| :------------- | :--------- | :------- | :----------------- | :----- | :--------------- | :-------- |
-| Yesterday      | 2020-08-28 | 615,806  | 0                  | 11,099 | 0                | 4,547,677 |
-| The Day Before | 2020-08-27 | 611,991  | 3,815              | 11,011 | 88               | 4,517,364 |
-| Last Week      | 2020-08-22 | 597,597  | 18,209             | 10,411 | 688              | 4,401,847 |
-| 2 Weeks Ago    | 2020-08-15 | 569,637  | 46,169             | 9,480  | 1,619            | 4,202,725 |
+| When        | Day        | Positive | New Positive Since | Deaths | New Deaths Since | Total     |
+| :---------- | :--------- | :------- | :----------------- | :----- | :--------------- | :-------- |
+| Today       | 2020-08-29 | 619,003  | 0                  | 11,249 | 0                | 4,575,211 |
+| Yesterday   | 2020-08-28 | 615,806  | 3,197              | 11,099 | 150              | 4,547,677 |
+| Last Week   | 2020-08-22 | 597,597  | 21,406             | 10,411 | 838              | 4,401,847 |
+| 2 Weeks Ago | 2020-08-15 | 569,637  | 49,366             | 9,480  | 1,769            | 4,202,725 |
 
 Parsed from the [Florida’s COVID-19 Data and Surveillance
 Dashboard](https://fdoh.maps.arcgis.com/apps/opsdashboard/index.html#/8d0de33f260d444c852a615dc7837c86).
@@ -49,7 +49,7 @@ DOH data sources at 7am, noon and 7pm daily.
 
 | County       | Current COVID Hospitalizations | Change Since Yesterday                   | Available Hospital Beds                      | Available ICU Beds                         |
 | :----------- | -----------------------------: | :--------------------------------------- | :------------------------------------------- | :----------------------------------------- |
-| All          |                           4009 | <span style="color: #EC4E20">↑ 8</span>  | 14861<span style="color: #aaa">/45869</span> | 1253<span style="color: #aaa">/5048</span> |
+| All          |                           4009 | <span style="color: #EC4E20">↑ 8</span>  | 14861<span style="color: #aaa">/45877</span> | 1253<span style="color: #aaa">/5048</span> |
 | Miami-Dade   |                            749 | <span style="color: #6BAA75">↓ -1</span> | 2287<span style="color: #aaa">/6212</span>   | 165<span style="color: #aaa">/773</span>   |
 | Broward      |                            491 |                                          | 1097<span style="color: #aaa">/4030</span>   | 101<span style="color: #aaa">/400</span>   |
 | Duval        |                            248 |                                          | 923<span style="color: #aaa">/3121</span>    | 100<span style="color: #aaa">/602</span>   |
