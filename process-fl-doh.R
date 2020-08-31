@@ -63,7 +63,7 @@ if (is.null(arcgis_cases_by_day$error) && nrow(arcgis_cases_by_day$result)) {
   arcgis_cases_by_day$result %>% 
     mutate(timestamp = ts_current) %>% 
     select(timestamp, everything()) %>% 
-    append_csv("data/covid-19-florida_arcgis_cases-by-day.csv")
+    write_csv("data/covid-19-florida_arcgis_cases-by-day.csv")
 } else {
   msgs <- c(msgs, "Unable to get cases by day from arcgis api")
   message("Unable to get cases by day from arcgis api: ", arcgis_cases_by_day$error$message)
