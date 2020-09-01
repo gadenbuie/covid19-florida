@@ -1,3 +1,9 @@
+# 2020-09-01
+
+- I started to hit the strict 100MB file limit for the _Cases by Day_ data set
+  archived from the FL DOH ArcGIS API. Instead of appending each new snapshot,
+  only the latest snapshot will be kept, starting from 2020-08-31.
+
 # 2020-07-17
 
 - The ArcGIS feature layer with state summary statistics for the dashboard now
