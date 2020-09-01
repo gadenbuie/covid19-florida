@@ -379,18 +379,24 @@ summary {
 
 
 <div id="section" class="section level1">
+<h1>2020-09-01</h1>
+<ul>
+<li>I started to hit the strict 100MB file limit for the <em>Cases by Day</em> data set archived from the FL DOH ArcGIS API. Instead of appending each new snapshot, only the latest snapshot will be kept, starting from 2020-08-31.</li>
+</ul>
+</div>
+<div id="section-1" class="section level1">
 <h1>2020-07-17</h1>
 <ul>
 <li>The ArcGIS feature layer with state summary statistics for the dashboard now include a state total where the <code>countyname</code> is <code>State</code>, or possibly <code>A State</code>.</li>
 </ul>
 </div>
-<div id="section-1" class="section level1">
+<div id="section-2" class="section level1">
 <h1>2020-07-13</h1>
 <ul>
 <li>Capture dataa from AHCA: hospitalizations, hospital bed capacity and icu capacity</li>
 </ul>
 </div>
-<div id="section-2" class="section level1">
+<div id="section-3" class="section level1">
 <h1>2020-07-12</h1>
 <ul>
 <li><p>I added the “deaths by day” to the data collected from the ArcGIS feature server. Note that the deaths included in this data are only Florida residents, and include residents who were diagnosed/isolated outside of Florida.</p>
@@ -398,20 +404,20 @@ summary {
 <li><p>The health metrics data snapshot is only saved if the data has changed since the last update.</p></li>
 </ul>
 </div>
-<div id="section-3" class="section level1">
+<div id="section-4" class="section level1">
 <h1>2020-06-23</h1>
 <ul>
 <li>Now that the line list has passed 100k cases, the ArcGIS API requires scientific notation for result offests above 1e5. I’ve updated the query paging to fix this issue, but it seems that as of 2020-06-23 13:30 the line list has not yet been updated today (the number of rows is equal to yesterday’s cases).</li>
 </ul>
 </div>
-<div id="section-4" class="section level1">
+<div id="section-5" class="section level1">
 <h1>2020-06-08</h1>
 <ul>
 <li><p>The location and file name format of the PDF reports was changed on 2020-06-04. I noticed on 2020-06-08 and updated my scripts, but the reports from 2020-06-04 through 2020-06-07 were not stored.</p></li>
 <li><p>Reports on serology and antibody testing were added, presumably at the same time as the change in report location and naming (guess: 2020-06-04).</p></li>
 </ul>
 </div>
-<div id="section-5" class="section level1">
+<div id="section-6" class="section level1">
 <h1>2020-05-21</h1>
 <ul>
 <li><p>I updated the PDF extraction scripts to fix the extraction of the lab testing summary tables. In working on this, I noticed that the column headers have changed three times since these reports have been published:</p>
@@ -422,46 +428,46 @@ summary {
 </ul></li>
 </ul>
 </div>
-<div id="section-6" class="section level1">
+<div id="section-7" class="section level1">
 <h1>2020-05-19</h1>
 <ul>
 <li>I’ve found the updated link to the cases by zip code data and have resumed collecting those data.</li>
 </ul>
 </div>
-<div id="section-7" class="section level1">
+<div id="section-8" class="section level1">
 <h1>2020-05-16</h1>
 <ul>
 <li><p>The total tests reported on the dashboard between 2020-05-15 19:00 and 2020-05-16 08:00 EDT were out of range and are clearly erroneous.</p></li>
 <li><p>The data updates seem to be happening later in the day after 1pm, so I’ve gone back to using the last snapshot of the day for the day’s counts.</p></li>
 </ul>
 </div>
-<div id="section-8" class="section level1">
+<div id="section-9" class="section level1">
 <h1>2020-05-10</h1>
 <ul>
 <li>The line list API was removed on 2020-05-09 from the public FeatureServer but is still available under a new URL. I’ve updated my scripts to pull from that URL and I don’t think I’ve missed any updates.</li>
 </ul>
 </div>
-<div id="section-9" class="section level1">
+<div id="section-10" class="section level1">
 <h1>2020-05-08</h1>
 <ul>
 <li><p>The <code>event_date</code> column was removed on 2020-05-07 from the line list and as of 2020-05-08 the <code>age</code> column is missing for all cases. It’s likely that the removal of the <code>event_date</code> is related to recent news coverage about early cases of coronavirus, see <a href="https://github.com/gadenbuie/covid19-florida/issues/17">issue #17</a> for more discussion. I may have missed a day of updates (2020-05-07).</p></li>
 <li><p>The URL for the cases by day timeseries API changed, I may have also missed an update here.</p></li>
 </ul>
 </div>
-<div id="section-10" class="section level1">
+<div id="section-11" class="section level1">
 <h1>2020-05-06 – 2020-05-07</h1>
 <ul>
 <li>It appears that there were issues with updates to the dashboard and data on these days. I believe the 11am update on 2020-05-07 was late (updated sometime between 12pm and 7pm). I’ve corrected the daily counts in the data used in my charts by treating the 2020-05-07 19:00 snapshot as if it happened at 2020-05-07 12:59.</li>
 </ul>
 </div>
-<div id="section-11" class="section level1">
+<div id="section-12" class="section level1">
 <h1>2020-04-29</h1>
 <ul>
 <li><p>Added <strong>Health Metrics</strong> data set that was released on 2020-04-28. <a href="https://fdoh.maps.arcgis.com/home/item.html?id=492f02b473df4c8f8aa68fedf420c933" class="uri">https://fdoh.maps.arcgis.com/home/item.html?id=492f02b473df4c8f8aa68fedf420c933</a></p></li>
 <li><p>Fixed directory names in <code>pdfs/</code> so that they do not include <code>&quot;:&quot;</code> (#18).</p></li>
 </ul>
 </div>
-<div id="section-12" class="section level1">
+<div id="section-13" class="section level1">
 <h1>2020-04-25</h1>
 <ul>
 <li>Starting Saturday April 25, the COVID-19 case and testing counts are only updated once daily, at around 11am. I’ve modified my summary plots and scripts to use the last snapshot of reported counts prior to 1pm, so that daily changes prior to the 2020-04-25 change are comparable to changes obsevered after.</li>
@@ -474,27 +480,27 @@ summary {
 <li><p>As of 2020-04-23 in the morning, the line list is currently not available. This is causing the dashboard to show “0 Total Cases”. I adjusted the snapshot scripts so that updates will be stored only when the table is available.</p></li>
 </ul>
 </div>
-<div id="section-13" class="section level1">
+<div id="section-14" class="section level1">
 <h1>2020-04-13</h1>
 <ul>
 <li><p>At some point in the last few days, the Cases variable in the Line List table served via ArcGIS changed from a numeric timestamp to a character <code>d/m/Y HH:MM</code> timestamp.</p></li>
 <li><p>Similarly Florida resident deaths were previously reported in the variable <code>fl_res_deaths</code>, which was renamed <code>c_fl_res_deaths</code> in the county-level summary table served via ArcGIS.</p></li>
 </ul>
 </div>
-<div id="section-14" class="section level1">
+<div id="section-15" class="section level1">
 <h1>2020-04-09</h1>
 <ul>
 <li><p>Additional tables that have been added to the dashboard are now also available via the arcgis API. I’ve added the Cases By Zip and Cases by Day tables to the data sets. The raw <code>geojson</code> for cases by zip are also included in <code>data/geojson</code>.</p></li>
 <li><p>I fixed an issue with the line list query to better utilize the arcgis API. I mised one or possibly two updates to this table in since 2020-04-08.</p></li>
 </ul>
 </div>
-<div id="section-15" class="section level1">
+<div id="section-16" class="section level1">
 <h1>2020-03-26</h1>
 <ul>
 <li>The total number of positive cases (regardless of Florida residency status) was remove from the dashboard in the evening. The dashboard now only shows the number of positive cases among Florida residents.</li>
 </ul>
 </div>
-<div id="section-16" class="section level1">
+<div id="section-17" class="section level1">
 <h1>2020-03-25</h1>
 <ul>
 <li><p>The division of ages in the case count by age range summary on Page 2 of the PDF report has changed from 0-9, 10-19, etc. to 0-4, 5-14, 15-24, etc. in the 2020-03-25-1007 report.</p></li>
@@ -505,14 +511,14 @@ summary {
 <p>and the heading of the page was changed from <em>All persons tested</em> to <em>All persons with tests reported</em>.</p></li>
 </ul>
 </div>
-<div id="section-17" class="section level1">
+<div id="section-18" class="section level1">
 <h1>2020-03-24</h1>
 <ul>
 <li><p>PDF processing is now part of the automatic update. Failures in the extraction process are recorded in the README.md file in the pdf-specific data folder in <code>pdfs/</code>.</p></li>
 <li><p>Added a few more strategies for parsing the Line List tables in the PDF repots that fixed a few issues in previous extractions and should make the process more robust.</p></li>
 </ul>
 </div>
-<div id="section-18" class="section level1">
+<div id="section-19" class="section level1">
 <h1>2020-03-23</h1>
 <ul>
 <li><p>Added historical PDF reports from 2020-03-16,17,18 that were found via Google</p></li>
@@ -520,7 +526,7 @@ summary {
 <li><p>Added plot showing age distribution by sex among positive cases</p></li>
 </ul>
 </div>
-<div id="section-19" class="section level1">
+<div id="section-20" class="section level1">
 <h1>2020-03-22</h1>
 <div id="major-changes" class="section level2">
 <h2>Major Changes</h2>
@@ -546,7 +552,7 @@ summary {
 </ul>
 </div>
 </div>
-<div id="section-20" class="section level1">
+<div id="section-21" class="section level1">
 <h1>2020-03-21</h1>
 <ul>
 <li><p>A <em>community spread</em> table was added to the 2020-03-21 10:08:00 EDT report and includes cases where travel or contact with a confirmed case cannot be established as the source of infection.</p></li>
