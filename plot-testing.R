@@ -877,7 +877,10 @@ g_test_per_case_counties <-
     )
   ) +
   scale_y_continuous(labels = grkmisc::format_pretty_num(), expand = expansion()) +
-  scale_x_datetime(date_breaks = "1 month", date_labels = "%B") +
+  scale_x_datetime(date_breaks = "1 month", labels = function(x) {
+    full <- strftime(x, "%B")
+    ifelse(nchar(full) < 6, full, strftime(x, "%b"))
+  }) +
   theme_minimal(14) +
   theme(
     strip.text = element_text(face = "bold"),
@@ -900,7 +903,7 @@ g_test_per_case_florida <-
     )
   ) +
   scale_y_continuous(labels = grkmisc::format_pretty_num()) +
-  scale_x_datetime(date_breaks = "1 week", date_labels = "%b %d", expand = expansion()) +
+  scale_x_datetime(date_breaks = "4 week", date_labels = "%b %d", expand = expansion()) +
   theme_minimal(14) +
   theme(
     strip.text = element_text(face = "bold", size = 18),
@@ -949,7 +952,8 @@ max_percent_positive <- pct_positive %>%
 
 g_pct_positive_florida <-
   pct_positive %>% 
-  filter(metro == "Florida", timestamp >= today() - 21) %>% 
+  filter(pct_positive > 0) %>% 
+  filter(metro == "Florida", timestamp >= today() - 7 * 4 * 4) %>% 
   ggplot() +
   aes(timestamp, y = pct_positive) +
   geom_binomial(fill = "#440154", alpha = 0.2, se = TRUE, show.legend = FALSE, aes(weight = count)) +
@@ -976,12 +980,13 @@ g_pct_positive_florida <-
 
 g_pct_positive_counties <-
   pct_positive %>% 
-  filter(metro != "Florida", timestamp >= today() - 21) %>% 
+  filter(pct_positive > 0) %>% 
+  filter(metro != "Florida", timestamp >= today() - 7 * 4 * 4) %>% 
   ggplot() +
   aes(timestamp, y = pct_positive, color = metro) +
   geom_binomial(aes(fill = metro, weight = count), alpha = 0.2, se = TRUE, show.legend = FALSE) +
   geom_line(show.legend = FALSE) +
-  geom_point(aes(size = count / pct_positive), alpha = 0.66, shape = 21) +
+  # geom_point(aes(size = count / pct_positive), alpha = 0.66, shape = 21) +
   facet_wrap(vars(metro)) +
   geom_label(
     data = . %>% 
@@ -998,9 +1003,10 @@ g_pct_positive_counties <-
     label.size = 0,
     label.padding = unit(0.5, "line")
   ) +
-  guides(color = FALSE, size = guide_legend(title = "Number of Tests", override.aes = list(shape = 21, color = "#444444"))) +
+  guides(color = FALSE) +
+  # guides(color = FALSE, size = guide_legend(title = "Number of Tests", override.aes = list(shape = 21, color = "#444444"))) +
   scale_y_continuous(labels = scales::percent_format(5)) +
-  scale_size_continuous(range = c(1, 10)) +
+  # scale_size_continuous(range = c(1, 10)) +
   scale_color_manual(
     values = c(
       test = "#dddddd",
@@ -1036,7 +1042,7 @@ g_pct_positive <-
   (g_pct_positive_florida / g_pct_positive_counties) * 
   # scale_y_continuous(labels = scales::percent_format(5), limits = c(, 0.35)) * 
   labs(x = NULL, y = NULL) *
-  scale_x_datetime(date_breaks = "1 week", date_labels = "%b %d", expand = expansion()) *
+  scale_x_datetime(date_breaks = "2 week", date_labels = "%d\n%b", expand = expansion()) *
   theme(
     panel.grid.major.x = element_blank(),
     panel.grid.minor.x = element_blank(),
