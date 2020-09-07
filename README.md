@@ -1,15 +1,15 @@
 Florida COVID-19 Data
 ================
-2020-09-07 07:14:35
+2020-09-07 12:16:25
 
 ## Today
 
-| When           | Day        | Positive | New Positive Since | Deaths | New Deaths Since | Total     |
-| :------------- | :--------- | :------- | :----------------- | :----- | :--------------- | :-------- |
-| Yesterday      | 2020-09-06 | 646,431  | 0                  | 12,001 | 0                | 4,784,770 |
-| The Day Before | 2020-09-05 | 643,867  | 2,564              | 11,963 | 38               | 4,763,807 |
-| Last Week      | 2020-08-31 | 623,471  | 22,960             | 11,331 | 670              | 4,615,539 |
-| 2 Weeks Ago    | 2020-08-24 | 602,829  | 43,602             | 10,534 | 1,467            | 4,447,156 |
+| When        | Day        | Positive | New Positive Since | Deaths | New Deaths Since | Total     |
+| :---------- | :--------- | :------- | :----------------- | :----- | :--------------- | :-------- |
+| Today       | 2020-09-07 | 648,269  | 0                  | 12,023 | 0                | 4,801,684 |
+| Yesterday   | 2020-09-06 | 646,431  | 1,838              | 12,001 | 22               | 4,784,770 |
+| Last Week   | 2020-08-31 | 623,471  | 24,798             | 11,331 | 692              | 4,615,539 |
+| 2 Weeks Ago | 2020-08-24 | 602,829  | 45,440             | 10,534 | 1,489            | 4,447,156 |
 
 Parsed from the [Florida’s COVID-19 Data and Surveillance
 Dashboard](https://fdoh.maps.arcgis.com/apps/opsdashboard/index.html#/8d0de33f260d444c852a615dc7837c86).
@@ -49,14 +49,14 @@ DOH data sources at 7am, noon and 7pm daily.
 
 | County       | Current COVID Hospitalizations | Change Since Yesterday | Available Hospital Beds                      | Available ICU Beds                         |
 | :----------- | -----------------------------: | :--------------------- | :------------------------------------------- | :----------------------------------------- |
-| All          |                           3167 |                        | 17508<span style="color: #aaa">/42943</span> | 1540<span style="color: #aaa">/4464</span> |
-| Miami-Dade   |                            552 |                        | 2561<span style="color: #aaa">/5891</span>   | 182<span style="color: #aaa">/751</span>   |
+| All          |                           3167 |                        | 17520<span style="color: #aaa">/42942</span> | 1540<span style="color: #aaa">/4464</span> |
+| Miami-Dade   |                            552 |                        | 2567<span style="color: #aaa">/5886</span>   | 182<span style="color: #aaa">/751</span>   |
 | Broward      |                            350 |                        | 1210<span style="color: #aaa">/3947</span>   | 92<span style="color: #aaa">/382</span>    |
 | Duval        |                            198 |                        | 1149<span style="color: #aaa">/2597</span>   | 161<span style="color: #aaa">/276</span>   |
 | Palm Beach   |                            172 |                        | 1482<span style="color: #aaa">/2561</span>   | 187<span style="color: #aaa">/253</span>   |
-| Hillsborough |                            169 |                        | 815<span style="color: #aaa">/2843</span>    | 86<span style="color: #aaa">/304</span>    |
+| Hillsborough |                            169 |                        | 815<span style="color: #aaa">/2844</span>    | 86<span style="color: #aaa">/304</span>    |
 | Orange       |                            147 |                        | 1186<span style="color: #aaa">/3145</span>   | 115<span style="color: #aaa">/257</span>   |
-| Pinellas     |                            145 |                        | 1044<span style="color: #aaa">/2127</span>   | 61<span style="color: #aaa">/227</span>    |
+| Pinellas     |                            145 |                        | 1045<span style="color: #aaa">/2126</span>   | 61<span style="color: #aaa">/227</span>    |
 | Gadsden      |                            124 |                        | 208<span style="color: #aaa">/745</span>     | 0<span style="color: #aaa">/0</span>       |
 | Lee          |                            101 |                        | 522<span style="color: #aaa">/1339</span>    | 33<span style="color: #aaa">/107</span>    |
 | Polk         |                            100 |                        | 445<span style="color: #aaa">/1217</span>    | 21<span style="color: #aaa">/116</span>    |
