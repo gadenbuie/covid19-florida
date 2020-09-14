@@ -1,6 +1,6 @@
 Florida COVID-19 Data
 ================
-2020-09-14 12:14:37
+2020-09-14 19:14:29
 
 ## Today
 
@@ -49,15 +49,15 @@ DOH data sources at 7am, noon and 7pm daily.
 
 | County       | Current COVID Hospitalizations | Change Since Yesterday                    | Available Hospital Beds                      | Available ICU Beds                         |
 | :----------- | -----------------------------: | :---------------------------------------- | :------------------------------------------- | :----------------------------------------- |
-| All          |                           2615 | <span style="color: #6BAA75">↓ -16</span> | 16931<span style="color: #aaa">/44353</span> | 1488<span style="color: #aaa">/4518</span> |
-| Miami-Dade   |                            410 | <span style="color: #6BAA75">↓ -6</span>  | 2549<span style="color: #aaa">/5966</span>   | 228<span style="color: #aaa">/711</span>   |
+| All          |                           2637 | <span style="color: #EC4E20">↑ 6</span>   | 16919<span style="color: #aaa">/44298</span> | 1499<span style="color: #aaa">/4512</span> |
+| Miami-Dade   |                            406 | <span style="color: #6BAA75">↓ -10</span> | 2547<span style="color: #aaa">/5963</span>   | 229<span style="color: #aaa">/711</span>   |
 | Broward      |                            278 | <span style="color: #6BAA75">↓ -15</span> | 1200<span style="color: #aaa">/3939</span>   | 99<span style="color: #aaa">/365</span>    |
-| Duval        |                            153 | <span style="color: #6BAA75">↓ -8</span>  | 1095<span style="color: #aaa">/2648</span>   | 146<span style="color: #aaa">/291</span>   |
-| Hillsborough |                            152 | <span style="color: #EC4E20">↑ 2</span>   | 1000<span style="color: #aaa">/3059</span>   | 59<span style="color: #aaa">/326</span>    |
-| Palm Beach   |                            146 | <span style="color: #6BAA75">↓ -7</span>  | 1361<span style="color: #aaa">/2762</span>   | 130<span style="color: #aaa">/274</span>   |
-| Polk         |                            111 | <span style="color: #EC4E20">↑ 12</span>  | 460<span style="color: #aaa">/1172</span>    | 29<span style="color: #aaa">/111</span>    |
-| Orange       |                            110 | <span style="color: #EC4E20">↑ 2</span>   | 1142<span style="color: #aaa">/3201</span>   | 117<span style="color: #aaa">/255</span>   |
-| Pinellas     |                            100 | <span style="color: #6BAA75">↓ -3</span>  | 933<span style="color: #aaa">/2209</span>    | 62<span style="color: #aaa">/224</span>    |
+| Duval        |                            171 | <span style="color: #EC4E20">↑ 10</span>  | 1088<span style="color: #aaa">/2655</span>   | 155<span style="color: #aaa">/282</span>   |
+| Hillsborough |                            154 | <span style="color: #EC4E20">↑ 4</span>   | 1000<span style="color: #aaa">/3059</span>   | 59<span style="color: #aaa">/326</span>    |
+| Palm Beach   |                            152 | <span style="color: #6BAA75">↓ -1</span>  | 1361<span style="color: #aaa">/2700</span>   | 134<span style="color: #aaa">/269</span>   |
+| Polk         |                            112 | <span style="color: #EC4E20">↑ 13</span>  | 460<span style="color: #aaa">/1172</span>    | 28<span style="color: #aaa">/118</span>    |
+| Orange       |                            110 | <span style="color: #EC4E20">↑ 2</span>   | 1142<span style="color: #aaa">/3201</span>   | 109<span style="color: #aaa">/263</span>   |
+| Pinellas     |                            102 | <span style="color: #6BAA75">↓ -1</span>  | 933<span style="color: #aaa">/2209</span>    | 61<span style="color: #aaa">/224</span>    |
 | Alachua      |                             87 | <span style="color: #6BAA75">↓ -1</span>  | 296<span style="color: #aaa">/1424</span>    | 44<span style="color: #aaa">/264</span>    |
 | Lee          |                             75 | <span style="color: #EC4E20">↑ 6</span>   | 458<span style="color: #aaa">/1380</span>    | 27<span style="color: #aaa">/111</span>    |
 
