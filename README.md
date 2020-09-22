@@ -1,6 +1,6 @@
 Florida COVID-19 Data
 ================
-2020-09-22 07:12:47
+2020-09-22 12:14:04
 
 ## Today
 
@@ -49,17 +49,17 @@ DOH data sources at 7am, noon and 7pm daily.
 
 | County       | Current COVID Hospitalizations | Change Since Yesterday | Available Hospital Beds                      | Available ICU Beds                         |
 | :----------- | -----------------------------: | :--------------------- | :------------------------------------------- | :----------------------------------------- |
-| All          |                           2266 |                        | 16559<span style="color: #aaa">/43682</span> | 1587<span style="color: #aaa">/4400</span> |
-| Miami-Dade   |                            315 |                        | 2675<span style="color: #aaa">/5896</span>   | 221<span style="color: #aaa">/714</span>   |
-| Broward      |                            242 |                        | 1279<span style="color: #aaa">/3927</span>   | 122<span style="color: #aaa">/337</span>   |
-| Palm Beach   |                            154 |                        | 1371<span style="color: #aaa">/2584</span>   | 147<span style="color: #aaa">/246</span>   |
-| Duval        |                            137 |                        | 829<span style="color: #aaa">/2682</span>    | 131<span style="color: #aaa">/292</span>   |
-| Hillsborough |                            136 |                        | 632<span style="color: #aaa">/3127</span>    | 64<span style="color: #aaa">/315</span>    |
-| Orange       |                            119 |                        | 1227<span style="color: #aaa">/3141</span>   | 182<span style="color: #aaa">/222</span>   |
-| Polk         |                            111 |                        | 358<span style="color: #aaa">/1249</span>    | 24<span style="color: #aaa">/123</span>    |
-| Pinellas     |                             99 |                        | 939<span style="color: #aaa">/2203</span>    | 58<span style="color: #aaa">/233</span>    |
-| Alachua      |                             72 |                        | 266<span style="color: #aaa">/1437</span>    | 43<span style="color: #aaa">/265</span>    |
-| Volusia      |                             66 |                        | 519<span style="color: #aaa">/1079</span>    | 60<span style="color: #aaa">/165</span>    |
+| All          |                           2266 |                        | 16559<span style="color: #aaa">/43682</span> | 1504<span style="color: #aaa">/4520</span> |
+| Miami-Dade   |                            315 |                        | 2675<span style="color: #aaa">/5896</span>   | 213<span style="color: #aaa">/724</span>   |
+| Broward      |                            242 |                        | 1279<span style="color: #aaa">/3927</span>   | 112<span style="color: #aaa">/342</span>   |
+| Palm Beach   |                            154 |                        | 1371<span style="color: #aaa">/2584</span>   | 147<span style="color: #aaa">/254</span>   |
+| Duval        |                            137 |                        | 829<span style="color: #aaa">/2682</span>    | 133<span style="color: #aaa">/304</span>   |
+| Hillsborough |                            136 |                        | 632<span style="color: #aaa">/3127</span>    | 63<span style="color: #aaa">/322</span>    |
+| Orange       |                            119 |                        | 1227<span style="color: #aaa">/3141</span>   | 177<span style="color: #aaa">/227</span>   |
+| Polk         |                            111 |                        | 358<span style="color: #aaa">/1249</span>    | 19<span style="color: #aaa">/133</span>    |
+| Pinellas     |                             99 |                        | 939<span style="color: #aaa">/2203</span>    | 63<span style="color: #aaa">/232</span>    |
+| Alachua      |                             72 |                        | 266<span style="color: #aaa">/1437</span>    | 28<span style="color: #aaa">/280</span>    |
+| Volusia      |                             66 |                        | 519<span style="color: #aaa">/1079</span>    | 60<span style="color: #aaa">/171</span>    |
 
 ![](plots/covid-19-florida-icu-usage.png)
 
