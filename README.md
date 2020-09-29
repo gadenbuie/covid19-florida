@@ -1,15 +1,15 @@
 Florida COVID-19 Data
 ================
-2020-09-29 07:06:36
+2020-09-29 12:09:26
 
 ## Today
 
-| When           | Day        | Positive | New Positive Since | Deaths | New Deaths Since | Total     |
-| :------------- | :--------- | :------- | :----------------- | :----- | :--------------- | :-------- |
-| Yesterday      | 2020-09-28 | 701,302  | 0                  | 14,207 | 0                | 5,261,672 |
-| The Day Before | 2020-09-27 | 700,564  | 738                | 14,202 | 5                | 5,253,441 |
-| Last Week      | 2020-09-22 | 687,909  | 13,393             | 13,579 | 628              | 5,132,342 |
-| 2 Weeks Ago    | 2020-09-15 | 668,846  | 32,456             | 12,946 | 1,261            | 4,968,847 |
+| When        | Day        | Positive | New Positive Since | Deaths | New Deaths Since | Total     |
+| :---------- | :--------- | :------- | :----------------- | :----- | :--------------- | :-------- |
+| Today       | 2020-09-29 | 704,568  | 0                  | 14,313 | 0                | 5,290,116 |
+| Yesterday   | 2020-09-28 | 701,302  | 3,266              | 14,207 | 106              | 5,261,672 |
+| Last Week   | 2020-09-22 | 687,909  | 16,659             | 13,579 | 734              | 5,132,342 |
+| 2 Weeks Ago | 2020-09-15 | 668,846  | 35,722             | 12,946 | 1,367            | 4,968,847 |
 
 Parsed from the [Florida’s COVID-19 Data and Surveillance
 Dashboard](https://fdoh.maps.arcgis.com/apps/opsdashboard/index.html#/8d0de33f260d444c852a615dc7837c86).
@@ -47,19 +47,19 @@ DOH data sources at 7am, noon and 7pm daily.
 
 ## Hospital and ICU Utilization
 
-| County       | Current COVID Hospitalizations | Change Since Yesterday | Available Hospital Beds                      | Available ICU Beds                         |
-| :----------- | -----------------------------: | :--------------------- | :------------------------------------------- | :----------------------------------------- |
-| All          |                           2122 |                        | 16579<span style="color: #aaa">/43779</span> | 1600<span style="color: #aaa">/4396</span> |
-| Miami-Dade   |                            239 |                        | 2626<span style="color: #aaa">/5933</span>   | 234<span style="color: #aaa">/711</span>   |
-| Broward      |                            198 |                        | 1245<span style="color: #aaa">/3886</span>   | 136<span style="color: #aaa">/315</span>   |
-| Hillsborough |                            157 |                        | 632<span style="color: #aaa">/3169</span>    | 64<span style="color: #aaa">/315</span>    |
-| Duval        |                            131 |                        | 831<span style="color: #aaa">/2694</span>    | 107<span style="color: #aaa">/319</span>   |
-| Palm Beach   |                            115 |                        | 1444<span style="color: #aaa">/2562</span>   | 157<span style="color: #aaa">/247</span>   |
-| Orange       |                            112 |                        | 1281<span style="color: #aaa">/3111</span>   | 144<span style="color: #aaa">/263</span>   |
-| Pinellas     |                            100 |                        | 1087<span style="color: #aaa">/2162</span>   | 80<span style="color: #aaa">/218</span>    |
-| Polk         |                             84 |                        | 396<span style="color: #aaa">/1220</span>    | 27<span style="color: #aaa">/109</span>    |
-| Alachua      |                             77 |                        | 280<span style="color: #aaa">/1433</span>    | 38<span style="color: #aaa">/270</span>    |
-| Osceola      |                             63 |                        | 302<span style="color: #aaa">/850</span>     | 35<span style="color: #aaa">/88</span>     |
+| County    | Current COVID Hospitalizations | Change Since Yesterday | Available Hospital Beds                    | Available ICU Beds                       |
+| :-------- | -----------------------------: | :--------------------- | :----------------------------------------- | :--------------------------------------- |
+| Alachua   |                             NA |                        | 224<span style="color: #aaa">/1489</span>  | 27<span style="color: #aaa">/281</span>  |
+| Baker     |                             NA |                        | 174<span style="color: #aaa">/451</span>   | 0<span style="color: #aaa">/0</span>     |
+| Bay       |                             NA |                        | 79<span style="color: #aaa">/446</span>    | 4<span style="color: #aaa">/46</span>    |
+| Bradford  |                             NA |                        | 5<span style="color: #aaa">/5</span>       | 0<span style="color: #aaa">/0</span>     |
+| Brevard   |                             NA |                        | 433<span style="color: #aaa">/1194</span>  | 37<span style="color: #aaa">/130</span>  |
+| Broward   |                             NA |                        | 1108<span style="color: #aaa">/4149</span> | 134<span style="color: #aaa">/387</span> |
+| Calhoun   |                             NA |                        | 3<span style="color: #aaa">/7</span>       | 0<span style="color: #aaa">/0</span>     |
+| Charlotte |                             NA |                        | 185<span style="color: #aaa">/441</span>   | 7<span style="color: #aaa">/42</span>    |
+| Citrus    |                             NA |                        | 74<span style="color: #aaa">/231</span>    | 8<span style="color: #aaa">/32</span>    |
+| Clay      |                             NA |                        | 81<span style="color: #aaa">/475</span>    | 8<span style="color: #aaa">/42</span>    |
+| Collier   |                             NA |                        | 211<span style="color: #aaa">/625</span>   | 29<span style="color: #aaa">/56</span>   |
 
 ![](plots/covid-19-florida-icu-usage.png)
 
