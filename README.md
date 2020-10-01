@@ -1,6 +1,6 @@
 Florida COVID-19 Data
 ================
-2020-10-01 12:07:33
+2020-10-01 19:09:03
 
 ## Today
 
@@ -49,17 +49,17 @@ DOH data sources at 7am, noon and 7pm daily.
 
 | County       | Current COVID Hospitalizations | Change Since Yesterday                    | Available Hospital Beds                      | Available ICU Beds                         |
 | :----------- | -----------------------------: | :---------------------------------------- | :------------------------------------------- | :----------------------------------------- |
-| All          |                           2080 | <span style="color: #6BAA75">↓ -18</span> | 14607<span style="color: #aaa">/46393</span> | 1366<span style="color: #aaa">/4649</span> |
+| All          |                           2080 | <span style="color: #6BAA75">↓ -18</span> | 14619<span style="color: #aaa">/46366</span> | 1366<span style="color: #aaa">/4649</span> |
 | Miami-Dade   |                            280 | <span style="color: #EC4E20">↑ 11</span>  | 2268<span style="color: #aaa">/6348</span>   | 195<span style="color: #aaa">/754</span>   |
-| Broward      |                            202 | <span style="color: #EC4E20">↑ 16</span>  | 1016<span style="color: #aaa">/4161</span>   | 143<span style="color: #aaa">/315</span>   |
-| Hillsborough |                            148 | <span style="color: #EC4E20">↑ 1</span>   | 536<span style="color: #aaa">/3227</span>    | 27<span style="color: #aaa">/351</span>    |
+| Broward      |                            202 | <span style="color: #EC4E20">↑ 16</span>  | 1036<span style="color: #aaa">/4141</span>   | 143<span style="color: #aaa">/315</span>   |
+| Hillsborough |                            146 | <span style="color: #6BAA75">↓ -1</span>  | 528<span style="color: #aaa">/3227</span>    | 27<span style="color: #aaa">/351</span>    |
 | Duval        |                            128 | <span style="color: #6BAA75">↓ -2</span>  | 944<span style="color: #aaa">/2820</span>    | 102<span style="color: #aaa">/335</span>   |
 | Orange       |                            120 | <span style="color: #EC4E20">↑ 8</span>   | 1103<span style="color: #aaa">/3354</span>   | 147<span style="color: #aaa">/257</span>   |
-| Palm Beach   |                            111 |                                           | 1304<span style="color: #aaa">/2743</span>   | 135<span style="color: #aaa">/266</span>   |
-| Polk         |                             93 | <span style="color: #EC4E20">↑ 6</span>   | 324<span style="color: #aaa">/1335</span>    | 20<span style="color: #aaa">/124</span>    |
-| Pinellas     |                             85 | <span style="color: #6BAA75">↓ -6</span>  | 939<span style="color: #aaa">/2348</span>    | 67<span style="color: #aaa">/226</span>    |
-| Brevard      |                             75 | <span style="color: #EC4E20">↑ 4</span>   | 399<span style="color: #aaa">/1221</span>    | 25<span style="color: #aaa">/139</span>    |
-| Osceola      |                             72 | <span style="color: #EC4E20">↑ 1</span>   | 260<span style="color: #aaa">/894</span>     | 30<span style="color: #aaa">/93</span>     |
+| Palm Beach   |                            110 | <span style="color: #6BAA75">↓ -1</span>  | 1304<span style="color: #aaa">/2739</span>   | 135<span style="color: #aaa">/266</span>   |
+| Polk         |                             91 | <span style="color: #EC4E20">↑ 4</span>   | 324<span style="color: #aaa">/1335</span>    | 20<span style="color: #aaa">/124</span>    |
+| Pinellas     |                             88 | <span style="color: #6BAA75">↓ -3</span>  | 939<span style="color: #aaa">/2348</span>    | 67<span style="color: #aaa">/226</span>    |
+| Brevard      |                             76 | <span style="color: #EC4E20">↑ 5</span>   | 400<span style="color: #aaa">/1215</span>    | 25<span style="color: #aaa">/139</span>    |
+| Osceola      |                             73 | <span style="color: #EC4E20">↑ 2</span>   | 260<span style="color: #aaa">/894</span>     | 30<span style="color: #aaa">/93</span>     |
 
 ![](plots/covid-19-florida-icu-usage.png)
 
