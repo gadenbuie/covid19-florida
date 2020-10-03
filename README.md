@@ -1,6 +1,6 @@
 Florida COVID-19 Data
 ================
-2020-10-03 07:07:33
+2020-10-03 12:07:30
 
 ## Today
 
@@ -49,7 +49,7 @@ DOH data sources at 7am, noon and 7pm daily.
 
 | County       | Current COVID Hospitalizations | Change Since Yesterday | Available Hospital Beds                      | Available ICU Beds                         |
 | :----------- | -----------------------------: | :--------------------- | :------------------------------------------- | :----------------------------------------- |
-| All          |                           2056 |                        | 15337<span style="color: #aaa">/46023</span> | 1387<span style="color: #aaa">/4632</span> |
+| All          |                           2056 |                        | 15337<span style="color: #aaa">/46035</span> | 1387<span style="color: #aaa">/4632</span> |
 | Miami-Dade   |                            277 |                        | 2342<span style="color: #aaa">/6231</span>   | 192<span style="color: #aaa">/752</span>   |
 | Broward      |                            204 |                        | 1045<span style="color: #aaa">/4130</span>   | 124<span style="color: #aaa">/315</span>   |
 | Hillsborough |                            144 |                        | 565<span style="color: #aaa">/3230</span>    | 22<span style="color: #aaa">/353</span>    |
