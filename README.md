@@ -1,15 +1,15 @@
 Florida COVID-19 Data
 ================
-2020-10-08 07:08:10
+2020-10-08 12:07:49
 
 ## Today
 
-| When           | Day        | Positive | New Positive Since | Deaths | New Deaths Since | Total     |
-| :------------- | :--------- | :------- | :----------------- | :----- | :--------------- | :-------- |
-| Yesterday      | 2020-10-07 | 722,707  | 0                  | 15,084 | 0                | 5,459,711 |
-| The Day Before | 2020-10-06 | 720,125  | 2,582              | 14,945 | 139              | 5,433,578 |
-| Last Week      | 2020-10-01 | 709,144  | 13,563             | 14,619 | 465              | 5,325,835 |
-| 2 Weeks Ago    | 2020-09-24 | 693,040  | 29,667             | 13,961 | 1,123            | 5,179,499 |
+| When        | Day        | Positive | New Positive Since | Deaths | New Deaths Since | Total     |
+| :---------- | :--------- | :------- | :----------------- | :----- | :--------------- | :-------- |
+| Today       | 2020-10-08 | 726,013  | 0                  | 15,254 | 0                | 5,489,758 |
+| Yesterday   | 2020-10-07 | 722,707  | 3,306              | 15,084 | 170              | 5,459,711 |
+| Last Week   | 2020-10-01 | 709,144  | 16,869             | 14,619 | 635              | 5,325,835 |
+| 2 Weeks Ago | 2020-09-24 | 693,040  | 32,973             | 13,961 | 1,293            | 5,179,499 |
 
 Parsed from the [Florida’s COVID-19 Data and Surveillance
 Dashboard](https://fdoh.maps.arcgis.com/apps/opsdashboard/index.html#/8d0de33f260d444c852a615dc7837c86).
@@ -49,15 +49,15 @@ DOH data sources at 7am, noon and 7pm daily.
 
 | County       | Current COVID Hospitalizations | Change Since Yesterday                   | Available Hospital Beds                      | Available ICU Beds                         |
 | :----------- | -----------------------------: | :--------------------------------------- | :------------------------------------------- | :----------------------------------------- |
-| All          |                           2120 | <span style="color: #6BAA75">↓ -1</span> | 14292<span style="color: #aaa">/47200</span> | 1344<span style="color: #aaa">/4760</span> |
-| Miami-Dade   |                            277 |                                          | 2315<span style="color: #aaa">/6271</span>   | 200<span style="color: #aaa">/751</span>   |
-| Broward      |                            216 |                                          | 1026<span style="color: #aaa">/4165</span>   | 91<span style="color: #aaa">/368</span>    |
-| Hillsborough |                            169 | <span style="color: #6BAA75">↓ -1</span> | 490<span style="color: #aaa">/3358</span>    | 42<span style="color: #aaa">/334</span>    |
+| All          |                           2120 | <span style="color: #6BAA75">↓ -1</span> | 14292<span style="color: #aaa">/47200</span> | 1357<span style="color: #aaa">/4740</span> |
+| Miami-Dade   |                            277 |                                          | 2315<span style="color: #aaa">/6271</span>   | 205<span style="color: #aaa">/746</span>   |
+| Broward      |                            216 |                                          | 1026<span style="color: #aaa">/4165</span>   | 90<span style="color: #aaa">/369</span>    |
+| Hillsborough |                            169 | <span style="color: #6BAA75">↓ -1</span> | 490<span style="color: #aaa">/3358</span>    | 43<span style="color: #aaa">/333</span>    |
 | Orange       |                            141 |                                          | 1036<span style="color: #aaa">/3415</span>   | 146<span style="color: #aaa">/258</span>   |
 | Duval        |                            108 |                                          | 846<span style="color: #aaa">/2906</span>    | 95<span style="color: #aaa">/342</span>    |
-| Palm Beach   |                            102 |                                          | 1140<span style="color: #aaa">/2885</span>   | 144<span style="color: #aaa">/274</span>   |
-| Pinellas     |                            101 |                                          | 1121<span style="color: #aaa">/2532</span>   | 53<span style="color: #aaa">/239</span>    |
-| Polk         |                             77 |                                          | 288<span style="color: #aaa">/1402</span>    | 30<span style="color: #aaa">/144</span>    |
+| Palm Beach   |                            102 |                                          | 1140<span style="color: #aaa">/2885</span>   | 142<span style="color: #aaa">/276</span>   |
+| Pinellas     |                            101 |                                          | 1121<span style="color: #aaa">/2532</span>   | 53<span style="color: #aaa">/240</span>    |
+| Polk         |                             77 |                                          | 288<span style="color: #aaa">/1402</span>    | 35<span style="color: #aaa">/138</span>    |
 | Brevard      |                             76 |                                          | 432<span style="color: #aaa">/1194</span>    | 32<span style="color: #aaa">/133</span>    |
 | Osceola      |                             71 |                                          | 244<span style="color: #aaa">/911</span>     | 35<span style="color: #aaa">/88</span>     |
 
