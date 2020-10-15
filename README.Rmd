@@ -139,7 +139,8 @@ hospitals_by_county <-
 
 
 current_hospitalizations <-
-  read_csv("data/covid-19-florida_ahca_covid-hospitalizations.csv") %>% 
+  read_csv("data/covid-19-florida_ahca_covid-hospitalizations.csv", guess_max = 1e5) %>% 
+  select(timestamp, county, covid_hospitalizations) %>% 
   mutate(day = lubridate::floor_date(timestamp, "day")) %>% 
   group_by(day) %>% 
   filter(timestamp == max(timestamp)) %>%
