@@ -107,7 +107,7 @@ tampa_test_summary %>%
     daily_t_positive = "New Positive", 
     daily_t_total = "New Total Tests", 
     pct_positive = "% Positive",
-    t_positive = "Positive",
+    t_positive_2 = "Total Positive",
     t_total = "Total Tests"
   )) %>% 
   group_by(county) %>% 
