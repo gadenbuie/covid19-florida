@@ -1,15 +1,15 @@
 Florida COVID-19 Data
 ================
-2020-10-24 07:09:24
+2020-10-24 12:08:52
 
 ## Today
 
-| When           | Day        | Positive | New Positive Since | Deaths | New Deaths Since | Total     |
-| :------------- | :--------- | :------- | :----------------- | :----- | :--------------- | :-------- |
-| Yesterday      | 2020-10-23 | 771,780  | 0                  | 16,544 | 0                | 5,865,752 |
-| The Day Before | 2020-10-22 | 768,091  | 3,689              | 16,470 | 74               | 5,821,939 |
-| Last Week      | 2020-10-17 | 752,481  | 19,299             | 16,118 | 426              | 5,704,100 |
-| 2 Weeks Ago    | 2020-10-10 | 728,921  | 42,859             | 15,372 | 1,172            | 5,518,162 |
+| When        | Day        | Positive | New Positive Since | Deaths | New Deaths Since | Total     |
+| :---------- | :--------- | :------- | :----------------- | :----- | :--------------- | :-------- |
+| Today       | 2020-10-24 | 776,251  | 0                  | 16,620 | 0                | 5,938,061 |
+| Yesterday   | 2020-10-23 | 771,780  | 4,471              | 16,544 | 76               | 5,865,752 |
+| Last Week   | 2020-10-17 | 752,481  | 23,770             | 16,118 | 502              | 5,704,100 |
+| 2 Weeks Ago | 2020-10-10 | 728,921  | 47,330             | 15,372 | 1,248            | 5,518,162 |
 
 Parsed from the [Florida’s COVID-19 Data and Surveillance
 Dashboard](https://fdoh.maps.arcgis.com/apps/opsdashboard/index.html#/8d0de33f260d444c852a615dc7837c86).
