@@ -1,6 +1,6 @@
 Florida COVID-19 Data
 ================
-2020-10-25 07:10:01
+2020-10-25 12:08:31
 
 ## Today
 
@@ -49,17 +49,17 @@ DOH data sources at 7am, noon and 7pm daily.
 
 | County       | Current COVID Hospitalizations | Change Since Yesterday                   | Available Hospital Beds                      | Available ICU Beds                         |
 | :----------- | -----------------------------: | :--------------------------------------- | :------------------------------------------- | :----------------------------------------- |
-| All          |                           2163 | <span style="color: #EC4E20">↑ 3</span>  | 15877<span style="color: #aaa">/45068</span> | 1518<span style="color: #aaa">/4565</span> |
-| Miami-Dade   |                            286 | <span style="color: #EC4E20">↑ 2</span>  | 2596<span style="color: #aaa">/6049</span>   | 225<span style="color: #aaa">/719</span>   |
-| Broward      |                            204 | <span style="color: #EC4E20">↑ 2</span>  | 980<span style="color: #aaa">/4160</span>    | 102<span style="color: #aaa">/350</span>   |
-| Hillsborough |                            145 |                                          | 837<span style="color: #aaa">/3138</span>    | 70<span style="color: #aaa">/317</span>    |
-| Orange       |                            137 |                                          | 1128<span style="color: #aaa">/3378</span>   | 127<span style="color: #aaa">/277</span>   |
-| Palm Beach   |                            128 |                                          | 1361<span style="color: #aaa">/2687</span>   | 144<span style="color: #aaa">/249</span>   |
-| Pinellas     |                            122 |                                          | 968<span style="color: #aaa">/2174</span>    | 64<span style="color: #aaa">/248</span>    |
-| Duval        |                            112 |                                          | 999<span style="color: #aaa">/2724</span>    | 110<span style="color: #aaa">/327</span>   |
-| Polk         |                             82 |                                          | 429<span style="color: #aaa">/1255</span>    | 46<span style="color: #aaa">/134</span>    |
-| Osceola      |                             71 |                                          | 302<span style="color: #aaa">/852</span>     | 46<span style="color: #aaa">/77</span>     |
-| Brevard      |                             61 | <span style="color: #6BAA75">↓ -1</span> | 430<span style="color: #aaa">/1202</span>    | 38<span style="color: #aaa">/130</span>    |
+| All          |                           2163 | <span style="color: #EC4E20">↑ 3</span>  | 15883<span style="color: #aaa">/45064</span> | 1602<span style="color: #aaa">/4482</span> |
+| Miami-Dade   |                            286 | <span style="color: #EC4E20">↑ 2</span>  | 2596<span style="color: #aaa">/6049</span>   | 238<span style="color: #aaa">/707</span>   |
+| Broward      |                            204 | <span style="color: #EC4E20">↑ 2</span>  | 980<span style="color: #aaa">/4160</span>    | 107<span style="color: #aaa">/353</span>   |
+| Hillsborough |                            145 |                                          | 837<span style="color: #aaa">/3138</span>    | 39<span style="color: #aaa">/343</span>    |
+| Orange       |                            137 |                                          | 1128<span style="color: #aaa">/3378</span>   | 143<span style="color: #aaa">/261</span>   |
+| Palm Beach   |                            128 |                                          | 1361<span style="color: #aaa">/2687</span>   | 143<span style="color: #aaa">/251</span>   |
+| Pinellas     |                            122 |                                          | 968<span style="color: #aaa">/2174</span>    | 73<span style="color: #aaa">/230</span>    |
+| Duval        |                            112 |                                          | 999<span style="color: #aaa">/2724</span>    | 128<span style="color: #aaa">/309</span>   |
+| Polk         |                             82 |                                          | 429<span style="color: #aaa">/1255</span>    | 55<span style="color: #aaa">/125</span>    |
+| Osceola      |                             71 |                                          | 302<span style="color: #aaa">/852</span>     | 44<span style="color: #aaa">/79</span>     |
+| Brevard      |                             61 | <span style="color: #6BAA75">↓ -1</span> | 430<span style="color: #aaa">/1202</span>    | 39<span style="color: #aaa">/129</span>    |
 
 ![](plots/covid-19-florida-icu-usage.png)
 
